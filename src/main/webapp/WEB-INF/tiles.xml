@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- layout1: home, ground, community -->
+	<definition name="layout1" template="/WEB-INF/layout/layout1.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp" />
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	<!-- layout2: marketplace-->
+	<definition name="layout2" template="/WEB-INF/layout/layout2.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp" />
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp" />
+		<put-attribute name="m_sidemenu" value="/WEB-INF/marketplace/m_sidemenu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	<!-- layout3: challenge -->
+	<definition name="layout3" template="/WEB-INF/layout/layout3.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp" />
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp" />
+		<put-attribute name="c_sidemenu" value="/WEB-INF/challenge/c_sidemenu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	<!-- layout4: activity -->
+	<definition name="layout4" template="/WEB-INF/layout/layout4.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp" />
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp" />
+		<put-attribute name="a_sidemenu" value="/WEB-INF/activity/a_sidemenu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	<!-- layout1: wild card setting -->
+	<definition name="/*/*" extends="layout1">
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- layout2: wild card setting -->
+	<definition name="m/*/*" extends="layout2">
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- layout3: wild card setting -->
+	<definition name="c/*/*" extends="layout3">
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- layout4: wild card setting -->
+	<definition name="a/*/*" extends="layout4">
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp" />
+	</definition>
+</tiles-definitions>

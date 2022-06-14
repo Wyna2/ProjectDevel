@@ -1,0 +1,22 @@
+server:
+  port: 9002
+#jsp
+spring:
+  #mvc:
+   # view:
+      #prefix: /WEB-INF/ipgo/
+      #suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://finalprojectdb.cbppzd02cel0.ap-northeast-2.rds.amazonaws.com:3306/team3db
+    username: best3
+    password: sist0705*
+#mybatis
+mybatis:
+  #type-aliases-package: com.*
+  #mapper-locations:
+  #- /mapper/**/*.xml
