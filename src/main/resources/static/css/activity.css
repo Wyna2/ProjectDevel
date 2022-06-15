@@ -245,26 +245,56 @@ div.write_sub {
     white-space: nowrap;
 }
 
-div.btn_delete {
-	/* div */
-	width: 110px;
-	height: 33px;
-	padding: 4px 21px 3px 22px;
-	border-radius: 10px;
-	
-	/* 폰트 */
-	font-family: "Noto Sans KR";
-	font-size: 16px;
-	letter-spacing: -0.48px;
-	text-align: center;
+
+/* 삭제하기 버튼 */
+.btn_delete {
+	outline: none;
+	width: 100px;   /* 넓이 수정 가능 */
+	height: 33px; /* 높이 수정 가능 */
+	border: 2px solid #4d96ff; 
+	border-radius: 20px;
 	color: #4d96ff;
+	font-family: 'Noto Sans KR';
+	font-weight: 400;   /* 글씨 Bold 수정 가능 */
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.btn_delete {
+	overflow: hidden;
+	transition: all 0.2s ease;
+}
+.btn_delete:hover {
+	background: #4d96ff;
+	color: #fff;
+}
+.btn_delete:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn_delete:active{
+	box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+				-4px -4px 6px 0 rgba(116, 125, 136, .2),
+				inset -4px -4px 6px 0 rgba(255,255,255,.2),
+				inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 }
 
 /* 페이징 */
 #num1,#num2,#num3,#num4,#num5 {
 	margin: 0 5px 0 5px;
 }
-
 
 /* main css 끝 */
 /* 2. 나의활동>작성글목록 끝 */

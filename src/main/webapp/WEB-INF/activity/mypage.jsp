@@ -15,88 +15,142 @@
 
 <title>Insert title here</title>
 
-<!-- 이미지 클릭시 이미지 변경 -->
+<!-- 이미지 파일 업로드 후 이벤트 -->
 <script type="text/javascript">
-$('#myimg').click(function (e) {
-    document.signform.target_url.value=document.getElementById('myimg').src;
-    e.preventDefault();
-    $('#file').click();
-});
+function previewFile() {
+  const preview = document.querySelector('#myimg');
+  const file = document.querySelector('input[type=file]').files[0];
+  const reader = new FileReader();
+  
+  /* 이미지 파일만 업로드 가능 유효성 검사 */
+  if (!file.type.match("image/.*")) {
+	alert('이미지 파일만 업로드 가능합니다.');
+	return false;
+  }
+    
+  reader.addEventListener("load", function () {
+    // convert image file to base64 string
+    preview.src = reader.result;
+  }, false);
+
+  if (file) {
+	  reader.readAsDataURL(file);
+  }
+  
+}
 </script>
 
+<style type="text/css">
+input:focus {
+    outline: none;
+    border-bottom: 1px solid #ff4b4e;
+}
+textarea:focus {
+	outline-color: #ff4b4e;
+}
+</style>
 
 </head>
 <body>
 <!-- main -->
+<form action="">
 <div class="main_title">마이페이지</div>
 <hr id="main_hr">
 <div class="main_content">
+	<!-- 마이프로필(이미지) -->
 	<div class="div1" align="center" style="margin-top: 100px;">
-		<div>
-			<img id="myimg" src="${root }/element/icon_noimg.png">
-		</div>
-		
-		<form name="signform" method="POST" ENCTYPE="multipart/form-data" action="">
-		    <input type="file" id="file" name="file" style="display:none;" onchange="changeValue(this)">
-		    <input type="hidden" name="target_url">
-		</form>	
+		<a href="javascript:void(0);" class="imgUploadBtn"
+		onclick="$('#imgUpload').trigger('click')">
+			<img src="${root }/element/icon_noimg.png" id="myimg" name="photo">
+		</a>
+		<input type="file" id="imgUpload" onchange="previewFile()"
+		accept="image/*" style="display:none">
 	</div>
 	
+	<!-- 마이페이지 정보 -->
 	<div class="div2" style="margin-top: 100px;">
 		<div class="txt">
 			<div class="title">이름</div>
-			<div id="name">김쌍용</div>
+			<div id="name">강나리</div>
 		</div>
 		<div class="txt">
 			<div class="title">아이디</div>
-			<div id="id">test1</div>
+			<div id="id">test</div>
 		</div>
 		<div class="txt">
 			<div class="title">이메일</div>
-			<div id="email">test1@naver.com</div>
+			<div id="email">test@gmail.com</div>
 		</div>
 		<div class="txt">
 			<div class="title">비밀번호</div>
-			<div id="password"></div>
+			<button type="button" class="btn_pw">비밀번호 재설정</button>
 		</div>
 		<div class="txt">
 			<div class="title">닉네임</div>
-			<div id="nickname">닉네임3</div>
+			<div id="nickname">
+				<input class="input" type="text" placeholder="Wyna">
+				<span class="underline"></span>
+			</div>
 		</div>
 		<div class="txt">
 			<div class="title">주소</div>
-			<div id="address">서울시 강남구</div>
+			<div id="address">
+				<input class="input" type="text" placeholder="서울시 강남구">
+				<span class="underline"></span>
+			</div>
 		</div>
 		<div class="txt">
 			<div class="title">연락처</div>
-			<div id="contact_number">010-1234-5678</div>
+			<div id="contact_number">
+				<input class="input" type="text" placeholder="010-1234-5678">
+				<span class="underline"></span>
+			</div>
 		</div>
 		<div class="txt">
 			<div class="title">생년월일</div>
-			<div id="birth">2022-07-05</div>
+			<input class="input" type="date">
 		</div>
 		
 		
+		<div class="sub_title">추가정보입력(선택사항)</div>
 		<div class="txt">
 			<div class="title">연령</div>
-			<div id="age">20대 후반</div>
+			<div id="age">
+				<select class="input">
+					<option>10-</option>
+					<option>20</option>
+					<option>30</option>
+					<option>40</option>
+					<option>50</option>
+					<option>60+</option>
+				</select>
+			</div>
 		</div>
 		<div class="txt">
 			<div class="title">직업</div>
-			<div id="age">비공개</div>
+			<div id="job">
+				<input class="input" type="text" placeholder="비공개">
+				<span class="underline"></span>
+			</div>
 		</div>
 		<div class="txt">
 			<div class="title">관심분야</div>
-			<div id="hobby">비공개</div>
+			<input class="tag" id="hobby1" type="text" placeholder="취미1">
+			<input class="tag" id="hobby2" type="text" placeholder="취미2">
+			<input class="tag" id="hobby3" type="text" placeholder="취미3">		
 		</div>
 		<div class="txt">
 			<div class="title">한줄소개</div>
-			<div id="pr">한 줄 소개를 입력하세요</div>
 		</div>
+		<div>
+			<textarea id="pr" placeholder="한 줄 소개를 입력하세요"></textarea>
+		</div>
+		
+		<button type="button" class="btn_update">회원정보수정</button>
 	</div>
 	
 </div>
-
+</form>
 </body>
 
 </html>

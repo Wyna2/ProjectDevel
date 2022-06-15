@@ -81,7 +81,8 @@ span.side_main_span_write {
 		</div>
 		<hr style="border: solid 0.5px #767676;">
 		
-		<div class="btn_delete" style="border: solid 0.5px #4d96ff;">삭제하기</div>
+		<button type="button" class="btn_delete">삭제하기</button>
+		
 		
 		<!-- 페이징 -->
 		<div class="page" align="center" style="margin-top: 20px;">
