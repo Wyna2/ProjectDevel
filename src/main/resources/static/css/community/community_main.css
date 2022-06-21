@@ -1,0 +1,448 @@
+@charset "UTF-8";
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+	;
+
+* {
+	font-family: "Noto Sans KR";
+}
+
+/* container:전체 layout  
+   container1: BEST게시글, Q&A layout
+   container2: list목록 layout
+*/
+
+
+/* 해당 style은 임시로 적용되었습니다. */
+div.main {
+	background-color: #fff !important;
+}
+
+/* 전체 container css */
+div.container{
+	position: absolute;
+	width: 1280px;
+	height: 872px;
+	margin: 100px 320px 169px 320px;
+	padding-left: 0px;
+}
+
+/* BEST게시글 글씨 css */	
+div.container1 span.title{
+  	font-size: 24px;
+  	font-weight: 500;
+  	font-stretch: normal;
+ 	font-style: normal;
+ 	line-height: normal;
+  	letter-spacing: -0.6px;
+ 	color: #191919;
+}
+
+/* BEST게시글 목록 박스 css */	
+div.box1 div.listbox1{
+	margin-top: 20px; 
+	border: 1px solid #dbdbdb; 
+	border-top-color: #191919; 
+	height: 340px;
+}
+
+/* Q&A 목록 박스 css */	
+div.box2 div.listbox2{
+	margin-top: 20px; 
+	border: 1px solid #dbdbdb; 
+	border-top-color: #191919; 
+	height: 340px;
+}
+
+/* BEST 게시글 css */
+
+/* BEST게시글 박스 안 목록 table css */
+table.list1{
+	width: 290px; 
+	height: 21px; 
+	margin: 22px 0 0 20px;
+}
+
+/* BEST게시글 글제목 css */	
+table.list1 tr td.subject1{
+	font-size: 15px;
+	font-weight: 300;
+	font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.38px;
+    color: #505050;
+    padding: 20px 0;
+    
+}
+
+/* BEST게시글 따봉count css */	
+td.likecount1 {
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.33px;
+  color: #505050;	
+   padding: 20px 0;
+   text-align: right;
+   
+}
+
+/* BEST게시글 따봉이미지 css  */
+td.likecount1 img{
+	max-width: 21px;
+	max-height: 21px;
+}
+
+td {
+  border-bottom: 1px solid #767676;
+ 
+}
+
+/* 최신 Q&A css */
+
+/* Q&A 박스 안 목록 table css */
+table.list2{
+	width: 290px; 
+	height: 21px; 
+	margin: 3px 0 0 20px;
+	border-bottom: 1px solid black; 
+}
+
+/* Q&A 글제목 css */
+table.list2 tr td.subject1{
+	font-size: 15px;
+	font-weight: 300;
+	font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.38px;
+    color: #505050;
+}	
+
+
+td.img2{
+	padding: 11px 0;
+}
+
+/* Q&A 이미지 css */
+td.img2 img.Qimg{
+	max-height: 42.5px;
+ 	max-width: 70px;
+}
+
+/* Q&A 등록 날짜 css */
+td.date2{
+	padding-bottom: 11px;
+	font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.33px;
+    color: #505050;
+}
+
+/* container2 (카테고리 메인)  css*/
+div.container2{
+	width: 914px; 
+	height: 872px; 
+	margin-left: 366px;
+}
+
+/* 검색어입력 css */
+.search {
+	width: 320px;
+	display: inline-block;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0 0 2px #505050;
+	transition: all .5s ease;
+	position: relative;
+	padding-top: 5px;
+	font-size: 16px;
+	color: #474747;
+	height: 40px;
+	text-align: left;
+	outline: none;
+}
+
+.search:hover {
+	box-shadow: 0 0 10px #ff4b4e;
+}
+
+.search2{
+	width: 280px; 
+	height: 34px; 
+	border: none; 
+	outline: none; 
+	padding: 0 0 9px 9px;
+	cursor: pointer;
+}
+
+div.searchbox img.searchimg{
+	width: 25px;
+	height: 25px;
+	margin-top: 3px;
+	cursor: pointer;
+}
+
+input::placeholder {
+  color: #AAAAAA;
+  padding-bottom: 10px;
+ 
+}
+
+/* 검색어 입력 css end */
+
+/* 커뮤니티 리스트 css */
+div.container2 div.secondbox{
+	border: 1px solid #dbdbdb; 
+	border-top-color: #191919;
+	margin-top: 14.5px; 
+	height: 817px;
+}
+
+/* 커뮤니티 리스트 table css */
+table.communitylist{
+	margin: 16px 14px 0 14px; 
+	height: 68px; 
+	border: 1px solid black; 
+	border-collapse:separate; 
+	border-radius: 10px;
+}
+
+
+table.communitylist td{
+	border-bottom: 0px;
+}
+
+/* 커뮤니티 리스트 글번호 css */
+tr td div.contentnumber1{
+	font-size: 18px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.38px;
+    text-align: left;
+    color: #505050;
+  	margin-left: 19px; 
+  	float: left;
+}
+
+/* 태그 배지 css */
+span.tag{
+	font-size: 1.1em; 
+	float: left;
+	margin-left: 6px;
+	cursor: pointer;
+}
+
+/* 커뮤니티리스트 글 제목이 나타납니다 css */
+tr td div.contentnumber2{
+	font-size: 18px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.38px;
+    text-align: left;
+    color: #505050;
+    cursor: pointer;
+    margin:0 0 5px 56px;
+}
+
+/* 커뮤니티리스트  코맨트, 따봉, 조회 수*/   
+td div.word{
+	font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.33px;
+    color: #505050;
+} 
+
+td.count div{
+   display: inline-block;
+}
+
+/* 작성자 css */
+div.writer{
+  font-size: 18px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.38px;
+  color: #505050;
+  cursor: pointer;
+}
+
+/* 크루 네임, 색상 입력틀 div css */
+tr td div.crew{
+	border: 1px solid #505050; 
+	border-radius: 7.5px; 
+	width: 72px; 
+	height: 25px; 
+	margin: 6px 0 0 130px;
+}
+
+/* 작성자 사진 css */
+div.personphoto img{
+	margin:11px 0 0 71px; 
+	float: left;
+	cursor: pointer;
+}
+
+/* 스크랩버튼 css */
+img.scrap {
+	margin: -10px 0 12px 10px;
+	
+}
+
+/* list 작성일 css */
+tr td div.day{
+	margin: 0 0 5px 137px; 
+	color: #505050;
+	font-size: 16px;
+}
+
+/* 커뮤니티 main css end */
+
+/* 드롭다운 옵션(카테고리 선택) */
+
+.dropdown {
+	width: 320px;
+	display: inline-block;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0 0 2px #505050;
+	transition: all .5s ease;
+	position: relative;
+	padding-top: 5px;
+	font-size: 16px;
+	color: #474747;
+	height: 40px;
+	text-align: left;
+	outline: none;
+}
+
+.dropdown .select {
+	cursor: pointer;
+	display: block;
+	padding: 10px
+}
+
+.dropdown .select>i {
+	font-size: 13px;
+	color: #888;
+	cursor: pointer;
+	transition: all .1s ease-in-out;
+	float: right;
+	line-height: 20px
+}
+
+.dropdown:hover {
+	box-shadow: 0 0 10px #ff4b4e;
+}
+
+.dropdown:active {
+	background-color: #ff4b4e
+}
+
+.dropdown.active:hover, .dropdown.active {
+	box-shadow: 0 0 4px rgb(204, 204, 204);
+	border-radius: 2px 2px 0 0;
+	background-color: #f8f8f8
+}
+
+.dropdown.active .select>i {
+	transform: rotate(-90deg)
+}
+
+.dropdown .dropdown-menu {
+	position: absolute;
+	background-color: #fff;
+	width: 100%;
+	left: 0;
+	margin-top: 1px;
+	box-shadow: 0 1px 2px rgb(204, 204, 204);
+	border-radius: 0 1px 2px 2px;
+	overflow: hidden;
+	display: none;
+	max-height: 144px;
+	overflow-y: auto;
+	z-index: 9
+}
+
+.dropdown .dropdown-menu li {
+	padding: 10px;
+	transition: all .1s ease-in-out;
+	cursor: pointer
+}
+
+.dropdown .dropdown-menu {
+	padding: 0;
+	list-style: none
+}
+
+.dropdown .dropdown-menu li:hover {
+	background-color: #ff7a7c
+}
+
+.dropdown .dropdown-menu li:active {
+	background-color: #e2e2e2
+}
+
+/* 드롭다운 placeholder */
+.category_placeholder {
+	color: #AAA;
+}
+
+/* 글쓰기 버튼 css */
+.btn-small {
+  outline: none;
+  width: 121px;   /* 넓이 수정 가능 */
+  height: 40px; /* 높이 수정 가능 */
+  border: 2px solid #ff4b4e; 
+  border-radius: 20px;
+  color: #ff4b4e;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;   /* 글씨 Bold 수정 가능 */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-small {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.btn-small:hover {
+   background: #ff4b4e;
+  color: #fff;
+}
+.btn-small:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-small:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}

@@ -31,7 +31,7 @@ div.layout div.menu{
 
 div.layout div.main{
 	position: relative;
-/* 	background-color: #f1f1f5; */
+	background-color: #f1f1f5;
 	width: 1920px;
 	height: 1250px;
 	z-index: 1;

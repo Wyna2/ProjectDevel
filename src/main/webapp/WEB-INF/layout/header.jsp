@@ -19,9 +19,9 @@
 	<a href="/" style="text-decoration: none;">
 		<img alt="" src="${root }/element/logo@2x.png" class="logo">
 	</a>
-	<a href="../activity/mypage"><img alt="" src="${root }/element/icon_mypage.png" class="icon_mypage"></a>
-	<a href="../activity"><img alt="" src="${root }/element/icon_activity.png" class="icon_activity"></a>
-	<a href="../activity/scrap"><img alt="" src="${root }/element/icon_scrap.png" class="icon_scrap"></a>
+	<img alt="" src="${root }/element/icon_myinfo.png" class="icon_myinfo" onclick="location.href='/activity/mypage'">
+	<img alt="" src="${root }/element/icon_inbox.png" class="icon_inbox" onclick="location.href='/activity'">
+	<img alt="" src="${root }/element/icon_favorite.png" class="icon_favorite" onclick="location.href='/activity/myscrap'">
 	<hr style="margin: 0;">
 </div>
 </body>

@@ -57,7 +57,7 @@ span.side_main_span_main {
 		<div class="detail_write">내 작성글3</div>
 		<hr style="border: solid 0.5px #767676;">
 	</div>
-	<a href="../activity/seeWrite"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
+	<a href="../activity/mycommunity"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
 	
 	
 	<!-- 나의 거래 목록 -->
@@ -80,7 +80,7 @@ span.side_main_span_main {
 			<div id="mname">제품명</div>
 		</div>
 	</div>
-	<a href="../activity/seeMarketplace"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
+	<a href="../activity/mymarketplace"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
 	
 	
 	<!-- 나의 챌린지 목록 -->
@@ -103,7 +103,7 @@ span.side_main_span_main {
 			<div id="cname">챌린지명</div>
 		</div>
 	</div>
-	<a href="../activity/seeChallenge"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
+	<a href="../activity/mychallenge"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
 </div>
 
 

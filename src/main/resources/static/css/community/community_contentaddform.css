@@ -1,0 +1,415 @@
+@charset "UTF-8";
+
+* {
+	font-family: "Noto Sans KR";
+}
+
+div.container {
+	position: absolute
+}
+
+div.title {
+	position: absolute;
+	width: 1320px;
+	font-size: 30px;
+	font-weight: 600;
+	color: #505050;
+	margin-top: 80px;
+	margin-left: 600px;
+}
+
+div.container div.box {
+	position: absolute;
+	top: 152px;
+	right: 598px;
+	bottom: 170px;
+	left: 590px;
+	width: 724px;
+	height: 938px;
+	background-color: #fff;
+    border-radius: 20px;
+}
+
+table.text {
+	border-collapse: separate;
+	border-spacing: 0 14px;
+	margin-top: 30px;
+	margin-left: 44px;
+}
+
+td.text2 {
+	margin-top: 20px;
+}
+
+tr td.text1 {
+	font-size: 16px;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	color: #505050;
+	font-weight: 500;
+}
+
+/* table.text {
+	margin-top: 44px;
+	margin-left: 44px;
+} */
+
+div.wrapper {
+	margin-left: 10px;
+}
+
+#color {
+	margin-left: 47px;
+}
+
+#color div {
+	width: 33px;
+	height: 33px;
+	border: 0.8px solid black;
+	cursor: pointer;
+	border-radius: 50px;
+	margin-left: 15px;
+	position: relative;
+	display: inline-block;
+}
+
+.wrapper {
+	box-sizing: border-box;
+	height: 50px;
+	position: relative;
+	width: 360px;
+	margin-bottom: 5px;
+}
+
+.input {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #CCC;
+	color: #555;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	padding: 10px 0px;
+	position: relative;
+	width: 200px;
+}
+
+.input:focus {
+	outline: none;
+}
+
+input::-webkit-input-placeholder {
+	color: #AAA;
+}
+
+input:focus::-webkit-input-placeholder {
+	color: #ff4b4e;
+	outline: none
+}
+
+.input:focus+.underline {
+	transform: scale(1);
+	outline: none;
+}
+
+.underline {
+	background-color: #ff4b4e;
+	display: inline-block;
+	height: 2px;
+	left: 0px;
+	position: absolute;
+	top: 42px;
+	-webkit-transform: scale(0, 1);
+	transform: scale(0, 1);
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+	width: 440px;
+}
+
+/* 드롭다운 옵션(카테고리 선택) */
+.dropdown {
+	width: 320px;
+	display: inline-block;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0 0 2px #505050;
+	transition: all .5s ease;
+	position: relative;
+	padding-top: 5px;
+	font-size: 16px;
+	color: #474747;
+	height: 48px;
+	text-align: left;
+	outline: none;
+}
+
+.dropdown .select {
+	cursor: pointer;
+	display: block;
+	padding: 10px
+}
+
+.dropdown .select>i {
+	font-size: 13px;
+	color: #888;
+	cursor: pointer;
+	transition: all .1s ease-in-out;
+	float: right;
+	line-height: 20px
+}
+
+.dropdown:hover {
+	box-shadow: 0 0 10px #ff4b4e;
+}
+
+.dropdown:active {
+	background-color: #ff4b4e
+}
+
+.dropdown.active:hover, .dropdown.active {
+	box-shadow: 0 0 4px rgb(204, 204, 204);
+	border-radius: 2px 2px 0 0;
+	background-color: #f8f8f8
+}
+
+.dropdown.active .select>i {
+	transform: rotate(-90deg)
+}
+
+.dropdown .dropdown-menu {
+	position: absolute;
+	background-color: #fff;
+	width: 100%;
+	left: 0;
+	margin-top: 1px;
+	box-shadow: 0 1px 2px rgb(204, 204, 204);
+	border-radius: 0 1px 2px 2px;
+	overflow: hidden;
+	display: none;
+	max-height: 144px;
+	overflow-y: auto;
+	z-index: 9
+}
+
+.dropdown .dropdown-menu li {
+	padding: 10px;
+	transition: all .1s ease-in-out;
+	cursor: pointer
+}
+
+.dropdown .dropdown-menu {
+	padding: 0;
+	list-style: none
+}
+
+.dropdown .dropdown-menu li:hover {
+	background-color: #ff7a7c
+}
+
+.dropdown .dropdown-menu li:active {
+	background-color: #e2e2e2
+}
+
+/* 드롭다운 placeholder */
+.category_placeholder {
+	color: #AAA;
+}
+
+/* Textarea 디자인 */
+textarea {
+	width: 635px;
+	height: 410px;
+	margin: 56px 0 40px;
+	padding: 14px 14px 14px 14px;
+	border-radius: 10px;
+	border: solid 1px #dbdbdb;
+	background-color: #fff;
+}
+
+textarea:active {
+	box-shadow: 0 0 4px rgb(204, 204, 204);
+	border-radius: 2px 2px 0 0;
+	background-color: #f8f8f8;
+	outline: none;
+}
+
+textarea:focus {
+	outline: none;
+	box-shadow: 0 0 5px #ff7a7c;
+	border-radius: 10px;
+	border: 1px solid #ff4b4e;
+}
+
+/* 버튼 css	*/
+.btn-large1 {
+	width: 160px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #fff;
+	cursor: pointer;
+	height: 55px;
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+	border-radius: 20px;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #ff4b4e, #f15e64, #e14e53, #e2373f);
+	box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+}
+
+.btn-large1:hover {
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.btn-large1:focus {
+	outline: none;
+	
+}
+
+.btn-large2 {
+	width: 160px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #ff4b4e;
+	cursor: pointer;
+	height: 55px;
+	border: 1px solid #ff4b4e;
+	text-align: center;
+	background-size: 300% 100%;
+	border-radius: 20px;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #fff, #f1f1f5, #fff, #fff);
+	box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+}
+
+.btn-large2:hover {
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.btn-large2:focus {
+	outline: none;
+	
+}
+
+/* 라디오 버튼 스타일 */
+ul li {
+	color: #000000;
+	display: block;
+	position: relative;
+	float: left;
+	width: 100px;
+	height: 50px;
+}
+
+ul li input[type=radio] {
+	position: absolute;
+	visibility: hidden;
+}
+
+ul li label {
+	display: block;
+	width: 220px;
+	position: relative;
+	font-weight: 500;
+	margin: 2px 0 0 0;
+	font-size: 12pt;
+	height: 50px;
+	z-index: 9;
+	cursor: pointer;
+	-webkit-transition: all 0.25s linear;
+}
+
+ul li:hover label {
+	color: #ff4b4e;
+}
+
+ul li .check {
+	display: block;
+	position: absolute;
+	border: 4px solid #505050;
+	border-radius: 100%;
+	height: 24px;
+	width: 24px;
+	top: 3px;
+	z-index: 5;
+	transition: border .15s linear;
+	-webkit-transition: border .15s linear;
+}
+
+ul li:hover .check {
+	border: 4px solid #ff4b4e;
+}
+
+ul li .check::before {
+	display: block;
+	position: absolute;
+	content: '';
+	border-radius: 100%;
+	height: 12px;
+	width: 12px;
+	top: 2px;
+	left: 2px;
+	transition: background 0.15s linear;
+	-webkit-transition: background 0.15s linear;
+}
+
+input[type=radio]:checked ~ .check {
+	border: 4px solid #ff4b4e;
+}
+
+input[type=radio]:checked ~ .check::before {
+	background: #ff4b4e;
+}
+
+input[type=radio]:checked ~ label {
+	color: #ff4b4e;
+}
+
+ /* input file 수정 */
+.filebox .filename_list {
+    display: inline-block;
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #ff4b4e;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}

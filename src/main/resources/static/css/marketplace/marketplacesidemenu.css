@@ -1,0 +1,358 @@
+@charset "UTF-8";
+
+
+
+div.sidemenu{
+  position : relative;
+  width: 220px;
+  height: 893px; 
+  padding: 0 0 40px;
+  background: white; 
+  top: 103px;
+}
+
+span.sidemenubarname{
+  position : relative;
+  width: 150px;
+  height: 35px;
+  font-family: Noto Sans KR;
+  font-size: 24px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.6px;
+  text-align: left;
+  color: #191919;
+  top: 80px;
+}
+
+.marketpriceselect{
+  width: 22px;
+  height: 22px;
+  margin: 0 13px 0 0;
+  padding: 6px;
+  border-radius: 11px;
+  border: solid 1px #ff4b4e;
+  background-color: #fff;
+  
+}
+
+
+
+
+.marketmenutitle{
+  font-family: Noto Sans KR;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.38px;
+  text-align: left;
+  color: #191919;
+  
+}
+/*사이드 메뉴 타이틀 (카테고리,컬러,가격대) 위치 조정*/
+#side_control{
+	position: relative;
+	top: 15px;
+	left: 10px;
+}
+/*카테고리 안에 큰 타이틀(IT전자기기,사무용품 도서) 폰트 스타일*/
+.subtitle{
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  text-align: left;
+  color: #191919;
+  margin-left: 10pt;
+}
+h6{
+cursor: pointer;	
+}
+
+/*컬러*/
+div.colorbox{
+	width : 220px;
+	height : 200px;
+	
+	
+}
+div.sidemenucolorbox{
+  width: 30px;
+  height: 30px;
+  
+  border-radius: 100%;
+  cursor: pointer;
+  float: left;
+  margin-left: 30px;
+  margin-top: 20px;
+	
+}
+
+.colorname{
+  position :relative;	
+  width: 50px;
+  height: 17px;
+  
+  font-family: Noto Sans KR;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  text-align: left;
+  color: #505050;
+  top: 30px;
+}
+
+
+.submenutitle{
+  width: 300px;
+  height: 19px;
+  margin: 2px 3px 10px 4px;
+  font-family: Noto Sans KR;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.33px;
+  text-align: left;
+  color: #505050;
+}
+
+#carte1,#carte2,#carte3{
+  width: 220px;
+  height: 60px;
+  padding: 0 0 19px;
+}
+
+/*사이드바 글리피콘 위치 조정*/
+#menudownicon{
+	position: relative;
+	top: 12px;
+	
+}
+.menudown1{
+  position : relative;
+  left : 131px;
+  top:110px;
+  width: 20px;
+  height: 20px;
+  padding: 7.5px 3.5px 6.5px 4.5px;
+  background-color: #fff;
+ 
+  
+  
+}
+
+.menudown2{
+  position : relative;
+  left : 158px;
+  width: 20px;
+  height: 20px;
+  padding: 7.5px 3.5px 6.5px 4.5px;
+  background-color: #fff;
+  
+}
+
+.menudown3{
+  position : relative;
+  left : 145px;
+  width: 20px;
+  height: 20px;
+  padding: 7.5px 3.5px 6.5px 4.5px;
+  background-color: #fff;
+  
+}
+
+
+
+.carte1sub{
+	text-align: left;
+}
+/*라디오 버튼 커스텀*/
+ input[name='marketprice']{
+ /*라디오 버튼 다시 보이게 하기1*/
+	   display: none;
+	
+}
+
+/*카테고리 라디오 */
+input[name='subtitle']{
+
+	display: none;
+}
+
+/*컬러 라디오 */
+input[name='colorradio']{
+	display: none;
+	
+}
+.radioimg{
+	border : 1px solid red;
+	border-radius : 100%;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin-right: 5px;
+	
+} 
+
+.radioimg:after {
+	position : relative;
+	top : -2px;
+	left: 4px;
+	content: '●';
+	font-size: 10px;
+	color: red;
+	opacity: 0;
+}
+
+#radiobtn:checked + .radioimg:after{
+	opacity: 1;
+}
+
+.pricelabel{
+	cursor: pointer;
+}
+
+
+/*컬러 체크박스 화*/
+#colorchk{
+	position: relative;
+	
+	/*라디오 버튼 다시 보이게 하기2*/
+	 left: -999em;  
+}
+
+/*컬러 : 블랙 위치*/
+.blacklabel{
+	position: relative;
+	left: -80px;
+}
+/*컬러 : 회색 위치*/
+.graylabel{
+	position: relative;
+	top: -60px;
+	left: -15px;
+}
+
+/*컬러 : 블루 위치*/
+.bluelabel{
+	position: relative;
+	top: -120px;
+	left: 50px;
+}
+
+/*컬러 : 노랑 위치*/
+.yellowlabel{
+	position: relative;
+	left: -80px;
+	top: -120px;
+}
+
+/*컬러 : 보라 위치*/
+.purplelabel{
+	position: relative;
+	left: -15px;
+	top: -180px;
+}
+
+/*컬러 : 흰색 위치*/
+.whitelabel{
+	position: relative;
+	left: 50px;
+	top: -240px;
+}
+
+/*컬러 : 빨강 위치*/
+.redlabel{
+	position: relative;
+	left: -80px;
+	top: -240px;
+}
+
+/*컬러 : 초록 위치*/
+.greenlabel{
+	position: relative;
+	left: -15px;
+	top: -300px;
+}
+
+/*컬러 : 갈색 위치*/
+.brownlabel{
+	position: relative;
+	left: 50px;
+	top: -360px;
+}
+
+
+
+/*버튼 div*/
+div.btnarea{
+	position: relative;
+	top: 30px;
+	
+}
+
+/*공용버튼*/
+.btn-marketsub {
+  outline: none;
+  width: 75px;   /* 넓이 수정 가능 */
+  height: 30px; /* 높이 수정 가능 */
+  border: 2px solid #ff4b4e; 
+  border-radius: 20px;
+  color: #ff4b4e;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;   /* 글씨 Bold 수정 가능 */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  top: 0px;
+  left: 0px;
+}
+
+.btn-marketsub {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.btn-marketsub:hover {
+   background: #ff4b4e;
+  color: #fff;
+}
+.btn-marketsub:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-marketsub:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+#successbtn{
+	margin-left: 30px;
+}
+
+  
+

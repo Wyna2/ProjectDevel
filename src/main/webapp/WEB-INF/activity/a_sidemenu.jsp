@@ -24,16 +24,16 @@
 	<div class="sidebar_detail" id="d1" onclick="location.href='../activity'">
 		<span class="side_main_span_main">모아보기</span>
 	</div>
-	<div class="sidebar_detail" id="d2" onclick="location.href='../activity/seeWrite'">
+	<div class="sidebar_detail" id="d2" onclick="location.href='../activity/mycommunity'">
 		<span class="side_main_span_write">작성글 목록</span>
 	</div>
-	<div class="sidebar_detail" id="d3" onclick="location.href='../activity/seeMarketplace'">
+	<div class="sidebar_detail" id="d3" onclick="location.href='../activity/mymarketplace'">
 		<span class="side_main_span_market">거래 목록</span>
 		</div>
-	<div class="sidebar_detail" id="d4" onclick="location.href='../activity/seeChallenge'">
+	<div class="sidebar_detail" id="d4" onclick="location.href='../activity/mychallenge'">
 		<span class="side_main_span_challenge">챌린지 목록</span>
 	</div>
-	<div class="sidebar_detail" id="d5" onclick="location.href='../activity/scrap'">
+	<div class="sidebar_detail" id="d5" onclick="location.href='../activity/myscrap'">
 		<span class="side_main_span_scrap">스크랩</span>
 	</div>
 </div>

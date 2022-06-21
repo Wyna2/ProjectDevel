@@ -1,0 +1,217 @@
+@charset "UTF-8";
+
+.container {
+	font-family: "Noto Sans KR";
+	position: absolute;
+	height: 950px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
+}
+
+div.title {
+	position: absolute;
+	width: 1920px;
+	font-size: 30px;
+	font-weight: 600;
+	color: #505050;
+	margin-top: 80px;
+	text-align: center;
+}
+
+div.box {
+	position: absolute;
+	width: 460px;
+	height: 760px;
+	margin: 150px 730px 170px;
+	padding: 50px 48px 40px;
+	border-radius: 20px;
+	background-color: #fff;
+}
+
+tr {
+	padding: 10px;
+}
+
+.wrapper {
+	box-sizing: border-box;
+	height: 50px;
+	position: relative;
+	width: 360px;
+	margin-bottom: 15px;
+}
+
+.wrapper i {
+	position: absolute;
+	margin: 7px 0 0 -20px;
+	float: right;
+}
+
+.input {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #CCC;
+	color: #555;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	padding: 10px 0px;
+	position: relative;
+	width: 200px;
+}
+
+.input:focus {
+	outline: none;
+}
+
+input::-webkit-input-placeholder {
+	color: #AAA;
+}
+
+input:focus::-webkit-input-placeholder {
+	color: #ff4b4e;
+	outline: none
+}
+
+.input:focus+.underline {
+	transform: scale(1);
+	outline: none;
+}
+
+.underline {
+	background-color: #ff4b4e;
+	display: inline-block;
+	height: 2px;
+	left: 0px;
+	position: absolute;
+	top: 42px;
+	-webkit-transform: scale(0, 1);
+	transform: scale(0, 1);
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+	width: 360px;
+}
+
+.input:focus+.underline_id {
+	transform: scale(1);
+	outline: none;
+}
+
+.underline_id {
+	background-color: #ff4b4e;
+	display: inline-block;
+	height: 2px;
+	left: 0px;
+	position: absolute;
+	top: 42px;
+	-webkit-transform: scale(0, 1);
+	transform: scale(0, 1);
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+	width: 280px;
+}
+
+.input:focus+.underline_addr {
+	transform: scale(1);
+	outline: none
+}
+
+.underline_addr {
+	background-color: #ff4b4e;
+	display: inline-block;
+	height: 2px;
+	left: 0px;
+	position: absolute;
+	top: 42px;
+	-webkit-transform: scale(0, 1);
+	transform: scale(0, 1);
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+	width: 299px;
+}
+
+input[type="date"]::before {
+	content: attr(data-placeholder);
+	width: 100%;
+	color: #AAA;
+}
+
+input[type="date"]:focus::before, input[type="date"]:valid::before {
+	display: none
+}
+
+.btn-large {
+	width: 360px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #fff;
+	cursor: pointer;
+	height: 55px;
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+	border-radius: 20px;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #ff4b4e, #f15e64, #e14e53, #e2373f);
+	box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+}
+
+.btn-large:hover {
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.btn-large:focus {
+	outline: none;
+}
+
+.btn-small {
+	outline: none;
+	width: 75px;
+	height: 30px;
+	border: 2px solid #ff4b4e;
+	border-radius: 20px;
+	color: #ff4b4e;
+	font-family: 'Noto Sans KR';
+	font-weight: 400;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+}
+
+.btn-small {
+	overflow: hidden;
+	transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+	background: #ff4b4e;
+	color: #fff;
+}
+
+.btn-small:before {
+	position: absolute;
+	content: '';
+	display: inline-block;
+	top: -180px;
+	left: 0;
+	width: 30px;
+	height: 100%;
+	background-color: #fff;
+	animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-small:active {
+	box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3), -4px -4px 6px 0
+		rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}

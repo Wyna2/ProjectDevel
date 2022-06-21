@@ -26,7 +26,7 @@ span.side_main_span_scrap {
 </head>
 <body>
 <!-- main -->
-<div class="main_title">상품 스크랩(찜목록)</div>
+<div class="main_title">찜한 상품</div>
 <hr id="main_hr">
 <div class="main_content">
 	<!-- 상품 스크랩 -->
@@ -79,7 +79,7 @@ span.side_main_span_scrap {
 </div>
 
 
-<div class="main_title2">글 스크랩</div>
+<div class="main_title2">스크랩북</div>
 <hr id="main_hr2">
 <div class="main_content2">
 	<!-- 글 스크랩 -->

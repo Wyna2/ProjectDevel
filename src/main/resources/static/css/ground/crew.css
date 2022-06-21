@@ -1,0 +1,487 @@
+@charset "UTF-8";
+
+.container {
+	position: absolute;
+	height: 1250px;
+}
+
+/*div.layout div.main {
+	position: relative;
+	background-color: #fff;
+	width: 1920px;
+	height: 1250px;
+	z-index: 1;
+}*/
+div.main {
+	background-color: #fff !important;
+}
+
+.crewname {
+	width: 280px;
+	height: 35px;
+	background-color: #fff;
+	margin: 70px 1513px 800px -1px;
+	margin-left: 100px;
+	position: relative;
+	left: 220px;
+}
+
+.crew_name {
+	width: 87px;
+	height: 35px;
+	margin: 53px 279px 20px 320px;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 24px;
+	font-weight: 500;
+	margin: auto;
+	letter-spacing: -0.6px;
+	text-align: left;
+	color: #191919;
+	letter-spacing: -0.6px;
+}
+
+.crew_pr {
+	width: 1270px;
+	height: 75px;
+	position: relative;
+	top: -790px;
+	margin-left: 310px;
+	position: relative;
+}
+
+.crew_Notice {
+	width: 87px;
+	height: 35px;
+	margin: 53px 279px 20px 320px;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 24px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.6px;
+	text-align: left;
+	color: #191919;
+	position: relative;
+	top: -750px;
+}
+
+.noticelist { /*공지사항 테이블*/
+	width: 280px;
+	height: 110px;
+	position: relative;
+	top: -738px;
+	margin-left: 310px;
+	position: relative;
+}
+
+.crewinwon {
+	position: relative;
+	top: -887px;
+	left: 1500px;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 20px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.5px;
+	text-align: left;
+	color: #191919;
+}
+
+#modal {
+	position: relative;
+	width: 20px;
+	height: 30px;
+	z-index: 1;
+	display: none;
+}
+
+#modal h2 {
+	margin: 0;
+}
+
+#modal button {
+	display: inline-block;
+	width: 35px;
+	margin-left: calc(100% - 100px - 10px);
+}
+
+#modal .modal_content {
+	width: 599px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	position: relative;
+	top: -1053px;
+	left: 448px;
+	height: 500px;
+	border-radius: 20px;
+	box-shadow: 20px 20px 40px 0 rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+}
+
+#modal .modal_layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 1920px;
+	height: 1250px;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+
+#modal_close_btn {
+	position: relative;
+	top: -200px;
+	left: 75px;
+}
+
+.notice_table {
+	position: relative;
+	top: 10px;
+	left: 68px;
+}
+
+.mypen {
+	position: relative;
+	top: 9px;
+	left: 474px;
+}
+
+.table {
+	table-layout: fixed; /*테이블의 경우 고정시켜야 함*/
+}
+
+td, tr {
+	/* 글 한줄 넘어갈 경우 숨기기 */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.crewlistaddadd {
+	width: 920px;
+	height: 800px;
+	position: absolute;
+	top: 280px;
+	left: 680px;
+}
+
+.crewone {
+	width: 230px;
+	height: 230px;
+	margin: 20px 50px 49px;
+	padding: 11px 11px 16px 20px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.16);
+	border: solid 1px #ededed;
+}
+
+.img_profile {
+	width: 80px;
+	height: 80px;
+	margin: 6px 24px 13px 47px;
+	border: solid 1px #fff;
+}
+
+.img_crewadd {
+	cursor: pointer;
+}
+
+.img_git {
+	margin: -175px 24px 13px 120px;
+	cursor: pointer;
+	width: 28px;
+	height: 28px;
+}
+
+.crewone_name {
+	width: 38px;
+	height: 20px;
+	margin: 0 9px 4px 0;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 14px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.35px;
+	text-align: left;
+	color: #191919;
+}
+
+.crewone_pr {
+	width: 134px;
+	height: 20px;
+	margin: 4px 0 0;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.35px;
+	text-align: left;
+	color: #767676;
+}
+
+.crewone_profile {
+	width: 100px;
+	height: 17px;
+	margin: 18px 98px 0 0;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.3px;
+	text-align: left;
+	color: #767676;
+}
+
+.face {
+	position: relative;
+	top: -886px;
+	left: 1520px;
+	font-weight: bold;
+}
+
+#modal1 {
+	position: relative;
+	width: 20px;
+	height: 30px;
+	z-index: 1;
+	display: none;
+}
+
+#modal1 h4 {
+	margin: 0;
+}
+
+#modal1 modal_close_btn1 {
+	display: inline-block;
+	width: 35px;
+	margin-left: calc(100% - 100px - 10px);
+}
+
+#modal1 .modal_content1 {
+	width: 599px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	position: relative;
+	top: -1113px;
+	left: 650px;
+	height: 500px;
+	border-radius: 20px;
+	box-shadow: 20px 20px 40px 0 rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+}
+
+#modal1 .modal_layer1 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 1920px;
+	height: 1250px;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+
+#modal_close_btn1 {
+	position: relative;
+	top: -200px;
+	left: 552px;
+}
+
+.crewadd_table {
+	position: relative;
+	top: 30px;
+	left: 42px;
+	border-color: rgba(0, 0, 0, 0.1);
+	border-right: hidden;
+	border-left: hidden;
+
+	
+}
+
+.crewadd_table th{
+	text-align: left;
+	color: #767676;
+		text-align: center;
+}
+
+.table {
+	table-layout: fixed; /*테이블의 경우 고정시켜야 함*/
+}
+
+td, tr {
+	/* 글 한줄 넘어갈 경우 숨기기 */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#modal2 {
+	position: relative;
+	width: 20px;
+	height: 30px;
+	z-index: 1;
+	display: none;
+}
+
+#modal2 h4 {
+	margin: 0;
+}
+
+#modal2 modal_close_btn2 {
+	display: inline-block;
+	width: 35px;
+	margin-left: calc(100% - 100px - 10px);
+}
+
+#modal2 .modal_content2 {
+	width: 296px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	position: relative;
+	top: -1113px;
+	left: 800px;
+	height: 562px;
+	border-radius: 20px;
+	box-shadow: 20px 20px 40px 0 rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+	position: relative;
+}
+
+#modal2 .modal_layer2 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 1920px;
+	height: 1250px;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+
+#modal_close_btn2 {
+	position: relative;
+	top: -180px;
+	left: 256px;
+}
+
+.crew_pro {
+	position: relative;
+	top: 10px;
+	left: 68px;
+}
+
+.table {
+	table-layout: fixed; /*테이블의 경우 고정시켜야 함*/
+}
+
+td, tr {
+	/* 글 한줄 넘어갈 경우 숨기기 */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.crew_proface {
+	width: 150px;
+	height: 150px;
+	border: solid 0px #ededed;
+	position: relative;
+	top: 30px;
+	left: 63px;
+}
+
+.crewproname {
+	font-size: 14pt;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	position: relative;
+	top: 150px;
+	left: -95px;
+	
+}
+
+.crewcolorbox {
+	width: 47px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #ff4b4e;
+  position: absolute;
+  top: 280px;
+  left: 66px;
+  /*폰트 적용*/
+  font-family: 'Noto Sans KR';
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  text-align: center;
+  color: #fff;
+	
+}
+
+.crewoneprr {
+	/*폰트 적용*/
+font-family: 'Noto Sans KR';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  text-align: left;
+  color: #767676;
+   position: absolute;
+  top: 320px;
+  left: 66px;
+}
+
+.privacy_table{
+	 position: absolute;
+  top: 360px;
+  left: 66px;
+  /*폰트 적용*/
+  font-family: 'Noto Sans KR';
+  font-weight: normal;
+  color: #767676;
+}
+
+#privacy_my{
+	border-radius: 10px;
+  border: solid 1px #505050;
+  background-color: #fff;
+  width: 75px;
+  height: 30px;
+   position: absolute;
+  top: 480px;
+  left: 150px;
+  font-size: 9.5pt;
+  /*폰트 적용*/
+  font-family: 'Noto Sans KR';
+  color: #505050;
+}
+
+#check{
+	background-color: white ; 
+	border: none;
+	margin-left: 15px;
+	
+}
+

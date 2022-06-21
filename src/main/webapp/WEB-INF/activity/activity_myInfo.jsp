@@ -48,6 +48,9 @@ input:focus {
 textarea:focus {
 	outline-color: #ff4b4e;
 }
+div.main {
+background-color: #fff !important;
+}
 </style>
 
 </head>

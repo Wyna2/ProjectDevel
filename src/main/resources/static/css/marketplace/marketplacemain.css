@@ -1,0 +1,478 @@
+@charset "UTF-8";
+
+ div.container{
+position: absolute;
+
+} 
+
+
+div.marketfirst {
+  width: 170px;
+  height: 20px;
+  margin: 0px 7px 20px 45px;
+}
+
+div.marketfirst2{
+  position : relative;
+  width: 170px;
+  height: 20px;
+  margin: 0px 7px 20px 45px;
+  left: -40px;
+  top: 85px;
+}
+
+/*n개의 상품이 있습니다.*/
+span.sangpumcount {
+  width: 46px;
+  height: 18px;
+  margin: 2px 2px 0 0;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ff4b4e;
+}
+
+span.sangpumcountcomment {
+  width: 122px;
+  height: 20px;
+  margin: 0 0 0 2px;
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  text-align: left;
+  color: #191919;
+}
+
+/*검색 창*/
+div.search {
+  position : relative;
+  width: 300px;
+  height: 36px;
+  margin: 52px 16px 20px 82px;
+  padding: 9px 12px 8px;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  left: 560px;
+  
+}
+
+/*검색 창 아이콘*/
+span.searchicon {
+  position : relative;
+  width: 13px;
+  height: 13px;  
+  background-color: #fff;
+  cursor : pointer;
+  
+}
+
+.searchtext{
+  
+  width: 250px;
+  height: 20px;
+  border: 0 solid black;
+	
+}
+
+/*리스트 형식 변경*/
+div.changelist{
+	position: absolute;
+	margin-top: -58px;
+	left: 963px;
+	
+}
+span.largeicon{
+  width: 36px;
+  height: 36px;
+  padding: 11px;
+   border: solid 1px #dbdbdb;
+  background-color: #fff;
+  cursor : pointer;
+	
+}
+span.listicon{
+  width: 36px;
+  height: 36px;
+  padding: 11px 10px;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  cursor : pointer;
+}
+
+
+/*연관 검색어*/
+div.relatedsearch{
+  width: 1024px;
+  height: 85px;
+  left : 100px;
+  padding: 8px 0 32px;
+  border: solid 1px #ededed;
+  background-color: #fff;
+}
+
+span.spanrelatedsearch{
+  width: 68px;
+  height: 21px;
+  margin: 31px 20px 0 32px;
+  font-family: Noto Sans KR;
+  font-size: 15px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.38px;
+  text-align: left;
+  color: #191919;	
+	
+}
+span.searchname{
+  font-family: Noto Sans KR;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.33px;
+  text-align: left;
+  color: #767676;
+  cursor : pointer;
+}
+
+span.morelook{
+  margin-left : 500px;
+  width: 35px;
+  height: 19px;
+  font-family: Noto Sans KR;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.33px;
+  text-align: left;
+  color: #767676;
+}
+
+span.morelookicon{
+  width: 16px;
+  height: 16px;
+  cursor : pointer;
+  padding: 6.5px 5px;
+  background-color: #fff;
+	
+}
+
+div.selectbox{
+	position : relative;
+	width: 200px;
+	height: 30px;
+	left: 0px;
+	top : 100px;
+	
+}
+
+div.marketplacetable{
+	width: 1000px;
+	height: 1000px;
+	border: 1px solid black;
+}
+
+
+div.table {
+  position : absolute;
+  width: 1024px;
+  height: 800px;
+  margin-top : 50px;
+  padding: 9px 12px 8px;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  left: 0px;
+}
+
+.chb{
+  width: 20px;
+  height: 20px;
+  margin: 35px 7px 41px 75px;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  vertical-align: -5px;
+  
+	
+}
+
+div.pagenumall{
+  position : relative;
+  width: 300px;
+  height: 50px;
+  padding: 9px 12px 8px;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  top : 60px;
+  left: 400px;
+  float: left;
+}
+
+div.pagenumlist{
+  position : relative;
+  width: 300px;
+  height: 50px;
+  padding: 9px 12px 8px;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  top : 100px;
+  left: 400px;
+  float: left;
+}
+
+div.pagingnumber{
+  width: 36px;
+  height: 36px;
+  padding: 10px 14px 9px;
+  background-color: #ff4b4e;
+  border-radius: 100%;
+  float: left;
+}
+
+span.spanpagingnumber{
+  width: 8px;
+  height: 17px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  
+}
+
+
+
+.addbtnimg{
+  position : relative;
+  width: 91px;
+  height: 35px;
+  left : 930px;
+  bottom : 35px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.markettable{
+	position: relative;
+	left: 0px;
+	top: 100px;
+}
+
+marketmenutitle li{
+	float: left;
+}
+
+/*전체테이블 하트 아이콘*/
+#chk{
+	position: absolute;
+	 left: -999em;  
+}
+.heart{
+	/*하트 이미지 배경 처리중  사진 안불러와 짐 다시 돌아가려면 메인에 하트 특수문자 넣고  백그라운드 지우고 위치 다시 조정*/
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	content : '2661';
+	box-sizing: border-box;
+	cursor: pointer;	
+	font-size: 20pt;
+	position: relative;
+	left: 200px;
+	
+}
+
+/*거래가능 제품 보기*/
+.selectboxlb{
+	position: relative;
+	left: 30px;
+	top: -15px;
+}
+
+
+
+/*전체 테이블 */
+.sangpumdiv{
+	width: 220px;
+	height: 300px;
+	float: left;
+	position: relative;
+	margin-left: 30px;
+    margin-top: 100px;
+    left: 0px;
+    top: -52px;
+}
+/*테이블 사진영역*/
+.sangpumphoto{
+  width: 220px;
+  height: 170px;
+  padding-top: 35px;
+}
+/*테이블 하트 아이콘 영역*/
+.lab{
+	position: relative;
+	top: 50px;
+	left: -20px;
+}
+/*테이블 상품 설명 부분*/
+.sangpumdetail{
+	width: 220px;
+	height: 100px;
+}
+
+/*상품 이름*/
+.subject{
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  text-align: left;
+  color: #191919;
+}
+
+/*상품 콘텐트*/
+.content{
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  text-align: left;
+  color: #505050;
+		
+}
+/*상품 오리지널 가격*/
+.original_price{
+  font-family: Roboto;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  text-align: left;
+  color: #767676;
+  text-decoration:line-through;
+}
+/*지역 */
+.region{
+  font-family: Noto Sans KR;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  text-align: left;
+  color: #767676;
+}
+
+/*리스트 상품 테이블*/
+.sangpumlistdiv{
+	width: 450px;
+	height: 150px;
+	margin-top: 40px;
+	margin-left : 100px;
+	float: left;
+	position: relative;
+	top: 50px;
+	left: -90px;
+	
+}
+
+/*리스트 상품 테이블 사진부분*/
+.sangpumlistphoto{
+	width: 150px;
+	height: 150px;
+	padding-top: 40px;  
+	
+}
+.sangpumlistdetail{
+	width: 300px;
+	height: 150px;
+	position: relative;
+	left: 150px;
+	top: -150px;
+	margin-top: 30px;
+	margin-left: 10px;
+	
+	
+}
+
+/*리스트 에서의 하트 아이콘*/
+.lablist{
+	position: relative;
+	left: 20px;
+	top: -90px;
+	
+}
+
+
+/*주찬님이 뿌려준 버튼 css*/
+.btn-addsangpum {
+  outline: none;
+  width: 120px;   /* 넓이 수정 가능 */
+  height: 40px; /* 높이 수정 가능 */
+  border: 2px solid #ff4b4e; 
+  border-radius: 20px;
+  color: #ff4b4e;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;   /* 글씨 Bold 수정 가능 */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  
+  left: 880px;
+  top: -50px;
+}
+
+.btn-addsangpum {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.btn-addsangpum:hover {
+   background: #ff4b4e;
+  color: #fff;
+}
+.btn-addsangpum:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-addsangpum:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+

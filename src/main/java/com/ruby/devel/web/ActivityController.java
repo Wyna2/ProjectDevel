@@ -6,41 +6,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ActivityController {
 
-	
-	@GetMapping("/activity/mypage")  // 'mypage' 아이콘 선택 시 이동
-	public String extend_mypage()
-	{
-		return "/activity/mypage";  // activity/마이페이지
-	}
-	
 	@GetMapping("/activity")  // 'activity' 아이콘 선택 시 기본 페이지(모아보기) 이동
-	public String extend_home()
+	public String activity_home()
 	{
-		return "a/activity/main";  // a/activity/모아보기
+		return "a/activity/activity_main";  // /a/activity/(파일명)
 	}
 	
-	@GetMapping("/activity/seeWrite")  // '작성글목록' 메뉴 클릭시 이동
-	public String extend_write()
+	@GetMapping("/activity/mypage")  // 나의 정보를 볼 수 있는 마이 페이지
+	public String activity_mypage()
 	{
-		return "a/activity/seeWrite";  // a/activity/작성글 목록
+		return "/activity/activity_myInfo";
 	}
 	
-	@GetMapping("/activity/seeMarketplace")  // '거래목록' 메뉴 클릭시 이동
-	public String extend_market()
+	@GetMapping("/activity/mycommunity")  // 내가 커뮤니티에 작성 한 글을 모아보는 페이지
+	public String activity_write()
 	{
-		return "a/activity/seeMarketplace";  // a/activity/거래 목록
+		return "a/activity/activity_myCommunity";  
+	}
+	
+	@GetMapping("/activity/mymarketplace")  // 나의 중고장터 거래목록 페이지
+	public String activity_market()
+	{
+		return "a/activity/activity_myMarketplace"; 
 	}	
 	
-	@GetMapping("/activity/seeChallenge")  // '챌린지목록' 메뉴 클릭시 이동
-	public String extend_challenge()
+	@GetMapping("/activity/mychallenge")  // 내가 도전한 or 도전중인 챌린지 모아보기 페이지
+	public String activity_challenge()
 	{
-		return "a/activity/seeChallenge";  // a/activity/챌린지 목록
+		return "a/activity/activity_myChallenge";  
 	}
 	
-	@GetMapping("/activity/scrap")  // 'scrap' 아이콘 선택 시 이동
-	public String extend_scrap()
+	@GetMapping("/activity/myscrap")  // 중고장터의 찜하기 or 커뮤니티의 스크랩 모아보기 페이지
+	public String activity_scrap()
 	{
-		return "a/activity/seeScrap";  // a/activity/스크랩
+		return "a/activity/activity_myScrap"; 
 	}
 	
 }
