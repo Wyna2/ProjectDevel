@@ -212,10 +212,13 @@ public class MarketplaceController {
 	{
 		ModelAndView mview = new ModelAndView();
 		
+		List<MarketDto> list = Mmapper.getAllDatas();
+		
 		//idx에 해당하는 dto 얻기
 		MarketDto dto = Mmapper.getData(market_place_idx);
 		mview.addObject("dto", dto);
 		mview.addObject("currentPage",currentPage);
+		mview.addObject("list", list);
 		
 		//포워드
 		mview.setViewName("/marketplace/market_productDetail");

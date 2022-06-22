@@ -199,15 +199,6 @@ $(function(){
 						<img src="${root }/photo/${p}" style="width: 220px; height: 220px;" class="photo">
 					</a>
 				</c:forTokens>
-				
-				<!-- 여러 사진 한번에 보이기 -->
-				<%--
-				<c:forTokens var="p" items="${a.photo}" delims=",">
-					<a href="../photo/${p}">
-						<img src="../photo/${p}" style="width: 220px; height: 220px;" class="photo">
-					</a>
-				</c:forTokens>
-				--%>
 			</c:if>
 			
 			<!-- 이미지 없을 경우 기본 이미지 -->
@@ -270,23 +261,23 @@ $(function(){
 		<div class="page" align="center" style="margin-top: 50px;">	
 			<!-- 이전 -->
 			<c:if test="${startPage>1}">
-				<a href="marketplace?currentPage=${startPage-1}">
+				<a href="market_main?currentPage=${startPage-1}">
 					<img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
 				</a>
 			</c:if>
 			
 			<c:forEach var="pp" begin="${startPage}" end="${endPage}">
 				<c:if test="${currentPage==pp}">
-					<a id="pagecnum" href="marketplace?currentPage=${pp}"><b>${pp}</b></a>
+					<a id="pagecnum" href="market_main?currentPage=${pp}"><b>${pp}</b></a>
 				</c:if>
 				<c:if test="${currentPage!=pp}">
-					<a id="pagenum" href="marketplace?currentPage=${pp}">${pp}</a>
+					<a id="pagenum" href="market_main?currentPage=${pp}">${pp}</a>
 				</c:if>
 			</c:forEach>
 			
 			<!-- 다음 -->
 			<c:if test="${endPage<totalPage}">
-				<a href="marketplace?currentPage=${endPage+1}">
+				<a href="market_main?currentPage=${endPage+1}">
 					<img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
 				</a>
 			</c:if>
