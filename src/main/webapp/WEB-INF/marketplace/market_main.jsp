@@ -80,6 +80,10 @@ $(function(){
 		var SearchText=$(".searchtext").val();
 		alert(i);
 		//location.reload();
+		
+		
+		
+		
 	});
 
 	
