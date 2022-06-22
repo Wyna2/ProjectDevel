@@ -1,4 +1,4 @@
-package com.ruby.dto;
+package com.ruby.devel.model;
 
 import java.sql.Timestamp;
 import org.apache.ibatis.type.Alias;
@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
-@Alias("marketdto")
+@Alias("mp_dto")
 public class MarketDto {
 	
 	private String market_place_idx;

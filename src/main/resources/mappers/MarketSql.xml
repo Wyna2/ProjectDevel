@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruby.mapper.MarketMapperInter">
+<mapper namespace="com.ruby.devel.service.MarketMapper">
   
   <select id="getTotalCount" resultType="int">
     select count(*) from Marketplace
   </select>
   
-  <insert id="insertMarket" parameterType="marketdto">
+  <insert id="insertMarket" parameterType="mp_dto">
 	insert into Marketplace (category,brandname,subject,photo,original_price,price,color,content,upload_day) values (#{category},#{brandname},#{subject},#{photo},#{original_price},#{price},#{color},#{content},now())
   </insert>
   
-  <select id="getAllDatas" resultType="marketdto">
+  <select id="getAllDatas" resultType="mp_dto">
 	select * from Marketplace order by upload_day asc
   </select>
   
-  <select id="getList" parameterType="HashMap" resultType="marketdto">
+  <select id="getList" parameterType="HashMap" resultType="mp_dto">
   	select * from Marketplace order by upload_day desc limit #{start}, #{perPage}
   </select>
   
-  <select id="getData" parameterType="String" resultType="marketdto">
+  <select id="getData" parameterType="String" resultType="mp_dto">
 	select * from Marketplace where market_place_idx=#{market_place_idx}
   </select>
   

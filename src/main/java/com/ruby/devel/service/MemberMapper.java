@@ -1,11 +1,11 @@
-package com.ruby.mapper;
+package com.ruby.devel.service;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.ruby.dto.MemberDto;
+import com.ruby.devel.model.MemberDto;
 
 @Mapper
-public interface MemberMapperInter {
+public interface MemberMapper {
 
 	//num값을 통해 data 얻기
 	public MemberDto getData(String num);

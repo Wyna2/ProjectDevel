@@ -1,16 +1,16 @@
-package com.ruby.web;
+package com.ruby.devel.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.ruby.mapper.MemberMapperInter;
+import com.ruby.devel.service.MemberMapper;
 
 @Controller
 public class MemberController {
 	
 	@Autowired
-	MemberMapperInter mapper;
+	MemberMapper mapper;
 	
 	@GetMapping("/signup")  // 회원가입 페이지
 	public String member_signup()

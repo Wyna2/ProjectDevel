@@ -1,12 +1,13 @@
-package com.ruby.mapper;
+package com.ruby.devel.service;
 
 import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
-import com.ruby.dto.MarketDto;
+
+import com.ruby.devel.model.MarketDto;
 
 @Mapper
-public interface MarketMapperInter {
+public interface MarketMapper {
 
 	public int getTotalCount();
 	public void insertMarket(MarketDto dto);

@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"com.ruby.*"})
-@MapperScan("com.ruby.*")
+@ComponentScan({"com.ruby.*","com.ruby.devel.*"})
+@MapperScan("com.ruby.devel.*")
 public class ProjectRubyApplication {
 
 	public static void main(String[] args) {
