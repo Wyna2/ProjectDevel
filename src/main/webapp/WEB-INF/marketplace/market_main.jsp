@@ -78,11 +78,23 @@ $(function(){
 	<%--검색어에 관련된 정보 테이블 출력--%>
 	$(".searchicon").click(function(){
 		var SearchText=$(".searchtext").val();
-		alert(i);
+		
 		//location.reload();
 		
+		if(SearchText=="")
+		{
+			alert("검색어를 입력하세요!");
+		}
 		
+		else if(SearchText=="검색어를 입력해 주세요.123")
+		{
+			alert("검색어를 입력하세요!");
+		}
 		
+		else
+		{
+			location.href = '/marketplace/market_seachresult?SearchText='+SearchText;
+		}
 		
 	});
 
@@ -130,11 +142,18 @@ $(function(){
 		</span>	
 		<span class="sangpumcountcomment">개의 상품이 있습니다.</span>		
 	</div>
-		
+	
+	<form>
 	<div class="search" style="border: solid 1px #dbdbdb;">
-		<input type="text" value="검색어를 입력해 주세요.123" class="searchtext">
-		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>	</a>
+	
+		<input type="text"  class="searchtext" id="searchtext" name="word" value="${pageObject.word}">
+		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>
+		            <button type="submit">검색</button>	
+		</a>
+	
 	</div>
+	</form>
+	
 	
 	<div class="changelist">
 		<span class="glyphicon glyphicon-th-large largeicon large"></span>

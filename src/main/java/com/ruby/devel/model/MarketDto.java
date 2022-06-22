@@ -29,4 +29,6 @@ public class MarketDto {
 	private String like_count;
 	private String region;
 	
+	
+	
 }

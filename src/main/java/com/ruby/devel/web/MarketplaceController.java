@@ -89,6 +89,11 @@ public class MarketplaceController {
 		return mview;
 	}
 	
+	//마켓 검색 후 매핑
+	@GetMapping("/marketplace/market_seachresult")
+	public String marketplace_seach() {
+		return "/marketplace/market_searchresult";
+	}
 	
 	//마켓 검색 후 테이블 출력
 		@GetMapping("/marketplace/market_seach")
@@ -147,7 +152,7 @@ public class MarketplaceController {
 
 			mview.addObject("list", list);
 
-			mview.setViewName("m/marketplace/market_main");
+			mview.setViewName("m/marketplace/market_searchresult");
 					
 			return mview;
 		}
