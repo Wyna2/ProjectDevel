@@ -64,7 +64,8 @@ $(function() {
     
     
     /* 색상 선택시 rgb값 받아오기 alert test */
-	$("#color div").click(function() {
+	$("#colorbox div").click(function() {
+		$(this).css("border", "3px solid #ff4b4e");
  		/* alert($(this).css("background-color")); */
  	});
     
@@ -182,10 +183,16 @@ function checkFileName(str){
  			<tr>
  				<td class="text1"><div style="padding-bottom: 10px;">상품 색상</div></td>
 	 			<td class="text2">
-	 				<div id="color">
-						<div style="background-color: #191919;"></div>
-						<div style="background-color: #dbdbdb;"></div>
-						<div style="background-color: #5172de;"></div>
+	 				<div id="colorbox">
+						<div style="background-color: #191919;">
+							<input type="radio" hidden="" name="color" value="블랙">
+						</div>
+						<div style="background-color: #dbdbdb;">
+							<input type="radio" hidden="" name="color" value="회색">
+						</div>
+						<div style="background-color: #5172de;">
+							<input type="radio" hidden="" name="color" value="블루">
+						</div>
 						<div style="background-color: #ffd93d;"></div>
 						<div style="background-color: #72138e;"></div>
 						<div style="background-color: #ffffff;"></div>
@@ -199,16 +206,16 @@ function checkFileName(str){
  			<tr>
  				<td class="text1" ></td>
  				<td class="text2" >
- 					<div id="color2" style="padding-left: 66.2px; margin-top: -15px; font-size: 14px; color: #505050; font-weight: 300;">
+ 					<div id="colorboxname" style="margin-top: -7px;">
  						<span>블랙</span>
- 						<span style="margin-left: 14.5px;">그레이</span>
- 						<span style="margin-left: 14.5px;">블루</span>
- 						<span style="margin-left: 15.4px;">옐로우</span>
- 						<span style="margin-left: 14.2px;">퍼플</span>
- 						<span style="margin-left: 15.5px;">화이트</span>
- 						<span style="margin-left: 15px;">레드</span>
- 						<span style="margin-left: 21px;">그린</span>
- 						<span style="margin-left: 17.7px;">브라운</span>
+ 						<span>회색</span>
+ 						<span>블루</span>
+ 						<span>노랑</span>
+ 						<span>보라</span>
+ 						<span>흰색</span>
+ 						<span>빨강</span>
+ 						<span>초록</span>
+ 						<span>갈색</span>
  					</div>
  				</td>
  			</tr>	

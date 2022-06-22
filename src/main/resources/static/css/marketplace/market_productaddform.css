@@ -57,11 +57,11 @@ div.wrapper {
 	margin-left: 60px;
 }
 
-#color {
+#colorbox,#colorboxname {
 	margin-left: 47px;
 }
 
-#color div {
+#colorbox div {
 	width: 33px;
 	height: 33px;
 	border: 0.8px solid black;
@@ -70,6 +70,14 @@ div.wrapper {
 	margin-left: 15px;
 	position: relative;
 	display: inline-block;
+}
+
+#colorboxname span {
+	margin-left: 15px;
+	margin-right: 8px;
+	font-size: 14px;
+	color: #505050;
+	font-weight: 300;
 }
 
 .wrapper {
