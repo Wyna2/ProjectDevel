@@ -40,11 +40,11 @@
   <sql id="search">
   	<!-- 검색어가 존재하는 경우애만 검색을 실행한다. mybytis 문서 참조 -->
   	<if test="word != null and word != ''.toString()">
-  	where ( 2 = 1
-  	 	or subject like '%'||#{word}||'%'
+  	where 
+  	 	 subject like '%'||#{word}||'%'
   	 	or brandname like '%'||#{word}||'%'
   	 	or content like '%'||#{word}||'%'	 
-  	)
+
   	</if>
   </sql>
   

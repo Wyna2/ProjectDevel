@@ -29,6 +29,8 @@ $(function(){
 	$(".sangpumlistdiv").hide();
 	$(".pagenumlist").hide();
 	
+	
+	
 	<%--목록형 테이블--%>
 	$("span.large").click(function(){
 		$(".sangpumlistdiv").hide();
@@ -58,7 +60,6 @@ $(function(){
 	<%--검색창 클릭시 가이드 문구 없어짐--%>
 	$(".searchtext").click(function(){
 		//alert(1);
-		
 		$(this).val("");
 	});
 	
@@ -96,6 +97,9 @@ $(function(){
 			location.href = '/marketplace/market_seachresult?SearchText='+SearchText;
 		}
 		
+
+		alert(i);
+		//location.reload();		
 	});
 
 	
@@ -146,11 +150,12 @@ $(function(){
 	<form>
 	<div class="search" style="border: solid 1px #dbdbdb;">
 	
-		<input type="text"  class="searchtext" id="searchtext" name="word" value="${pageObject.word}">
+		<input type="text"  class="searchtext" id="searchtext" name="word" value="검색어를 입력해 주세요.">
 		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>
 		            <button type="submit">검색</button>	
 		</a>
-	
+	<!-- 	<input type="text" value="검색어를 입력해 주세요." class="searchtext">
+		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span></a> -->
 	</div>
 	</form>
 	
@@ -186,12 +191,12 @@ $(function(){
 				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
 			</label>
 
-	  	<div class="sangpumphoto" style="border: 1px solid #dbdbdb;">
+	  	<div class="sangpumphoto" style="border: 0px solid #dbdbdb;">
 			<!-- 이미지 있을 경우 상품이미지 중 첫번째 이미지 보이기 -->
 			<c:if test="${a.photo!='no'}">
 				<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
-					<a href="../photo/${p}">
-						<img src="../photo/${p}" style="width: 220px; height: 220px;" class="photo">
+					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+						<img src="${root }/photo/${p}" style="width: 220px; height: 220px;" class="photo">
 					</a>
 				</c:forTokens>
 				
@@ -206,8 +211,10 @@ $(function(){
 			</c:if>
 			
 			<!-- 이미지 없을 경우 기본 이미지 -->
-			<c:if test="${a.photo='no'}">
-				<img src="../photo/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
+			<c:if test="${a.photo=='no'}">
+				<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+					<img src="${root }/element/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
+				</a>
 	  		</c:if>
 	  	</div>
 	  	
@@ -224,31 +231,35 @@ $(function(){
 	<%--리스트 테이블 --%>
 	<c:forEach var="a" items="${list}">
 		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;">
+			
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
 				<c:if test="${a.photo!='no'}">
 					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
-						<a href="../photo/${p}">
-							<img src="../photo/${p}" style="width: 150px; height: 150px;" class="photo">
+						<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+							<img src="${root }/photo/${p}" style="width: 146px; height: 146px;" class="photo">
 						</a>
 					</c:forTokens>
 				</c:if>
-								
-				<%-- <!-- 이미지 없을 경우 기본 이미지 -->
-				<c:if test="${a.photo='no'}">
-					<img src="../photo/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
-		  		</c:if> --%>
+									
+				<!-- 이미지 없을 경우 기본 이미지 -->
+				<c:if test="${a.photo=='no'}">
+					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+						<img src="${root }/element/icon_noimg.png" style="width: 146px; height: 146px;" class="photo">
+					</a>
+			  	</c:if>
 			</div>
 			
 			<div class="sangpumlistdetail" style="border: 0px solid black">
 				<span class="brandname">${a.brandname}</span><br>
-				<span class="subject">${a.subject}</span><br><br><br>
-				<span class="price">${a.price}원</span>&nbsp;&nbsp;&nbsp;<span class="original_price">${a.original_price}</span><br>
+				<span class="subject">${a.subject}</span><br><br>
+				<span class="price">${a.price}원</span>&nbsp;&nbsp;&nbsp;<span class="original_price">${a.original_price}</span>
 				<span class="region">${a.region}</span>
-				<label class="lablist" id="lab">
-					<input type="checkbox" id="chk" value="${i}" class="chheart">
-					<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
-				</label>
 			</div>
+			
+			<label class="lablist" id="lab">
+				<input type="checkbox" id="chk" value="${i}" class="chheart">
+				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
+			</label>
 		</div>
 	</c:forEach>
 

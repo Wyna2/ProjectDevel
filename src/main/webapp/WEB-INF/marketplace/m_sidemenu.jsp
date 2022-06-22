@@ -172,35 +172,35 @@ $(function () {
  					<li class="submenutitle"><a href="#" id="selectionmenu">
 	 					<label class="cglabel">
 	 					<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="노트북">
-	 					&nbsp;&nbsp;&nbsp;&nbsp;· 노트북
+	 					&nbsp;&nbsp;&nbsp;&nbsp;노트북
 	 					</label>
  					</a></li>
  					
  					<li class="submenutitle"><a href="#" id="selectionmenu">
 	 					<label class="cglabel">
 		 				<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="모니터">
-	 					&nbsp;&nbsp;&nbsp;&nbsp;· 모니터
+	 					&nbsp;&nbsp;&nbsp;&nbsp;모니터
 	 					</label>
  					</a></li>
  					
  					<li class="submenutitle"><a href="#" id="selectionmenu">
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="키보드">
- 					&nbsp;&nbsp;&nbsp;&nbsp;· 키보드
+ 					&nbsp;&nbsp;&nbsp;&nbsp;키보드
  					</label>
  					</a></li>
  					
  					<li class="submenutitle"><a href="#" id="selectionmenu">
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="마우스">
- 					&nbsp;&nbsp;&nbsp;&nbsp;· 마우스
+ 					&nbsp;&nbsp;&nbsp;&nbsp;마우스
  					</label>
  					</a></li>
  					
  					<li class="submenutitle"><a href="#" id="selectionmenu">
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="스피커">
- 					&nbsp;&nbsp;&nbsp;&nbsp;· 스피커
+ 					&nbsp;&nbsp;&nbsp;&nbsp;스피커
  					</label>
  					</a></li>
  				</ul>
