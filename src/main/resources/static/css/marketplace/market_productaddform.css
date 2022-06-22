@@ -64,7 +64,7 @@ div.wrapper {
 #colorbox div {
 	width: 33px;
 	height: 33px;
-	border: 0.8px solid black;
+	border: 1px solid black;
 	cursor: pointer;
 	border-radius: 50px;
 	margin-left: 15px;
@@ -74,7 +74,7 @@ div.wrapper {
 
 #colorboxname span {
 	margin-left: 15px;
-	margin-right: 8px;
+	margin-right: 7px;
 	font-size: 14px;
 	color: #505050;
 	font-weight: 300;

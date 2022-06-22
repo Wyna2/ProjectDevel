@@ -63,15 +63,16 @@ $(function() {
    });
     
     
-    /* 색상 선택시 rgb값 받아오기 alert test */
+    /* 색상 선택시 rgb값 받아오기 */
 	$("#colorbox div").click(function() {
+
+		$(".color").val($(this).children().val());
+
 		$(this).css("border", "3px solid #ff4b4e");
- 		/* alert($(this).css("background-color")); */
+		$(this).siblings().css({"border": "1px solid black"});
  	});
-    
+
     /* 연령대 선택 하지 않았을 경우 페이지 이동 방지 스크립트 추가하기 */
-    
-    
 });
 
 //파일명 검증
@@ -184,21 +185,35 @@ function checkFileName(str){
  				<td class="text1"><div style="padding-bottom: 10px;">상품 색상</div></td>
 	 			<td class="text2">
 	 				<div id="colorbox">
+	 					<input type="text" hidden="" class="color" name="color" value="">
+						
 						<div style="background-color: #191919;">
-							<input type="radio" hidden="" name="color" value="블랙">
+							<input type="text" hidden="" value="블랙">
 						</div>
 						<div style="background-color: #dbdbdb;">
-							<input type="radio" hidden="" name="color" value="회색">
+							<input type="text" hidden="" value="회색">
 						</div>
 						<div style="background-color: #5172de;">
-							<input type="radio" hidden="" name="color" value="블루">
+							<input type="text" hidden="" value="블루">
 						</div>
-						<div style="background-color: #ffd93d;"></div>
-						<div style="background-color: #72138e;"></div>
-						<div style="background-color: #ffffff;"></div>
-						<div style="background-color: #f62020;"></div>
-						<div style="background-color: #095a19;"></div>
-						<div style="background-color: #541f1f;"></div>
+						<div style="background-color: #ffd93d;">
+							<input type="text" hidden="" value="노랑">
+						</div>
+						<div style="background-color: #72138e;">
+							<input type="text" hidden="" value="보라">
+						</div>
+						<div style="background-color: #ffffff;">
+							<input type="text" hidden="" value="흰색">
+						</div>
+						<div style="background-color: #f62020;">
+							<input type="text" hidden="" value="빨강">
+						</div>
+						<div style="background-color: #095a19;">
+							<input type="text" hidden="" value="초록">
+						</div>
+						<div style="background-color: #541f1f;">
+							<input type="text" hidden="" value="갈색">
+						</div>
 					</div>
 	 			</td>
  			</tr>
