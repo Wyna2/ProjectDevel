@@ -75,8 +75,9 @@ $(function(){
 		alert(i);
 	});
 	
+	<%--검색어에 관련된 정보 테이블 출력--%>
 	$(".searchicon").click(function(){
-		var i=$(".searchtext").val();
+		var SearchText=$(".searchtext").val();
 		alert(i);
 		//location.reload();
 	});

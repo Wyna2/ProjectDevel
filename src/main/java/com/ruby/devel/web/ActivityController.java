@@ -1,4 +1,4 @@
-package com.ruby.web;
+package com.ruby.devel.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,14 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ruby.dto.MemberDto;
-import com.ruby.mapper.MemberMapperInter;
+import com.ruby.devel.model.MemberDto;
+import com.ruby.devel.service.MemberMapper;
 
 @Controller
 public class ActivityController {
 	
 	@Autowired
-	MemberMapperInter mapper;
+	MemberMapper Mmapper;
 
 	@GetMapping("/activity")  // 'activity' 아이콘 선택 시 기본 페이지(모아보기) 이동
 	public String activity_home()
@@ -27,8 +27,7 @@ public class ActivityController {
 	public String activity_mypage(Model model,
 			@RequestParam String id)
 	{
-		
-		MemberDto dto = mapper.getData(id);
+		MemberDto dto = Mmapper.getData(id);
 		model.addAttribute("dto", dto);
 		
 		return "/activity/activity_myInfo";

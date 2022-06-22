@@ -1,4 +1,4 @@
-package com.ruby.web;
+package com.ruby.devel.web;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ruby.dto.MarketDto;
-import com.ruby.mapper.MarketMapperInter;
+import com.ruby.devel.model.MarketDto;
+import com.ruby.devel.service.MarketMapper;
 
 
 @Controller
 public class MarketplaceController {
 	
 	@Autowired //자동주입
-	MarketMapperInter mapper;
+	MarketMapper Mmapper;
 	
 	//마켓 기본 페이지
 	@GetMapping({"/marketplace","/marketplace/market_main"})
@@ -34,7 +34,7 @@ public class MarketplaceController {
 	{
 		ModelAndView mview = new ModelAndView();
 		
-		int totalCount = mapper.getTotalCount();
+		int totalCount = Mmapper.getTotalCount();
 		//List<MarketDto> list = mapper.getAllDatas();
 		
 		//페이징처리에 필요한 변수
@@ -65,7 +65,7 @@ public class MarketplaceController {
 		map.put("perPage", perPage);
 						
 		//각페이지에서 필요한 게시글 가져오기
-		List<MarketDto> list=mapper.getList(map);
+		List<MarketDto> list=Mmapper.getList(map);
 								
 		//각 글앞에 붙일 시작번호 구하기
 		//총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
@@ -129,7 +129,7 @@ public class MarketplaceController {
 		dto.setPhoto(photo);
 		
 		//insert
-		mapper.insertMarket(dto);
+		Mmapper.insertMarket(dto);
 				
 		//완료 후 목록 이동
 		return "redirect:market_main";

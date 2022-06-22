@@ -1,4 +1,4 @@
-package com.ruby.web;
+package com.ruby.devel.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

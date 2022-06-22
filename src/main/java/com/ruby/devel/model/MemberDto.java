@@ -1,11 +1,11 @@
-package com.ruby.dto;
+package com.ruby.devel.model;
 
 import java.sql.Timestamp;
 import org.apache.ibatis.type.Alias;
 import lombok.Data;
 
 @Data
-@Alias("mdto")
+@Alias("m_dto")
 public class MemberDto {
 
 	private String member_idx;
