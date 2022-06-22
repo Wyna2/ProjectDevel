@@ -204,9 +204,23 @@ public class MarketplaceController {
 	}
 
 	
-	@GetMapping("/marketplace/productdetail")		// 상품 상세 페이지
-	public String marketplace_productdetail() {
-		return "/marketplace/market_productDetail";
+	//상품 상세페이지
+	@GetMapping("/marketplace/productdetail")
+	public ModelAndView marketplace_productdetail(
+			@RequestParam String market_place_idx,
+			@RequestParam int currentPage)
+	{
+		ModelAndView mview = new ModelAndView();
+		
+		//idx에 해당하는 dto 얻기
+		MarketDto dto = Mmapper.getData(market_place_idx);
+		mview.addObject("dto", dto);
+		mview.addObject("currentPage",currentPage);
+		
+		//포워드
+		mview.setViewName("/marketplace/market_productDetail");
+		
+		return mview;
 	}
 	
 }

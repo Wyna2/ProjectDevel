@@ -62,7 +62,7 @@
 
 			<div class="content" style="margin-top: 32px;">
 				<div class="title" style="margin-top: 2px;">
-					<span class="brand" style="font-size: 16px; color: #191919;">브랜드명 
+					<span class="brand" style="font-size: 16px; color: #191919;">${dto.brandname}
 						<img alt=""	src="${root }/photo_marketplace/arrow.png" class="arrow">
 					</span>
 				</div>
