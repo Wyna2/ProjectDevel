@@ -41,7 +41,7 @@ $(function() {
        fileList="";
       // 최대 업로드 이미지 수 제한
       if(fileName.length>5){
-         alert("이미지는 최대 5장까지 첨부 가능합니다!");
+         alert("이미지는 최대 5장까지 첨부 가능합니다!!!");
          return false;
       }
       var vaildchk=1;      // 유효성 검증 값
