@@ -32,7 +32,7 @@ div.layout div.menu{
 /* main 내 side_menu 영역 */
 div.layout div.side_menu{
 	position: relative;
-	background-color: #f1f1f5;
+	background-color: #fff;
 	margin-top: -5px;
 	padding: 30px 15px 30px 315px; /* 상단, 우측, 하단, 좌측 */
 	width: 550px;

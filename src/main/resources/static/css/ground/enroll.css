@@ -1,0 +1,251 @@
+@charset "UTF-8";
+
+.container {
+	position: absolute;
+}
+
+.box {
+	position: absolute;
+	top: 152px;
+	right: 598px;
+	bottom: 170px;
+	left: 590px;
+	width: 724px;
+	height: 558px;
+	padding: 44px 40px 30px 44px;
+	background-color: #fff;
+}
+
+.crew { /*크루 등록*/
+	width: 101px;
+	height: 40px;
+	position: absolute;
+	top: 110px;
+	left: 610px;
+	bottom: 1056px;
+	right: 1209px;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 20px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.7px;
+	text-align: left;
+	color: #505050;
+}
+
+.crew_name { /*크루 이름*/
+	width: 165px;
+	height: 56px;
+	margin: 0 35px 20px 0;
+	padding: 16px 107px 16px 0;
+	background-color: #fff;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	font-weight: 500;
+	color: #191919;
+	text-align: left;
+	position: relative;
+	top: 20px;
+}
+
+.wrapper i {
+	position: absolute;
+	margin: 7px 0 0 -20px;
+	float: right;
+}
+
+.input {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #CCC;
+	color: #555;
+	box-sizing: border-box;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	padding: 10px 0px;
+	position: relative;
+	width: 360px;
+	left: 224px;
+	top: -13.5px;
+	bottom: 927px;
+	right: 638px;
+}
+
+.input:focus {
+	outline: none;
+}
+
+input::-webkit-input-placeholder {
+	color: #AAA;
+}
+
+input:focus::-webkit-input-placeholder {
+	color: #ff4b4e;
+	outline: none
+}
+
+.input:focus+.underline {
+	transform: scale(1);
+	outline: none;
+}
+
+.underline {
+	background-color: #ff4b4e;
+	display: inline-block;
+	height: 2px;
+	left: 0px;
+	position: absolute;
+	top: 96.2px;
+	left: 268.1px;
+	-webkit-transform: scale(0, 1);
+	transform: scale(0, 1);
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+	width: 360px;
+}
+
+.crew_color {
+	width: 165px;
+	height: 56px;
+	margin: 0 35px 50px 0;
+	padding: 16px 107px 16px 0;
+	background-color: #fff;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: -0.4px;
+	color: #191919;
+	text-align: left;
+	position: relative;
+	top: 30px;
+}
+
+.crew_pr {
+	width: 165px;
+	height: 56px;
+	margin: 10 35px 50px 10;
+	padding: 20px 110px 20px 0;
+	background-color: #fff;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: -0.4px;
+	color: #191919;
+	text-align: left;
+	position: relative;
+	top: 60px;
+}
+
+#crew_pr_text {
+	width: 640px;
+	height: 140px;
+	margin: 76px 0 60px;
+	padding: 0 0 100px;
+	border: solid 1px #dbdbdb;
+	background-color: #fff;
+	position: relative;
+	top: 2px;
+}
+
+#crew_pr_text:focus {
+	outline-color: #ff4b4e;
+}
+
+#clr {
+	margin-left: 200px;
+}
+
+#clr div {
+	width: 35px;
+	height: 35px;
+	border: 0.8px solid black;
+	cursor: pointer;
+	border-radius: 50px;
+	margin-left: 10px;
+	margin-top: -26px;
+	position: relative;
+	top: 26px;
+	left: -12.6px;
+	display: inline-block;
+}
+
+.crew_enroll {
+	width: 220px;
+	height: 56px;
+	margin: 60px 5 0 255px;
+	padding: 16 81 16 81;
+	border-radius: 20px;
+	background-color: #ff4b4e;
+	border: none;
+	float: right;
+	position: relative;
+	bottom: 30px;
+}
+
+.btn-large {
+	width: 220px; /* 넓이 수정 가능 */
+	font-size: 16px;
+	font-weight: 400; /* 글씨 Bold 수정 가능 */
+	color: #fff;
+	cursor: pointer;
+	height: 55px; /* 높이 수정 가능 */
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+	border-radius: 20px; /* 테두리 곡률 수정 가능 */
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #ff4b4e, #f15e64, #e14e53, #e2373f);
+	box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+	float: right;
+	position: relative;
+	bottom: 30px;
+}
+
+.btn-large:hover {
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.btn-large:focus {
+	outline: none;
+}
+
+textarea::-webkit-input-placeholder {
+	color: #AAA;
+}
+
+textarea:focus::-webkit-input-placeholder {
+	color: #ff4b4e;
+	outline: none
+}
+
+.crew_enroll_btn {
+	width: 58px;
+	height: 30px;
+	/*폰트 적용*/
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: -0.4px;
+	text-align: left;
+	color: #fff;
+}
+
+.colortext {
+	position: relative;
+	top: 48px;
+	left: 131px;
+}

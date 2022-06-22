@@ -17,6 +17,6 @@ spring:
     password: sist0705*
 #mybatis
 mybatis:
-  #type-aliases-package: com.*
-  #mapper-locations:
-  #- /mapper/**/*.xml
+  type-aliases-package: com.ruby.*
+  mapper-locations:
+  - /mappers/**/*.xml

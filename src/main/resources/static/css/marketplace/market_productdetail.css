@@ -1,0 +1,298 @@
+@charset "UTF-8";
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+	;
+
+* {
+	font-family: "Noto Sans KR";
+}
+
+div.main {
+background-color: #fff !important;
+}
+
+div.container {
+	position: absolute;
+	width: 1320px;
+	height: 1080px;
+	margin: 32px 320px 0 320px;
+}
+
+div.container div.mainphoto {
+	width: 624px;
+	height: 624px;
+	margin: 32px 70px 16px 90px;
+	border: solid 2px #dbdbdb;
+}
+
+div.container div.subphoto div {
+	width: 80px;
+	height: 80px;
+	margin: 32px 10px 0 0;
+	border: solid 1px #ff4b4e;
+}
+
+div.subphoto {
+	float: left;
+}
+
+div.subphoto img{
+	max-width: 78px;
+	max-height: 78px;
+}
+
+
+div.mainphoto img{
+	width: 620px;
+	height: 620px;
+}
+
+img.heart{
+	cursor: pointer;
+	margin-top: 4px;
+}
+
+div.content {
+	float: right;
+}
+
+div.container div.content {
+	width: 500px;
+	height: 620px;
+}
+
+div.content div.title span {
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.35px;
+	color: #191919;
+}
+
+span.brand img.arrow {
+	margin-left: 1px;
+	margin-bottom: 2px;
+}
+
+div.productname {
+	font-size: 24px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.42;
+	letter-spacing: -0.6px;
+	color: #505050;
+}
+
+div.price span.number {
+	font-family: Roboto;
+	font-size: 28px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #191919;
+}
+
+div.price span.oprice {
+	margin-left: 8px; 
+	color: #767676; 
+	text-decoration: line-through; 
+	font-size: 15px;	
+}
+
+div.bosang {
+	margin-top: 16px;
+	width: 120px;
+	height: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #191919;
+}
+
+div.bosangcontent {
+	margin-top: 8px;
+	width: 450px;
+	height: 70px;
+	font-size: 16px;
+	line-height: 1.57;
+	color: #797979;
+}
+
+div.productexplain {
+	margin-top: 24px;
+	width: 70px;
+	height: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #191919;
+}
+
+div.box1 {
+	padding: 15px 15px 15px 15px;
+	border: solid 1px #dbdbdb !important;
+}
+
+div.box1 div.explain {
+	height: 152px;
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.57;
+	color: #767676;
+	
+}
+
+ div.relative{
+	width: 100px; 
+	height: 35px; 
+	font-size: 24px; 
+	font-weight: 500; 
+	color: #191919;
+} 
+	/* 거래완료 버튼 css */
+
+.btn-complete {
+  outline: none;
+  width: 150px;   /* 넓이 수정 가능 */
+  height: 40px; /* 높이 수정 가능 */
+  border: 2px solid #ff4b4e; 
+  border-radius: 20px;
+  color: #fff;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;   /* 글씨 Bold 수정 가능 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  background: #ff4b4e;
+}
+
+.btn-complete {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.btn-complete:hover {
+  color: #ff4b4e;
+  background: transparent;
+}
+.btn-complete:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-complete:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}	
+	
+	
+	/* 목록가기 버튼 css  */
+.btn-list {
+  outline: none;
+  width: 150px;   /* 넓이 수정 가능 */
+  height: 40px; /* 높이 수정 가능 */
+  border: 2px solid #ff4b4e; 
+  border-radius: 20px;
+  color: #ff4b4e;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;   /* 글씨 Bold 수정 가능 */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-list {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.btn-list:hover {
+   background: #ff4b4e;
+  color: #fff;
+}
+.btn-list:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-list:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+/* 연관상품 css */
+div.relphoto img{
+	max-width: 158px; 
+	max-width: 158px; 
+	background-color: #f1f1f5;
+}
+
+div.relbrand{
+	margin: 10px 0 0 0; 
+	font-size: 13px; 
+	font-weight: 500; 
+	font-stretch: normal; 
+	font-style: normal; 
+	line-height: normal; 
+	letter-spacing: -0.26px; 
+	color: #191919;
+}
+
+div.relsubject{
+	margin: 4px 0 0 0;  
+	font-size: 13px; 
+	color: #505050;
+}
+
+div.relprice{
+	margin: 6px 0 0 0; 
+	font-size: 16px; 
+	font-weight: 500; 
+	color: #191919;
+}
+
+span.relprice2{
+	font-size: 14px; 
+	color: #191919;
+}
+
+/* 좋아요 버튼 css */
+.heart{
+   /*하트 이미지 배경 처리중  사진 안불러와 짐 다시 돌아가려면 메인에 하트 특수문자 넣고  백그라운드 지우고 위치 다시 조정*/
+   width: 26px;
+   height: 26px;
+   content : '2661';
+   box-sizing: border-box;
+   cursor: pointer;   
+   font-size: 20pt;
+   left: 200px;
+   
+}
+#chk{
+   display: none;
+}

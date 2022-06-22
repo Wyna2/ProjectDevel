@@ -19,7 +19,7 @@ span.option_intro_bold {
 	width: 50px;
 	height: 20px;
 	margin: 0 20px 17px 0px;
-	font-family: "Noto Sans KR";
+	font-family: Noto Sans KR;
 	font-size: 14px;
 	font-weight: 500;
 	font-stretch: normal;
@@ -34,7 +34,7 @@ span.option_intro {
 	width: 50px;
 	height: 20px;
 	margin: 10px 20px 17px 20px;
-	font-family: "Noto Sans KR";
+	font-family: Noto Sans KR;
 	font-size: 14px;
 	font-weight: 300;
 	font-stretch: normal;
@@ -49,7 +49,7 @@ span.option_intro_highlight {
 	width: 50px;
 	height: 20px;
 	margin: 0 20px 17px 20px;
-	font-family: "Noto Sans KR";
+	font-family: Noto Sans KR;
 	font-size: 14px;
 	font-weight: 300;
 	font-stretch: normal;
@@ -64,7 +64,7 @@ span.footer_text {
   width: 47px;
   height: 20px;
   margin: 0 45px 17px 0;
-  font-family: "Noto Sans KR";
+  font-family: Noto Sans KR;
   font-size: 14px;
   font-weight: 300;
   font-stretch: normal;

@@ -50,7 +50,7 @@ $(function () {
 	</div>
 	<div class="menuitem">
 		<span class="menu">
-		<a href="/ground" style="text-decoration: none;">그룹보기</a>
+		<a href="/ground" style="text-decoration: none;">그라운드</a>
 		</span>
 	</div>
 	<div class="menuitem">
@@ -70,23 +70,23 @@ $(function () {
 	</div>
 	<div class="menuitem_member" style="margin-left: 450px;">
 		<span class="membermenu">
-		로그인
+		<a href="/login" style="text-decoration: none;">로그인</a>
 		</span>
 	</div>
 	<div class="menuitem_member">
 		<span class="membermenu">
-		회원가입
+		<a href="/signup" style="text-decoration: none;">회원가입</a>
 		</span>
 	</div>
 
 </div>
 <div class="dropmenu" style="z-index: 9999;">
 		<ul class="dropmenu_ul">
-			<li><a class="dm_main" href="/ground">그룹보기</a>
+			<li><a class="dm_main" href="/ground">그라운드</a>
 				<ul>
 					<li><a href="/ground">모든 팀 보기</a>
-					<li><a href="#">나의 팀 보기</a>
-					<li><a href="#">팀 만들기</a>
+					<li><a href="/ground/mycrew">나의 팀 보기</a>
+					<li><a href="/ground/crewenroll">팀 만들기</a>
 				</ul>
 			</li>
 			<li><a class="dm_main" href="/community">커뮤니티</a>
@@ -102,6 +102,8 @@ $(function () {
 					<li><a href="#">내 도전목록</a>
 				</ul>
 			</li>
+			<li><a class="dm_main" href="/activity">나의 활동</a></li>
+			
 		</ul>
 	</div>
 </body>
