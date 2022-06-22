@@ -100,7 +100,7 @@ div.sidemenucolorbox{
   width: 50px;
   height: 17px;
   
-  font-family: Noto Sans KR;
+  font-family: "Noto Sans KR";
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
@@ -112,21 +112,24 @@ div.sidemenucolorbox{
   top: 30px;
 }
 
-
-.submenutitle{
-  width: 300px;
-  height: 19px;
-  margin: 2px 3px 10px 4px;
-  font-family: Noto Sans KR;
-  font-size: 13px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.33px;
-  text-align: left;
-  color: #505050;
+.submenutitle,.cglabel,.pricelabel{
+	width: 300px;
+	height: 19px;
+	margin: 2px 3px 13px 4px;
+	font-family: "Noto Sans KR";
+	font-weight: 400;
+	font-size: 13px;
+	letter-spacing: -0.33px;
+	text-align: left;
+	color: #505050;
+	list-style:none;
 }
+
+.pricelabel{
+	cursor: pointer;
+	margin-left: 10px;
+}
+
 
 #carte1,#carte2,#carte3{
   width: 220px;
@@ -174,10 +177,10 @@ div.sidemenucolorbox{
 }
 
 
-
 .carte1sub{
 	text-align: left;
 }
+
 /*라디오 버튼 커스텀*/
  input[name='marketprice']{
  /*라디오 버튼 다시 보이게 하기1*/
@@ -219,10 +222,6 @@ input[name='colorradio']{
 
 #radiobtn:checked + .radioimg:after{
 	opacity: 1;
-}
-
-.pricelabel{
-	cursor: pointer;
 }
 
 

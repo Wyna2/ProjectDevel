@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
- div.container{
+div.container{
 position: absolute;
-
 } 
 
 
@@ -176,7 +175,7 @@ div.selectbox{
 	width: 200px;
 	height: 30px;
 	left: 0px;
-	top : 100px;
+	top : 50px;
 	
 }
 
@@ -257,8 +256,6 @@ span.spanpagingnumber{
   
 }
 
-
-
 .addbtnimg{
   position : relative;
   width: 91px;
@@ -282,10 +279,10 @@ marketmenutitle li{
 /*전체테이블 하트 아이콘*/
 #chk{
 	position: absolute;
-	 left: -999em;  
+	left: -999em;  
 }
 .heart{
-	/*하트 이미지 배경 처리중  사진 안불러와 짐 다시 돌아가려면 메인에 하트 특수문자 넣고  백그라운드 지우고 위치 다시 조정*/
+	/*하트 이미지 배경 처리중 사진 안불러와 짐 다시 돌아가려면 메인에 하트 특수문자 넣고 백그라운드 지우고 위치 다시 조정*/
 	display: inline-block;
 	width: 40px;
 	height: 40px;
@@ -295,7 +292,6 @@ marketmenutitle li{
 	font-size: 20pt;
 	position: relative;
 	left: 200px;
-	
 }
 
 /*거래가능 제품 보기*/
@@ -305,8 +301,6 @@ marketmenutitle li{
 	top: -15px;
 }
 
-
-
 /*전체 테이블 */
 .sangpumdiv{
 	width: 220px;
@@ -314,26 +308,28 @@ marketmenutitle li{
 	float: left;
 	position: relative;
 	margin-left: 30px;
-    margin-top: 100px;
+    margin-top: 50px;
     left: 0px;
     top: -52px;
 }
+
 /*테이블 사진영역*/
 .sangpumphoto{
   width: 220px;
-  height: 170px;
-  padding-top: 35px;
+  height: 220px;
 }
+
 /*테이블 하트 아이콘 영역*/
 .lab{
 	position: relative;
 	top: 50px;
-	left: -20px;
+	left: -25px;
 }
 /*테이블 상품 설명 부분*/
 .sangpumdetail{
 	width: 220px;
-	height: 100px;
+	height: 70px;
+	margin-top: 5px;
 }
 
 /*상품 이름*/
@@ -391,40 +387,36 @@ marketmenutitle li{
 .sangpumlistdiv{
 	width: 450px;
 	height: 150px;
-	margin-top: 40px;
+	margin-top: 10px;
+	margin-bottom: 30px;
 	margin-left : 100px;
 	float: left;
 	position: relative;
-	top: 50px;
+	top: 40px;
 	left: -90px;
-	
 }
 
 /*리스트 상품 테이블 사진부분*/
 .sangpumlistphoto{
 	width: 150px;
-	height: 150px;
-	padding-top: 40px;  
-	
+	height: 150px;	
 }
+
 .sangpumlistdetail{
 	width: 300px;
 	height: 150px;
 	position: relative;
 	left: 150px;
 	top: -150px;
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-left: 10px;
-	
-	
 }
 
 /*리스트 에서의 하트 아이콘*/
 .lablist{
 	position: relative;
-	left: 20px;
-	top: -90px;
-	
+	left: 40px;
+	top: -110px;
 }
 
 
@@ -475,4 +467,25 @@ marketmenutitle li{
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 }
 
+/* 정렬 */
+div.pagesort {
+	position: absolute;
+	left: 45%;
+	bottom: -10%;
+}
+
+
+/* 페이징 */
+.page {
+	position: relative;
+}
+#pagecnum {
+	color: #ff4b4e;
+}
+#pagenum,#pagecnum {
+	margin: 0 10px 0 10px;
+}
+#pagebtn {
+	margin: 0 5px 0 5px;
+}
 

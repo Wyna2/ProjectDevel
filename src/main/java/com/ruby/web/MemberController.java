@@ -1,10 +1,16 @@
-package com.ruby.devel.web;
+package com.ruby.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.ruby.mapper.MemberMapperInter;
+
 @Controller
 public class MemberController {
+	
+	@Autowired
+	MemberMapperInter mapper;
 	
 	@GetMapping("/signup")  // 회원가입 페이지
 	public String member_signup()
@@ -41,4 +47,5 @@ public class MemberController {
 	{
 		return "/member/member_userPwReset";
 	}
+	
 }

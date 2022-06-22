@@ -183,7 +183,6 @@ $(function () {
 	 					</label>
  					</a></li>
  					
- 					
  					<li class="submenutitle"><a href="#" id="selectionmenu">
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="키보드">
@@ -191,14 +190,12 @@ $(function () {
  					</label>
  					</a></li>
  					
- 					
  					<li class="submenutitle"><a href="#" id="selectionmenu">
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="마우스">
  					&nbsp;&nbsp;&nbsp;&nbsp;· 마우스
  					</label>
  					</a></li>
- 					
  					
  					<li class="submenutitle"><a href="#" id="selectionmenu">
  					<label class="cglabel">

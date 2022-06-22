@@ -1,4 +1,4 @@
-package com.ruby.devel.web;
+package com.ruby.web;
 
 import org.springframework.web.bind.annotation.RestController;
 

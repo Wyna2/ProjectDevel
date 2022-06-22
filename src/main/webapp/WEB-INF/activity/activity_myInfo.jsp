@@ -56,10 +56,13 @@ background-color: #fff !important;
 </head>
 <body>
 <!-- main -->
-<form action="">
+<form action="update" method="post" enctype="multipart/form-data">
+<!-- hidden 넘기기, value 값 주기 -->
+<input type="hidden" name="id" value="${dto.id}">
+
 <div class="main_title">마이페이지</div>
 <hr id="main_hr">
-<div class="main_content">
+<div id="updateform" class="main_content">
 	<!-- 마이프로필(이미지) -->
 	<div class="div1" align="center" style="margin-top: 100px;">
 		<a href="javascript:void(0);" class="imgUploadBtn"
@@ -74,7 +77,7 @@ background-color: #fff !important;
 	<div class="div2" style="margin-top: 100px;">
 		<div class="txt">
 			<div class="title">이름</div>
-			<div id="name">강나리</div>
+			<div id="name">${dto.name}</div>
 		</div>
 		<div class="txt">
 			<div class="title">아이디</div>
@@ -151,7 +154,6 @@ background-color: #fff !important;
 		
 		<button type="button" class="btn_update">회원정보수정</button>
 	</div>
-	
 </div>
 </form>
 </body>
