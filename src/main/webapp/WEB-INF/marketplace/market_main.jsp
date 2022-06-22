@@ -58,6 +58,7 @@ $(function(){
 	<%--검색창 클릭시 가이드 문구 없어짐--%>
 	$(".searchtext").click(function(){
 		//alert(1);
+		
 		$(this).val("");
 	});
 	

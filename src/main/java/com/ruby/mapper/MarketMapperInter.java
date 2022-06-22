@@ -14,5 +14,6 @@ public interface MarketMapperInter {
 	public List<MarketDto> getList(HashMap<String, Integer> map);
 	public MarketDto getData(String market_place_idx);
 	public void deleteMarket(String market_place_idx);
+	public List<MarketDto> SearchGetList(HashMap<String, Integer> map);
 	
 }
