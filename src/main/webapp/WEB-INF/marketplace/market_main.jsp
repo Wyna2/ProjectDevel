@@ -126,7 +126,7 @@ $(function(){
 	</div>
 		
 	<div class="search" style="border: solid 1px #dbdbdb;">
-		<input type="text" value="검색어를 입력해 주세요." class="searchtext">
+		<input type="text" value="검색어를 입력해 주세요.123" class="searchtext">
 		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>	</a>
 	</div>
 	
