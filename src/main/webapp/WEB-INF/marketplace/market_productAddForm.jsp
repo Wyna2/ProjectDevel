@@ -95,6 +95,7 @@ function checkFileName(str){
 </head>
 <body>
 <form action="insert" method="post" enctype="multipart/form-data">
+<input type="hidden" name="num" value="${sessionScope.userName}">
 <div class="title">
 상품등록
 </div>

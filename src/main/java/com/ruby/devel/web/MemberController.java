@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ruby.devel.model.MemberDto;
 import com.ruby.devel.service.impl.MemberMapper;
 
+import com.ruby.devel.service.impl.MemberMapper;
+
 @Controller
 public class MemberController {
 	
@@ -114,9 +116,12 @@ public class MemberController {
 			
 			String name=Mmapper.getName(id);
 			String nickname=Mmapper.getNickname(id);
+			String userKey=Mmapper.getUserKey(id);
 			session.setAttribute("userName", name);
 			session.setAttribute("userNickname", nickname);
+			session.setAttribute("userKey", userKey);
 			
+			System.out.println("userkey"+userKey);
 			System.out.println("Login ID: "+id);
 			System.out.println("saveID?: "+saveid);
 			return "redirect:main";

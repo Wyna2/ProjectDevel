@@ -31,6 +31,9 @@
 	<select id="getNickname" parameterType="String" resultType="String">
 		select nickname from Member where id=#{id}
 	</select>
+	<select id="getUserKey" parameterType="String" resultType="String">
+		select member_idx from Member where id=#{id}
+	</select>
 	
 	<!-- 아이디 찾기 -->
 	<select id="findIdByEmail" parameterType="HashMap" resultType="String">

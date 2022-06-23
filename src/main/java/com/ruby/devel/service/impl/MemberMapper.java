@@ -30,6 +30,8 @@ public interface MemberMapper {
 	// 회원 이름 가져오기(by ID)
 	public String getNickname(String id);
 	
+	public String getUserKey(String id);
+	
 	public String findIdByEmail(HashMap<String, String> finder);
 	
 	public String findIdByContactNumber(HashMap<String, String> finder);

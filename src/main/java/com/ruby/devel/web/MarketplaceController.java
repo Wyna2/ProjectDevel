@@ -19,13 +19,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.MarketDto;
 import com.ruby.devel.service.impl.MarketMapper;
+import com.ruby.devel.service.impl.MemberMapper;
 
 
 @Controller
 public class MarketplaceController {
 	
-	@Autowired //자동주입
-	MarketMapper Mmapper;
+	@Autowired //Market 자동주입
+	MarketMapper MPmapper;
+	
+	@Autowired //Member 자동주입
+	MemberMapper Mmapper;
+	
 	
 	//마켓 기본 페이지
 	@GetMapping({"/marketplace","/marketplace/market_main"})
@@ -34,7 +39,7 @@ public class MarketplaceController {
 	{
 		ModelAndView mview = new ModelAndView();
 		
-		int totalCount = Mmapper.getTotalCount();
+		int totalCount = MPmapper.getTotalCount();
 		//List<MarketDto> list = mapper.getAllDatas();
 		
 		
@@ -66,7 +71,7 @@ public class MarketplaceController {
 		map.put("perPage", perPage);
 						
 		//각페이지에서 필요한 게시글 가져오기
-		List<MarketDto> list=Mmapper.getList(map);
+		List<MarketDto> list=MPmapper.getList(map);
 								
 		//각 글앞에 붙일 시작번호 구하기
 		//총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
@@ -137,7 +142,7 @@ public class MarketplaceController {
 		dto.setPhoto(photo);
 		
 		//insert
-		Mmapper.insertMarket(dto);
+		MPmapper.insertMarket(dto);
 				
 		//완료 후 목록 이동
 		return "redirect:market_main";
@@ -152,10 +157,10 @@ public class MarketplaceController {
 	{
 		ModelAndView mview = new ModelAndView();
 		
-		List<MarketDto> list = Mmapper.getAllDatas();
+		List<MarketDto> list = MPmapper.getAllDatas();
 		
 		//idx에 해당하는 dto 얻기
-		MarketDto dto = Mmapper.getData(market_place_idx);
+		MarketDto dto = MPmapper.getData(market_place_idx);
 		mview.addObject("dto", dto);
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("list", list);
