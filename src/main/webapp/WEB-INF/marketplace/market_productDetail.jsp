@@ -109,7 +109,7 @@
 					<div class="sell2" style="margin: 25px 94px 24px 24px; width: 450px; height: 20px;">
 						<div style="float: left;">
 							<span style="font-size: 16px; color: #797979;">판매자</span>
-							<span style="font-size: 16px; color: #191919; margin-left: 24px;">${dto.buyer}</span>
+							<span style="font-size: 16px; color: #191919; margin-left: 24px;">${dto.seller}</span>
 						</div>
 				<!-- 판매 날짜 등록 -->
 						<div>
@@ -136,7 +136,7 @@
 				<div class="buttongroup" style="margin-top: 25px; text-align: right;">
 					
 					<!-- 등록자 화면에만 보이도록 구현  -->
-					<c:if test="${member_idx==dto.member_idx}">			
+					<c:if test="${member_idx==dto.member_idx}">
 						<div class="btn2" style="float: left; margin-left: 170px;">
 							<button type="button" class="btn-complete">거래 완료 처리 </button>
 						</div> 

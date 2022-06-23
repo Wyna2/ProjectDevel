@@ -97,7 +97,6 @@ function checkFileName(str){
 <form action="insert" method="post" enctype="multipart/form-data">
 
 <input type="hidden" name="member_idx" value="${userKey}">
-<input type="hidden" name="buyer" value="${userName}">
 
 <div class="title">
 상품등록
