@@ -150,12 +150,10 @@ $(function(){
 	<form>
 	<div class="search" style="border: solid 1px #dbdbdb;">
 	
-		<input type="text"  class="searchtext" id="searchtext" name="word" value="검색어를 입력해 주세요.">
+		<input type="text"  class="searchtext" id="searchtext" name="word">
 		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>
 		            <button type="submit">검색</button>	
 		</a>
-	<!-- 	<input type="text" value="검색어를 입력해 주세요." class="searchtext">
-		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span></a> -->
 	</div>
 	</form>
 	
@@ -261,7 +259,7 @@ $(function(){
         <div class="page" align="center" style="margin-top: 50px;"> 
             <!-- 이전 -->
             <c:if test="${startPage>1}">
-                <a href="marketplace?currentPage=${startPage-1}">
+                <a href="market_main?currentPage=${startPage-1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
                 </a>
             </c:if>
@@ -275,9 +273,9 @@ $(function(){
                 </c:if>
             </c:forEach>
             
-            <!-- 다음 -->
+            <!— 다음 —>
             <c:if test="${endPage<totalPage}">
-                <a href="marketplace?currentPage=${endPage+1}">
+                <a href="market_main?currentPage=${endPage+1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
                 </a>
             </c:if>
