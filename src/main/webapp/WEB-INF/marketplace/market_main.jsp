@@ -272,7 +272,7 @@ $(function(){
                 </c:if>
             </c:forEach>
             
-            <!— 다음 —>
+            <!-- 다음 -->
             <c:if test="${endPage<totalPage}">
                 <a href="market_main?currentPage=${endPage+1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move1.png">

@@ -162,7 +162,7 @@ $(function(){
 
 	
 	<%--전체 테이블 --%>
-	<c:forEach var="a" items="${list}">
+	<c:forEach var="a" items="${Searchlist}">
 	  	<div class="sangpumdiv" style="border: 0px solid black;">
 			<label  class="lab" id="lab">
 				<input type="checkbox" id="chk" value="${i}" class="chheart">
