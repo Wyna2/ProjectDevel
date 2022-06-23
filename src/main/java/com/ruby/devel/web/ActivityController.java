@@ -6,8 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ruby.devel.model.MemberDto;
-import com.ruby.devel.service.MemberMapper;
+import com.ruby.devel.service.impl.MemberMapper;
 
 @Controller
 public class ActivityController {
@@ -27,8 +26,7 @@ public class ActivityController {
 	public String activity_mypage(Model model,
 			@RequestParam String id)
 	{
-		MemberDto dto = Mmapper.getData(id);
-		model.addAttribute("dto", dto);
+		
 		
 		return "/activity/activity_myInfo";
 	}

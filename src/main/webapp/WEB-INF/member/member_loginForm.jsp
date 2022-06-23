@@ -14,26 +14,7 @@
 <link rel="stylesheet" type="text/css" href="${root }/css/member/member_loginform.css">
 
 <script type="text/javascript">
-$(function() {
-	/* start Dropdown Menu*/		
-	$('.dropdown').click(function () {
-        $(this).attr('tabindex', 1).focus();
-        $(this).toggleClass('active');
-        $(this).find('.dropdown-menu').slideToggle(300);
-    });
-    $('.dropdown').focusout(function () {
-        $(this).removeClass('active');
-        $(this).find('.dropdown-menu').slideUp(300);
-    });
-    $('.dropdown .dropdown-menu li').click(function () {
-        $(this).parents('.dropdown').find('span').text($(this).text());
-        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-        $("span.age_placeholder").css("color", "#505050");
-    });
-    /*End Dropdown Menu*/
-    
-    /* 연령대 선택 하지 않았을 경우 페이지 이동 방지 스크립트 추가하기 */
-});
+// 아이디 저장 스크립트 추가
 
 //비밀번호 보이기/숨기기 토글
 $(document).ready(function(){
@@ -58,7 +39,7 @@ $(document).ready(function(){
 </div>
 <div class="container">
 		<div class="box">
-			<form action="add" method="post" name="frm" onsubmit="return check(this)">
+			<form action="loginprocess" method="post" name="frm" onsubmit="return check(this)">
 			<div class="wrapper">
 				<input type="text" class="input" name="id" placeholder="아이디를 입력하세요" required="required" style="width: 360px;">
 				<span class="underline"></span>

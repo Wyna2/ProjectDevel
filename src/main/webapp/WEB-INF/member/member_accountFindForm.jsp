@@ -64,7 +64,7 @@ function setFindformType(){
 						</ul>
 						<div class="findid_emailform" id="findid_emailform">
 						<!-- 이메일로 아이디 찾기 form -->
-						<form action="#email">
+						<form action="findid_email" method="post">
 						<div class="wrapper" style="margin-bottom: 55px;">
 						</div>
 						<div class="wrapper">
@@ -82,7 +82,7 @@ function setFindformType(){
 					</div>
 					<div class="findid_contactform" id="findid_contactform">
 					<!-- 연락처로 아이디 찾기 form -->
-					<form action="#contact">
+					<form action="findid_number" method="post">
 						<div class="wrapper" style="margin-bottom: 55px;">
 						</div>
 						<div class="wrapper">

@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.MarketDto;
-import com.ruby.devel.service.MarketMapper;
+import com.ruby.devel.service.impl.MarketMapper;
 import com.ruby.mapper.MarketMapperInter;
 
 

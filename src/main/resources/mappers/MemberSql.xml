@@ -1,10 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruby.devel.service.MemberMapper">
+<mapper namespace="com.ruby.devel.service.impl.MemberMapper">
+	<!-- 회원가입 -->
+	<insert id="addMember" parameterType="member" useGeneratedKeys="true" keyProperty="member_idx"> 
+		INSERT INTO Member(id, password, name, nickname, address, birth, contact_number, email, join_day) VALUES (#{id}, #{password}, #{name}, #{nickname}, #{address}, #{birth}, #{contact_number}, #{email}, now())
+	</insert>
+	<!-- 회원가입 추가정보 -->
+	<update id="addMemberInfo" parameterType="member"> 
+		UPDATE Member SET job=#{job}, age=#{age}, hobby1=#{hobby1}, hobby2=#{hobby2}, hobby3=#{hobby3}, pr=#{pr}, link=#{link} WHERE member_idx=#{member_idx}
+	</update>
+	
+	<!-- 아이디 검증 -->
+	<select id="checkVaildId" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM Member WHERE id=#{id}
+	</select>
+	<!-- 닉네임 검증 -->
+	<select id="checkVaildNickname" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM Member WHERE nickname=#{nickname}
+	</select>
+	
+	<!-- 로그인 처리 -->
+	<select id="login" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) FROM Member WHERE id=#{id} AND password=#{password}
+	</select>
 
-  <select id="getData" parameterType="String" resultType="m_dto">
- 	select * from member where id='na'
- 	<!-- select * from member where num=#{num} -->
-  </select>
-  
+	<!-- 로그인 정보 획득 -->
+	<select id="getName" parameterType="String" resultType="String">
+		SELECT name FROM Member WHERE id=#{id}
+	</select>
+	<select id="getNickname" parameterType="String" resultType="String">
+		select nickname from Member where id=#{id}
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findIdByEmail" parameterType="HashMap" resultType="String">
+		SELECT id FROM Member WHERE name=#{name} AND email=#{email}
+	</select>
+	<select id="findIdByContactNumber" parameterType="HashMap" resultType="String">
+		SELECT id FROM Member WHERE name=#{name} AND contact_number=#{contact_number}
+	</select>
+	<!-- 비밀번호 재설정 -->
+	<select id="resetUserPw" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) FROM Member WHERE id=#{id} name=#{name} AND email=#{email} AND birth=#{birth}
+	</select>
+
+	<!-- 회원 개인정보 수정 -->
+	<update id="modMember" parameterType="member">
+		update Member set name=#{name}, pw=#{pw}, hp=#{hp}, addr=#{addr}, email=#{email}, hp=#{hp} where member_idx=#{member_idx}
+	</update>
+	<!-- 회원 추가정보 수정 -->
+	<update id="modMemberInfo" parameterType="member">
+		update Member set name=#{name}, pw=#{pw}, hp=#{hp}, addr=#{addr}, email=#{email}, hp=#{hp} where member_idx=#{member_idx}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM Member WHERE member_idx=#{member_idx}
+	</delete>
 </mapper>

@@ -1,4 +1,4 @@
-package com.ruby.devel.service;
+package com.ruby.devel.service.impl;
 
 import java.util.HashMap;
 import java.util.List;

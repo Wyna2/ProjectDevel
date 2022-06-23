@@ -10,13 +10,21 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<% 
+response.setHeader("Cache-Control","no-store"); 
+response.setHeader("Pragma","no-cache"); 
+response.setDateHeader("Expires",0); 
+if (request.getProtocol().equals("HTTP/1.1"))
+        response.setHeader("Cache-Control", "no-cache");
+%> 
+
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/member/member_addform.css">
 
 <script type="text/javascript">
 $(function() {
 	// 중복 아이디 검증: ajax
-	$("#idcheck").click(
+	$("#idCheck").click(
 		function() {
 			var id = $("#id").val();
 			$.ajax({
@@ -25,8 +33,9 @@ $(function() {
 				url : "idcheck",
 				data : {"id" : id},
 				success : function(data) {
-					if (data.vaild == 0) {
-						alert("가입가능한 아뒤");
+					if (data.vaildId == 0) {
+						alert("사용 가능한 아이디 입니다.");
+						$("#id_check").val(id);
 					} else {
 						alert("이미 존재하는 아이디 입니다.\n다른 아이디를 입력해주세요.");
 						$("#id").val("");
@@ -40,14 +49,52 @@ $(function() {
 				}
 			});
 		});
+		
+	// 중복 닉네임 검증: ajax
+	$("#nicknameCheck").click(
+		function() {
+			var nickname = $("#nickname").val();
+			$.ajax({
+				type : "get",
+				dataType : "json",
+				url : "nicknamecheck",
+				data : {"nickname" : nickname},
+				success : function(data) {
+					if (data.vaildNickname == 0) {
+						alert("사용 가능한 닉네임 입니다.");
+						$("#nickname_check").val(nickname);
+					} else {
+						alert("이미 사용 중인 닉네임 입니다.\n다른 닉네임을 입력해주세요.");
+						$("#nickname").val("");
+						$("#nickname").focus();
+					}
+				},
+				error : function(request, error) {
+					alert("fail!");
+					// error 발생 원인 출력
+					alert("code:" + request.status + "\n"+ "error message:" + request.responseText+ "\n" + "error:" + error);
+				}
+			});
+		});
 });
 
-// 비밀번호 일치 검증
-function check(form) {
+// 회원가입 데이터 검증
+function checkPass(form) {
+	// 비밀번호 일치 검증
 	if (form.password.value !== form.password_check.value) {
 		alert("비밀번호가 일치하지 않습니다.");
 		form.password.value = "";
 		form.password_check.value = "";
+		return false;
+	}
+	// 아이디 중복확인 체크
+	if (form.id.value !== form.id_check.value) {
+		alert("아이디 중복확인이 필요합니다.");
+		return false;
+	}
+	// 닉네임 중복확인 체크
+	if (form.nickname.value !== form.nickname_check.value) {
+		alert("닉네임 중복확인이 필요합니다.");
 		return false;
 	}
 }
@@ -122,11 +169,12 @@ function search_DaumPostcode() {
 </div>
 <div class="container">
 	<div class="box">
-		<form action="add" method="post" name="frm" onsubmit="return check(this)">
+		<form action="memberadd" method="post" onsubmit="return checkPass(this)">
 			<div class="wrapper">
 				<input type="text" class="input" name="id" id="id" placeholder="아이디 입력하세요" required="required" style="width: 280px;">
+				<input type="hidden" class="input" name="id_check" id="id_check" required="required">
 				<span class="underline_id"></span>
-				<button type="button" class="btn-small" id="idcheck" style="position: absolute; float: left; margin: 10px 0 0 10px;">중복확인</button>
+				<button type="button" class="btn-small" id="idCheck" style="position: absolute; float: left; margin: 10px 0 0 10px;">중복확인</button>
 			</div>
 			<div class="wrapper">
 				<input type="password" class="input" name="password" placeholder="비밀번호를 입력하세요" required="required" autocomplete="off" style="width: 360px;">
@@ -139,9 +187,14 @@ function search_DaumPostcode() {
 				<i class="glyphicon glyphicon-eye-close" id="pwtoggle" style="font-size: 16pt; color: #999999"></i>
 			</div>
 			<div class="wrapper">
-				<input type="text" class="input" name="nickname" placeholder="닉네임을 입력하세요" required="required" style="width: 280px;">
+				<input type="text" class="input" name="name" placeholder="이름을 입력하세요" required="required" style="width: 360px;">
+				<span class="underline"></span>
+			</div>
+			<div class="wrapper">
+				<input type="text" class="input" name="nickname" id="nickname" placeholder="닉네임을 입력하세요" required="required" style="width: 280px;">
+				<input type="hidden" class="input" name="nickname_check" id="nickname_check" required="required">
 				<span class="underline_id"></span>
-				<button type="button" class="btn-small" id="idcheck" style="position: absolute; float: left; margin: 10px 0 0 10px;">중복확인</button>
+				<button type="button" class="btn-small" id="nicknameCheck" style="position: absolute; float: left; margin: 10px 0 0 10px;">중복확인</button>
 			</div>
 			<div class="wrapper">
 				<input type="date" class="input" name="birth" required="required" data-placeholder="생년월일을 입력하세요" style="width: 360px; color: #505050;">
@@ -152,7 +205,7 @@ function search_DaumPostcode() {
 				<button type="button" class="btn-small" style="width: 50px; margin: 0 0 0 6px;" onclick="search_DaumPostcode()">찾기</button><br>
 			</div>
 			<div class="wrapper">
-				<input type="text" class="input" name="addr2" id="addr2" placeholder="상세주소를 입력하세요" style="width: 299px;">
+				<input type="text" class="input" name="addr2" id="addr2" placeholder="상세주소를 입력하세요(선택)" style="width: 299px;">
 				<span class="underline_addr"></span>
 				<input type="text" class="input" name="zipcode" id="zipcode" readonly="readonly" style="width: 50px;">
 			</div>

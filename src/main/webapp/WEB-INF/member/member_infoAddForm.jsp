@@ -47,8 +47,9 @@ $(function() {
 			<div style="text-align: center; margin-bottom: 30px; color: #505050; ">
 				<b>회원가입을 환영합니다.</b><br> 몇가지 추가정보를 입력하면 활동이 가능합니다.
 			</div>
-			<form action="#" method="post">
+			<form action="memberinfoadd" method="post">
 				<div class="wrapper">
+				<input type="hidden" name="member_idx" id="idx" required="required" readonly="readonly" value="${member_idx }"> 
 					직업&nbsp;&nbsp;
 					<input type="text" class="input" name="job" id="addr2" placeholder="직업을 입력하세요" required="required" style="width: 320px;"> 
 					<span class="underline"></span> 
@@ -81,7 +82,7 @@ $(function() {
 				</div>
 				<div class="wrapper">
 					<div style="position:relative; margin-bottom: 10px;">소개글</div>
-					<textarea class="select" style="resize: none;" placeholder="50자 이내"></textarea>
+					<textarea class="select" name="pr" style="resize: none;" placeholder="50자 이내"></textarea>
 					<div style="font-size:12px; letter-spacing :-0.1em; position: relative; margin-bottom: 10px; color: #505050">
 					* 운영정책에 위배되는 내용 기입 시 서비스 이용이 제한될 수 있습니다.</div>
 				</div>

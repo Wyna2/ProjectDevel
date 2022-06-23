@@ -27,7 +27,7 @@
 			</div>
 			<div style="text-align: center; font-size: 1.5em;" >
 				<!-- 아이디 찾기 통해서 나온 db 결과값 출력 -->
-				[찾은 아이디]
+				${finderResult }
 			</div>
 			<hr style="margin: 35px 0 0 0;">
 			<button class="btn-large2" style="margin: 40px 0 35px 0;" type="button">비밀번호 찾기</button>
