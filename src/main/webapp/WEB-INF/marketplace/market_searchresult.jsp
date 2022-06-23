@@ -178,14 +178,6 @@ $(function(){
 					</a>
 				</c:forTokens>
 				
-				<!-- 여러 사진 한번에 보이기 -->
-				<%--
-				<c:forTokens var="p" items="${a.photo}" delims=",">
-					<a href="../photo/${p}">
-						<img src="../photo/${p}" style="width: 220px; height: 220px;" class="photo">
-					</a>
-				</c:forTokens>
-				--%>
 			</c:if>
 			
 			<!-- 이미지 없을 경우 기본 이미지 -->
@@ -216,10 +208,6 @@ $(function(){
 					</c:forTokens>
 				</c:if>
 								
-				<%-- <!-- 이미지 없을 경우 기본 이미지 -->
-				<c:if test="${a.photo='no'}">
-					<img src="../photo/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
-		  		</c:if> --%>
 			</div>
 			
 			<div class="sangpumlistdetail" style="border: 0px solid black">
