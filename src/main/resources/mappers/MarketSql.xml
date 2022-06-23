@@ -4,10 +4,7 @@
 
   
   <select id="getTotalCount" resultType="int">
-    select count(*) from Marketplace
-    <!-- 이곳에 조건을 사용한다. -->
-    <include refid="search"/>
-    
+    select count(*) from Marketplace    
   </select>
   
   <insert id="insertMarket" parameterType="mp_dto">
