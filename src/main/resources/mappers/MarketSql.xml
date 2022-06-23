@@ -17,6 +17,7 @@
 	select * from Marketplace order by upload_day asc
   </select>
   
+  
   <select id="getList" parameterType="HashMap" resultType="mp_dto">
   	select * from Marketplace
   	<!-- 이곳에 조건을 사용한다. -->

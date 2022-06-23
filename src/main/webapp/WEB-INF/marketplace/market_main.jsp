@@ -144,7 +144,7 @@ $(function(){
 		<!--marketplace 상품 총 갯수-->
 		${totalCount}
 		</span>	
-		<span class="sangpumcountcomment">개의 상품이 있습니다.1</span>		
+		<span class="sangpumcountcomment">개의 상품이 있습니다.</span>		
 	</div>
 	
 	<form>
