@@ -37,6 +37,7 @@ public class MarketplaceController {
 		int totalCount = Mmapper.getTotalCount();
 		//List<MarketDto> list = mapper.getAllDatas();
 		
+		
 		//페이징처리에 필요한 변수
 		int totalPage; //총 페이지수
 		int startPage; //각블럭의 시작페이지

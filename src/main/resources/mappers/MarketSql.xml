@@ -17,6 +17,7 @@
 	select * from Marketplace order by upload_day asc
   </select>
   
+  
   <select id="getList" parameterType="HashMap" resultType="mp_dto">
   	select * from Marketplace
   	<!-- 이곳에 조건을 사용한다. -->
@@ -32,19 +33,10 @@
  	delete from Marketplace where market_place_idx=#{market_place_idx}
   </delete>
   
-  <!--검색 했을때 리스트 다시 그려주는 sql문  -->
-  <select id="SearchGetList" parameterType="HashMap" resultType="mp_dto">
-   select * from Marketplace where subject like '%#{SearchText}%' or brandname like '%#{SearchText}%' or content like '%#{SearchText}%'
-  </select>
-  
   <sql id="search">
   	<!-- 검색어가 존재하는 경우애만 검색을 실행한다. mybytis 문서 참조 -->
-  	<if test="word != null and word != ''.toString()">
-  	where 
-  	 	 subject like '%'||#{word}||'%'
-  	 	or brandname like '%'||#{word}||'%'
-  	 	or content like '%'||#{word}||'%'	 
-
+  	<if test="word != null">
+  	where subject like concat('%',#{word},'%')
   	</if>
   </sql>
   
