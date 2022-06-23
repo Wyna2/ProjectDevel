@@ -19,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.MarketDto;
 import com.ruby.devel.service.impl.MarketMapper;
-import com.ruby.mapper.MarketMapperInter;
 
 
 @Controller
