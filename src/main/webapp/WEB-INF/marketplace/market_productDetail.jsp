@@ -139,9 +139,10 @@
 					</div> 
 					
 					<div class="btn" style="padding: 0px;">
-						<button type="button" class="btn-list"
-						onclick="location.href='market_main?currentPage=${currentPage}'">목록보기</button>
-					</div>
+                        <button type="button" class="btn-list"
+                        onclick="location.href='${root }/marketplace?currentPage=${currentPage}'">목록보기</button>
+                    </div>
+                    
 				</div>
 			</div>
 		</div>

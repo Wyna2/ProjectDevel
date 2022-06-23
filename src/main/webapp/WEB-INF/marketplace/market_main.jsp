@@ -256,34 +256,35 @@ $(function(){
 
 
 	<!-- 페이징 -->
-	<div class="pagesort">
-	<c:if test="${totalCount>0}">
-		<div class="page" align="center" style="margin-top: 50px;">	
-			<!-- 이전 -->
-			<c:if test="${startPage>1}">
-				<a href="market_main?currentPage=${startPage-1}">
-					<img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
-				</a>
-			</c:if>
-			
-			<c:forEach var="pp" begin="${startPage}" end="${endPage}">
-				<c:if test="${currentPage==pp}">
-					<a id="pagecnum" href="market_main?currentPage=${pp}"><b>${pp}</b></a>
-				</c:if>
-				<c:if test="${currentPage!=pp}">
-					<a id="pagenum" href="market_main?currentPage=${pp}">${pp}</a>
-				</c:if>
-			</c:forEach>
-			
-			<!-- 다음 -->
-			<c:if test="${endPage<totalPage}">
-				<a href="market_main?currentPage=${endPage+1}">
-					<img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
-				</a>
-			</c:if>
-		</div>
-	</c:if>
-	</div>
+    <div class="pagesort">
+    <c:if test="${totalCount>0}">
+        <div class="page" align="center" style="margin-top: 50px;"> 
+            <!-- 이전 -->
+            <c:if test="${startPage>1}">
+                <a href="market_main?currentPage=${startPage-1}">
+                    <img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
+                </a>
+            </c:if>
+            
+            <c:forEach var="pp" begin="${startPage}" end="${endPage}">
+                <c:if test="${currentPage==pp}">
+                    <a id="pagecnum" href="marketplace?currentPage=${pp}"><b>${pp}</b></a>
+                </c:if>
+                <c:if test="${currentPage!=pp}">
+                    <a id="pagenum" href="marketplace?currentPage=${pp}">${pp}</a>
+                </c:if>
+            </c:forEach>
+            
+            <!-- 다음 -->
+            <c:if test="${endPage<totalPage}">
+                <a href="market_main?currentPage=${endPage+1}">
+                    <img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
+                </a>
+            </c:if>
+            
+        </div>
+    </c:if>
+    </div>
 	
 </div>
 </body>
