@@ -142,6 +142,7 @@
                         <button type="button" class="btn-list"
                         onclick="location.href='${root }/marketplace?currentPage=${currentPage}'">목록보기</button>
                     </div>
+                    
 				</div>
 			</div>
 		</div>

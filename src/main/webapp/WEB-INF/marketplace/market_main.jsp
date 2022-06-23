@@ -285,7 +285,6 @@ $(function(){
         </div>
     </c:if>
     </div>
-
 	
 </div>
 </body>
