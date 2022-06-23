@@ -133,7 +133,9 @@ $(function(){
 });
 </script>
 </head>
-
+<%
+	String word=request.getParameter("word");
+%>
 <body>
 <div class="container">
 	<div class="marketfirst">
