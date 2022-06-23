@@ -14,6 +14,7 @@ public class MarketDto {
 	private String market_place_idx;
 	private String member_idx;
 	private String buyer;
+	private String seller;
 	private String category;
 	private String brandname;
 	private String subject;

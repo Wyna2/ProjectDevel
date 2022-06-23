@@ -26,10 +26,10 @@
 
 	<!-- 로그인 정보 획득 -->
 	<select id="getName" parameterType="String" resultType="String">
-		SELECT name FROM Member WHERE id=#{id}
+		SELECT name FROM Member WHERE member_idx=#{member_idx}
 	</select>
 	<select id="getNickname" parameterType="String" resultType="String">
-		select nickname from Member where id=#{id}
+		select nickname from Member where member_idx=#{member_idx}
 	</select>
 	<select id="getUserKey" parameterType="String" resultType="String">
 		select member_idx from Member where id=#{id}

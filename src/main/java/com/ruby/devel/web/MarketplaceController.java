@@ -86,9 +86,7 @@ public class MarketplaceController {
 		mview.addObject("no",no);
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("totalCount",totalCount);
-
-		mview.addObject("list", list);
-
+		
 		mview.setViewName("m/marketplace/market_main");
 				
 		return mview;
