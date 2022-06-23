@@ -68,6 +68,7 @@ $(function () {
 		<a href="/challenge" style="text-decoration: none;">챌린지</a>
 		</span>
 	</div>
+	<c:if test="${sessionScope.loginOK==null }">
 	<div class="menuitem_member" style="margin-left: 450px;">
 		<span class="membermenu">
 		<a href="/login" style="text-decoration: none;">로그인</a>
@@ -78,7 +79,21 @@ $(function () {
 		<a href="/signup" style="text-decoration: none;">회원가입</a>
 		</span>
 	</div>
-
+	</c:if>
+	<c:if test="${sessionScope.loginOK!=null }">
+	
+	<div class="menuitem_member" style="margin-left: 450px;">
+		<span class="membermenu">
+		<b>${sessionScope.userName }님</b>
+		</span>
+	</div>
+	<div class="menuitem_member">
+		<span class="membermenu">
+		<a href="/logout" style="text-decoration: none;">로그아웃</a>
+		</span>
+	</div>
+	</c:if>
+	
 </div>
 <div class="dropmenu" style="z-index: 9999;">
 		<ul class="dropmenu_ul">
