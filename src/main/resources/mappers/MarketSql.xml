@@ -20,10 +20,7 @@
   
   
   <select id="getList" parameterType="HashMap" resultType="mp_dto">
-  	select * from Marketplace
-  	<!-- 이곳에 조건을 사용한다. -->
-  	<include refid="search"/>
-  	 order by upload_day desc limit #{start}, #{perPage}
+  	select * from Marketplace order by upload_day desc limit #{start}, #{perPage}
   </select>
   
   <select id="getData" parameterType="String" resultType="mp_dto">
@@ -34,11 +31,9 @@
  	delete from Marketplace where market_place_idx=#{market_place_idx}
   </delete>
   
-  <sql id="search">
-  	<!-- 검색어가 존재하는 경우애만 검색을 실행한다. mybytis 문서 참조 -->
-  	<if test="word != null">
-  	where subject like concat('%',#{word},'%')
-  	</if>
-  </sql>
+  <select id="SearchGetList" parameterType="HashMap" resultType="mp_dto">
+  select * from Marketplace where subject like concat('%',#{word},'%') order by upload_day asc
+  </select>
+  
   
 </mapper>
