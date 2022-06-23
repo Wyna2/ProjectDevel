@@ -11,7 +11,7 @@
   </select>
   
   <insert id="insertMarket" parameterType="mp_dto">
-	insert into Marketplace (category,brandname,subject,photo,original_price,price,color,content,upload_day) values (#{category},#{brandname},#{subject},#{photo},#{original_price},#{price},#{color},#{content},now())
+	insert into Marketplace (member_idx,buyer,category,brandname,subject,photo,original_price,price,color,content,upload_day) values (#{member_idx},#{buyer},#{category},#{brandname},#{subject},#{photo},#{original_price},#{price},#{color},#{content},now())
   </insert>
   
   <select id="getAllDatas" resultType="mp_dto">
