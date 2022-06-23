@@ -84,7 +84,7 @@ $(function () {
 	
 	<div class="menuitem_member" style="margin-left: 450px;">
 		<span class="membermenu">
-		<b>${sessionScope.userName }님</b>
+		<b>${sessionScope.userName}님</b>
 		</span>
 	</div>
 	<div class="menuitem_member">

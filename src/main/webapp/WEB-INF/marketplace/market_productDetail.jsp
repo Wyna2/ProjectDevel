@@ -41,7 +41,6 @@
 
 </head>
 <body>
-<input type="hidden" name="member_idx" value="${userKey}">
 	<div class="container">
 		<div class="container1" style="position: relative; height: 720px;">
 			<div style="width: 712px; float: left;">
@@ -135,8 +134,9 @@
 
 				<div class="buttongroup" style="margin-top: 25px; text-align: right;">
 					
+					
 					<!-- 등록자 화면에만 보이도록 구현  -->
-					<c:if test="${member_idx==dto.member_idx}">
+					<c:if test="${userKey==dto.member_idx}">
 						<div class="btn2" style="float: left; margin-left: 170px;">
 							<button type="button" class="btn-complete">거래 완료 처리 </button>
 						</div> 
