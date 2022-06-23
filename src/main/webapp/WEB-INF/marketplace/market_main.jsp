@@ -147,15 +147,14 @@ $(function(){
 		<span class="sangpumcountcomment">개의 상품이 있습니다.</span>		
 	</div>
 	
-	<form>
+	
 	<div class="search" style="border: solid 1px #dbdbdb;">
 	
 		<input type="text"  class="searchtext" id="searchtext" name="word">
 		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>
-		            <button type="submit">검색</button>	
 		</a>
 	</div>
-	</form>
+	
 	
 	
 	<div class="changelist">

@@ -29,7 +29,7 @@
   </delete>
   
   <select id="SearchGetList" parameterType="HashMap" resultType="mp_dto">
-  select * from Marketplace where subject like concat('%',#{word},'%') order by upload_day asc
+  select * from Marketplace where subject like concat('%',#{SearchText},'%') order by upload_day asc
   </select>
   
   

@@ -117,7 +117,7 @@ $(function(){
 </script>
 </head>
 <%
-	String GetText=request.getParameter("SearchText");
+	String SearchText=request.getParameter("SearchText");
 %>
 
 <body>
@@ -134,7 +134,7 @@ $(function(){
 	</div>
 		
 	<div class="search" style="border: solid 1px #dbdbdb;">
-		<input type="text" value="${GetText}" class="searchtext">
+		<input type="text" value="<%=SearchText %>" class="searchtext">
 		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>	</a>
 	</div>
 	
