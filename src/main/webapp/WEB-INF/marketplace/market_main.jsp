@@ -76,7 +76,7 @@ $(function(){
 		alert(i);
 	});
 	
-	<%--검색어에 관련된 정보 테이블 출력--%>
+	<%-- <%--검색어에 관련된 정보 테이블 출력--%>
 	$(".searchicon").click(function(){
 		var SearchText=$(".searchtext").val();
 		
@@ -100,7 +100,7 @@ $(function(){
 
 		alert(i);
 		//location.reload();		
-	});
+	}); --%>
 
 	
 	<%--목록 테이블 하트 이벤트--%>
@@ -149,10 +149,12 @@ $(function(){
 	
 	
 	<div class="search" style="border: solid 1px #dbdbdb;">
-	
-		<input type="text"  class="searchtext" id="searchtext" name="word">
-		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>
-		</a>
+	<form action="search">
+		<input type="text"  class="searchtext" id="searchtext" name="SearchText" placeholder="검색어를 입력하세요.">
+		<button type="submit" class="searchbtn">
+		<span class="glyphicon glyphicon-search searchicon"></span>
+		</button>
+	</form>
 	</div>
 	
 	

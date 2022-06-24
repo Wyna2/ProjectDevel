@@ -28,8 +28,13 @@
  	delete from Marketplace where market_place_idx=#{market_place_idx}
   </delete>
   
+  <!-- 검색 기능 -->
   <select id="SearchGetList" parameterType="HashMap" resultType="mp_dto">
-  select * from Marketplace where subject like concat('%',#{SearchText},'%') order by upload_day asc
+  select * from Marketplace where subject like concat('%',#{SearchText},'%') order by upload_day asc limit #{start}, #{perPage}
+  </select>
+  
+  <select id="getSearchCount">
+   select * from Marketplace where subject like concat('%',#{SearchText},'%') order by upload_day asc
   </select>
   
   

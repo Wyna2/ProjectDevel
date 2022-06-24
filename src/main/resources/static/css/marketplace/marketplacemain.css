@@ -506,3 +506,12 @@ div.pagesort {
 	margin: 0 5px 0 5px;
 }
 
+
+/*검색 submit 버튼*/
+.searchbtn{
+	position: absolute;
+	top: 7px;
+	border: 0;
+	outline: 0;
+	background: #fff;
+}
