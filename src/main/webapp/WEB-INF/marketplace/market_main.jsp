@@ -150,7 +150,7 @@ $(function(){
 	
 	
 	<div class="search" style="border: solid 1px #dbdbdb;">
-	<form action="search">
+	<form action="/marketplace/search">
 		<input type="text"  class="searchtext" id="searchtext" name="SearchText" placeholder="검색어를 입력하세요.">
 		<button type="submit" class="searchbtn">
 		<span class="glyphicon glyphicon-search searchicon"></span>

@@ -19,9 +19,7 @@
 div.main {
 background-color: #fff !important;
 }
-/* #d1{
-	color: red;
-} */
+
 </style>
 
 <script type="text/javascript">
@@ -134,8 +132,12 @@ $(function(){
 	</div>
 		
 	<div class="search" style="border: solid 1px #dbdbdb;">
-		<input type="text" value="<%=SearchText %>" class="searchtext">
-		<a href="#"><span class="glyphicon glyphicon-search searchicon"></span>	</a>
+	<form action="/marketplace/search">
+		<input type="text"  class="searchtext" id="searchtext" name="SearchText" placeholder="${SearchText}">
+		<button type="submit" class="searchbtn">
+		<span class="glyphicon glyphicon-search searchicon"></span>
+		</button>
+	</form>
 	</div>
 	
 	<div class="changelist">
@@ -197,7 +199,7 @@ $(function(){
 
 
 	<%--리스트 테이블 --%>
-	<c:forEach var="a" items="${list}">
+	<c:forEach var="a" items="${Searchlist}">
 		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;">
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
 				<c:if test="${a.photo!='no'}">
