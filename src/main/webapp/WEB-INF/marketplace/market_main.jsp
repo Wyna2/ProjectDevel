@@ -28,8 +28,7 @@ background-color: #fff !important;
 $(function(){
 	$(".sangpumlistdiv").hide();
 	$(".pagenumlist").hide();
-	
-	
+
 	
 	<%--목록형 테이블--%>
 	$("span.large").click(function(){
@@ -262,7 +261,7 @@ $(function(){
         <div class="page" align="center" style="margin-top: 50px;"> 
             <!-- 이전 -->
             <c:if test="${startPage>1}">
-                <a href="market_main?currentPage=${startPage-1}">
+                <a href="marketplace?currentPage=${startPage-1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
                 </a>
             </c:if>
@@ -278,7 +277,7 @@ $(function(){
             
             <!-- 다음 -->
             <c:if test="${endPage<totalPage}">
-                <a href="market_main?currentPage=${endPage+1}">
+                <a href="marketplace?currentPage=${endPage+1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
                 </a>
             </c:if>

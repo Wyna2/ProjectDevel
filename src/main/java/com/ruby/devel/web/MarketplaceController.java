@@ -209,14 +209,11 @@ public class MarketplaceController {
 		mview.addObject("dto", dto);
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("list", list);
-		
-		System.out.println(list);
-	    
+			    
 	    //dto의 name에 작성자 이름 넣기
 	    String seller = Mmapper.getName(dto.getMember_idx());
 	    dto.setSeller(seller);
-	    
-	    System.out.println(seller);
+		/* System.out.println(seller); */
 		
 		//포워드
 		mview.setViewName("/marketplace/market_productDetail");

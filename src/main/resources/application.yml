@@ -6,6 +6,10 @@ spring:
    # view:
       #prefix: /WEB-INF/ipgo/
       #suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB        
   devtools:
     livereload:
       enabled: true
