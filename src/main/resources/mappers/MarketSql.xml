@@ -30,11 +30,11 @@
   
   <!-- 검색 기능 -->
   <select id="SearchGetList" parameterType="HashMap" resultType="mp_dto">
-  select * from Marketplace where subject like concat('%',#{SearchText},'%') order by upload_day asc limit #{start}, #{perPage}
+  select * from Marketplace where subject like concat('%',#{SearchText},'%') order by upload_day desc limit #{start}, #{perPage}
   </select>
   
   <select id="getSearchCount" resultType="int" parameterType="String">
-   select count(*) from Marketplace where subject like concat('%',#{SearchText},'%') order by upload_day asc
+   select count(*) from Marketplace where subject like concat('%',#{SearchText},'%')
   </select>
   
   
