@@ -76,7 +76,8 @@ $(function(){
 		alert(i);
 	});
 	
-	<%-- <%--검색어에 관련된 정보 테이블 출력--%>
+	<%--검색어에 관련된 정보 테이블 출력--%>
+	/*
 	$(".searchicon").click(function(){
 		var SearchText=$(".searchtext").val();
 		
@@ -100,7 +101,8 @@ $(function(){
 
 		alert(i);
 		//location.reload();		
-	}); --%>
+	});
+	*/
 
 	
 	<%--목록 테이블 하트 이벤트--%>
