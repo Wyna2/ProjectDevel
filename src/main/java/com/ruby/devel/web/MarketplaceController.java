@@ -93,7 +93,7 @@ public class MarketplaceController {
 		return mview;
 	}
 	
-	//마켓 검색후 테이블 매핑
+	//마켓 검색후 테이블 테스트
 	@GetMapping("/marketplace/searchtest")
 	public ModelAndView search(
 			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage,

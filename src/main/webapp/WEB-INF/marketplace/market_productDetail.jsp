@@ -144,8 +144,19 @@
 
 					
 					<div class="btn" style="padding: 0px;">
-                        <button type="button" class="btn-list"
-                        onclick="location.href='${root }/marketplace?currentPage=${currentPage}'">목록보기</button>
+						 <c:if test="${SearchText==null}">
+							<button type="button" class="btn-list"
+	                        onclick="location.href='${root }/marketplace?currentPage=${currentPage}'">목록보기</button>
+						</c:if>
+						
+						<c:if test="${SearchText!=null}">
+							<button type="button" class="btn-list"
+	                        onclick="location.href='${root }/marketplace/search?SearchText=${SearchText}&currentPage=${currentPage}'">목록보기</button>
+						</c:if>
+						
+						<%-- <button type="button" class="btn-list"
+	                        onclick="location.href='${root }/marketplace?currentPage=${currentPage}'">목록보기</button> --%>
+                        
                     </div>
                     
 				</div>
