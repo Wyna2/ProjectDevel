@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ruby.devel.model.MemberDto;
 import com.ruby.devel.service.impl.MemberMapper;
 
-import com.ruby.devel.service.impl.MemberMapper;
 
 @Controller
 public class MemberController {

@@ -15,8 +15,18 @@
 
 <title>Insert title here</title>
 
-<!-- 이미지 파일 업로드 후 이벤트 -->
 <script type="text/javascript">
+$(function() {
+		
+	/* input 클릭시 해당 값 age에 넣기 */
+	$(".ageselect").change(function() {
+		$("#age").val($(".ageoption").val());
+ 	});
+	
+});
+
+
+<!-- 이미지 파일 업로드 후 이벤트 -->
 function previewFile() {
   const preview = document.querySelector('#myimg');
   const file = document.querySelector('input[type=file]').files[0];
@@ -36,7 +46,6 @@ function previewFile() {
   if (file) {
 	  reader.readAsDataURL(file);
   }
-  
 }
 </script>
 
@@ -57,20 +66,26 @@ background-color: #fff !important;
 <body>
 <!-- main -->
 <form action="update" method="post" enctype="multipart/form-data">
-<!-- hidden 넘기기, value 값 주기 -->
-<input type="hidden" name="id" value="${dto.id}">
+
+<input type="hidden" name="userKey" id="userKey" value="${userKey}">
 
 <div class="main_title">마이페이지</div>
 <hr id="main_hr">
+
 <div id="updateform" class="main_content">
 	<!-- 마이프로필(이미지) -->
 	<div class="div1" align="center" style="margin-top: 100px;">
 		<a href="javascript:void(0);" class="imgUploadBtn"
 		onclick="$('#imgUpload').trigger('click')">
-			<img src="${root }/element/icon_noimg.png" id="myimg" name="photo">
+			<c:if test="${dto.photo=='no'}">
+				<img src="${root}/element/icon_noimg.png" id="myimg">
+			</c:if>
+			<c:if test="${dto.photo!='no'}">
+				<img src="${root}/photo/${dto.photo}" id="myimg">
+			</c:if>
 		</a>
 		<input type="file" id="imgUpload" onchange="previewFile()"
-		accept="image/*" style="display:none">
+		accept="image/*" name="imgUpload" style="display:none">
 	</div>
 	
 	<!-- 마이페이지 정보 -->
@@ -81,78 +96,80 @@ background-color: #fff !important;
 		</div>
 		<div class="txt">
 			<div class="title">아이디</div>
-			<div id="id">test</div>
+			<div id="id">${dto.id}</div>
 		</div>
 		<div class="txt">
 			<div class="title">이메일</div>
-			<div id="email">test@gmail.com</div>
+			<div id="email">${dto.email}</div>
 		</div>
 		<div class="txt">
 			<div class="title">비밀번호</div>
-			<button type="button" class="btn_pw">비밀번호 재설정</button>
+			<button type="button" class="btn_pw"
+			onclick="location.href='${root}/pwreset'">비밀번호 재설정</button>
 		</div>
 		<div class="txt">
 			<div class="title">닉네임</div>
 			<div id="nickname">
-				<input class="input" type="text" placeholder="Wyna">
+				<input class="input" type="text" name="nickname" value="${dto.nickname}">
 				<span class="underline"></span>
 			</div>
 		</div>
 		<div class="txt">
 			<div class="title">주소</div>
 			<div id="address">
-				<input class="input" type="text" placeholder="서울시 강남구">
+				<input class="input" type="text" name="address" value="${dto.address}">
 				<span class="underline"></span>
 			</div>
 		</div>
 		<div class="txt">
 			<div class="title">연락처</div>
 			<div id="contact_number">
-				<input class="input" type="text" placeholder="010-1234-5678">
+				<input class="input" type="text" name="contact_number" value="${dto.contact_number}">
 				<span class="underline"></span>
 			</div>
 		</div>
 		<div class="txt">
 			<div class="title">생년월일</div>
-			<input class="input" type="date">
+			<input class="input" name="birth" value="${dto.birth}" type="date">
 		</div>
-		
 		
 		<div class="sub_title">추가정보입력(선택사항)</div>
 		<div class="txt">
 			<div class="title">연령</div>
-			<div id="age">
-				<select class="input">
-					<option>10-</option>
-					<option>20</option>
-					<option>30</option>
-					<option>40</option>
-					<option>50</option>
-					<option>60+</option>
+			<div class="ageselect">
+				<input type="hidden" id="age" name="age" value="${dto.age}">
+				<select class="ageoption">
+					<option value="10-" <c:if test="${dto.age=='10-'}">selected="selected"</c:if>>10대-</option>
+					<option value="20" 	<c:if test="${dto.age=='20'}">selected="selected"</c:if>>20대</option>
+					<option value="30" 	<c:if test="${dto.age=='30'}">selected="selected"</c:if>>30대</option>
+					<option value="40" 	<c:if test="${dto.age=='40'}">selected="selected"</c:if>>40대</option>
+					<option value="50" 	<c:if test="${dto.age=='50'}">selected="selected"</c:if>>50대</option>
+					<option value="60+" <c:if test="${dto.age=='60+'}">selected="selected"</c:if>>60대+</option>
 				</select>
 			</div>
 		</div>
+		
 		<div class="txt">
 			<div class="title">직업</div>
 			<div id="job">
-				<input class="input" type="text" placeholder="비공개">
+				<input class="input" type="text" name="job" value="${dto.job}">
 				<span class="underline"></span>
 			</div>
 		</div>
 		<div class="txt">
 			<div class="title">관심분야</div>
-			<input class="tag" id="hobby1" type="text" placeholder="취미1">
-			<input class="tag" id="hobby2" type="text" placeholder="취미2">
-			<input class="tag" id="hobby3" type="text" placeholder="취미3">		
+			<input class="tag" id="hobby1" type="text" name="hobby1" value="${dto.hobby1}">
+			<input class="tag" id="hobby2" type="text" name="hobby2" value="${dto.hobby2}">
+			<input class="tag" id="hobby3" type="text" name="hobby3" value="${dto.hobby3}">		
 		</div>
 		<div class="txt">
 			<div class="title">한줄소개</div>
 		</div>
 		<div>
-			<textarea id="pr" placeholder="한 줄 소개를 입력하세요"></textarea>
+			<textarea name="pr" id="pr" placeholder="한 줄 소개를 입력하세요">${dto.pr}</textarea>
 		</div>
 		
-		<button type="button" class="btn_update">회원정보수정</button>
+		<button type="submit" class="btn_update">회원정보수정</button>
 	</div>
 </div>
 </form>

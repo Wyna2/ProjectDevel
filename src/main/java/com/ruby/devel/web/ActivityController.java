@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ruby.devel.model.MemberDto;
 import com.ruby.devel.service.impl.MemberMapper;
 
 @Controller
@@ -19,24 +21,6 @@ public class ActivityController {
 	{
 		return "a/activity/activity_main";  // /a/activity/(파일명)
 	}
-	
-	
-	//mypage
-	@GetMapping("/activity/mypage")
-	public String activity_mypage(Model model,
-			@RequestParam String id)
-	{
-		
-		
-		return "/activity/activity_myInfo";
-	}
-	
-	//mypage update
-	
-	
-	
-	
-	
 	
 	@GetMapping("/activity/mycommunity")  // 내가 커뮤니티에 작성 한 글을 모아보는 페이지
 	public String activity_write()

@@ -49,7 +49,7 @@ div.div1 {
 
 
 /* input */
-.input,.tag {
+.input,.tag,.ageoption {
   border: none;
   border-bottom: 1px solid #CCC;
   color: #767676;
