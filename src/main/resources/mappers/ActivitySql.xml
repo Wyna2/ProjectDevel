@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruby.devel.service.impl.ActivityMapper">
-	<!-- 나의거래목록 -->
+	
+	<!-- 나의 작성글 목록 -->
+	<select id="getWriteCount" parameterType="String" resultType="int">
+		select count(*) from Community where member_idx=#{userKey}
+	</select>
+	<select id="getWritePageDatas" parameterType="HashMap" resultType="c_dto">
+		select * from Community where member_idx=#{userKey} order by write_day desc limit #{start}, #{perPage}
+	</select>
+	<select id="getWriteDatas" parameterType="String" resultType="c_dto">
+		select * from Community where member_idx=#{userKey} order by write_day desc
+	</select>
+		
+	<!-- 나의 거래 목록 -->
 	<select id="getMarketDatas" parameterType="String" resultType="mp_dto">
 		select * from Marketplace where member_idx=#{userKey} order by upload_day desc
 	</select>

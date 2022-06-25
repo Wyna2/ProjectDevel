@@ -41,6 +41,7 @@ span.side_main_span_main {
 	</div>
 	
 	
+	
 	<!-- 나의 작성글 목록 -->
 	<div class="main_name2">
 		<span class="main_span_write">나의 작성글 목록</span>
@@ -48,16 +49,13 @@ span.side_main_span_main {
 	</div>
 	<div class="main_detail2">
 		<!-- 내 작성글 글 제목 값 가져오기 -->
-		<div class="detail_write">
-		작성글이입력됩니다.작성글이입력됩니다.작성글이입력됩니다.작성글이입력됩니다.작성글이입력됩니다.작성글이입력됩니다.작성글이입력됩니다.
-		</div>
-		<hr style="border: solid 0.5px #767676;">
-		<div class="detail_write">내 작성글2</div>
-		<hr style="border: solid 0.5px #767676;">
-		<div class="detail_write">내 작성글3</div>
-		<hr style="border: solid 0.5px #767676;">
+		<c:forEach var="dto" items="${clist}" begin="0" end="2">
+			<div class="detail_write">${dto.subject}</div>
+			<hr style="border: solid 0.5px #767676;">
+		</c:forEach>
 	</div>
 	<a href="../activity/mycommunity"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
+	
 	
 	
 	<!-- 나의 거래 목록 -->
@@ -91,7 +89,8 @@ span.side_main_span_main {
 	</div>
 	<a href="../activity/mymarketplace"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
 	
-	
+
+
 	<!-- 나의 챌린지 목록 -->
 	<div class="main_name4">
 		<span class="main_span_challenge">나의 챌린지 목록</span>

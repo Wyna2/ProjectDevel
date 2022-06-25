@@ -496,11 +496,15 @@ div.pagesort {
 .page {
 	position: relative;
 }
+#pagelbtn,#pagerbtn {
+	text-decoration: none;
+}
 #pagecnum {
 	color: #ff4b4e;
 }
 #pagenum,#pagecnum {
 	margin: 0 10px 0 10px;
+	text-decoration: none;
 }
 #pagebtn {
 	margin: 0 5px 0 5px;

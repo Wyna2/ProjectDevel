@@ -296,6 +296,28 @@ div.write_sub {
 	margin: 0 5px 0 5px;
 }
 
+/* 페이징 */
+.page {
+	position: relative;
+}
+#pagelbtn,#pagerbtn {
+	text-decoration: none;
+}
+#pagecnum {
+	color: #ff4b4e;
+}
+#pagenum,#pagecnum {
+	margin: 0 10px 0 10px;
+	text-decoration: none;
+}
+#pagebtn {
+	margin: 0 5px 0 5px;
+}
+
+
+
+
+
 /* main css 끝 */
 /* 2. 나의활동>작성글목록 끝 */
 
