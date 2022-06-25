@@ -11,5 +11,7 @@ public interface MyinfoMapper {
 	
 	//회원정보 수정하기
 	public void updateInfo(MemberDto dto);
+	
+	
 
 }

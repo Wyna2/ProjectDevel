@@ -13,7 +13,7 @@ import com.ruby.devel.service.impl.MemberMapper;
 @Controller
 public class ActivityController {
 	
-	@Autowired
+	@Autowired //Member 자동주입
 	MemberMapper Mmapper;
 
 	@GetMapping("/activity")  // 'activity' 아이콘 선택 시 기본 페이지(모아보기) 이동

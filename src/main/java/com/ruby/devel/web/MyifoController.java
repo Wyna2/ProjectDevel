@@ -46,30 +46,30 @@ public class MyifoController {
 	@PostMapping("/activity/update")
 	public String update(
 			@ModelAttribute MemberDto dto,
+			@ModelAttribute String photo,
 			@RequestParam MultipartFile imgUpload,
 			HttpSession session)
-	{			
+	{	
+		//세션에서 얻은 userKey dto에 저장
+		String key = (String)session.getAttribute("userKey");
+		dto.setMember_idx(key);
+		
 		//이미지 저장 경로
 		String path = session.getServletContext().getRealPath("/photo"); //webapp/photo에 바로 넣기
 
-		//업로드 안하면 no라고 db에 저장
-		if(imgUpload.getOriginalFilename().equals("")) 
-			dto.setPhoto("no"); //db에 no로 저장
-		else {
+		//새로운 파일이 등록되어 있는지 확인(새로운 파일 등록)
+		if(imgUpload.getOriginalFilename()!="" && imgUpload.getOriginalFilename()!=null) {
 			dto.setPhoto(imgUpload.getOriginalFilename());
-
 			//실제 업로드
 			try {
 				imgUpload.transferTo(new File(path+"\\"+imgUpload.getOriginalFilename()));
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-		}		
-		
-		//세션에서 얻은 userKey dto에 저장
-		String key = (String)session.getAttribute("userKey");
-		dto.setMember_idx(key);
-		
+		} else if(photo.equals("") || photo.equals("null")) {
+			dto.setPhoto("no");//업로드 안하고 기존 파일 null일때 db에 no로 저장
+		} 
+				
 		//update
 		MImapper.updateInfo(dto);
 		

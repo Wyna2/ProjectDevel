@@ -71,22 +71,29 @@ background-color: #fff !important;
 
 <div class="main_title">마이페이지</div>
 <hr id="main_hr">
-
+<input type="text" value="${dto.photo}">
 <div id="updateform" class="main_content">
 	<!-- 마이프로필(이미지) -->
-	<div class="div1" align="center" style="margin-top: 100px;">
-		<a href="javascript:void(0);" class="imgUploadBtn"
-		onclick="$('#imgUpload').trigger('click')">
-			<c:if test="${dto.photo=='no'}">
+	<c:if test="${dto.photo=='no'}">
+		<div class="div1" align="center" style="margin-top: 100px;">
+			<a href="javascript:void(0);" class="imgUploadBtn"
+			onclick="$('#imgUpload').trigger('click')">
 				<img src="${root}/element/icon_noimg.png" id="myimg">
-			</c:if>
-			<c:if test="${dto.photo!='no'}">
+			</a>
+			<input type="file" id="imgUpload" onchange="previewFile()"
+			accept="image/*" value="${dto.photo}" name="imgUpload" style="display:none">
+		</div>
+	</c:if>
+	<c:if test="${dto.photo!='no'}">
+		<div class="div1" align="center" style="margin-top: 100px;">
+			<a href="javascript:void(0);" class="imgUploadBtn"
+			onclick="$('#imgUpload').trigger('click')">
 				<img src="${root}/photo/${dto.photo}" id="myimg">
-			</c:if>
-		</a>
-		<input type="file" id="imgUpload" onchange="previewFile()"
-		accept="image/*" name="imgUpload" style="display:none">
-	</div>
+			</a>
+			<input type="file" id="imgUpload" onchange="previewFile()"
+			accept="image/*" value="${dto.photo}" name="imgUpload" style="display:none">
+		</div>
+	</c:if>
 	
 	<!-- 마이페이지 정보 -->
 	<div class="div2" style="margin-top: 100px;">
