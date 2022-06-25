@@ -138,15 +138,15 @@ $(function () {
 	 });
 	 
 	 /*완료 버튼*/
-	 $("#successbtn").click(function(){
+	 /*$("#successbtn").click(function(){
 		
 		var subtitle = $('input[name="subtitle"]:checked').val();
 		var colorradio = $('input[name="colorradio"]:checked').val();
 		//후에 가격대 밸류값 정해서 넘기면 됨
 		var marketprice = $('input[name="marketprice"]:checked').val();
 		 
-		 alert(subtitle+","+colorradio+","+marketprice);
-	 });
+		alert(subtitle+","+colorradio+","+marketprice);
+	 });*/
 	 
 	 
 	 
@@ -157,7 +157,7 @@ $(function () {
 <body>
 <span class="sidemenubarname">중고장터</span>
 <div class="sidemenu" style="border: solid 1px #dbdbdb; border-top: solid 2px black;">
-<form action="#">
+<form action="/marketplace/sidesearchtest">
  	<ul>
  		<li class="marketmenu">
  			<div class="marketmenutitle" id="carte1"><b id="side_control">카테고리</b><span class="glyphicon glyphicon-menu-down menudown1" id="menudownicon"></span></div>

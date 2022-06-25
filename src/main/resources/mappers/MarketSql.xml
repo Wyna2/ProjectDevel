@@ -38,12 +38,12 @@
   </select>
   
    <!-- 사이드 메뉴 검색 기능 --> 
-  <!--<select id="getSideSearchCount" parameterType="String" resultType="int">
+  <select id="getSideSearchCount" parameterType="String" resultType="int">
    select count(*) from Marketplace where subject like concat('%',#{subtitle},'%') and color=#{colorradio}
   </select>
   
-  <select id="SearchGetList" parameterType="HashMap" resultType="mp_dto">
+  <select id="SideSearchGetList" parameterType="HashMap" resultType="mp_dto">
   select * from Marketplace where subject like concat('%',#{subtitle},'%') and color=#{colorradio} order by upload_day desc limit #{start}, #{perPage}
-  </select>-->
+  </select>
   
 </mapper>
