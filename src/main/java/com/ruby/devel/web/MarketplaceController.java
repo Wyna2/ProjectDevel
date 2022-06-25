@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -220,6 +221,60 @@ public class MarketplaceController {
 		mview.setViewName("m/marketplace/market_searchresult");
 		
 			
+		return mview;
+	}
+	
+	
+	//마켓 사이드메뉴 검색
+	@GetMapping("/marketplace/sidesearch")
+	public ModelAndView MarketSideSearch(
+			@RequestParam (value = "currentPage", defaultValue = "1") int currentPage,
+			@RequestParam (value = "subtitle",required = false) String subtitle,
+			@RequestParam (value = "colorradio",required = false) String colorradio,
+			@RequestParam (value = "marketprice",required = false) String marketprice,
+			HttpSession session)
+	{
+		session.setAttribute("subtitle", subtitle);
+		session.setAttribute("colorradio", colorradio);
+		session.setAttribute("marketprice", marketprice);
+		
+		ModelAndView mview = new ModelAndView();
+		
+		int totalCount=MPmapper.getSideSearchCount(subtitle, colorradio, marketprice);
+		
+		//페이징처리에 필요한 변수
+		int totalPage; //총 페이지수
+		int startPage; //각블럭의 시작페이지
+		int endPage; //각블럭의 끝페이지
+		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
+		int perPage=8; //한페이지에 보여질 글 갯수
+		int perBlock=2; //한블럭당 보여지는 페이지 개수
+		
+		//총페이지 개수구하기
+		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+		
+		//각블럭의 시작페이지
+		startPage=(currentPage-1)/perBlock*perBlock+1;
+		endPage=startPage+perBlock-1;
+									
+		if(endPage>totalPage)
+			endPage=totalPage;
+						
+		//각페이지에서 불러올 시작번호
+		start=(currentPage-1)*perPage;
+		
+		
+		//데이터 가져오기
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("subtitle", subtitle);
+		map.put("colorradio", colorradio);
+		map.put("marketprice", marketprice);
+		map.put("start", start);
+		map.put("perPage", perPage);
+		
+		//각 페이지에서 필요한 게시글 가져오기
+		//List<MarketDto> SideSearchlist=
+		
 		return mview;
 	}
 	

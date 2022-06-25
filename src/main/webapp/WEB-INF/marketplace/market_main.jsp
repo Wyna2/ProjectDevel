@@ -69,11 +69,11 @@ $(function(){
 	
 	
 	<%--연관검색어 클릭시 연관검색어 테스트 가져옴--%>
-	$(".searchname").click(function(){
+	/*$(".searchname").click(function(){
 		//location.reload();
 		var i=$(this).text();
 		alert(i);
-	});
+	});*/
 	
 	<%--검색어에 관련된 정보 테이블 출력--%>
 	/*
@@ -168,9 +168,9 @@ $(function(){
 	<div class="relatedsearch" style="border: solid 1px #dbdbdb; border-top: solid 2px black;">
 		<br>
 		<span class="spanrelatedsearch">연관검색어</span>&nbsp;&nbsp;
-		<span class="searchname"><a href="#">무선</a></span>&nbsp;&nbsp;
-		<span class="searchname"><a href="#">블루투스</a></span>&nbsp;&nbsp;
-		<span class="searchname"><a href="#">무접점</a></span>
+		<span class="searchname"><a href="${root }/marketplace/search?SearchText=노트북">노트북</a></span>&nbsp;&nbsp;
+		<span class="searchname"><a href="${root }/marketplace/search?SearchText=키보드">키보드</a></span>&nbsp;&nbsp;
+		<span class="searchname"><a href="${root }/marketplace/search?SearchText=마우스">마우스</a></span>
 		<!-- <span class="morelook">더보기&nbsp;<span class="glyphicon glyphicon-menu-down morelookicon"></span></span> -->
 	</div>
 	

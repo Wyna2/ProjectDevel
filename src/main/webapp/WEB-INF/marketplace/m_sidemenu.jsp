@@ -140,21 +140,15 @@ $(function () {
 	 /*완료 버튼*/
 	 $("#successbtn").click(function(){
 		
-		var i = $('input[name="subtitle"]:checked').val();
-		var j = $('input[name="colorradio"]:checked').val();
+		var subtitle = $('input[name="subtitle"]:checked').val();
+		var colorradio = $('input[name="colorradio"]:checked').val();
 		//후에 가격대 밸류값 정해서 넘기면 됨
-		var k = $('input[name="marketprice"]:checked').val();
+		var marketprice = $('input[name="marketprice"]:checked').val();
 		 
-		 alert(i+","+j+","+k);
+		 alert(subtitle+","+colorradio+","+marketprice);
 	 });
 	 
 	 
-	 
-	/*  $(".menudown1").click(function(){
-		 
-		$(this).attr("class",""); 
-		 
-	 }); */
 	 
 });
 </script>
@@ -163,6 +157,7 @@ $(function () {
 <body>
 <span class="sidemenubarname">중고장터</span>
 <div class="sidemenu" style="border: solid 1px #dbdbdb; border-top: solid 2px black;">
+<form action="#">
  	<ul>
  		<li class="marketmenu">
  			<div class="marketmenutitle" id="carte1"><b id="side_control">카테고리</b><span class="glyphicon glyphicon-menu-down menudown1" id="menudownicon"></span></div>
@@ -315,9 +310,10 @@ $(function () {
  		</li>
  	</ul>
  	<div class="btnarea" style="border: 0px solid black;">
- 		<button type="button" class="btn-marketsub" id="successbtn">검색</button>
+ 		<button type="submit" class="btn-marketsub" id="successbtn">검색</button>
  		<button type="button" class="btn-marketsub" id="resetbtn">초기화</button>
  	</div>
+ </form>
 </div>
 </body>
 </html>
