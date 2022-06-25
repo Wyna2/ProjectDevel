@@ -15,6 +15,7 @@ public interface ActivityMapper {
 	public int getWriteCount(String userKey);
 	public List<CommunityDto> getWritePageDatas(HashMap<String, Object> map);
 	public List<CommunityDto> getWriteDatas(String userKey);
+	public void getWriteDelete(String community_idx);
 	
 	//나의거래목록
 	public List<MarketDto> getMarketDatas(String userKey);

@@ -30,8 +30,10 @@ public class MarketplaceController {
 	@Autowired // Member 자동주입
 	MemberMapper Mmapper;
 
-	// 마켓 기본 페이지
-	@GetMapping({ "/marketplace", "/marketplace/market_main" })
+	
+	
+	//마켓 기본 페이지
+	@GetMapping({"/marketplace","/marketplace/market_main"})
 	public ModelAndView marketplace_home(
 			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage) {
 		ModelAndView mview = new ModelAndView();
@@ -341,8 +343,8 @@ public class MarketplaceController {
 		return mview;
 	}
 
-	// 상품등록 페이지 mapping
-	@GetMapping("/marketplace/productadd")
+  	// 상품등록 페이지 mapping
+  @GetMapping("/marketplace/productadd")
 	public String marketplace_productadd() {
 		return "/marketplace/market_productAddForm";
 	}

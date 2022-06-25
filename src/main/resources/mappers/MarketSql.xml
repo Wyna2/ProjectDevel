@@ -39,11 +39,11 @@
   
    <!-- 사이드 메뉴 검색 기능 --> 
   <select id="getSideSearchCount" parameterType="String" resultType="int">
-   select count(*) from Marketplace where subject like concat('%',#{subtitle},'%') and color=#{colorradio}
+   select count(*) from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} 
   </select>
   
   <select id="SideSearchGetList" parameterType="HashMap" resultType="mp_dto">
-  select * from Marketplace where subject like concat('%',#{subtitle},'%') and color=#{colorradio} order by upload_day desc limit #{start}, #{perPage}
+  select * from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} order by upload_day desc limit #{start}, #{perPage}
   </select>
   
 </mapper>
