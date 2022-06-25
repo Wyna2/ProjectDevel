@@ -34,6 +34,7 @@ public class MarketplaceController {
 	MemberMapper Mmapper;
 	
 	
+	
 	//마켓 기본 페이지
 	@GetMapping({"/marketplace","/marketplace/market_main"})
 	public ModelAndView marketplace_home(
@@ -337,6 +338,8 @@ public class MarketplaceController {
 		  //각페이지에서 불러올 시작번호
 		  start=(currentPage-1)*perPage;
 		 
+		  
+		  
 		 
 		  //데이터 가져오기
 		  HashMap<String, Object> map = new HashMap<>();

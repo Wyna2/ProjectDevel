@@ -133,7 +133,7 @@ $(function(){
 		
 	<div class="search" style="border: solid 1px #dbdbdb;">
 	<form action="/marketplace/search">
-		<input type="text"  class="searchtext" id="searchtext" name="SearchText" placeholder="${SearchText}">
+		<input type="text"  class="searchtext" id="searchtext" name="SearchText">
 		<button type="submit" class="searchbtn">
 		<span class="glyphicon glyphicon-search searchicon"></span>
 		</button>

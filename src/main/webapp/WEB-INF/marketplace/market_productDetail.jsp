@@ -159,18 +159,43 @@
 					</c:if>
 					
 					<div class="btn" style="padding: 0px;">
+						
 						 <c:if test="${SearchText==null}">
-							<button type="button" class="btn-list"
-	                        onclick="location.href='${root }/marketplace?currentPage=${currentPage}'">목록보기</button>
+						 	<c:if test="${subtitle == null}">
+						 		<button type="button" class="btn-list"
+	                        	onclick="history.back()">목록보기</button>	
+						 	</c:if>	 	
+						 	
+						 	<%-- <c:if test="${subtitle != null}">
+						 		<button type="button" class="btn-list"
+	                        	onclick="location.href='${root }/marketplace/sidesearchtest?subtitle=${subtitle}&&colorradio=${colorradio}&currentPage=${currentPage}'">목록보기</button>
+	                        	
+						 	</c:if> --%>	
+						 	<c:if test="${subtitle != null}">
+						 		<button type="button" class="btn-list"
+	                        	onclick="history.back()">목록보기</button>
+	                        	
+						 	</c:if>			
 						</c:if>
 						
-						<c:if test="${SearchText!=null}">
+						<%-- <c:if test="${SearchText != null}">
 							<button type="button" class="btn-list"
 	                        onclick="location.href='${root }/marketplace/search?SearchText=${SearchText}&currentPage=${currentPage}'">목록보기</button>
+						</c:if> --%>
+						
+						<c:if test="${SearchText != null}">
+							<button type="button" class="btn-list"
+	                        onclick="history.back()">이전보기</button>
 						</c:if>
 						
-						<%-- <button type="button" class="btn-list"
-	                        onclick="location.href='${root }/marketplace?currentPage=${currentPage}'">목록보기</button> --%>
+						<%-- <c:if test="${SearchText!=null and subtitle == null}">
+							<button type="button" class="btn-list"
+	                        onclick="location.href='${root }/marketplace/search?SearchText=${SearchText}&currentPage=${currentPage}'">목록보기</button>
+						</c:if> --%>
+						
+						
+						
+						
                         
                     </div>
                     
