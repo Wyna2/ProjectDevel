@@ -13,7 +13,7 @@
 		<if test="photo!='no'">
 	  	photo=#{photo},
 	  	</if>
-		nickname=#{nickname},	address=#{address}, contact_number=#{contact_number}, birth=#{birth}, age=#{age}, job=#{job}, hobby1=#{hobby1}, hobby2=#{hobby2}, hobby3=#{hobby3}, pr=#{pr} where member_idx=#{member_idx}
+		nickname=#{nickname}, address=#{address}, contact_number=#{contact_number}, birth=#{birth}, age=#{age}, job=#{job}, hobby1=#{hobby1}, hobby2=#{hobby2}, hobby3=#{hobby3}, pr=#{pr} where member_idx=#{member_idx}
 	</update>
 	
 </mapper>

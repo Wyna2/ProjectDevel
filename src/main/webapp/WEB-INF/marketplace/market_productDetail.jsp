@@ -40,7 +40,7 @@
 
 </head>
 <body>
-<input type="text" value="${dto.market_place_idx}">
+<input type="hidden" value="${dto.market_place_idx}">
 	<div class="container">
 		<div class="container1" style="position: relative; height: 720px;">
 			<div style="width: 712px; float: left;">

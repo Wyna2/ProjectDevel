@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruby.devel.service.impl.MyinfoMapper">
-
-	
-	
+<mapper namespace="com.ruby.devel.service.impl.ActivityMapper">
+	<!-- 나의거래목록 -->
+	<select id="getMarketDatas" parameterType="String" resultType="mp_dto">
+		select * from Marketplace where member_idx=#{userKey} order by upload_day desc
+	</select>
 </mapper>
