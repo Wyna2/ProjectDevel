@@ -4,7 +4,7 @@
 
     <!-- '거래완료시 sold_day 수정하기 -->
 	<update id="updateSoldout" parameterType="mp_dto">
-		update Marketplace set sold_day=now() where member_idx=#{member_idx}
+		update Marketplace set sold_day=now() where market_place_idx=#{market_place_idx}
 	</update>
   
 </mapper>

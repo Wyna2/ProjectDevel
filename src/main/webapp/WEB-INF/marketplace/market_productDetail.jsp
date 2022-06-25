@@ -18,7 +18,6 @@
 <c:set var="root" value="<%=request.getContextPath()%>" />
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/market_productdetail.css">
 <title>Insert title here</title>
-
 <script type="text/javascript">
 	$(function () {
 		$(".chheart").change(function(){
@@ -41,6 +40,7 @@
 
 </head>
 <body>
+<input type="text" value="${dto.market_place_idx}">
 	<div class="container">
 		<div class="container1" style="position: relative; height: 720px;">
 			<div style="width: 712px; float: left;">
@@ -153,7 +153,7 @@
 						<c:if test="${dto.sold_day==null}">
 							<div class="btn2" style="float: left; margin-left: 170px;">
 								<button type="button" class="btn-complete"
-								onclick="location.href='${root }/marketplace/soldout'">거래 완료 처리</button>
+								onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>
 							</div>
 						</c:if>
 					</c:if>
