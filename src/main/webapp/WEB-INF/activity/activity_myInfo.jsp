@@ -71,7 +71,6 @@ background-color: #fff !important;
 
 <div class="main_title">마이페이지</div>
 <hr id="main_hr">
-<input type="text" value="${dto.photo}">
 <div id="updateform" class="main_content">
 	<!-- 마이프로필(이미지) -->
 	<c:if test="${dto.photo=='no'}">

@@ -9,7 +9,11 @@
 	
 	<!-- 회원정보 수정하기 -->
 	<update id="updateInfo" parameterType="member">
-		update Member set photo=#{photo}, nickname=#{nickname},	address=#{address}, contact_number=#{contact_number}, birth=#{birth}, age=#{age}, job=#{job}, hobby1=#{hobby1}, hobby2=#{hobby2}, hobby3=#{hobby3}, pr=#{pr} where member_idx=#{member_idx}
+		update Member set 
+		<if test="photo!='no'">
+	  	photo=#{photo},
+	  	</if>
+		nickname=#{nickname},	address=#{address}, contact_number=#{contact_number}, birth=#{birth}, age=#{age}, job=#{job}, hobby1=#{hobby1}, hobby2=#{hobby2}, hobby3=#{hobby3}, pr=#{pr} where member_idx=#{member_idx}
 	</update>
 	
 </mapper>
