@@ -23,6 +23,21 @@ span.side_main_span_write {
 	border-bottom: 1.5px solid #ff4b4e;
 }
 </style>
+
+<script type="text/javascript">
+$(function() {
+	
+	/* 전체선택 체크박스 이벤트 */
+	var chkList = $("input[name=cnum]");
+	$("#allcheck").click(function(){
+		if($(this).is(":checked")){
+			chkList.prop("checked", true);
+		}else
+			chkList.prop("checked", false);
+	});
+	
+});
+</script>
 </head>
 
 <body>
@@ -34,19 +49,21 @@ span.side_main_span_write {
 	<div class="main_write">
 		<!-- 체크박스 -->
 		<div class="write_ck">
-			<input type="checkbox" id="allcheck" checked="checked">전체선택
+			<input type="checkbox" id="allcheck">전체선택
 		</div>
 		
-		<!-- 내 작성글 글 제목 값 가져오기 -->
-		<c:forEach var="dto" items="${clist}">
-			<div class="write_sub">
-				<input type="checkbox" id="check" name="cnum" checked="checked">${dto.subject}
-			</div>
-			<hr style="border: solid 0.5px #767676;">
-		</c:forEach>
-		
-		<button type="button" class="btn_delete">삭제하기</button>
-		
+		<!-- 내 작성글 Data 가져오기 -->
+		<form action="writeDel" method="post" enctype="multipart/form-data">
+			<c:forEach var="dto" items="${clist}">
+				<div class="write_sub">
+					<input type="checkbox" id="check" name="cnum"
+					value="${dto.community_idx}">${dto.subject}
+				</div>
+				<hr style="border: solid 0.5px #767676;">
+			</c:forEach>
+			
+			<button type="submit" class="btn_delete">삭제하기</button>
+		</form>		
 		
 		<!-- 페이징 -->
 		<div class="pagesort">

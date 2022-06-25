@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +24,7 @@ public class ActivityController {
 	
 	@Autowired //Activity 자동주입
 	ActivityMapper Amapper;
-		
+	
 	
 	//모아보기 페이지
 	@GetMapping("/activity")  // 'activity' 아이콘 선택 시 기본 페이지(모아보기) 이동
@@ -101,6 +102,25 @@ public class ActivityController {
 		return mview;  // /a/activity/(파일명)
 	}
 	
+	//작성글 삭제 writeDel
+	@PostMapping("/activity/writeDel")
+	public String activity_writeDel(
+			@RequestParam String cnum)
+	{
+		String[] cnums = cnum.split(",");
+		if(cnums.length>1) {
+			for(int i=0; i<cnums.length; i++) {
+				String community_idx = cnums[i];
+				Amapper.getWriteDelete(community_idx);
+			}
+		} else {
+			String community_idx = cnum;
+			Amapper.getWriteDelete(community_idx);
+		}
+
+		//완료 후 목록 이동
+		return "redirect:mycommunity";
+	}
 	
 	//거래 목록 페이지
 	@GetMapping("/activity/mymarketplace")

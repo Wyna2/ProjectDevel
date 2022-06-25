@@ -12,6 +12,9 @@
 	<select id="getWriteDatas" parameterType="String" resultType="c_dto">
 		select * from Community where member_idx=#{userKey} order by write_day desc
 	</select>
+	<select id="getWriteDelete" parameterType="String">
+		delete from Community where community_idx=#{community_idx}
+	</select>
 		
 	<!-- 나의 거래 목록 -->
 	<select id="getMarketDatas" parameterType="String" resultType="mp_dto">
