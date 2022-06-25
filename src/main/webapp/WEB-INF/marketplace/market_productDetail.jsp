@@ -68,7 +68,20 @@
 					<div class="mainphoto">
 						<!-- 여러 사진 있을 경우 첫번째 사진 -->
 						<c:forTokens var="p" items="${dto.photo}" delims="," begin="0" end="0">
-							<img src="${root }/photo/${p}" class="photo">
+							
+							<!-- 거래미완료 상품 -->
+							<c:if test="${dto.sold_day==null}">
+								<img src="${root }/photo/${p}" class="photo">
+							</c:if>
+							
+							<!-- 거래완료 상품 거래완료 표시 -->
+							<c:if test="${dto.sold_day!=null}">
+								<img src="${root }/photo/${p}" class="photo" style="opacity: 30%">
+								<div style="position: absolute; top: 300px; left: 300px;">
+									<img id="msuccess" src="${root }/element/img_activity_success.png"
+									style="width: 200px; height: 70px;">
+								</div>
+							</c:if>
 						</c:forTokens>
 					</div>
 				</c:if>
@@ -134,14 +147,16 @@
 
 				<div class="buttongroup" style="margin-top: 25px; text-align: right;">
 					
-					
-					<!-- 등록자 화면에만 보이도록 구현  -->
+					<!-- 등록자 화면에만 보이도록 구현 -->
 					<c:if test="${userKey==dto.member_idx}">
-						<div class="btn2" style="float: left; margin-left: 170px;">
-							<button type="button" class="btn-complete">거래 완료 처리 </button>
-						</div> 
+						<!-- 거래완료된 상품은 버튼 안보이기(거래완료안된 상품만 버튼 보이기) -->
+						<c:if test="${dto.sold_day==null}">
+							<div class="btn2" style="float: left; margin-left: 170px;">
+								<button type="button" class="btn-complete"
+								onclick="location.href='${root }/marketplace/soldout'">거래 완료 처리</button>
+							</div>
+						</c:if>
 					</c:if>
-
 					
 					<div class="btn" style="padding: 0px;">
 						 <c:if test="${SearchText==null}">
