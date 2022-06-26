@@ -19,7 +19,7 @@
 	</update>
 	
 	<select id="getLikeDatas" resultType="mplike_dto">
-		select * from Marketlike
+		select * from Marketlike order by market_like_idx desc
 	</select>
 	
 	<select id="getLikeData" parameterType="HashMap" resultType="int">

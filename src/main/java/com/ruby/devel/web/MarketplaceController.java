@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.MarketDto;
+import com.ruby.devel.model.MarketLikeDto;
 import com.ruby.devel.service.impl.MarketMapper;
 import com.ruby.devel.service.impl.MemberMapper;
 
@@ -32,8 +33,7 @@ public class MarketplaceController {
 	
 	@Autowired //Member 자동주입
 	MemberMapper Mmapper;
-	
-	
+
 	
 	//마켓 기본 페이지
 	@GetMapping({"/marketplace","/marketplace/market_main"})
@@ -43,8 +43,6 @@ public class MarketplaceController {
 		ModelAndView mview = new ModelAndView();
 		
 		int totalCount = MPmapper.getTotalCount();
-		//List<MarketDto> list = mapper.getAllDatas();
-		
 		
 		//페이징처리에 필요한 변수
 		int totalPage; //총 페이지수
@@ -75,12 +73,16 @@ public class MarketplaceController {
 						
 		//각페이지에서 필요한 게시글 가져오기
 		List<MarketDto> list=MPmapper.getList(map);
-								
+		
+		//like list 가져오기		
+		List<MarketLikeDto> likelist=MPmapper.getLikeDatas();
+		
 		//각 글앞에 붙일 시작번호 구하기
 		//총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
 		int no=totalCount-(currentPage-1)*perPage;
 								
 		//출력에 필요한 변수들을 request 에 저장
+		mview.addObject("likelist", likelist);
 		mview.addObject("list",list);
 		mview.addObject("startPage",startPage);
 		mview.addObject("endPage",endPage);

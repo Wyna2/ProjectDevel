@@ -235,18 +235,16 @@ $(function(){
 	<!-- <div class="tab-content"> -->
 
 	
-	<%--전체 테이블 --%>
-	<c:forEach var="a" items="${list}">
+	<%--전체 테이블 --%>	
+	<c:forEach var="a" items="${list}" varStatus="status">
 	  	<div class="sangpumdiv" style="border: 0px solid black;">
-			
 			<!-- like 이벤트 -->
-			<label  class="lab" id="lab">
+			<label class="lab" id="lab">			
 				<input type="checkbox" id="chk" 
 				market_place_idx="${a.market_place_idx}" 
 				member_idx="${a.member_idx}" class="chheart">
 				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
 			</label>
-
 
 		<!-- 거래미완료 상품 -->
 		<c:if test="${a.sold_day==null}">
