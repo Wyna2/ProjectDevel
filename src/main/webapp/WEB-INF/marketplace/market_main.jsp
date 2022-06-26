@@ -117,18 +117,49 @@ $(function(){
 	});
 	*/
 
-	
+
+	/* like 이벤트 */
 	<%--목록 테이블 하트 이벤트--%>
-	$(".chheart").change(function(){
-		if($(this).is(":checked"))
-		{
-			$(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png");
-			/* $(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png"); */
+	$('.chheart').change(function(){
+		if($(this).is(':checked'))
+		{								
+			let market_place_idx = $(this).attr('market_place_idx');
+			let member_idx = $(this).attr('member_idx');
+			
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx
+					},
+				success: function(data) {
+					document.location.reload(true);
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
 		}
 		else
 		{
-			$(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
-			/* $(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png"); */
+			let market_place_idx = $(this).attr('market_place_idx');
+			let member_idx = $(this).attr('member_idx');
+			
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx
+					},
+				success: function(data) {
+					document.location.reload(true);
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
 		}
 	});
 		
@@ -207,10 +238,15 @@ $(function(){
 	<%--전체 테이블 --%>
 	<c:forEach var="a" items="${list}">
 	  	<div class="sangpumdiv" style="border: 0px solid black;">
+			
+			<!-- like 이벤트 -->
 			<label  class="lab" id="lab">
-				<input type="checkbox" id="chk" value="${i}" class="chheart">
+				<input type="checkbox" id="chk" 
+				market_place_idx="${a.market_place_idx}" 
+				member_idx="${a.member_idx}" class="chheart">
 				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
 			</label>
+
 
 		<!-- 거래미완료 상품 -->
 		<c:if test="${a.sold_day==null}">

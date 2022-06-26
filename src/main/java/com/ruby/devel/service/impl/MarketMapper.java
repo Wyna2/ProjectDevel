@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ruby.devel.model.MarketDto;
+import com.ruby.devel.model.MarketLikeDto;
 
 @Mapper
 public interface MarketMapper {
@@ -16,6 +17,11 @@ public interface MarketMapper {
 	public MarketDto getData(String market_place_idx);
 	public void deleteMarket(String market_place_idx);
 	
+	//like 관련 mapper
+	public void insertMarketLike(MarketLikeDto dto);
+	public void updateMarketLike(MarketLikeDto dto);
+	public List<MarketLikeDto> getLikeDatas();
+	public int getLikeData(HashMap<String, String> map);
 	
 	//검색창 검색 관련 mapper
 	public List<MarketDto> SearchGetList(HashMap<String, Object> map);
