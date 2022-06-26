@@ -90,26 +90,26 @@
   
   <!-- 메인 페이지 거래가능 -->
   <select id="getTradeCount" resultType="int">
-  select count(*) from Marketplace where sold_day is not null
+  select count(*) from Marketplace where sold_day is null
   </select>
   
   <select id="getTradeList" parameterType="HashMap" resultType="mp_dto">
-  	select * from Marketplace where sold_day is not null order by upload_day desc limit #{start}, #{perPage}
+  	select * from Marketplace where sold_day is null order by upload_day desc limit #{start}, #{perPage}
   </select>
   
   <!-- 검색 기능 거래가능  -->
   <select id="getTradeSearchList" parameterType="HashMap" resultType="mp_dto">
-  select * from Marketplace where subject like concat('%',#{SearchText},'%') and sold_day is not null order by upload_day desc limit #{start}, #{perPage}
+  select * from Marketplace where subject like concat('%',#{SearchText},'%') and sold_day is null order by upload_day desc limit #{start}, #{perPage}
   </select>
   
   <select id="getTradeSearchCount" resultType="int" parameterType="String">
-   select count(*) from Marketplace where subject like concat('%',#{SearchText},'%') and sold_day is not null
+   select count(*) from Marketplace where subject like concat('%',#{SearchText},'%') and sold_day is null
   </select>
   
   
    <!-- 사이드 메뉴 검색 기능 거래가능 --> 
   <select id="getTradeSideCount" parameterType="String" resultType="int">
-   select count(*) from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} and sold_day is not null
+   select count(*) from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} and sold_day is null
    
    <if test="marketprice == '10000'">
    and price between 0 and 10000
@@ -134,7 +134,7 @@
   
   
   <select id="getTradeSideList" parameterType="HashMap" resultType="mp_dto">
-  select * from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} and sold_day is not null
+  select * from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} and sold_day is null
   
   	 <if test="marketprice == '10000'">
    	 and price between 0 and 10000
