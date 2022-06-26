@@ -61,7 +61,21 @@ $(function(){
 	});
 	
 	<%--체크박스 체크시 테이블 select문으로 거래가능 출력--%>
-	$(".chb").click(function(){
+	$("#changebox").change(function(){
+		if($("#changebox").is(":checked"))
+		{
+			
+			var checkon = 1;	
+			location.href = '/marketplace/market_tradeablesearchtest?&SearchText=${SearchText}&checkon='+checkon;
+			
+			
+		}
+		else
+		{
+			
+		}
+		
+		
 		
 	});
 	
@@ -155,7 +169,7 @@ $(function(){
 	</div>
 	
 	<div class="selectbox">
-		<label class="selectboxlb"><input type="checkbox" class="chb">&nbsp;거래가능 제품만 보기</label>
+		<label class="selectboxlb"><input type="checkbox" class="chb" id="changebox">&nbsp;거래가능 제품만 보기</label>
 		<!-- 상품등록 페이지 연결 -->
 		<button type="button" class="btn-addsangpum" onclick="location.href='/marketplace/productadd'">상품등록</button>
 	</div>

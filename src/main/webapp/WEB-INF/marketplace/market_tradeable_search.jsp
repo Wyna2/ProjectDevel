@@ -68,13 +68,12 @@ $(function(){
 		if($("#changebox").is(":checked"))
 		{
 			var checkon = 1;	
-			location.href = '/marketplace/market_tradeabletest?checkon='+checkon;
-			
+			location.href = '/marketplace/market_tradeable?checkon='+checkon;
 			
 		}
 		else
 		{
-			
+			location.href = '/marketplace/search?&SearchText=${SearchText}';
 		}
 		
 		
@@ -190,7 +189,7 @@ $(function(){
 	
 	<div class="selectbox">
 		
-		<label class="selectboxlb"><input type="checkbox" class="chb" id="changebox">&nbsp;거래가능 제품만 보기</label>
+		<label class="selectboxlb"><input type="checkbox" class="chb" id="changebox" checked="checked">&nbsp;거래가능 제품만 보기</label>
 	
 		
 		<%-- <c:if test="checkon == '1'">
@@ -205,7 +204,7 @@ $(function(){
 
 	
 	<%--전체 테이블 --%>
-	<c:forEach var="a" items="${list}">
+	<c:forEach var="a" items="${tradeSearchList}">
 	  	<div class="sangpumdiv" style="border: 0px solid black;">
 			<label  class="lab" id="lab">
 				<input type="checkbox" id="chk" value="${i}" class="chheart">
@@ -275,7 +274,7 @@ $(function(){
 
 
 	<%--리스트 테이블 --%>
-	<c:forEach var="a" items="${list}">
+	<c:forEach var="a" items="${tradeSearchList}">
 		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;">
 			
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">

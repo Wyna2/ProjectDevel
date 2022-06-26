@@ -24,4 +24,17 @@ public interface MarketMapper {
 	//사이드 메뉴 검색 관련 mapper
 	public int getSideSearchCount(String subtitle,String colorradio,String marketprice);
 	public List<MarketDto> SideSearchGetList(HashMap<String, Object> map);
+	
+	//거래가능 체크박스 관련 mapper
+	public int getTradeCount();
+	public List<MarketDto> getTradeList(HashMap<String, Integer> map);
+	
+	//거래가능 체크박스 (검색창 활용 이후)
+	public int getTradeSearchCount(String SearchText);
+	public List<MarketDto> getTradeSearchList(HashMap<String, Object> map);
+	
+	//거래가능 체크박스 (사이드메뉴 검색 활용 이후)
+	public int getTradeSideCount(String subtitle,String colorradio,String marketprice);
+	public List<MarketDto> getTradeSideList(HashMap<String, Object> map);
+	
 }

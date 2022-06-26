@@ -449,4 +449,212 @@ public class MarketplaceController {
 		return mview;
 	}
 	
+	//거래 가능 상품페이지
+	@GetMapping("/marketplace/market_tradeable")
+	public String tradeable()
+	{
+		return "m/marketplace/market_tradeable";
+	}
+	
+	//거래가능 상품페이지 매핑
+	@GetMapping("/marketplace/market_tradeabletest")
+	public ModelAndView marketplaceTrade(
+			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage)
+	{
+		ModelAndView mview = new ModelAndView();
+		
+		int totalCount = MPmapper.getTradeCount();
+		
+		//페이징처리에 필요한 변수
+ 		int totalPage; //총 페이지수
+ 		int startPage; //각블럭의 시작페이지
+ 		int endPage; //각블럭의 끝페이지
+ 		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
+ 		int perPage=8; //한페이지에 보여질 글 갯수
+ 		int perBlock=2; //한블럭당 보여지는 페이지 개수
+ 		
+ 		//총페이지 개수구하기
+ 		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+ 							
+ 		//각블럭의 시작페이지
+ 		startPage=(currentPage-1)/perBlock*perBlock+1;
+ 		endPage=startPage+perBlock-1;
+ 							
+ 		if(endPage>totalPage)
+ 			endPage=totalPage;
+ 				
+ 		//각페이지에서 불러올 시작번호
+ 		start=(currentPage-1)*perPage;
+ 		
+ 		//각페이지에서 필요한 게시글 가져오기
+ 		HashMap<String, Integer> map = new HashMap<>();
+ 		map.put("start", start);
+ 		map.put("perPage", perPage);
+		
+ 		List<MarketDto> Tradelist=MPmapper.getTradeList(map);
+ 		
+ 		//총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
+ 		int no=totalCount-(currentPage-1)*perPage;
+ 		
+ 		//출력에 필요한 변수들 request에 저장
+ 		mview.addObject("Tradelist",Tradelist);
+ 		mview.addObject("startPage",startPage);
+ 		mview.addObject("endPage",endPage);
+ 		mview.addObject("totalPage",totalPage);
+ 		mview.addObject("totalCount",totalCount);
+ 		mview.addObject("no",no);
+ 		mview.addObject("currentPage",currentPage);
+ 		mview.addObject("totalCount",totalCount);
+ 		
+ 		mview.setViewName("m/marketplace/market_tradeable");
+		
+		return mview;
+	}
+	
+	
+	//거래 가능 검색기능 사용 후
+	@GetMapping("/marketplace/market_tradeablesearch")
+	public String tradeableSearch()
+	{
+		return "m/marketplace/market_tradeable_search";
+	}
+	
+	//거래 가능 검색기능 사용 후 매핑
+	@GetMapping("/marketplace/market_tradeablesearchtest")
+	public ModelAndView marketplaceTradeSearch(
+			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage,
+			@RequestParam (value = "SearchText", required = false) String SearchText,
+			HttpSession session)
+	{
+		session.setAttribute("SearchText", SearchText);
+		ModelAndView mview = new ModelAndView();
+		int totalCount=MPmapper.getTradeSearchCount(SearchText);
+		
+		//페이징처리에 필요한 변수
+		int totalPage; //총 페이지수
+		int startPage; //각블럭의 시작페이지
+		int endPage; //각블럭의 끝페이지
+		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
+		int perPage=8; //한페이지에 보여질 글 갯수
+		int perBlock=2; //한블럭당 보여지는 페이지 개수
+		
+		//총페이지 개수구하기
+		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+												
+		//각블럭의 시작페이지
+		startPage=(currentPage-1)/perBlock*perBlock+1;
+		endPage=startPage+perBlock-1;
+												
+		if(endPage>totalPage)
+			endPage=totalPage;
+									
+		//각페이지에서 불러올 시작번호
+		start=(currentPage-1)*perPage;
+		
+		//데이터 가져오기
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("SearchText", SearchText);
+		map.put("start", start);
+		map.put("perPage", perPage);
+		
+		//각페이지에서 필요한 게시글 가져오기
+		List<MarketDto> tradeSearchList=MPmapper.getTradeSearchList(map);
+		
+		//총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
+		int no=totalCount-(currentPage-1)*perPage;
+		
+		//출력에 필요한 변수들 request 저장
+		mview.addObject("tradeSearchList",tradeSearchList);
+		mview.addObject("startPage",startPage);
+		mview.addObject("endPage",endPage);
+		mview.addObject("totalPage",totalPage);
+		mview.addObject("totalCount",totalCount);
+		mview.addObject("no",no);
+		mview.addObject("currentPage",currentPage);
+					
+		mview.addObject("totalCount",totalCount);
+		
+		
+		mview.setViewName("m/marketplace/market_tradeable_search");
+		
+		return mview;
+	}
+	
+	
+	//거래 가능 사이드메뉴 검색 사용 후
+	@GetMapping("/marketplace/market_tradeableside")
+	public String tradeableSide()
+	{
+			return "m/marketplace/market_tradeable_side";
+	}
+	
+	@GetMapping("/marketplace/market_tradeablesidetest")
+	public ModelAndView marketplaceTradeSide(
+			@RequestParam (value = "currentPage", defaultValue = "1") int currentPage,
+			@RequestParam (value = "subtitle",required = false) String subtitle,
+			@RequestParam (value = "colorradio",required = false) String colorradio,
+			@RequestParam (value = "marketprice",required = false) String marketprice,
+			HttpSession session)
+	{
+		session.setAttribute("subtitle", subtitle);
+		session.setAttribute("colorradio", colorradio);
+		session.setAttribute("marketprice", marketprice);
+		
+		
+		ModelAndView mview = new ModelAndView();
+		
+		int totalCount = MPmapper.getTradeSideCount(subtitle, colorradio, marketprice);
+		
+		///페이징처리에 필요한 변수
+		int totalPage; //총 페이지수
+		int startPage; //각블럭의 시작페이지
+		int endPage; //각블럭의 끝페이지
+		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
+		int perPage=8; //한페이지에 보여질 글 갯수
+		int perBlock=2; //한블럭당 보여지는 페이지 개수
+		
+		
+		//총페이지 개수구하기
+		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+		  
+		//각블럭의 시작페이지
+		startPage=(currentPage-1)/perBlock*perBlock+1;
+		endPage=startPage+perBlock-1;
+											
+		if(endPage>totalPage)
+			endPage=totalPage;
+								
+		//각페이지에서 불러올 시작번호
+		start=(currentPage-1)*perPage;
+		
+		//데이터 가져오기
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("subtitle", subtitle);
+		map.put("colorradio", colorradio);
+		map.put("marketprice", marketprice);
+		map.put("start", start);
+		map.put("perPage", perPage);
+		
+		//각 페이지 필요한 글 가져오기
+		List<MarketDto> TradeSideList=MPmapper.getTradeSideList(map);
+		
+		//총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
+		int no=totalCount-(currentPage-1)*perPage;
+		
+		//출력에 필요한 변수 저장
+		mview.addObject("TradeSideList",TradeSideList);
+		mview.addObject("startPage",startPage);
+		mview.addObject("endPage",endPage);
+		mview.addObject("totalPage",totalPage);
+		mview.addObject("totalCount",totalCount);
+		mview.addObject("no",no);
+		mview.addObject("currentPage",currentPage);
+		mview.addObject("totalCount",totalCount);
+		
+		mview.setViewName("m/marketplace/market_tradeable_side");
+		
+		return mview;
+	}
+	
+	
 }
