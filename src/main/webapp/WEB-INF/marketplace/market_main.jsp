@@ -241,7 +241,12 @@ $(function(){
 	  	<div class="sangpumdetail" style="border: 0px solid #dbdbdb;">
 	  		<span class="brandname">${a.brandname}</span><br>
 	  		<span class="subject">${a.subject}</span><br>
-	  		<span class="price">${a.price}원</span>&nbsp;&nbsp;&nbsp;<span class="original_price">${a.original_price}</span><br>
+	  		<span class="price">
+				<fmt:formatNumber pattern="#,##0">${a.price}</fmt:formatNumber>원
+			</span>&nbsp;&nbsp;&nbsp;
+			<span class="original_price">
+				<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>
+			</span>
 	  		<span class="region">${a.region}</span>
 	  		</div>
 	  	</div>
@@ -272,7 +277,12 @@ $(function(){
 			<div class="sangpumlistdetail" style="border: 0px solid black">
 				<span class="brandname">${a.brandname}</span><br>
 				<span class="subject">${a.subject}</span><br><br>
-				<span class="price">${a.price}원</span>&nbsp;&nbsp;&nbsp;<span class="original_price">${a.original_price}</span>
+				<span class="price">
+					<fmt:formatNumber pattern="#,##0">${a.price}</fmt:formatNumber>원
+				</span>&nbsp;&nbsp;&nbsp;
+				<span class="original_price">
+					<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>
+				</span>
 				<span class="region">${a.region}</span>
 			</div>
 			

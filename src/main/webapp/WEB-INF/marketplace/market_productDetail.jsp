@@ -112,8 +112,8 @@
 			
 				<!-- 가격 등록 -->
 				<div class="price" style="margin-top: 24px; width: 203px; height: 34px;">
-					<span class="number">${dto.price}</span> <span style="font-size: 15px;">원</span>
-					<span class="oprice">${dto.original_price}</span>
+					<span class="number"><fmt:formatNumber pattern="#,##0">${dto.price}</fmt:formatNumber></span><span style="font-size: 15px;">원</span>
+					<span class="oprice"><fmt:formatNumber pattern="#,##0">${dto.original_price}</fmt:formatNumber></span>
 				</div>
 
 				<!-- 판매자 등록 -->
