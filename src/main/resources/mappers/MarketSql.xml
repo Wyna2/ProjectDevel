@@ -39,11 +39,53 @@
   
    <!-- 사이드 메뉴 검색 기능 --> 
   <select id="getSideSearchCount" parameterType="String" resultType="int">
-   select count(*) from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} 
+   select count(*) from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio}
+   
+   <if test="marketprice == '10000'">
+   and price between 0 and 10000
+   </if> 
+   
+   <if test="marketprice == '50000'">
+   and price between 10000 and 50000
+   </if>
+   
+   <if test="marketprice == '100000'">
+   and price between 50000 and 100000
+   </if>
+   
+   <if test="marketprice == '200000'">
+   and price between 100000 and 200000
+   </if>
+   
+   <if test="marketprice == '100000000000'">
+   and price between 200000 and 100000000000
+   </if>
   </select>
   
   <select id="SideSearchGetList" parameterType="HashMap" resultType="mp_dto">
-  select * from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} order by upload_day desc limit #{start}, #{perPage}
+  select * from Marketplace where category like concat('%',#{subtitle},'%') and color=#{colorradio} 
+  
+  	 <if test="marketprice == '10000'">
+   	 and price between 0 and 10000
+  	 </if>
+  
+	 <if test="marketprice == '50000'">
+	 and price between 10000 and 50000
+	 </if> 
+	   
+	 <if test="marketprice == '100000'">
+	 and price between 50000 and 100000
+	 </if>
+	 
+	 <if test="marketprice == '200000'">
+   	 and price between 100000 and 200000
+     </if>
+   
+     <if test="marketprice == '100000000000'">
+     and price between 200000 and 100000000000
+     </if>
+  
+  order by upload_day desc limit #{start}, #{perPage}
   </select>
   
 </mapper>

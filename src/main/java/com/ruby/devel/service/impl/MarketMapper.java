@@ -22,6 +22,6 @@ public interface MarketMapper {
 	public int getSearchCount(String SearchText);
 	
 	//사이드 메뉴 검색 관련 mapper
-	public int getSideSearchCount(String subtitle,String colorradio);
+	public int getSideSearchCount(String subtitle,String colorradio,String marketprice);
 	public List<MarketDto> SideSearchGetList(HashMap<String, Object> map);
 }

@@ -177,7 +177,7 @@ $(function(){
 			<!-- 이미지 있을 경우 상품이미지 중 첫번째 이미지 보이기 -->
 			<c:if test="${a.photo!='no'}">
 				<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
-					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}">
+					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}">
 						<img src="${root }/photo/${p}" style="width: 220px; height: 220px;" class="photo">
 					</a>
 				</c:forTokens>
@@ -185,7 +185,7 @@ $(function(){
 			
 			<!-- 이미지 없을 경우 기본 이미지 -->
 			<c:if test="${a.photo=='no'}">
-				<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}">
+				<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}">
 					<img src="${root }/element/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
 				</a>
 	  		</c:if>
@@ -208,7 +208,7 @@ $(function(){
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
 				<c:if test="${a.photo!='no'}">
 					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
-						<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}">
+						<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}">
 							<img src="${root }/photo/${p}" style="width: 146px; height: 146px;" class="photo">
 						</a>
 					</c:forTokens>
@@ -216,7 +216,7 @@ $(function(){
 									
 				<!-- 이미지 없을 경우 기본 이미지 -->
 				<c:if test="${a.photo=='no'}">
-					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}">
+					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}&subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}">
 						<img src="${root }/element/icon_noimg.png" style="width: 146px; height: 146px;" class="photo">
 					</a>
 			  	</c:if>
@@ -243,24 +243,24 @@ $(function(){
 		<div class="page" align="center" style="margin-top: 50px;">	
 			<!-- 이전 -->
 			<c:if test="${startPage>1}">
-				<a href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&currentPage=${startPage-1}">
+				<a href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${startPage-1}">
 					<img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
 				</a>
 			</c:if>
 			
 			<c:forEach var="pp" begin="${startPage}" end="${endPage}">
 				<c:if test="${currentPage==pp}">
-					<a id="pagecnum" href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&currentPage=${pp}"><b>${pp}</b></a>
+					<a id="pagecnum" href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${pp}"><b>${pp}</b></a>
 					
 				</c:if>
 				<c:if test="${currentPage!=pp}">
-					<a id="pagenum" href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&currentPage=${pp}">${pp}</a>
+					<a id="pagenum" href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${pp}">${pp}</a>
 				</c:if>
 			</c:forEach>
 			
 			<!-- 다음 -->
 			<c:if test="${endPage<totalPage}">
-				<a href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&currentPage=${endPage+1}">
+				<a href="sidesearchtest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${endPage+1}">
 					<img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
 				</a>
 			</c:if>

@@ -232,14 +232,16 @@ public class MarketplaceController {
 			@RequestParam (value = "currentPage", defaultValue = "1") int currentPage,
 			@RequestParam (value = "subtitle",required = false) String subtitle,
 			@RequestParam (value = "colorradio",required = false) String colorradio,
+			@RequestParam (value = "marketprice",required = false) String marketprice,
 			HttpSession session)
 	{
 		session.setAttribute("subtitle", subtitle);
 		session.setAttribute("colorradio", colorradio);
+		session.setAttribute("marketprice", marketprice);
 		
 		ModelAndView mview = new ModelAndView();
 		
-		int totalCount=MPmapper.getSideSearchCount(subtitle, colorradio);
+		int totalCount=MPmapper.getSideSearchCount(subtitle, colorradio,marketprice);
 		
 		
 		///페이징처리에 필요한 변수
@@ -269,7 +271,7 @@ public class MarketplaceController {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("subtitle",subtitle);
 		map.put("colorradio", colorradio);
-		//map.put("marketprice", marketprice);
+		map.put("marketprice", marketprice);
 		map.put("start", start);
 		map.put("perPage", perPage);
 		
@@ -306,16 +308,16 @@ public class MarketplaceController {
 	  
 	  @RequestParam (value = "colorradio",required = false) String colorradio,
 	  
-	  //@RequestParam (value = "marketprice",required = false) String marketprice,
+	  @RequestParam (value = "marketprice",required = false) String marketprice,
 	  HttpSession session) 
 	  { 
 		  session.setAttribute("subtitle", subtitle);
 		  session.setAttribute("colorradio", colorradio);
-		  //session.setAttribute("marketprice", marketprice);
+		  session.setAttribute("marketprice", marketprice);
 	  
 		  ModelAndView mview = new ModelAndView();
 	  
-		  int totalCount=MPmapper.getSideSearchCount(subtitle, colorradio);
+		  int totalCount=MPmapper.getSideSearchCount(subtitle, colorradio,marketprice);
 		  
 		  ///페이징처리에 필요한 변수
 		  int totalPage; //총 페이지수
@@ -345,7 +347,7 @@ public class MarketplaceController {
 		  HashMap<String, Object> map = new HashMap<>();
 		  map.put("subtitle",subtitle);
 		  map.put("colorradio", colorradio);
-		  //map.put("marketprice", marketprice);
+		  map.put("marketprice", marketprice);
 		  map.put("start", start);
 		  map.put("perPage", perPage);
 		  
