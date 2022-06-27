@@ -117,24 +117,27 @@ $(function(){
 	});
 	*/
 
-
-	/* like 이벤트 */
+	
+	/* like 이벤트 */	
 	<%--목록 테이블 하트 이벤트--%>
-	$('.chheart').change(function(){
+	$('.chheart').on("change", function(){
 		if($(this).is(':checked'))
 		{								
 			let market_place_idx = $(this).attr('market_place_idx');
-			let member_idx = $(this).attr('member_idx');
+			let member_idx = ${userKey};
+			let like_count = 1;
 			
 			$.ajax({
 				type: "post",
 				url: "marketlike.event",
 				data: {
 					"market_place_idx":market_place_idx,
-					"member_idx":member_idx
+					"member_idx":member_idx,
+					"like_count":like_count,
 					},
 				success: function(data) {
 					document.location.reload(true);
+					alert("성공");
 				}
 			});
 			
@@ -144,24 +147,28 @@ $(function(){
 		else
 		{
 			let market_place_idx = $(this).attr('market_place_idx');
-			let member_idx = $(this).attr('member_idx');
+			let member_idx = ${userKey};
+			let like_count = 0;
 			
 			$.ajax({
 				type: "post",
 				url: "marketlike.event",
 				data: {
 					"market_place_idx":market_place_idx,
-					"member_idx":member_idx
+					"member_idx":member_idx,
+					"like_count":like_count,
 					},
 				success: function(data) {
 					document.location.reload(true);
+					alert("성공");
 				}
 			});
 			
 			//하트 바뀜
-			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
+			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
 		}
 	});
+	
 		
 		
 	<%--리스트 테이블 하트 이벤트--%>
@@ -238,13 +245,24 @@ $(function(){
 	<%--전체 테이블 --%>	
 	<c:forEach var="a" items="${list}" varStatus="status">
 	  	<div class="sangpumdiv" style="border: 0px solid black;">
+			
+			
 			<!-- like 이벤트 -->
-			<label class="lab" id="lab">			
-				<input type="checkbox" id="chk" 
-				market_place_idx="${a.market_place_idx}" 
-				member_idx="${a.member_idx}" class="chheart">
-				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
+			<label class="lab" id="lab">
+				<c:forEach var="b" items="${likelist}">
+					<c:if test="${(a.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
+						<input type="checkbox" id="chk"
+						market_place_idx="${a.market_place_idx}" class="chheart" checked="checked">
+						<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
+						style="position: absolute;">
+					</c:if>
+				</c:forEach>
+	
+				<input type="checkbox" id="chk"
+				market_place_idx="${a.market_place_idx}" class="chheart">
+				<img alt="" src="${root }/element/icon_bigheart_nobackred.png" class="heart">
 			</label>
+			
 
 		<!-- 거래미완료 상품 -->
 		<c:if test="${a.sold_day==null}">
@@ -288,6 +306,10 @@ $(function(){
 					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
 						<img src="${root }/element/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
 					</a>
+					<div style="position: absolute; top: 130px; left: 60px;">
+						<img id="msuccess" src="${root }/element/img_activity_success.png"
+						style="width: 100px; height: 35px;">
+					</div>
 		  		</c:if>
 		  	</div>
 	  	</c:if>

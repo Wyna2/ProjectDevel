@@ -22,7 +22,7 @@ public interface MarketMapper {
 	public void updateMarketLike(MarketLikeDto dto);
 	public List<MarketLikeDto> getLikeDatas();
 	public int getLikeData(HashMap<String, String> map);
-	
+		
 	//검색창 검색 관련 mapper
 	public List<MarketDto> SearchGetList(HashMap<String, Object> map);
 	public int getSearchCount(String SearchText);

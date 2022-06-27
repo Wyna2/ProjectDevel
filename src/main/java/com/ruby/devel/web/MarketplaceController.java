@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,11 +36,12 @@ public class MarketplaceController {
 	//마켓 기본 페이지
 	@GetMapping({"/marketplace","/marketplace/market_main"})
 	public ModelAndView marketplace_home(
-			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage
-			)
+			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage)
 	{
 		ModelAndView mview = new ModelAndView();
 		
+		
+		/* 페이징 */
 		int totalCount = MPmapper.getTotalCount();
 		
 		//페이징처리에 필요한 변수
@@ -58,8 +57,7 @@ public class MarketplaceController {
 							
 		//각블럭의 시작페이지
 		startPage=(currentPage-1)/perBlock*perBlock+1;
-		endPage=startPage+perBlock-1;
-							
+		endPage=startPage+perBlock-1;				
 		if(endPage>totalPage)
 			endPage=totalPage;
 				
@@ -75,15 +73,11 @@ public class MarketplaceController {
 		//각페이지에서 필요한 게시글 가져오기
 		List<MarketDto> list=MPmapper.getList(map);
 		
-		//like list 가져오기		
-		List<MarketLikeDto> likelist=MPmapper.getLikeDatas();
-		
 		//각 글앞에 붙일 시작번호 구하기
 		//총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
 		int no=totalCount-(currentPage-1)*perPage;
 								
 		//출력에 필요한 변수들을 request 에 저장
-		mview.addObject("likelist", likelist);
 		mview.addObject("list",list);
 		mview.addObject("startPage",startPage);
 		mview.addObject("endPage",endPage);
@@ -92,6 +86,13 @@ public class MarketplaceController {
 		mview.addObject("no",no);
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("totalCount",totalCount);
+		
+		
+		/* like */
+		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		mview.addObject("likelist",likelist);
+		
+		System.out.println(likelist);
 		
 		mview.setViewName("m/marketplace/market_main");
 				
@@ -454,6 +455,11 @@ public class MarketplaceController {
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("list", list);
 			    
+		/* like */
+		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		mview.addObject("likelist",likelist);
+		System.out.println(likelist);		
+		
 	    //dto의 name에 작성자 이름 넣기
 	    String seller = Mmapper.getName(dto.getMember_idx());
 	    dto.setSeller(seller);

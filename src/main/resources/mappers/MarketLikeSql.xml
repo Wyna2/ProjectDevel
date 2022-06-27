@@ -8,18 +8,12 @@
 	</insert>
 	
 	<update id="updateMarketLike" parameterType="mplike_dto">
-		update Marketlike set 
-		<if test="like_count=1">
-	  	like_count=0
-	  	</if>
-	  	<if test="like_count=0">
-	  	like_count=1
-	  	</if>
+		update Marketlike set like_count=#{like_count}
 		where market_place_idx=#{market_place_idx} and member_idx=#{member_idx}
 	</update>
 	
 	<select id="getLikeDatas" resultType="mplike_dto">
-		select * from Marketlike order by market_like_idx desc
+		select * from Marketlike
 	</select>
 	
 	<select id="getLikeData" parameterType="HashMap" resultType="int">

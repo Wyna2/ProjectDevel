@@ -9,10 +9,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- css  -->
 <c:set var="root" value="<%=request.getContextPath()%>" />
@@ -23,24 +22,58 @@
 %>
 
 <script type="text/javascript">
-	$(function () {
-		
-		
-		$(".chheart").change(function(){
-		      
-		      if($(this).is(":checked"))
-		      {
-		         $(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_heart_red.png");
-		        
-		      }
-		      else
-		      {
-		         $(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_heart.png");
-   
-		      }
-		});
-
+$(function () {	
+	/* like 이벤트 */	
+	$('.chheart').on("change", function(){
+		if($(this).is(':checked'))
+		{								
+			let market_place_idx = ${dto.market_place_idx};
+			let member_idx = ${userKey};
+			let like_count = 1;
+			
+			$.ajax({
+				type: "post",
+				url: "MarketLikeDetail.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					console.log("성공");
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
+		}
+		else
+		{
+			let market_place_idx = ${dto.market_place_idx};
+			let member_idx = ${userKey};
+			let like_count = 0;
+						
+			$.ajax({
+				type: "post",
+				url: "MarketLikeDetail.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					console.log("성공");
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
+		}
 	});
+	
+});
 
 </script>
 
@@ -66,11 +99,24 @@
 				</div>
 
 				<!-- 상품 메인이미지 구현 div -->
+				<!-- 이미지 없을 경우 -->
 				<c:if test="${dto.photo=='no'}">
+					<!-- 거래미완료 상품 -->
 					<div class="mainphoto">
 						<img src="${root }/element/icon_noimg.png" class="photo">
 					</div>
+					
+					<!-- 거래완료 상품 거래완료 표시 -->
+					<c:if test="${dto.sold_day!=null}">
+						<img src="${root }/photo/${p}" class="photo" style="opacity: 30%">
+						<div style="position: absolute; top: 300px; left: 300px;">
+							<img id="msuccess" src="${root }/element/img_activity_success.png"
+							style="width: 200px; height: 70px;">
+						</div>
+					</c:if>
 				</c:if>
+				
+				<!-- 이미지 있을 경우 -->				
 				<c:if test="${dto.photo!='no'}">
 					<div class="mainphoto">
 						<!-- 여러 사진 있을 경우 첫번째 사진 -->
@@ -108,11 +154,24 @@
 					${dto.subject}
 					</div>
 					<div>
-						<label  class="lab" id="lab">
-        					 <input type="checkbox" id="chk" value="${i }" class="chheart">
-         					 <img alt="" src="${root }/element/icon_heart.png" class="heart">
+					
+						<!-- like 이벤트 -->
+						<label class="lab" id="lab">
+							<c:forEach var="b" items="${likelist}">
+								<c:if test="${(dto.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
+									<input type="checkbox" id="chk" class="chheart" checked="checked">
+									<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
+									style="position: absolute; margin-left: 1040px;">
+								</c:if>
+							</c:forEach>
+				
+							<input type="checkbox" id="chk" class="chheart">
+							<img alt="" src="${root }/element/icon_bigheart_nobackred.png" class="heart">
 						</label>
-						<img alt=""	src="${root }/photo_marketplace/share.png" style="margin-top: 10px;">
+						
+						<img alt=""	src="${root }/photo_marketplace/share.png" 
+						style="position:absolute; margin-top: 40px; margin-left: -25px;">
+					
 					</div>
 				</div>
 
@@ -130,14 +189,14 @@
 							<span style="font-size: 16px; color: #797979;">판매자</span>
 							<span style="font-size: 16px; color: #191919; margin-left: 24px;">${dto.seller}</span>
 						</div>
-				<!-- 판매 날짜 등록 -->
-						<div>
-							<span style="font-size: 16px; color: #797979; margin-left: 139px;">판매시작</span>
+					<!-- 판매 날짜 등록 -->
+					<div>
+						<span style="font-size: 16px; color: #797979; margin-left: 139px;">판매시작</span>
 							<span style="font-size: 16px; color: #191919; margin-left: 24px;">
 							<fmt:formatDate value="${dto.upload_day}" pattern="yyyy-MM-dd"/>
-							</span>
-						</div>
+						</span>
 					</div>
+				</div>
 				</div>
 				<!-- 보상 판매 영역  -->  <!-- 추후 거래시 유의사항 으로 변경 예정 -->
 				<div class="bosang">보상 판매 내용</div>
