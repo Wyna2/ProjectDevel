@@ -18,8 +18,14 @@
 <c:set var="root" value="<%=request.getContextPath()%>" />
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/market_productdetail.css">
 <title>Insert title here</title>
+<%
+	String checkon = request.getParameter("checkon");
+%>
+
 <script type="text/javascript">
 	$(function () {
+		
+		
 		$(".chheart").change(function(){
 		      
 		      if($(this).is(":checked"))
@@ -39,6 +45,7 @@
 </script>
 
 </head>
+
 <body>
 <input type="hidden" value="${dto.market_place_idx}">
 	<div class="container">
@@ -160,17 +167,12 @@
 					
 					<div class="btn" style="padding: 0px;">
 						
-						 <c:if test="${SearchText==null}">
+						<%--  <c:if test="${SearchText==null}">
 						 	<c:if test="${subtitle == null}">
 						 		<button type="button" class="btn-list"
 	                        	onclick="history.back()">목록보기</button>	
 						 	</c:if>	 	
-						 	
-						 	<%-- <c:if test="${subtitle != null}">
-						 		<button type="button" class="btn-list"
-	                        	onclick="location.href='${root }/marketplace/sidesearchtest?subtitle=${subtitle}&&colorradio=${colorradio}&currentPage=${currentPage}'">목록보기</button>
-	                        	
-						 	</c:if> --%>	
+						 		
 						 	<c:if test="${subtitle != null}">
 						 		<button type="button" class="btn-list"
 	                        	onclick="history.back()">목록보기</button>
@@ -178,20 +180,57 @@
 						 	</c:if>			
 						</c:if>
 						
-						<%-- <c:if test="${SearchText != null}">
-							<button type="button" class="btn-list"
-	                        onclick="location.href='${root }/marketplace/search?SearchText=${SearchText}&currentPage=${currentPage}'">목록보기</button>
-						</c:if> --%>
+						
 						
 						<c:if test="${SearchText != null}">
 							<button type="button" class="btn-list"
 	                        onclick="history.back()">이전보기</button>
+						</c:if> --%>
+						
+						
+						<c:if test="${SearchText==null}">
+							<c:if test="${colorradio!=null}">
+								<c:if test="${checkside == null}">
+									<button type="button" class="btn-list"
+			                        onclick="location.href='sidesearch?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+		                        </c:if>
+		                        
+		                        <c:if test="${checkside != null}">
+									<button type="button" class="btn-list"
+			                        onclick="location.href='market_tradeablesidetest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+		                        </c:if>
+		                        
+							</c:if>
+							
+							<c:if test="${colorradio==null}">
+								<c:if test="${checkall == null}">
+									<button type="button" class="btn-list"
+		                        	onclick="location.href='market_main?currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>       
+								</c:if>
+								
+								<c:if test="${checkall != null}">
+									<button type="button" class="btn-list"
+		                        	onclick="location.href='market_tradeabletest?currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>       
+								</c:if>
+							</c:if>
 						</c:if>
 						
-						<%-- <c:if test="${SearchText!=null and subtitle == null}">
-							<button type="button" class="btn-list"
-	                        onclick="location.href='${root }/marketplace/search?SearchText=${SearchText}&currentPage=${currentPage}'">목록보기</button>
-						</c:if> --%>
+						<c:if test="${SearchText != null}">
+							<c:if test="${checksearch == null}">
+								<button type="button" class="btn-list"
+		                        onclick="location.href='search?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+	                        </c:if>
+	                        
+	                        <c:if test="${checksearch != null}">
+								<button type="button" class="btn-list"
+		                        onclick="location.href='market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+	                        </c:if>
+	                        
+	                        
+						</c:if>
+						
+						
+						
 						
 						
 						

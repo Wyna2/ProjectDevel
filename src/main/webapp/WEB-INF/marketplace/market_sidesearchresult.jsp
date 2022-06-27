@@ -214,7 +214,7 @@ $(function(){
 				<!-- 이미지 있을 경우 상품이미지 중 첫번째 이미지 보이기 -->
 				<c:if test="${a.photo!='no'}">
 					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
-						<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+						<a href="${root }/marketplace/productdetail?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
 							<img src="${root }/photo/${p}" style="width: 220px; height: 220px; opacity: 30%" class="photo">
 						</a>
 						<div style="position: absolute; top: 130px; left: 60px;">
@@ -226,7 +226,7 @@ $(function(){
 				
 				<!-- 이미지 없을 경우 기본 이미지 -->
 				<c:if test="${a.photo=='no'}">
-					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+					<a href="${root }/marketplace/productdetail?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
 						<img src="${root }/element/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
 					</a>
 		  		</c:if>

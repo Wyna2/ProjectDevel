@@ -38,7 +38,8 @@ public class MarketplaceController {
 	//마켓 기본 페이지
 	@GetMapping({"/marketplace","/marketplace/market_main"})
 	public ModelAndView marketplace_home(
-			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage)
+			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage
+			)
 	{
 		ModelAndView mview = new ModelAndView();
 		
@@ -390,6 +391,7 @@ public class MarketplaceController {
 			@RequestParam ArrayList<MultipartFile> photos,
 			@ModelAttribute MarketDto dto)
 	{
+		
 		//이미지 저장 경로
 		String path = session.getServletContext().getRealPath("/photo"); //webapp/photo 에 바로 넣기
 		System.out.println(path);
@@ -428,8 +430,20 @@ public class MarketplaceController {
 	@GetMapping("/marketplace/productdetail")
 	public ModelAndView marketplace_productdetail(
 			@RequestParam String market_place_idx,
-			@RequestParam int currentPage)
+			@RequestParam int currentPage,
+			@RequestParam (value = "colorradio",required = false) String colorradio,
+			@RequestParam(value = "SearchText",required = false) String SearchText,
+			@RequestParam(value = "checkall",required = false) String checkall,
+			@RequestParam(value = "checksearch",required = false) String checksearch,
+			@RequestParam(value = "checkside",required = false) String checkside,
+			HttpSession session)
 	{
+		session.setAttribute("SearchText", SearchText);
+		session.setAttribute("colorradio", colorradio);
+		session.setAttribute("checkall", checkall);
+		session.setAttribute("checksearch", checksearch);
+		session.setAttribute("checkside", checkside);
+		
 		ModelAndView mview = new ModelAndView();
 		
 		List<MarketDto> list = MPmapper.getAllDatas();
