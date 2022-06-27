@@ -159,35 +159,53 @@
 						<!-- 거래완료된 상품은 버튼 안보이기(거래완료안된 상품만 버튼 보이기) -->
 						<c:if test="${dto.sold_day==null}">
 							<div class="btn2" style="float: left; margin-left: 170px;">
-								<button type="button" class="btn-complete"
-								onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>
+								<c:if test="${SearchText==null}">
+									<c:if test="${colorradio!=null}">
+										<c:if test="${checkside == null}">
+											<button type="button" class="btn-complete"
+											onclick="location.href='${root }/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>
+		     							</c:if>
+		                        
+										<c:if test="${checkside != null}">
+											<button type="button" class="btn-complete"
+											onclick="location.href='${root }/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkside=1'">거래 완료 처리</button>
+		    							</c:if>
+		    
+									</c:if>
+					
+					
+									<c:if test="${colorradio==null}">
+	
+										<c:if test="${checkall == null}">
+											<button type="button" class="btn-complete"
+											onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>   
+									</c:if>
+								
+									<c:if test="${checkall != null}">
+										<button type="button" class="btn-complete"
+										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkall=1'">거래 완료 처리</button>        
+									</c:if>
+		
+									</c:if>
+								</c:if>
+						
+								<c:if test="${SearchText != null}">
+									<c:if test="${checksearch == null}">
+										<button type="button" class="btn-complete"
+										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}'">거래 완료 처리</button>
+	    							</c:if>
+	                        
+	    							<c:if test="${checksearch != null}">
+										<button type="button" class="btn-complete"
+										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}&checksearch=1'">거래 완료 처리</button>
+	    							</c:if>    
+	    
+								</c:if>  
 							</div>
 						</c:if>
 					</c:if>
 					
-					<div class="btn" style="padding: 0px;">
-						
-						<%--  <c:if test="${SearchText==null}">
-						 	<c:if test="${subtitle == null}">
-						 		<button type="button" class="btn-list"
-	                        	onclick="history.back()">목록보기</button>	
-						 	</c:if>	 	
-						 		
-						 	<c:if test="${subtitle != null}">
-						 		<button type="button" class="btn-list"
-	                        	onclick="history.back()">목록보기</button>
-	                        	
-						 	</c:if>			
-						</c:if>
-						
-						
-						
-						<c:if test="${SearchText != null}">
-							<button type="button" class="btn-list"
-	                        onclick="history.back()">이전보기</button>
-						</c:if> --%>
-						
-						
+					<div class="btn" style="padding: 0px;">		
 						<c:if test="${SearchText==null}">
 							<c:if test="${colorradio!=null}">
 								<c:if test="${checkside == null}">
@@ -197,7 +215,7 @@
 		                        
 		                        <c:if test="${checkside != null}">
 									<button type="button" class="btn-list"
-			                        onclick="location.href='market_tradeablesidetest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+			                        onclick="location.href='market_tradeablesidetest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}&check'">목록보기</button>
 		                        </c:if>
 		                        
 							</c:if>
@@ -224,18 +242,9 @@
 	                        <c:if test="${checksearch != null}">
 								<button type="button" class="btn-list"
 		                        onclick="location.href='market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
-	                        </c:if>
-	                        
-	                        
-						</c:if>
+	                        </c:if>    
+						</c:if>     
 						
-						
-						
-						
-						
-						
-						
-                        
                     </div>
                     
 				</div>
