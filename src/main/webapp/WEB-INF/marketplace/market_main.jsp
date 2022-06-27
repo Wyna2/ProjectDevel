@@ -311,7 +311,7 @@ $(function(){
 	<%--리스트 테이블 --%>
 	<c:forEach var="a" items="${list}">
 		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;">
-			
+		
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
 				<c:if test="${a.photo!='no'}">
 					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
@@ -328,6 +328,11 @@ $(function(){
 					</a>
 			  	</c:if>
 			</div>
+		
+		
+		
+		
+		
 			
 			<div class="sangpumlistdetail" style="border: 0px solid black">
 				<span class="brandname">${a.brandname}</span><br>

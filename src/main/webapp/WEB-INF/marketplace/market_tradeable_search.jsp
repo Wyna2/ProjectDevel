@@ -320,23 +320,24 @@ $(function(){
         <div class="page" align="center" style="margin-top: 50px;"> 
             <!-- 이전 -->
             <c:if test="${startPage>1}">
-                <a id="pagelbtn" href="marketplace?currentPage=${startPage-1}">
+                <a id="pagelbtn" href="market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${startPage-1}">
+             
                     <img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
                 </a>
             </c:if>
             
             <c:forEach var="pp" begin="${startPage}" end="${endPage}">
                 <c:if test="${currentPage==pp}">
-                    <a id="pagecnum" href="marketplace?currentPage=${pp}"><b>${pp}</b></a>
+                    <a id="pagecnum" href="market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${pp}"><b>${pp}</b></a>
                 </c:if>
                 <c:if test="${currentPage!=pp}">
-                    <a id="pagenum" href="marketplace?currentPage=${pp}">${pp}</a>
+                    <a id="pagenum" href="market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${pp}">${pp}</a>
                 </c:if>
             </c:forEach>
             
             <!-- 다음 -->
             <c:if test="${endPage<totalPage}">
-                <a id="pagerbtn" href="marketplace?currentPage=${endPage+1}">
+                <a id="pagerbtn" href="market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${endPage+1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
                 </a>
             </c:if>
