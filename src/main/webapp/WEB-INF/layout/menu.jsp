@@ -60,7 +60,7 @@ $(function () {
 	</div>
 	<div class="menuitem">
 		<span class="menu">
-		<a href="/marketplace" style="text-decoration: none;">중고장터</a>
+		<a href="/marketplace/market_main" style="text-decoration: none;">중고장터</a>
 		</span>
 	</div>
 	<div class="menuitem">

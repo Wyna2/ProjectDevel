@@ -363,6 +363,7 @@ $(function(){
                 <a id="pagelbtn" href="market_main?currentPage=${startPage-1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
                 </a>
+                
             </c:if>
             
             <c:forEach var="pp" begin="${startPage}" end="${endPage}">
