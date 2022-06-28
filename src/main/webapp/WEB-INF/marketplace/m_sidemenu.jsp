@@ -145,8 +145,13 @@ $(function () {
 		//후에 가격대 밸류값 정해서 넘기면 됨
 		var marketprice = $('input[name="marketprice"]:checked').val();
 		 
-		
+		if(subtitle == null || colorradio == null || marketprice == null)
+		{
+			alert("카테고리, 컬러, 가격대 모두 입력해 주세요!");
+			return false;
+		}
 	 });
+	 
 	 
 	 
 	 

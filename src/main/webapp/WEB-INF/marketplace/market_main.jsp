@@ -81,43 +81,6 @@ $(function(){
 		
 	});
 	
-	
-	<%--연관검색어 클릭시 연관검색어 테스트 가져옴--%>
-	/*$(".searchname").click(function(){
-		//location.reload();
-		var i=$(this).text();
-		alert(i);
-	});*/
-	
-	<%--검색어에 관련된 정보 테이블 출력--%>
-	/*
-	$(".searchicon").click(function(){
-		var SearchText=$(".searchtext").val();
-		
-		//location.reload();
-		
-		if(SearchText=="")
-		{
-			alert("검색어를 입력하세요!");
-		}
-		
-		else if(SearchText=="검색어를 입력해 주세요.123")
-		{
-			alert("검색어를 입력하세요!");
-		}
-		
-		else
-		{
-			location.href = '/marketplace/market_seachresult?SearchText='+SearchText;
-		}
-		
-
-		alert(i);
-		//location.reload();		
-	});
-	*/
-
-	
 	/* like 이벤트 */	
 	<%--목록 테이블 하트 이벤트--%>
 	$('.chheart').on("change", function(){
@@ -172,6 +135,7 @@ $(function(){
 		
 		
 	<%--리스트 테이블 하트 이벤트--%>
+	
 	$(".chheart").change(function(){
 		if($(this).is(":checked"))
 		{
@@ -181,7 +145,7 @@ $(function(){
 		{
 			$(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
 		}
-	});
+	}); 
 
 });
 </script>
@@ -332,7 +296,7 @@ $(function(){
 
 	<%--리스트 테이블 --%>
 	<c:forEach var="a" items="${list}">
-		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;">
+		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;" id="listdiv">
 		
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
 				<c:if test="${a.photo!='no'}">
