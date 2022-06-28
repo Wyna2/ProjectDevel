@@ -29,7 +29,6 @@ background-color: #fff !important;
 $(function(){
 	$(".sangpumlistdiv").hide();
 	$(".pagenumlist").hide();
-
 	
 	<%--목록형 테이블--%>
 	$("span.large").click(function(){
@@ -76,12 +75,9 @@ $(function(){
 		{
 			
 		}
-		
-		
-		
 	});
 	
-	/* like 이벤트 */	
+	/* like 이벤트 */		
 	<%--목록 테이블 하트 이벤트--%>
 	$('.chheart').on("change", function(){
 		if($(this).is(':checked'))
@@ -90,6 +86,8 @@ $(function(){
 			let member_idx = ${userKey};
 			let like_count = 1;
 			
+			if(member_idx!=null)
+			{
 			$.ajax({
 				type: "post",
 				url: "marketlike.event",
@@ -103,6 +101,7 @@ $(function(){
 					alert("성공");
 				}
 			});
+			}
 			
 			//하트 바뀜
 			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
@@ -113,6 +112,8 @@ $(function(){
 			let member_idx = ${userKey};
 			let like_count = 0;
 			
+			if(member_idx!=null)
+			{
 			$.ajax({
 				type: "post",
 				url: "marketlike.event",
@@ -126,6 +127,7 @@ $(function(){
 					alert("성공");
 				}
 			});
+			}
 			
 			//하트 바뀜
 			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
@@ -133,9 +135,7 @@ $(function(){
 	});
 	
 		
-		
 	<%--리스트 테이블 하트 이벤트--%>
-	
 	$(".chheart").change(function(){
 		if($(this).is(":checked"))
 		{
@@ -150,7 +150,6 @@ $(function(){
 });
 </script>
 </head>
-
 <body>
 <div class="container">
 	<div class="marketfirst">

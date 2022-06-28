@@ -92,7 +92,7 @@ public class MarketplaceController {
 		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
 		mview.addObject("likelist",likelist);
 		
-		System.out.println(likelist);
+		//System.out.println(likelist);
 		
 		mview.setViewName("m/marketplace/market_main");
 				

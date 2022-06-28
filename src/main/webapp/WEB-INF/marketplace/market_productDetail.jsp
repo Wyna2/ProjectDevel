@@ -73,6 +73,20 @@ $(function () {
 		}
 	});
 	
+	
+	/* 이미지 클릭시 변경 */
+	$('.subphoto1').on('click',function() {
+		$(this).css('border','solid 2px #ff4b4e');		
+		$(this).siblings().css('border','solid 1px #dbdbdb');
+		
+		let subimg = $(this).children().children('.photo').attr('src');
+		//alert(subimg);
+
+		$('#photo').attr('src', subimg);
+	});
+	
+	
+	
 });
 
 </script>
@@ -89,11 +103,17 @@ $(function () {
 				<div class="subphoto">
 					<c:if test="${dto.photo!='no'}">			
 						<c:forTokens var="p" items="${dto.photo}" delims=",">
-						<a href="../photo/${p}">
-							<div class="subphoto1" style="cursor: pointer;">
+						<div class="subphoto1" style="cursor: pointer;">
+							<a>
 								<img src="../photo/${p}" class="photo">
-							</div>
-						</a>
+							</a>
+							
+							<%--
+							<a href="../photo/${p}">
+								<img src="../photo/${p}" class="photo">
+							</a> 
+							--%>
+						</div>
 						</c:forTokens>
 					</c:if>
 				</div>
@@ -103,12 +123,12 @@ $(function () {
 				<c:if test="${dto.photo=='no'}">
 					<!-- 거래미완료 상품 -->
 					<div class="mainphoto">
-						<img src="${root }/element/icon_noimg.png" class="photo">
+						<img src="${root }/element/icon_noimg.png" id="photo" class="photo">
 					</div>
 					
 					<!-- 거래완료 상품 거래완료 표시 -->
 					<c:if test="${dto.sold_day!=null}">
-						<img src="${root }/photo/${p}" class="photo" style="opacity: 30%">
+						<img src="${root }/photo/${p}" id="photo" class="photo" style="opacity: 30%">
 						<div style="position: absolute; top: 300px; left: 300px;">
 							<img id="msuccess" src="${root }/element/img_activity_success.png"
 							style="width: 200px; height: 70px;">
@@ -124,12 +144,12 @@ $(function () {
 							
 							<!-- 거래미완료 상품 -->
 							<c:if test="${dto.sold_day==null}">
-								<img src="${root }/photo/${p}" class="photo">
+								<img src="${root }/photo/${p}" id="photo" class="photo">
 							</c:if>
 							
 							<!-- 거래완료 상품 거래완료 표시 -->
 							<c:if test="${dto.sold_day!=null}">
-								<img src="${root }/photo/${p}" class="photo" style="opacity: 30%">
+								<img src="${root }/photo/${p}" id="photo" class="photo" style="opacity: 30%">
 								<div style="position: absolute; top: 300px; left: 300px;">
 									<img id="msuccess" src="${root }/element/img_activity_success.png"
 									style="width: 200px; height: 70px;">
