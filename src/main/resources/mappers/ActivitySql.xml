@@ -20,4 +20,10 @@
 	<select id="getMarketDatas" parameterType="String" resultType="mp_dto">
 		select * from Marketplace where member_idx=#{userKey} order by upload_day desc
 	</select>
+	
+	<!-- 스크랩 -->
+	<select id="ScrapMarketDatas" parameterType="String" resultType="mp_dto">
+		select * from Marketplace a where  a.market_place_idx in (select b.market_place_idx from Marketlike b where b.member_idx = #{userKey} and b.like_count = 1);
+	</select>
+	
 </mapper>
