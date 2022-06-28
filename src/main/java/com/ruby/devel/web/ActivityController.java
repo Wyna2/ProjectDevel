@@ -153,8 +153,8 @@ public class ActivityController {
 		ModelAndView mview = new ModelAndView();
 		
 		//스크랩 얻기
-		//List<MarketDto> scraplist = Amapper.ScrapMarketDatas(userKey);
-		//mview.addObject("scraplist",scraplist);
+		List<MarketDto> scraplist = Amapper.ScrapMarketDatas(userKey);
+		mview.addObject("scraplist",scraplist);
 		
 		//포워딩
 		mview.setViewName("a/activity/activity_myScrap");

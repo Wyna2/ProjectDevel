@@ -32,7 +32,7 @@ span.side_main_span_scrap {
 	<!-- 상품 스크랩 -->
 	<div class="main_detail3" style="width: 850px;">
 		<!-- 나의 거래 목록 보이기 -->
-		 <%-- <c:forEach varStatus="dto" items="${scraplist}" begin="0" end="3">
+		  <c:forEach var="dto" items="${scraplist}" begin="0" end="3">
 		
 			<div class="detail_market" style="position: relative;">
 				<!-- 이미지 있을 경우 상품이미지 중 첫번째 이미지 보이기 -->
@@ -53,7 +53,7 @@ span.side_main_span_scrap {
 			 	<div id="mname">${dto.subject}</div>
 			</div>
 			
-		</c:forEach> --%>
+		</c:forEach>
 		
 		
 		<a href=""><img src="${root }/element/icon_activity_move.png" class="icon_activity_move"></a>
