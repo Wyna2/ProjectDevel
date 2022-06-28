@@ -222,6 +222,9 @@ public class MarketplaceController {
 		
 		mview.addObject("totalCount",totalCount);
 		
+		/* like */
+		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		mview.addObject("likelist",likelist);
 		
 		mview.setViewName("m/marketplace/market_searchresult");
 		
@@ -296,6 +299,9 @@ public class MarketplaceController {
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("totalCount",totalCount);
 		
+		/* like */
+		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		mview.addObject("likelist",likelist);
 		  
 		mview.setViewName("m/marketplace/market_sidesearchresult");
 		  
@@ -371,6 +377,10 @@ public class MarketplaceController {
 		  mview.addObject("no",no);
 		  mview.addObject("currentPage",currentPage);
 		  mview.addObject("totalCount",totalCount);
+		  
+		  /* like */
+		  List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		  mview.addObject("likelist",likelist);
 		  
 		  mview.setViewName("m/marketplace/market_sidesearchresult");
 		  
@@ -528,6 +538,10 @@ public class MarketplaceController {
  		mview.addObject("currentPage",currentPage);
  		mview.addObject("totalCount",totalCount);
  		
+ 		/* like */
+		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		mview.addObject("likelist",likelist);
+ 		
  		mview.setViewName("m/marketplace/market_tradeable");
 		
 		return mview;
@@ -595,6 +609,10 @@ public class MarketplaceController {
 		mview.addObject("currentPage",currentPage);
 					
 		mview.addObject("totalCount",totalCount);
+		
+		/* like */
+		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		mview.addObject("likelist",likelist);
 		
 		
 		mview.setViewName("m/marketplace/market_tradeable_search");
@@ -672,6 +690,10 @@ public class MarketplaceController {
 		mview.addObject("no",no);
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("totalCount",totalCount);
+		
+		/* like */
+		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
+		mview.addObject("likelist",likelist);
 		
 		mview.setViewName("m/marketplace/market_tradeable_side");
 		

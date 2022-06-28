@@ -53,6 +53,7 @@ div.mainphoto img{
 img.heart{
 	cursor: pointer;
 	margin-top: 4px;
+	margin-left: 24px;
 }
 
 div.content {

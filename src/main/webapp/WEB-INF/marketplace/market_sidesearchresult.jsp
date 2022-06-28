@@ -98,17 +98,60 @@ $(function(){
 	});
 
 	
+	/* like 이벤트 */		
 	<%--목록 테이블 하트 이벤트--%>
-	$(".chheart").change(function(){
-		if($(this).is(":checked"))
-		{
-			$(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png");
-			/* $(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png"); */
+	$('.chheart').on("change", function(){
+		if($(this).is(':checked'))
+		{								
+			let market_place_idx = $(this).attr('market_place_idx');
+			let member_idx = ${userKey};
+			let like_count = 1;
+			
+			if(member_idx!=null)
+			{
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					alert("성공");
+				}
+			});
+			}
+			
+			//하트 바뀜
+			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
 		}
 		else
 		{
-			$(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
-			/* $(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png"); */
+			let market_place_idx = $(this).attr('market_place_idx');
+			let member_idx = ${userKey};
+			let like_count = 0;
+			
+			if(member_idx!=null)
+			{
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					alert("성공");
+				}
+			});
+			}
+			
+			//하트 바뀜
+			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
 		}
 	});
 		
@@ -161,7 +204,8 @@ $(function(){
 		<span class="glyphicon glyphicon-list listicon list"></span>
 	</div>
 	
-	<div class="relatedsearch" style="border: solid 1px #dbdbdb; border-top: solid 2px black;">
+	<div class="relatedsearch" style="border: solid 1px #dbdbdb; border-top: solid 2px black;
+	margin: 0 0 0 29px;">
 		<br>
 		<span class="spanrelatedsearch">연관검색어</span>&nbsp;&nbsp;
 		<span class="searchname"><a href="${root }/marketplace/search?SearchText=노트북">노트북</a></span>&nbsp;&nbsp;
@@ -182,10 +226,24 @@ $(function(){
 	<%--전체 테이블 --%>
 	<c:forEach var="a" items="${SideSearchlist}">
 	  	<div class="sangpumdiv" style="border: 0px solid black;">
-			<label  class="lab" id="lab">
-				<input type="checkbox" id="chk" value="${i}" class="chheart">
-				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
+			
+			<!-- like 이벤트 -->
+			<label class="lab" id="lab">
+				<c:forEach var="b" items="${likelist}">
+					<c:if test="${(a.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
+						<input type="checkbox" id="chk"
+						market_place_idx="${a.market_place_idx}" class="chheart" checked="checked">
+						<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
+						style="position: absolute;">
+					</c:if>
+				</c:forEach>
+	
+				<input type="checkbox" id="chk"
+				market_place_idx="${a.market_place_idx}" class="chheart">
+				<img alt="" src="${root }/element/icon_bigheart_nobackred.png" class="heart">
 			</label>
+			
+			
 	<!-- 거래미완료 상품 -->
 		<c:if test="${a.sold_day==null}">
 	  	<div class="sangpumphoto" style="border: 0px solid #dbdbdb;">

@@ -77,6 +77,7 @@ $(function(){
 		}
 	});
 	
+	
 	/* like 이벤트 */		
 	<%--목록 테이블 하트 이벤트--%>
 	$('.chheart').on("change", function(){
@@ -134,18 +135,6 @@ $(function(){
 		}
 	});
 	
-		
-	<%--리스트 테이블 하트 이벤트--%>
-	$(".chheart").change(function(){
-		if($(this).is(":checked"))
-		{
-			$(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png");
-		}
-		else
-		{
-			$(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
-		}
-	}); 
 
 });
 </script>
@@ -173,14 +162,15 @@ $(function(){
 	</form>
 	</div>
 	
-	
-	
+
 	<div class="changelist">
 		<span class="glyphicon glyphicon-th-large largeicon large"></span>
 		<span class="glyphicon glyphicon-list listicon list"></span>
 	</div>
 	
-	<div class="relatedsearch" style="border: solid 1px #dbdbdb; border-top: solid 2px black;">
+	<div class="relatedsearch" 
+	style="border: solid 1px #dbdbdb; border-top: solid 2px black;
+	margin: 0 0 0 29px;">
 		<br>
 		<span class="spanrelatedsearch">연관검색어</span>&nbsp;&nbsp;
 		<span class="searchname"><a href="${root }/marketplace/search?SearchText=노트북">노트북</a></span>&nbsp;&nbsp;
@@ -192,12 +182,7 @@ $(function(){
 	<div class="selectbox">
 		
 		<label class="selectboxlb"><input type="checkbox" class="chb" id="changebox">&nbsp;거래가능 제품만 보기</label>
-	
-		
-		<%-- <c:if test="checkon == '1'">
-		<label class="selectboxlb"><input type="checkbox" class="chb" id="changebox" checked="checked">&nbsp;거래가능 제품만 보기</label>
-		</c:if> --%>
-		
+			
 		<!-- 상품등록 페이지 연결 -->
 		<button type="button" class="btn-addsangpum" onclick="location.href='/marketplace/productadd'">상품등록</button>
 	</div>
@@ -313,11 +298,6 @@ $(function(){
 					</a>
 			  	</c:if>
 			</div>
-		
-		
-		
-		
-		
 			
 			<div class="sangpumlistdetail" style="border: 0px solid black">
 				<span class="brandname">${a.brandname}</span><br>
@@ -333,10 +313,13 @@ $(function(){
 			
 			<label class="lablist" id="lab">
 				<input type="checkbox" id="chk" value="${i}" class="chheart">
-				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
+				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart"
+				style="left: 220px;">
 			</label>
 		</div>
 	</c:forEach>
+
+
 
 
 	<!-- 페이징 -->

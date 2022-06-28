@@ -181,7 +181,7 @@ $(function () {
 								<c:if test="${(dto.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
 									<input type="checkbox" id="chk" class="chheart" checked="checked">
 									<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
-									style="position: absolute; margin-left: 1040px;">
+									style="position: absolute; margin-left: 1065px;">
 								</c:if>
 							</c:forEach>
 				
@@ -197,7 +197,7 @@ $(function () {
 
 			
 				<!-- 가격 등록 -->
-				<div class="price" style="margin-top: 24px; width: 203px; height: 34px;">
+				<div class="price" style="margin-top: 24px; width: 300px; height: 34px;">
 					<span class="number"><fmt:formatNumber pattern="#,##0">${dto.price}</fmt:formatNumber></span><span style="font-size: 15px;">원</span>
 					<span class="oprice"><fmt:formatNumber pattern="#,##0">${dto.original_price}</fmt:formatNumber></span>
 				</div>
