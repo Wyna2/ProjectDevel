@@ -169,7 +169,7 @@ function checkFileName(str){
 	 			<td class="text2">
 	 				<div class="wrapper">
            				 <input type="text" class="input" name="original_price" 
-           				 placeholder="상품원가를 숫자만 입력하세요(ex.20,000)" required="required" style="width: 440px;">
+           				 placeholder="상품원가를 숫자만 입력하세요(ex. 20000)" required="required" style="width: 440px;">
            				 <span class="underline"></span>
 					</div>
 	 			</td>
@@ -179,7 +179,7 @@ function checkFileName(str){
 	 			<td class="text2">
 	 				<div class="wrapper">
            				 <input type="text" class="input" name="price" 
-           				 placeholder="상품판매가를 숫자만 입력하세요(ex.20,000)" required="required" style="width: 440px;">
+           				 placeholder="상품판매가를 숫자만 입력하세요(ex. 50000)" required="required" style="width: 440px;">
            				 <span class="underline"></span>
 					</div>
 	 			</td>

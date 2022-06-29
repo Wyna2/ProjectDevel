@@ -15,7 +15,6 @@ public interface MarketMapper {
 	public List<MarketDto> getAllDatas();
 	public List<MarketDto> getList(HashMap<String, Integer> map);
 	public MarketDto getData(String market_place_idx);
-	public void deleteMarket(String market_place_idx);
 	
 	//like 관련 mapper
 	public void insertMarketLike(MarketLikeDto dto);

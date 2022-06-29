@@ -24,9 +24,6 @@
 	select * from Marketplace where market_place_idx=#{market_place_idx}
   </select>
   
-  <delete id="deleteMarket" parameterType="String">
- 	delete from Marketplace where market_place_idx=#{market_place_idx}
-  </delete>
   
   <!-- 검색 기능 -->
   <select id="SearchGetList" parameterType="HashMap" resultType="mp_dto">

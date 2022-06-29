@@ -109,6 +109,29 @@ div.price span.oprice {
 	font-size: 15px;	
 }
 
+
+/* 상품삭제 btn */
+.btn_mp_delete {
+	position: absolute;
+	left: 1210px;
+	width: 80px;
+	height: 30px;
+	margin-top: -20px;	
+	
+	outline: none;
+	border: 2px solid #4d96ff; 
+	border-radius: 20px;
+	color: #4d96ff;
+	font-family: 'Noto Sans KR';
+	font-weight: 400;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	display: inline-block;
+}
+
+
+
 div.bosang {
 	margin-top: 16px;
 	width: 120px;

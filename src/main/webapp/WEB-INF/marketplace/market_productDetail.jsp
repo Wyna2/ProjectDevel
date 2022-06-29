@@ -170,7 +170,7 @@ $(function () {
 
 				<!-- 제품명 업로드  -->
 				<div class="subject" style="margin-top: 9px; height: 69px;">
-					<div class="productname" style="width: 355px; margin-right: 95px; float: left;">FC750RBT
+					<div class="productname" style="width: 355px; margin-right: 95px; float: left;">
 					${dto.subject}
 					</div>
 					<div>
@@ -201,6 +201,14 @@ $(function () {
 					<span class="number"><fmt:formatNumber pattern="#,##0">${dto.price}</fmt:formatNumber></span><span style="font-size: 15px;">원</span>
 					<span class="oprice"><fmt:formatNumber pattern="#,##0">${dto.original_price}</fmt:formatNumber></span>
 				</div>
+				
+				
+				<!-- 상품삭제 버튼 -->
+				<c:if test="${userKey==dto.member_idx}">
+					<button type="button" class="btn_mp_delete"
+					onclick="location.href='${root }/marketplace/delete?market_place_idx=${dto.market_place_idx}'">상품삭제</button>
+				</c:if>
+				
 
 				<!-- 판매자 등록 -->
 				<div class="sell" style="margin-top: 42px; height: 69px; border: 1px solid #dbdbdb; border-top: 2px solid black;">

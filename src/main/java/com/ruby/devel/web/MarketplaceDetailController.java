@@ -41,5 +41,18 @@ public class MarketplaceDetailController {
 		//완료 후 메인페이지 다시 이동
 		return "redirect:productdetail?market_place_idx="+market_place_idx+"&currentPage="+currentPage;
 	}
-	 
+	
+	//삭제버튼시 delete	
+	@GetMapping("/marketplace/delete")
+	public String deleteMarket(
+			@RequestParam String market_place_idx)
+	{
+		MPDmapper.deleteMarket(market_place_idx);
+		System.out.println("삭제성공");
+		
+		//완료 후 메인페이지 다시 이동
+		return "redirect:market_main";
+	}
+	
+	
 }
