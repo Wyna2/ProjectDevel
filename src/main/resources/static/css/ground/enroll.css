@@ -140,7 +140,7 @@ input:focus::-webkit-input-placeholder {
 	color: #191919;
 	text-align: left;
 	position: relative;
-	top: 60px;
+	top: 20px;
 }
 
 #crew_pr_text {
@@ -151,7 +151,7 @@ input:focus::-webkit-input-placeholder {
 	border: solid 1px #dbdbdb;
 	background-color: #fff;
 	position: relative;
-	top: 2px;
+	top: -40px;
 }
 
 #crew_pr_text:focus {
@@ -247,5 +247,61 @@ textarea:focus::-webkit-input-placeholder {
 .colortext {
 	position: relative;
 	top: 48px;
-	left: 131px;
+	left: 150px;
+}
+
+#colorbox,#colorboxname {
+	margin-left: 101px;
+	margin-bottom: 10px;
+}
+
+#colorbox div {
+	width: 33px;
+	height: 33px;
+	border: 1px solid black;
+	cursor: pointer;
+	border-radius: 50px;
+	margin-left: 15px;
+	position: relative;
+	display: inline-block;
+}
+
+#colorboxname span {
+	margin-left: 15px;
+	margin-right: 5.5px;
+	font-size: 14px;
+	color: #505050;
+	font-weight: 300;
+}
+
+/* Textarea 디자인 */
+textarea {
+	width: 635px;
+	height: 150px;
+	margin: 40px 0 40px;
+	padding: 14px 203px 112px 14px;
+	border-radius: 10px;
+	border: solid 1px #dbdbdb;
+	background-color: #fff;
+	position: relative;
+	top: 28px;
+}
+
+textarea:active {
+	box-shadow: 0 0 4px rgb(204, 204, 204);
+	border-radius: 2px 2px 0 0;
+	background-color: #f8f8f8;
+	outline: none;
+}
+
+textarea:focus {
+	outline: none;
+	box-shadow: 0 0 5px #ff7a7c;
+	border-radius: 10px;
+	border: 1px solid #ff4b4e;
+}
+
+#text_iii{
+	position: relative;
+	top: 35px;
 }

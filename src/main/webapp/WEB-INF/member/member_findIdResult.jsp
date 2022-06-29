@@ -22,7 +22,7 @@
 <div class="container">
 		<div class="box">
 			<div style="text-align: center; margin-top: 10px; color: #505050; ">
-				입력하신 정보로 조회된 아이디는 다음과 같습니다.<br>
+				입력하신 정보로 조회된 아이디는 다음과 같습니다<br>
 				<hr style="margin: 40px 0 30px 0;">
 			</div>
 			<div style="text-align: center; font-size: 1.5em;" >
@@ -30,8 +30,8 @@
 				${finderResult }
 			</div>
 			<hr style="margin: 35px 0 0 0;">
-			<button class="btn-large2" style="margin: 40px 0 35px 0;" type="button">비밀번호 찾기</button>
-			<button class="btn-large1" style="margin-top: 0px;" type="button">로그인</button>
+			<button class="btn-large2" style="margin: 40px 0 35px 0;" type="button" onclick="location.href='/findaccount'">비밀번호 찾기</button>
+			<button class="btn-large1" style="margin-top: 0px;" type="button" onclick="location.href='/login'">로그인</button>
 		</div>
 	</div>
 </body>

@@ -15,6 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <title>Insert title here</title>
+
 <style type="text/css">
 div.main {
 background-color: #fff !important;
@@ -28,7 +29,6 @@ background-color: #fff !important;
 $(function(){
 	$(".sangpumlistdiv").hide();
 	$(".pagenumlist").hide();
-
 	
 	<%--목록형 테이블--%>
 	$("span.large").click(function(){
@@ -63,78 +63,82 @@ $(function(){
 	});
 	
 	<%--체크박스 체크시 테이블 select문으로 거래가능 출력--%>
-	$(".chb").click(function(){
-		
-	});
-	
-	
-	<%--연관검색어 클릭시 연관검색어 테스트 가져옴--%>
-	/*$(".searchname").click(function(){
-		//location.reload();
-		var i=$(this).text();
-		alert(i);
-	});*/
-	
-	<%--검색어에 관련된 정보 테이블 출력--%>
-	/*
-	$(".searchicon").click(function(){
-		var SearchText=$(".searchtext").val();
-		
-		//location.reload();
-		
-		if(SearchText=="")
+	$("#changebox").change(function(){
+		if($("#changebox").is(":checked"))
 		{
-			alert("검색어를 입력하세요!");
+			var checkon = 1;	
+			location.href = '/marketplace/market_tradeabletest?checkon='+checkon;
+			
+			
 		}
-		
-		else if(SearchText=="검색어를 입력해 주세요.123")
-		{
-			alert("검색어를 입력하세요!");
-		}
-		
 		else
 		{
-			location.href = '/marketplace/market_seachresult?SearchText='+SearchText;
+			
 		}
-		
-
-		alert(i);
-		//location.reload();		
 	});
-	*/
-
 	
+	
+	/* like 이벤트 */		
 	<%--목록 테이블 하트 이벤트--%>
-	$(".chheart").change(function(){
-		if($(this).is(":checked"))
-		{
-			$(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png");
-			/* $(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png"); */
+	$('.chheart').on("change", function(){
+		if($(this).is(':checked'))
+		{								
+			let market_place_idx = $(this).attr('market_place_idx');
+			let member_idx = ${userKey};
+			let like_count = 1;
+			
+			if(member_idx!=null)
+			{
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					alert("성공");
+				}
+			});
+			}
+			
+			//하트 바뀜
+			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
 		}
 		else
 		{
-			$(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
-			/* $(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png"); */
+			let market_place_idx = $(this).attr('market_place_idx');
+			let member_idx = ${userKey};
+			let like_count = 0;
+			
+			if(member_idx!=null)
+			{
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					alert("성공");
+				}
+			});
+			}
+			
+			//하트 바뀜
+			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
 		}
 	});
-		
-		
-	<%--리스트 테이블 하트 이벤트--%>
-	$(".chheart").change(function(){
-		if($(this).is(":checked"))
-		{
-			$(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png");
-		}
-		else
-		{
-			$(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
-		}
-	});
+	
 
 });
 </script>
 </head>
-
 <body>
 <div class="container">
 	<div class="marketfirst">
@@ -158,14 +162,15 @@ $(function(){
 	</form>
 	</div>
 	
-	
-	
+
 	<div class="changelist">
 		<span class="glyphicon glyphicon-th-large largeicon large"></span>
 		<span class="glyphicon glyphicon-list listicon list"></span>
 	</div>
 	
-	<div class="relatedsearch" style="border: solid 1px #dbdbdb; border-top: solid 2px black;">
+	<div class="relatedsearch" 
+	style="border: solid 1px #dbdbdb; border-top: solid 2px black;
+	margin: 0 0 0 29px;">
 		<br>
 		<span class="spanrelatedsearch">연관검색어</span>&nbsp;&nbsp;
 		<span class="searchname"><a href="${root }/marketplace/search?SearchText=노트북">노트북</a></span>&nbsp;&nbsp;
@@ -175,7 +180,9 @@ $(function(){
 	</div>
 	
 	<div class="selectbox">
-		<label class="selectboxlb"><input type="checkbox" class="chb">&nbsp;거래가능 제품만 보기</label>
+		
+		<label class="selectboxlb"><input type="checkbox" class="chb" id="changebox">&nbsp;거래가능 제품만 보기</label>
+			
 		<!-- 상품등록 페이지 연결 -->
 		<button type="button" class="btn-addsangpum" onclick="location.href='/marketplace/productadd'">상품등록</button>
 	</div>
@@ -183,13 +190,27 @@ $(function(){
 	<!-- <div class="tab-content"> -->
 
 	
-	<%--전체 테이블 --%>
-	<c:forEach var="a" items="${list}">
+	<%--전체 테이블 --%>	
+	<c:forEach var="a" items="${list}" varStatus="status">
 	  	<div class="sangpumdiv" style="border: 0px solid black;">
-			<label  class="lab" id="lab">
-				<input type="checkbox" id="chk" value="${i}" class="chheart">
-				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
+			
+			
+			<!-- like 이벤트 -->
+			<label class="lab" id="lab">
+				<c:forEach var="b" items="${likelist}">
+					<c:if test="${(a.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
+						<input type="checkbox" id="chk"
+						market_place_idx="${a.market_place_idx}" class="chheart" checked="checked">
+						<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
+						style="position: absolute;">
+					</c:if>
+				</c:forEach>
+	
+				<input type="checkbox" id="chk"
+				market_place_idx="${a.market_place_idx}" class="chheart">
+				<img alt="" src="${root }/element/icon_bigheart_nobackred.png" class="heart">
 			</label>
+			
 
 		<!-- 거래미완료 상품 -->
 		<c:if test="${a.sold_day==null}">
@@ -233,6 +254,10 @@ $(function(){
 					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
 						<img src="${root }/element/icon_noimg.png" style="width: 220px; height: 220px;" class="photo">
 					</a>
+					<div style="position: absolute; top: 130px; left: 60px;">
+						<img id="msuccess" src="${root }/element/img_activity_success.png"
+						style="width: 100px; height: 35px;">
+					</div>
 		  		</c:if>
 		  	</div>
 	  	</c:if>
@@ -241,7 +266,12 @@ $(function(){
 	  	<div class="sangpumdetail" style="border: 0px solid #dbdbdb;">
 	  		<span class="brandname">${a.brandname}</span><br>
 	  		<span class="subject">${a.subject}</span><br>
-	  		<span class="price">${a.price}원</span>&nbsp;&nbsp;&nbsp;<span class="original_price">${a.original_price}</span><br>
+	  		<span class="price">
+				<fmt:formatNumber pattern="#,##0">${a.price}</fmt:formatNumber>원
+			</span>&nbsp;&nbsp;&nbsp;
+			<span class="original_price">
+				<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>
+			</span>
 	  		<span class="region">${a.region}</span>
 	  		</div>
 	  	</div>
@@ -250,8 +280,8 @@ $(function(){
 
 	<%--리스트 테이블 --%>
 	<c:forEach var="a" items="${list}">
-		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;">
-			
+		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;" id="listdiv">
+		
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
 				<c:if test="${a.photo!='no'}">
 					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
@@ -272,16 +302,24 @@ $(function(){
 			<div class="sangpumlistdetail" style="border: 0px solid black">
 				<span class="brandname">${a.brandname}</span><br>
 				<span class="subject">${a.subject}</span><br><br>
-				<span class="price">${a.price}원</span>&nbsp;&nbsp;&nbsp;<span class="original_price">${a.original_price}</span>
+				<span class="price">
+					<fmt:formatNumber pattern="#,##0">${a.price}</fmt:formatNumber>원
+				</span>&nbsp;&nbsp;&nbsp;
+				<span class="original_price">
+					<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>
+				</span>
 				<span class="region">${a.region}</span>
 			</div>
 			
 			<label class="lablist" id="lab">
 				<input type="checkbox" id="chk" value="${i}" class="chheart">
-				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
+				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart"
+				style="left: 220px;">
 			</label>
 		</div>
 	</c:forEach>
+
+
 
 
 	<!-- 페이징 -->
@@ -290,23 +328,24 @@ $(function(){
         <div class="page" align="center" style="margin-top: 50px;"> 
             <!-- 이전 -->
             <c:if test="${startPage>1}">
-                <a id="pagelbtn" href="marketplace?currentPage=${startPage-1}">
+                <a id="pagelbtn" href="market_main?currentPage=${startPage-1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move2.png">
                 </a>
+                
             </c:if>
             
             <c:forEach var="pp" begin="${startPage}" end="${endPage}">
                 <c:if test="${currentPage==pp}">
-                    <a id="pagecnum" href="marketplace?currentPage=${pp}"><b>${pp}</b></a>
+                    <a id="pagecnum" href="market_main?currentPage=${pp}"><b>${pp}</b></a>
                 </c:if>
                 <c:if test="${currentPage!=pp}">
-                    <a id="pagenum" href="marketplace?currentPage=${pp}">${pp}</a>
+                    <a id="pagenum" href="market_main?currentPage=${pp}">${pp}</a>
                 </c:if>
             </c:forEach>
             
             <!-- 다음 -->
             <c:if test="${endPage<totalPage}">
-                <a id="pagerbtn" href="marketplace?currentPage=${endPage+1}">
+                <a id="pagerbtn" href="market_main?currentPage=${endPage+1}">
                     <img id="pagebtn" src="${root }/activity/icon_activity_move1.png">
                 </a>
             </c:if>

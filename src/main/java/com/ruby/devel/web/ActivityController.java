@@ -147,9 +147,19 @@ public class ActivityController {
 	}
 	
 	@GetMapping("/activity/myscrap")  // 중고장터의 찜하기 or 커뮤니티의 스크랩 모아보기 페이지
-	public String activity_scrap()
+	public ModelAndView activity_scrap(
+			@SessionAttribute String userKey)
 	{
-		return "a/activity/activity_myScrap"; 
+		ModelAndView mview = new ModelAndView();
+		
+		//스크랩 얻기
+		List<MarketDto> scraplist = Amapper.ScrapMarketDatas(userKey);
+		mview.addObject("scraplist",scraplist);
+		
+		//포워딩
+		mview.setViewName("a/activity/activity_myScrap");
+		
+		return mview; 
 	}
 	
 }

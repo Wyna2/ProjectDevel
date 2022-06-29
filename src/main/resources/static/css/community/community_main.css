@@ -313,6 +313,24 @@ tr td div.day{
 
 /* 커뮤니티 main css end */
 
+ /*하트 이미지 배경 처리중  사진 안불러와 짐 다시 돌아가려면 메인에 하트 특수문자 넣고  백그라운드 지우고 위치 다시 조정*/
+.scrap{
+
+   width: 26px;
+   height: 26px;
+   content : '2661';
+   box-sizing: border-box;
+   cursor: pointer;   
+   font-size: 20pt;
+   left: 200px;
+}
+
+#chk{
+   display: none;
+}
+
+
+
 /* 드롭다운 옵션(카테고리 선택) */
 
 .dropdown {

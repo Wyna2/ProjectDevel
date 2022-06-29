@@ -6,5 +6,9 @@
 	<update id="updateSoldout" parameterType="mp_dto">
 		update Marketplace set sold_day=now() where market_place_idx=#{market_place_idx}
 	</update>
-  
+	
+	<!-- 삭제버튼 클릭시 데이터 삭제하기 -->
+	<delete id="deleteMarket" parameterType="String">
+		delete from Marketplace where market_place_idx=#{market_place_idx}
+	</delete>
 </mapper>

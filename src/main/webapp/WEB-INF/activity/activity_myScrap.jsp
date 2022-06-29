@@ -32,46 +32,29 @@ span.side_main_span_scrap {
 	<!-- 상품 스크랩 -->
 	<div class="main_detail3" style="width: 850px;">
 		<!-- 나의 거래 목록 보이기 -->
-		<div class="detail_market" style="position: relative;">
-			<img id="mimg" src="${root }/activity/img_activity_key1.jpg">
-			<div style="position: absolute; top: 10px; right: 10px;">
-				<img id="mimgdel" src="${root }/element/icon_activity_delete.png">
+		  <c:forEach var="dto" items="${scraplist}" begin="0" end="3">
+		
+			<div class="detail_market" style="position: relative;">
+				<!-- 이미지 있을 경우 상품이미지 중 첫번째 이미지 보이기 -->
+				<c:if test="${dto.photo!='no'}">
+					<c:forTokens var="p" items="${dto.photo}" delims="," begin="0" end="0">
+						<a href="${root }/marketplace/productdetail?market_place_idx=${dto.market_place_idx}&currentPage=1">
+							<img id="mimg" src="${root }/photo/${p}">
+						</a>
+					</c:forTokens>
+				</c:if>
+				
+				<!-- 이미지 없을 경우 기본 이미지 -->
+				<c:if test="${dto.photo=='no'}">
+					<a href="${root}/marketplace/productdetail?market_place_idx=${dto.market_place_idx}&currentPage=1">
+						<img id="mimg" src="${root}/element/icon_noimg.png">
+					</a>
+			 	</c:if>
+			 	<div id="mname">${dto.subject}</div>
 			</div>
-			<div id="mcompany">레오폴드</div>
-			<div id="mname">FC750RBT PD 그레이 블루 한글 적축(국내정품)</div>
-			<span id="mprice">173,000</span>원
-			<span id="moprice">200,000</span>
-		</div>
-		<div class="detail_market" style="position: relative;">
-			<img id="mimg" src="${root }/element/icon_noimg.png">
-			<div style="position: absolute; top: 10px; right: 10px;">
-				<img id="mimgdel" src="${root }/element/icon_activity_delete.png">
-			</div>
-			<div id="mcompany">제조사</div>
-			<div id="mname">제품명</div>
-			<span id="mprice">1,111,111</span>원
-			<span id="moprice">2,222,222</span>
-		</div>
-		<div class="detail_market" style="position: relative;">
-			<img id="mimg" src="${root }/element/icon_noimg.png">
-			<div style="position: absolute; top: 10px; right: 10px;">
-				<img id="mimgdel" src="${root }/element/icon_activity_delete.png">
-			</div>
-			<div id="mcompany">제조사</div>
-			<div id="mname">제품명</div>
-			<span id="mprice">1,111,111</span>원
-			<span id="moprice">2,222,222</span>
-		</div>
-		<div class="detail_market" style="position: relative;">
-			<img id="mimg" src="${root }/element/icon_noimg.png">
-			<div style="position: absolute; top: 10px; right: 10px;">
-				<img id="mimgdel" src="${root }/element/icon_activity_delete.png">
-			</div>
-			<div id="mcompany">제조사</div>
-			<div id="mname">제품명</div>
-			<span id="mprice">1,111,111</span>원
-			<span id="moprice">2,222,222</span>
-		</div>	
+			
+		</c:forEach>
+		
 		
 		<a href=""><img src="${root }/element/icon_activity_move.png" class="icon_activity_move"></a>
 	</div>

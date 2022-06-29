@@ -60,7 +60,7 @@ $(function () {
 	</div>
 	<div class="menuitem">
 		<span class="menu">
-		<a href="/marketplace" style="text-decoration: none;">중고장터</a>
+		<a href="/marketplace/market_main" style="text-decoration: none;">중고장터</a>
 		</span>
 	</div>
 	<div class="menuitem">
@@ -68,26 +68,30 @@ $(function () {
 		<a href="/challenge" style="text-decoration: none;">챌린지</a>
 		</span>
 	</div>
-	
 	<c:if test="${sessionScope.loginOK==null }">
-		<div class="menuitem_member" style="margin-left: 450px;">
-			<span class="membermenu">
-			<a href="/login" style="text-decoration: none;">로그인</a>
-			</span>
-		</div>
-		<div class="menuitem_member">
-			<span class="membermenu">
-			<a href="/signup" style="text-decoration: none;">회원가입</a>
-			</span>
-		</div>
+	<div class="menuitem_member" style="margin-left: 450px;">
+		<span class="membermenu">
+		<a href="/login" style="text-decoration: none;">로그인</a>
+		</span>
+	</div>
+	<div class="menuitem_member">
+		<span class="membermenu">
+		<a href="/signup" style="text-decoration: none;">회원가입</a>
+		</span>
+	</div>
 	</c:if>
-	
 	<c:if test="${sessionScope.loginOK!=null }">
-		<div class="menuitem_member">
-			<span class="membermenu">
-				<a href="/logout" style="text-decoration: none;">로그아웃</a>
-			</span>
-		</div>
+	
+	<div class="menuitem_member" style="margin-left: 450px;">
+		<span class="membermenu">
+		<b>${sessionScope.userNickname }님</b>
+		</span>
+	</div>
+	<div class="menuitem_member">
+		<span class="membermenu">
+		<a href="/logout" style="text-decoration: none;">로그아웃</a>
+		</span>
+	</div>
 	</c:if>
 	
 </div>
@@ -106,7 +110,7 @@ $(function () {
 					<li><a href="#">내 작성글 관리</a>
 				</ul>
 			</li>
-			<li><a class="dm_main" href="/marketplace">중고장터</a></li>
+			<li><a class="dm_main" href="/marketplace/market_main">중고장터</a></li>
 			<li><a class="dm_main" href="/challenge">챌린지</a>
 				<ul>
 					<li><a href="/challenge">진행중인 챌린지</a>

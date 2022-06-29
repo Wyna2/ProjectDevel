@@ -9,36 +9,90 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Yeon+Sung&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- css  -->
 <c:set var="root" value="<%=request.getContextPath()%>" />
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/market_productdetail.css">
 <title>Insert title here</title>
-<script type="text/javascript">
-	$(function () {
-		$(".chheart").change(function(){
-		      
-		      if($(this).is(":checked"))
-		      {
-		         $(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_heart_red.png");
-		        
-		      }
-		      else
-		      {
-		         $(this).parent('.lab').children(".heart").attr("src","${root }/element/icon_heart.png");
-   
-		      }
-		});
+<%
+	String checkon = request.getParameter("checkon");
+%>
 
+<script type="text/javascript">
+$(function () {	
+	/* like 이벤트 */	
+	$('.chheart').on("change", function(){
+		if($(this).is(':checked'))
+		{								
+			let market_place_idx = ${dto.market_place_idx};
+			let member_idx = ${userKey};
+			let like_count = 1;
+			
+			$.ajax({
+				type: "post",
+				url: "MarketLikeDetail.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					console.log("성공");
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
+		}
+		else
+		{
+			let market_place_idx = ${dto.market_place_idx};
+			let member_idx = ${userKey};
+			let like_count = 0;
+						
+			$.ajax({
+				type: "post",
+				url: "MarketLikeDetail.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					console.log("성공");
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
+		}
 	});
+	
+	
+	/* 이미지 클릭시 변경 */
+	$('.subphoto1').on('click',function() {
+		$(this).css('border','solid 2px #ff4b4e');		
+		$(this).siblings().css('border','solid 1px #dbdbdb');
+		
+		let subimg = $(this).children().children('.photo').attr('src');
+		//alert(subimg);
+
+		$('#photo').attr('src', subimg);
+	});
+	
+	
+	
+});
 
 </script>
 
 </head>
+
 <body>
 <input type="hidden" value="${dto.market_place_idx}">
 	<div class="container">
@@ -49,21 +103,40 @@
 				<div class="subphoto">
 					<c:if test="${dto.photo!='no'}">			
 						<c:forTokens var="p" items="${dto.photo}" delims=",">
-						<a href="../photo/${p}">
-							<div class="subphoto1" style="cursor: pointer;">
+						<div class="subphoto1" style="cursor: pointer;">
+							<a>
 								<img src="../photo/${p}" class="photo">
-							</div>
-						</a>
+							</a>
+							
+							<%--
+							<a href="../photo/${p}">
+								<img src="../photo/${p}" class="photo">
+							</a> 
+							--%>
+						</div>
 						</c:forTokens>
 					</c:if>
 				</div>
 
 				<!-- 상품 메인이미지 구현 div -->
+				<!-- 이미지 없을 경우 -->
 				<c:if test="${dto.photo=='no'}">
+					<!-- 거래미완료 상품 -->
 					<div class="mainphoto">
-						<img src="${root }/element/icon_noimg.png" class="photo">
+						<img src="${root }/element/icon_noimg.png" id="photo" class="photo">
 					</div>
+					
+					<!-- 거래완료 상품 거래완료 표시 -->
+					<c:if test="${dto.sold_day!=null}">
+						<img src="${root }/photo/${p}" id="photo" class="photo" style="opacity: 30%">
+						<div style="position: absolute; top: 300px; left: 300px;">
+							<img id="msuccess" src="${root }/element/img_activity_success.png"
+							style="width: 200px; height: 70px;">
+						</div>
+					</c:if>
 				</c:if>
+				
+				<!-- 이미지 있을 경우 -->				
 				<c:if test="${dto.photo!='no'}">
 					<div class="mainphoto">
 						<!-- 여러 사진 있을 경우 첫번째 사진 -->
@@ -71,12 +144,12 @@
 							
 							<!-- 거래미완료 상품 -->
 							<c:if test="${dto.sold_day==null}">
-								<img src="${root }/photo/${p}" class="photo">
+								<img src="${root }/photo/${p}" id="photo" class="photo">
 							</c:if>
 							
 							<!-- 거래완료 상품 거래완료 표시 -->
 							<c:if test="${dto.sold_day!=null}">
-								<img src="${root }/photo/${p}" class="photo" style="opacity: 30%">
+								<img src="${root }/photo/${p}" id="photo" class="photo" style="opacity: 30%">
 								<div style="position: absolute; top: 300px; left: 300px;">
 									<img id="msuccess" src="${root }/element/img_activity_success.png"
 									style="width: 200px; height: 70px;">
@@ -97,24 +170,45 @@
 
 				<!-- 제품명 업로드  -->
 				<div class="subject" style="margin-top: 9px; height: 69px;">
-					<div class="productname" style="width: 355px; margin-right: 95px; float: left;">FC750RBT
+					<div class="productname" style="width: 355px; margin-right: 95px; float: left;">
 					${dto.subject}
 					</div>
 					<div>
-						<label  class="lab" id="lab">
-        					 <input type="checkbox" id="chk" value="${i }" class="chheart">
-         					 <img alt="" src="${root }/element/icon_heart.png" class="heart">
+					
+						<!-- like 이벤트 -->
+						<label class="lab" id="lab">
+							<c:forEach var="b" items="${likelist}">
+								<c:if test="${(dto.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
+									<input type="checkbox" id="chk" class="chheart" checked="checked">
+									<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
+									style="position: absolute; margin-left: 1065px;">
+								</c:if>
+							</c:forEach>
+				
+							<input type="checkbox" id="chk" class="chheart">
+							<img alt="" src="${root }/element/icon_bigheart_nobackred.png" class="heart">
 						</label>
-						<img alt=""	src="${root }/photo_marketplace/share.png" style="margin-top: 10px;">
+						
+						<img alt=""	src="${root }/photo_marketplace/share.png" 
+						style="position:absolute; margin-top: 40px; margin-left: -25px;">
+					
 					</div>
 				</div>
 
 			
 				<!-- 가격 등록 -->
-				<div class="price" style="margin-top: 24px; width: 203px; height: 34px;">
-					<span class="number">${dto.price}</span> <span style="font-size: 15px;">원</span>
-					<span class="oprice">${dto.original_price}</span>
+				<div class="price" style="margin-top: 24px; width: 300px; height: 34px;">
+					<span class="number"><fmt:formatNumber pattern="#,##0">${dto.price}</fmt:formatNumber></span><span style="font-size: 15px;">원</span>
+					<span class="oprice"><fmt:formatNumber pattern="#,##0">${dto.original_price}</fmt:formatNumber></span>
 				</div>
+				
+				
+				<!-- 상품삭제 버튼 -->
+				<c:if test="${userKey==dto.member_idx}">
+					<button type="button" class="btn_mp_delete"
+					onclick="location.href='${root }/marketplace/delete?market_place_idx=${dto.market_place_idx}'">상품삭제</button>
+				</c:if>
+				
 
 				<!-- 판매자 등록 -->
 				<div class="sell" style="margin-top: 42px; height: 69px; border: 1px solid #dbdbdb; border-top: 2px solid black;">
@@ -123,14 +217,14 @@
 							<span style="font-size: 16px; color: #797979;">판매자</span>
 							<span style="font-size: 16px; color: #191919; margin-left: 24px;">${dto.seller}</span>
 						</div>
-				<!-- 판매 날짜 등록 -->
-						<div>
-							<span style="font-size: 16px; color: #797979; margin-left: 139px;">판매시작</span>
+					<!-- 판매 날짜 등록 -->
+					<div>
+						<span style="font-size: 16px; color: #797979; margin-left: 139px;">판매시작</span>
 							<span style="font-size: 16px; color: #191919; margin-left: 24px;">
 							<fmt:formatDate value="${dto.upload_day}" pattern="yyyy-MM-dd"/>
-							</span>
-						</div>
+						</span>
 					</div>
+				</div>
 				</div>
 				<!-- 보상 판매 영역  -->  <!-- 추후 거래시 유의사항 으로 변경 예정 -->
 				<div class="bosang">보상 판매 내용</div>
@@ -152,51 +246,92 @@
 						<!-- 거래완료된 상품은 버튼 안보이기(거래완료안된 상품만 버튼 보이기) -->
 						<c:if test="${dto.sold_day==null}">
 							<div class="btn2" style="float: left; margin-left: 170px;">
-								<button type="button" class="btn-complete"
-								onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>
+								<c:if test="${SearchText==null}">
+									<c:if test="${colorradio!=null}">
+										<c:if test="${checkside == null}">
+											<button type="button" class="btn-complete"
+											onclick="location.href='${root }/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>
+		     							</c:if>
+		                        
+										<c:if test="${checkside != null}">
+											<button type="button" class="btn-complete"
+											onclick="location.href='${root }/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkside=1'">거래 완료 처리</button>
+		    							</c:if>
+		    
+									</c:if>
+					
+					
+									<c:if test="${colorradio==null}">
+	
+										<c:if test="${checkall == null}">
+											<button type="button" class="btn-complete"
+											onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>   
+									</c:if>
+								
+									<c:if test="${checkall != null}">
+										<button type="button" class="btn-complete"
+										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkall=1'">거래 완료 처리</button>        
+									</c:if>
+		
+									</c:if>
+								</c:if>
+						
+								<c:if test="${SearchText != null}">
+									<c:if test="${checksearch == null}">
+										<button type="button" class="btn-complete"
+										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}'">거래 완료 처리</button>
+	    							</c:if>
+	                        
+	    							<c:if test="${checksearch != null}">
+										<button type="button" class="btn-complete"
+										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}&checksearch=1'">거래 완료 처리</button>
+	    							</c:if>    
+	    
+								</c:if>  
 							</div>
 						</c:if>
 					</c:if>
 					
-					<div class="btn" style="padding: 0px;">
-						
-						 <c:if test="${SearchText==null}">
-						 	<c:if test="${subtitle == null}">
-						 		<button type="button" class="btn-list"
-	                        	onclick="history.back()">목록보기</button>	
-						 	</c:if>	 	
-						 	
-						 	<%-- <c:if test="${subtitle != null}">
-						 		<button type="button" class="btn-list"
-	                        	onclick="location.href='${root }/marketplace/sidesearchtest?subtitle=${subtitle}&&colorradio=${colorradio}&currentPage=${currentPage}'">목록보기</button>
-	                        	
-						 	</c:if> --%>	
-						 	<c:if test="${subtitle != null}">
-						 		<button type="button" class="btn-list"
-	                        	onclick="history.back()">목록보기</button>
-	                        	
-						 	</c:if>			
+					<div class="btn" style="padding: 0px;">		
+						<c:if test="${SearchText==null}">
+							<c:if test="${colorradio!=null}">
+								<c:if test="${checkside == null}">
+									<button type="button" class="btn-list"
+			                        onclick="location.href='sidesearch?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+		                        </c:if>
+		                        
+		                        <c:if test="${checkside != null}">
+									<button type="button" class="btn-list"
+			                        onclick="location.href='market_tradeablesidetest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}&check'">목록보기</button>
+		                        </c:if>
+		                        
+							</c:if>
+							
+							<c:if test="${colorradio==null}">
+								<c:if test="${checkall == null}">
+									<button type="button" class="btn-list"
+		                        	onclick="location.href='market_main?currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>       
+								</c:if>
+								
+								<c:if test="${checkall != null}">
+									<button type="button" class="btn-list"
+		                        	onclick="location.href='market_tradeabletest?currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>       
+								</c:if>
+							</c:if>
 						</c:if>
-						
-						<%-- <c:if test="${SearchText != null}">
-							<button type="button" class="btn-list"
-	                        onclick="location.href='${root }/marketplace/search?SearchText=${SearchText}&currentPage=${currentPage}'">목록보기</button>
-						</c:if> --%>
 						
 						<c:if test="${SearchText != null}">
-							<button type="button" class="btn-list"
-	                        onclick="history.back()">이전보기</button>
-						</c:if>
+							<c:if test="${checksearch == null}">
+								<button type="button" class="btn-list"
+		                        onclick="location.href='search?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+	                        </c:if>
+	                        
+	                        <c:if test="${checksearch != null}">
+								<button type="button" class="btn-list"
+		                        onclick="location.href='market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+	                        </c:if>    
+						</c:if>     
 						
-						<%-- <c:if test="${SearchText!=null and subtitle == null}">
-							<button type="button" class="btn-list"
-	                        onclick="location.href='${root }/marketplace/search?SearchText=${SearchText}&currentPage=${currentPage}'">목록보기</button>
-						</c:if> --%>
-						
-						
-						
-						
-                        
                     </div>
                     
 				</div>

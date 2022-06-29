@@ -14,6 +14,13 @@
 <link rel="stylesheet" type="text/css" href="${root }/css/member/member_accountfindform.css">
 
 <script type="text/javascript">
+/* 뒤로가기(history.back()) 감지 시 메인 페이지 이동 */
+window.onpageshow = function(event) {
+    if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+    	$("input.input").val("");
+    }
+}
+
 // '아이디 찾기-이메일'이 기본값으로 '아이디 찾기-연락처' 폼 숨기기
 $(function () {
 	$('#findid_contactform').hide();	
@@ -31,7 +38,7 @@ function setFindformType(){
 }
 </script>
 
-<title>Insert title here</title>
+<title>DEVEL :: 회원정보 찾기</title>
 </head>
 <body>
 <div class="title">
@@ -106,7 +113,7 @@ function setFindformType(){
 						<div class="tab-content">
 						<hr style="margin: 0;">
 						<!-- 비밀번호 찾기 form -->
-						<form action="#findpw">
+						<form action="findpw" method="post">
 						<div class="wrapper" style="margin-top: 40px;">
 							아이디&nbsp;&nbsp;
 							<input type="text" class="input" name="id" id="id" placeholder="아이디를 입력하세요" required="required" style="width: 305px;"> 
