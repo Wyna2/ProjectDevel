@@ -67,18 +67,18 @@ function checkFileName(str){
 //라디오 버튼 선택에 따라 본문 textarea 노출 
 function setContentType(){
 	if($("input:radio[id=contentType_normal]").is(":checked")){
-    	$("#textarea_normal").show();
-		$("#textarea_qna").hide();
+    	$("#textarea_common ").attr("placeholder", "본문 내용을 입력하세요");
 		$("#btn_submit").html("등록하기");
     } else if($("input:radio[id=contentType_qna]").is(":checked")){
-        $("#textarea_qna").show();
-        $("#textarea_normal").hide();
+    	$("#textarea_common").attr("placeholder", "질문 내용을 입력하세요.\n상세하게 작성할수록 명쾌한 답변을 얻을 수 있습니다.");
         $("#btn_submit").html("질문하기");
     }
 }
 </script>
 </head>
 <body>
+<form action="insert" method="post" enctype="multipart/form-data">
+<input type="hidden" value="${userKey }" name="member_idx">
 <div class="title">
 글쓰기
 </div> 
@@ -92,12 +92,12 @@ function setContentType(){
 	 				<div class="wrapper">
 	 			<ul>
 							<li>
-							<input type="radio" id="contentType_normal" name="selector" checked="checked" onchange="setContentType()">
+							<input type="radio" id="contentType_normal" value="0" name="content_type" checked="checked" onchange="setContentType()">
 							<label for="contentType_normal">자유</label>
 							<div class="check"></div>
 							</li>
 							<li>
-							<input type="radio" id="contentType_qna" name="selector" onchange="setContentType()">
+							<input type="radio" id="contentType_qna" value="1" name="content_type" onchange="setContentType()">
 							<label for="contentType_qna">Q&A</label>
 							<div class="check"><div class="inside"></div></div>
 							</li>
@@ -109,11 +109,11 @@ function setContentType(){
  				<td class="text1"> <div style="padding-bottom: 20px;">태그</div></td>
 	 			<td class="text2">
 	 				<div class="wrapper" style="width: 270px;">
-					#&nbsp;<input type="text" class="input" name="hobby1" placeholder="Tag1" required="required" style="width: 75px;" maxlength="4"> 
+					#&nbsp;<input type="text" class="input" name="tag1" placeholder="Tag1" required="required" style="width: 75px;" maxlength="4"> 
 					<span class="underline" style="margin-left: 11px; width: 75px;"></span>
-					#&nbsp;<input type="text" class="input" name="hobby2" placeholder="Tag2" style="width: 75px;" maxlength="4"> 
+					#&nbsp;<input type="text" class="input" name="tag2" placeholder="Tag2" style="width: 75px;" maxlength="4"> 
 					<span class="underline" style="margin-left: 100px; width: 75px;"></span>
-					#&nbsp;<input type="text" class="input" name="hobby3" placeholder="Tag3" style="width: 75px;" maxlength="4"> 
+					#&nbsp;<input type="text" class="input" name="tag3" placeholder="Tag3" style="width: 75px;" maxlength="4"> 
 					<span class="underline" style="margin-left: 189px; width: 75px;"></span>
 				</div>
 	 			</td>
@@ -121,7 +121,7 @@ function setContentType(){
 	 			<td class="text1"><div style="padding-bottom: 20px; width: 70px; margin-left: 50px;">작성자</div></td>
 	 			<td>
 	 				<div class="wrapper">
-           				 <input type="text" class="input" name="productname" readonly="readonly" style="width: 120px;">
+           				 <input type="text" class="input" name="writer" readonly="readonly" value="${userNickname }" style="width: 120px;">
            				 <span class="underline" style="width: 120px; "></span>
 					</div>
 	 			</td>
@@ -130,7 +130,7 @@ function setContentType(){
  				<td class="text1"><div style="padding-bottom: 20px;">제목</div></td>
 	 			<td colspan="3" class="text2">
 	 				<div class="wrapper">
-           				 <input type="text" class="input" name="productname" placeholder="제목을 입력하세요" required="required" style="width: 520px;">
+           				 <input type="text" class="input" name="subject" placeholder="제목을 입력하세요" required="required" style="width: 520px;">
            				 <span class="underline"></span>
 					</div>
 	 			</td>
@@ -141,21 +141,15 @@ function setContentType(){
 	 				<div class="filebox">
 	 					 <input class="filename_list" style="margin-left: 10px; outline: none;" value="업로드 버튼으로 이미지를 첨부하세요" readonly="readonly">		
            				 <label for="file">업로드</label> 
-           				 <input type="file" value="첨부파일" id="file" name="photo" style="width: 520px;" multiple="multiple">
+           				 <input type="file" value="첨부파일" id="file" name="upload" style="width: 520px;" multiple="multiple">
 					</div>
 	 			</td>
  			</tr>
 			<tr>
 				<td colspan="4">
-					<div class="wrapper_textarea" id="textarea_normal" style="margin-top: 15px;">
+					<div class="wrapper_textarea" id="textarea_normal"  style="margin-top: 15px;">
 						<div style="position:relative; margin-bottom: 15px; font-size:16px; font-weight: 500; color: #505050;" >본문</div>
-						<textarea class="select" style="resize: none;" placeholder="본문 내용을 입력하세요"></textarea>
-						<div style="font-size:12px; letter-spacing :-0.1em; position: relative; margin-bottom: 10px; color: #505050">
-						</div>
-	          		</div>
-	          		<div class="wrapper_textarea" id="textarea_qna" style="margin-top: 15px;">
-						<div style="position:relative; margin-bottom: 15px; font-size:16px; font-weight: 500; color: #505050;" >질문 내용</div>
-						<textarea class="select" style="resize: none;" placeholder="질문 내용을 입력하세요.&#13;&#10;상세하게 작성할수록 명쾌한 답변을 얻을 수 있습니다."></textarea>
+						<textarea class="select" id="textarea_common" name="content" style="resize: none;" placeholder="본문 내용을 입력하세요"></textarea>
 						<div style="font-size:12px; letter-spacing :-0.1em; position: relative; margin-bottom: 10px; color: #505050">
 						</div>
 	          		</div>
@@ -172,5 +166,6 @@ function setContentType(){
  		</table>
  	</div>	
  </div> 
+</form> 
 </body>
 </html>

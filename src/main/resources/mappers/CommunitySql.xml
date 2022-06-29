@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruby.devel.service.impl.CommunityMapper">
+	
+	<!-- 게시글 전체 수 출력 -->
+	<select id="getTotalCount" resultType="int">
+		SELECT count(*) FROM Community
+	</select>
+	
+	<!-- 게시글 insert -->
+	<insert id="insertCommunity" >
+		INSERT INTO Community (community_idx, member_idx, tag1, tag2, tag3, subject, content, photo, like_count, read_count, content_type, write_day) VALUES (#{community_idx}, #{member_idx}, #{tag1}, #{tag2}, #{tag3}, #{subject}, #{content}, #{photo}, #{like_count}, #{read_count}, #{content_type}, now() )
+	</insert>
+	
+	<!-- 게시글 삭제 -->
+ 	<delete id="deleteCommunity" parameterType="String">
+  		DELETE FROM Community where community_idx=#{community_idx}
+  	</delete>
+	
+	<!-- 게시글 전체 출력 -->
+	<select id="getAllDatas" resultType="community" parameterType="HashMap">
+		SELECT * FROM Community ORDER BY community_idx desc;
+  	</select>
+  	
+  	<!-- 해당 idx값 갖고오기 -->
+  	<select id="getData" parameterType="String" resultType="community">
+  		SELECT * FROM Community WHERE community_idx=#{community_idx}
+  	</select>
+  	
+  	<select id="getName" parameterType="String" resultType="community">
+  		SELECT * FROM Member WHERE member_idx=#{member_idx}
+  	</select>
+  	
+  	<!-- 조회수 증가 -->
+  	<update id="updateReadCount" parameterType="String">
+  		UPDATE Community SET read_count=read_count+1 WHERE community_idx=#{community_idx}
+  	</update>
+  	
+  	<!-- 페이징 -->
+  	<select id="getList" parameterType="HashMap" resultType="community">
+  		 select * from Community order by community_idx desc limit #{start}, #{perPage}
+ 	</select>
+ 	
+ 	<!-- 추천수 증가 -->
+	<update id="updateLikeCount" parameterType="String">
+		UPDATE Community SET like_count= like_count+1 WHERE community_idx=#{community_idx}
+	</update>
+</mapper>

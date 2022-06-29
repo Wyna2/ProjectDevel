@@ -6,10 +6,10 @@
 	<select id="getWriteCount" parameterType="String" resultType="int">
 		select count(*) from Community where member_idx=#{userKey}
 	</select>
-	<select id="getWritePageDatas" parameterType="HashMap" resultType="c_dto">
+	<select id="getWritePageDatas" parameterType="HashMap" resultType="community">
 		select * from Community where member_idx=#{userKey} order by write_day desc limit #{start}, #{perPage}
 	</select>
-	<select id="getWriteDatas" parameterType="String" resultType="c_dto">
+	<select id="getWriteDatas" parameterType="String" resultType="community">
 		select * from Community where member_idx=#{userKey} order by write_day desc
 	</select>
 	<select id="getWriteDelete" parameterType="String">

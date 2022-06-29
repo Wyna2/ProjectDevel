@@ -71,10 +71,12 @@ $(function(){
 </head>
 <body>
 <div class="container">
+	<input type="hidden" value="${c_dto.community_idx }" id="c_idx">	
+	<input type="hidden" value="${currentPage }" id="currentPage">
 
 <div class="detailsubject" style="border: 0px solid black;">
 	<%--글번호 받아오기 --%>
-	<span class="contentnum">#글번호</span>
+	<span class="contentnum">#${c_dto.community_idx }</span>
 	
 	
 	<%--Q&A글 알림표 --%>
@@ -153,7 +155,7 @@ $(function(){
 		
 		<br>
 		<span class="commentwriteday">2022-06-14 05:03</span>
-		<textarea rows="" cols="" class="cocomment" readonly="readonly">??</textarea>
+		<textarea rows="" cols="" class="cocomment" readonly="readonly" style="">??</textarea>
 		<img alt="" src="${root }/element/button_selection.png" class="selectionbtn">
 	</div>
 	</c:forEach>

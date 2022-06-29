@@ -17,21 +17,22 @@
 </head>
 <body>
 <div class="title">
-아이디 찾기
+
 </div>
 <div class="container">
 		<div class="box">
-			<div style="text-align: center; margin-top: 10px; color: #505050; ">
-				입력하신 정보로 조회된 아이디는 다음과 같습니다<br>
-				<hr style="margin: 40px 0 30px 0;">
+			<div style="text-align: center; margin-top: -5px; color: #505050; ">
+				다음 계정으로 현재 로그인 상태입니다<br>
+				<hr style="margin: 35px 0 30px 0;">
 			</div>
-			<div style="text-align: center; font-size: 1.5em;" >
-				<!-- 아이디 찾기 통해서 나온 db 결과값 출력 -->
-				${finderResult }
+			<div style="text-align: center; font-size: 1.2em; color: #505050;" >
+				로그인 아이디<br> <span style="font-size: 1.4em;">${userID }</span>
+				<br><br>
+				로그인 시각<br> <span style="font-size: 1.4em;">${loginTime }</span>
 			</div>
 			<hr style="margin: 35px 0 0 0;">
-			<button class="btn-large2" style="margin: 40px 0 35px 0;" type="button" onclick="location.href='/findaccount'">비밀번호 찾기</button>
-			<button class="btn-large1" style="margin-top: 0px;" type="button" onclick="location.href='/login'">로그인</button>
+			<button class="btn-large2" style="margin: 40px 20px 35px 0; width:170px; float: left;" type="button" onclick="history.back()">뒤로가기</button>
+			<button class="btn-large1" style="margin: 40px 0 35px 0; width:170px; " type="button" onclick="location.href='/logout'">로그아웃</button>
 		</div>
 	</div>
 </body>

@@ -64,9 +64,9 @@ span.tag{
 
 /*글작성일*/
 .writeday{
-	position: relative;
-	left: 680px;
-	top: 110px;
+	position: absolute;
+	left: 1000px;
+	top: 80px;
 }
 
 /*content*/
@@ -198,7 +198,7 @@ div.contentarea{
 
 
 /*추천수 아이콘*/
-.likes{
+.likes img{
 	cursor: pointer;
 }
 /*댓글 추가*/
@@ -216,7 +216,7 @@ div.addcomment{
   width: 750px;
   height: 35px;
   margin: 25px 20px 0 70px;
-  padding: 5px 710px 5px 14px;
+  padding: 5px 0 5px 14px;
   border-radius: 10px;
   border: solid 1px #dbdbdb;
   background-color: #fff;
@@ -240,7 +240,7 @@ div.addcomment{
 .commentdiv{
 	position : relative;
 	width: 1015px;
-	height: 231px;
+	height: 440px;
 	
 	left: 410px;
 	top: -350px;
@@ -248,6 +248,50 @@ div.addcomment{
     padding: 28px 180px 28px 70px;
     border: solid 1px #dbdbdb;
 }
+
+.commentdiv2{
+	position : relative;
+	width: 1015px;
+	height: 200px;
+	
+	left: 410px;
+	top: -350px;
+	
+    padding: 28px 180px 28px 70px;
+    border: solid 1px #dbdbdb;
+}
+
+.cocomment{
+  width: 650px;
+  height: 100px;
+  margin: 0 20px 0 35px;
+  padding: 10px 645px 146px 19px;
+  border-radius: 10px;
+  border: solid 1px #dbdbdb;
+  background-color: #fff;
+  position: relative;
+  left: 130px;
+  top: -80px;
+  overflow: hidden;
+  font-family: NotoSansKR;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.38px;
+  text-align: left;
+  color: #767676;
+  
+}
+
+/*채택하기 버튼*/
+.selectionbtn{
+	position: relative;
+	left: 840px;
+	top: -120px;
+}
+
 
 /*댓글 작성 일*/
 .commentwriteday{

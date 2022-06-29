@@ -24,7 +24,7 @@
 		<img alt="" src="${root }/element/icon_myinfo.png" class="icon_myinfo" onclick="location.href='/activity/mypage'">
 		<img alt="" src="${root }/element/icon_inbox.png" class="icon_inbox" onclick="location.href='/activity'">
 		<img alt="" src="${root }/element/icon_favorite.png" class="icon_favorite" onclick="location.href='/activity/myscrap'">
-		</c:if>
+	</c:if>
 	<hr style="margin: 0;">
 </div>
 </body>

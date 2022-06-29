@@ -10,11 +10,10 @@
 		UPDATE Member SET job=#{job}, age=#{age}, hobby1=#{hobby1}, hobby2=#{hobby2}, hobby3=#{hobby3}, pr=#{pr}, link=#{link} WHERE member_idx=#{member_idx}
 	</update>
 	
-	<!-- 아이디 검증 -->
+	<!-- 아이디/닉네임 검증 -->
 	<select id="checkVaildId" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM Member WHERE id=#{id}
 	</select>
-	<!-- 닉네임 검증 -->
 	<select id="checkVaildNickname" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM Member WHERE nickname=#{nickname}
 	</select>
@@ -23,16 +22,24 @@
 	<select id="login" parameterType="HashMap" resultType="int">
 		SELECT COUNT(*) FROM Member WHERE id=#{id} AND password=#{password}
 	</select>
+	
+	<!-- 추가정보 입력검증 -->
+	<select id="checkVaildSignup" parameterType="HashMap" resultType="int">
+		SELECT signup_complete FROM Member WHERE id=#{id} AND password=#{password}
+	</select>
+	<update id="signupComplete" parameterType="String">
+		UPDATE Member SET signup_complete=1 WHERE member_idx=#{member_idx}
+	</update>
 
 	<!-- 로그인 정보 획득 -->
 	<select id="getName" parameterType="String" resultType="String">
-		SELECT name FROM Member WHERE member_idx=#{member_idx}
+		SELECT name FROM Member WHERE id=#{id}
 	</select>
 	<select id="getNickname" parameterType="String" resultType="String">
-		select nickname from Member where member_idx=#{member_idx}
+		SELECT nickname FROM Member WHERE id=#{id}
 	</select>
 	<select id="getUserKey" parameterType="String" resultType="String">
-		select member_idx from Member where id=#{id}
+		SELECT member_idx FROM Member WHERE id=#{id}
 	</select>
 	
 	<!-- 아이디 찾기 -->
@@ -42,22 +49,33 @@
 	<select id="findIdByContactNumber" parameterType="HashMap" resultType="String">
 		SELECT id FROM Member WHERE name=#{name} AND contact_number=#{contact_number}
 	</select>
-	<!-- 비밀번호 재설정 -->
-	<select id="resetUserPw" parameterType="HashMap" resultType="int">
-		SELECT COUNT(*) FROM Member WHERE id=#{id} name=#{name} AND email=#{email} AND birth=#{birth}
+	<!-- 비밀번호 재설정 위한 정보 검색 -->
+	<select id="searchForResetPw" parameterType="member" resultType="String">
+		SELECT member_idx FROM Member WHERE id=#{id} AND name=#{name} AND birth=#{birth}
 	</select>
 
-	<!-- 회원 개인정보 수정 -->
+	<!-- 회원 개인정보/추가정보 수정 -->
 	<update id="modMember" parameterType="member">
-		update Member set name=#{name}, pw=#{pw}, hp=#{hp}, addr=#{addr}, email=#{email}, hp=#{hp} where member_idx=#{member_idx}
+		UPDATE Member set name=#{name}, pw=#{pw}, hp=#{hp}, addr=#{addr}, email=#{email}, hp=#{hp} WHERE member_idx=#{member_idx}
 	</update>
-	<!-- 회원 추가정보 수정 -->
 	<update id="modMemberInfo" parameterType="member">
-		update Member set name=#{name}, pw=#{pw}, hp=#{hp}, addr=#{addr}, email=#{email}, hp=#{hp} where member_idx=#{member_idx}
+		UPDATE Member set name=#{name}, pw=#{pw}, hp=#{hp}, addr=#{addr}, email=#{email}, hp=#{hp} WHERE member_idx=#{member_idx}
+	</update>
+	<!-- 회원 비밀번호 수정 -->
+	<update id="modMemberPw" parameterType="member">
+		UPDATE Member set password=#{password} WHERE member_idx=#{member_idx}
 	</update>
 	
 	<!-- 회원탈퇴 -->
-	<delete id="deleteMember" parameterType="String">
+	<delete id="delMember" parameterType="String">
 		DELETE FROM Member WHERE member_idx=#{member_idx}
 	</delete>
+	
+	<select id="getMemberDatas" parameterType="String" resultType="member">
+		select member_idx, name, pr, link, age, job, hobby1, hobby2, hobby3 from Member where member_idx=#{member_idx}
+	</select>
+   
+	<select id="getMemberAge" parameterType="String" resultType="String">
+		select age from Member where member_idx=#{member_idx}
+	</select>
 </mapper>
