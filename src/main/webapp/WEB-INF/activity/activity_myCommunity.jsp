@@ -57,7 +57,8 @@ $(function() {
 			<c:forEach var="dto" items="${clist}">
 				<div class="write_sub">
 					<input type="checkbox" id="check" name="cnum"
-					value="${dto.community_idx}">${dto.subject}
+					value="${dto.community_idx}">
+					<a href="../community/contentdetail?community_idx=${dto.community_idx}">${dto.subject}</a>
 				</div>
 				<hr style="border: solid 0.5px #767676;">
 			</c:forEach>

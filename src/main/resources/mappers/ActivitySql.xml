@@ -20,6 +20,12 @@
 	<select id="getMarketDatas" parameterType="String" resultType="mp_dto">
 		select * from Marketplace where member_idx=#{userKey} order by upload_day desc
 	</select>
+	<select id="getMarketSoldDatas" parameterType="String" resultType="mp_dto">
+		select * from Marketplace where member_idx=#{userKey} and sold_day is not null order by upload_day desc
+	</select>
+	<select id="getMarketNotSoldDatas" parameterType="String" resultType="mp_dto">
+		select * from Marketplace where member_idx=#{userKey} and sold_day is null order by upload_day desc
+	</select>
 	
 	<!-- 스크랩 -->
 	<select id="ScrapMarketDatas" parameterType="String" resultType="mp_dto">

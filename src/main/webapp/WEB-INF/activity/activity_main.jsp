@@ -35,25 +35,40 @@ span.side_main_span_main {
 		<span class="main_span_crew">나의 크루 보기</span>
 		<hr style="border: solid 1px #191919;">
 	</div>
+	
+	<c:if test="${cdto.name!=null}">
 	<div class="main_detail1">
 		<!-- 속해있는 crew 값 가져오기 -->
-		<div class="detail_crew">싹쓰리</div>
+		<div class="detail_crew">${cdto.name}</div>
 	</div>
-	
-	
+	</c:if>
+	<c:if test="${cdto.name==null}">
+	<div class="main_detail1">
+		<div class="detail_crew" style="color: black; background-color: white;">소속된 크루가 없습니다.</div>
+	</div>
+	</c:if>	
 	
 	<!-- 나의 작성글 목록 -->
 	<div class="main_name2">
 		<span class="main_span_write">나의 작성글 목록</span>
 		<hr style="border: solid 1px #191919;">
 	</div>
+	<c:if test="${clistsize>0}">
 	<div class="main_detail2">
 		<!-- 내 작성글 글 제목 값 가져오기 -->
 		<c:forEach var="dto" items="${clist}" begin="0" end="2">
-			<div class="detail_write">${dto.subject}</div>
+			<div class="detail_write">
+				<a href="../community/contentdetail?community_idx=${dto.community_idx}">${dto.subject}</a>
+			</div>
 			<hr style="border: solid 0.5px #767676;">
 		</c:forEach>
 	</div>
+	</c:if>
+	<c:if test="${clistsize==0}">
+	<div class="main_detail2">
+		<div class="detail_crew" style="color: black; background-color: white;">작성된 글이 없습니다.</div>
+	</div>
+	</c:if>	
 	<a href="../activity/mycommunity"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
 	
 	
@@ -63,6 +78,7 @@ span.side_main_span_main {
 		<span class="main_span_market">나의 거래 목록</span>
 		<hr style="border: solid 1px #191919;">
 	</div>
+	<c:if test="${mplistsize>0}">
 	<div class="main_detail3">
 		<!-- 나의 거래 목록 보이기 -->
 		<c:forEach var="dto" items="${mplist}" begin="0" end="2">
@@ -85,8 +101,13 @@ span.side_main_span_main {
 				<div id="mname">${dto.subject}</div>
 			</div>
 		</c:forEach>
-		
 	</div>
+	</c:if>
+	<c:if test="${mplistsize==0}">
+	<div class="main_detail2">
+		<div class="detail_crew" style="color: black; background-color: white;">나의 거래 내역이 없습니다.</div>
+	</div>
+	</c:if>	
 	<a href="../activity/mymarketplace"><img src="${root }/element/icon_activity_add.png" class="icon_activity_add"></a>
 	
 

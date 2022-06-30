@@ -26,12 +26,14 @@ background-color: #fff !important;
 </style>
 
 <script type="text/javascript">
-$(function(){
-	$(".sangpumlistdiv").hide();
-	$(".pagenumlist").hide();
+const $jq = jQuery.noConflict();
+$jq(document).ready(function() {
+	
+	$jq('.sangpumlistdiv').hide();
+	$jq('.pagenumlist').hide();
 	
 	<%--목록형 테이블--%>
-	$("span.large").click(function(){
+	$jq("span.large").click(function(){
 		$(".sangpumlistdiv").hide();
 		$(".pagenumlist").hide();
 		
@@ -45,6 +47,41 @@ $(function(){
 	});
 	
 	<%--리스트 테이블--%>
+	$jq("span.list").click(function(){
+		$(".sangpumdiv").hide();
+		$(".sangpumlistdiv").show();
+		
+		$(".pagenumlist").show();
+		$(".pagenumall").hide();
+		
+		$("span.list").css("border","1px solid black");
+		$("span.large").css("border","1px solid #dbdbdb");
+	});
+	
+});
+
+$(function(){
+	//$(".sangpumlistdiv").hide();
+	//$(".pagenumlist").hide();
+	
+	
+	<%--목록형 테이블--%>
+	/* 
+	$("span.large").click(function(){
+		$(".sangpumlistdiv").hide();
+		$(".pagenumlist").hide();
+		
+		$(".sangpumdiv").show();
+		
+		$(".pagenumlist").hide();
+		$(".pagenumall").show();
+		
+		$("span.large").css("border","1px solid black");
+		$("span.list").css("border","1px solid #dbdbdb");
+	});
+	 */
+	<%--리스트 테이블--%>
+	 /* 
 	$("span.list").click(function(){
 		$(".sangpumdiv").hide();
 		$(".sangpumlistdiv").show();
@@ -55,7 +92,7 @@ $(function(){
 		$("span.list").css("border","1px solid black");
 		$("span.large").css("border","1px solid #dbdbdb");
 	});
-
+ 	*/
 	<%--검색창 클릭시 가이드 문구 없어짐--%>
 	$(".searchtext").click(function(){
 		//alert(1);

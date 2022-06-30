@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.MarketDto;
 import com.ruby.devel.model.MarketLikeDto;
+import com.ruby.devel.model.MemberDto;
 import com.ruby.devel.service.impl.MarketMapper;
 import com.ruby.devel.service.impl.MemberMapper;
 
@@ -447,6 +449,7 @@ public class MarketplaceController {
 			@RequestParam(value = "checkall",required = false) String checkall,
 			@RequestParam(value = "checksearch",required = false) String checksearch,
 			@RequestParam(value = "checkside",required = false) String checkside,
+			@SessionAttribute String userID,
 			HttpSession session)
 	{
 		session.setAttribute("SearchText", SearchText);
@@ -471,9 +474,9 @@ public class MarketplaceController {
 		System.out.println(likelist);		
 		
 	    //dto의 name에 작성자 이름 넣기
-	    String seller = Mmapper.getName(dto.getMember_idx());
+		String seller = Mmapper.getName(dto.getMember_idx());
 	    dto.setSeller(seller);
-		/* System.out.println(seller); */
+		System.out.println(seller);
 		
 		//포워드
 		mview.setViewName("/marketplace/market_productDetail");
