@@ -104,6 +104,7 @@ $(function(){
 				alert("fail!");
 				alert("code:" + request.status + "\n"+ "error message:" + request.responseText+ "\n" + "error:" + error);
 			}
+			
 		});
 		}
 	});
