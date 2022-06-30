@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.CommunityDto;
+import com.ruby.devel.model.CrewEnrollDto;
 import com.ruby.devel.model.MarketDto;
 import com.ruby.devel.service.impl.ActivityMapper;
 import com.ruby.devel.service.impl.MemberMapper;
+import com.ruby.devel.service.impl.crewenrollMapper;
 
 @Controller
 public class ActivityController {
@@ -25,6 +27,9 @@ public class ActivityController {
 	@Autowired //Activity 자동주입
 	ActivityMapper Amapper;
 	
+	@Autowired //Crew 자동주
+	crewenrollMapper Cmapper;
+	
 	
 	//모아보기 페이지
 	@GetMapping("/activity")  // 'activity' 아이콘 선택 시 기본 페이지(모아보기) 이동
@@ -33,13 +38,24 @@ public class ActivityController {
 	{
 		ModelAndView mview = new ModelAndView();
 		
+		//나의크보기 dto 얻기
+		String team_idx = Cmapper.selectTeamIdx(userKey);
+		CrewEnrollDto cdto = Cmapper.getData(team_idx);
+		mview.addObject("cdto", cdto);
+		
 		//나의작성글목록 dto 얻기
 		List<CommunityDto> clist = Amapper.getWriteDatas(userKey);
+		int clistsize = clist.size();
+		System.out.println(clistsize);
 		mview.addObject("clist", clist);
+		mview.addObject("clistsize", clistsize);
 		
 		//나의거래목록 dto 얻기
 		List<MarketDto> mplist = Amapper.getMarketDatas(userKey);
+		int mplistsize = mplist.size();
+		System.out.println(mplistsize);
 		mview.addObject("mplist", mplist);
+		mview.addObject("mplistsize", mplistsize);
 
 		//포워딩
 		mview.setViewName("a/activity/activity_main");
@@ -129,9 +145,19 @@ public class ActivityController {
 	{
 		ModelAndView mview = new ModelAndView();
 		
-		//나의거래목록 dto 얻기
-		List<MarketDto> mplist = Amapper.getMarketDatas(userKey);
-		mview.addObject("mplist", mplist);
+		//나의거래목록(SoldOut list) dto 얻기
+		List<MarketDto> mpsoldlist = Amapper.getMarketSoldDatas(userKey);
+		int mpsolidlistsize = mpsoldlist.size();
+		List<MarketDto> mpnotsoldlist = Amapper.getMarketNotSoldDatas(userKey);
+		int mpnotsolidlistsize = mpnotsoldlist.size();
+		
+		mview.addObject("mpsoldlist", mpsoldlist);
+		mview.addObject("mpsolidlistsize", mpsolidlistsize);
+		mview.addObject("mpnotsoldlist", mpnotsoldlist);
+		mview.addObject("mpnotsolidlistsize", mpnotsolidlistsize);
+		
+		System.out.println(mpsolidlistsize);
+		System.out.println(mpnotsolidlistsize);
 
 		//포워딩
 		mview.setViewName("a/activity/activity_myMarketplace");

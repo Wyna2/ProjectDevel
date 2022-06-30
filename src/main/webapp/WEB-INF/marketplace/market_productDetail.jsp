@@ -23,12 +23,13 @@
 
 <script type="text/javascript">
 $(function () {	
-	/* like 이벤트 */	
+	/* like 이벤트 */
+	if(${userKey!=null}) {
 	$('.chheart').on("change", function(){
 		if($(this).is(':checked'))
 		{								
 			let market_place_idx = ${dto.market_place_idx};
-			let member_idx = ${userKey};
+			//let member_idx = ${userKey};
 			let like_count = 1;
 			
 			$.ajax({
@@ -36,7 +37,7 @@ $(function () {
 				url: "MarketLikeDetail.event",
 				data: {
 					"market_place_idx":market_place_idx,
-					"member_idx":member_idx,
+					//"member_idx":member_idx,
 					"like_count":like_count,
 					},
 				success: function(data) {
@@ -51,7 +52,7 @@ $(function () {
 		else
 		{
 			let market_place_idx = ${dto.market_place_idx};
-			let member_idx = ${userKey};
+			//let member_idx = ${userKey};
 			let like_count = 0;
 						
 			$.ajax({
@@ -59,7 +60,7 @@ $(function () {
 				url: "MarketLikeDetail.event",
 				data: {
 					"market_place_idx":market_place_idx,
-					"member_idx":member_idx,
+					//"member_idx":member_idx,
 					"like_count":like_count,
 					},
 				success: function(data) {
@@ -72,7 +73,7 @@ $(function () {
 			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
 		}
 	});
-	
+	}
 	
 	/* 이미지 클릭시 변경 */
 	$('.subphoto1').on('click',function() {
@@ -297,12 +298,12 @@ $(function () {
 							<c:if test="${colorradio!=null}">
 								<c:if test="${checkside == null}">
 									<button type="button" class="btn-list"
-			                        onclick="location.href='sidesearch?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+			                        onclick="location.href='sidesearch?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${dto.market_place_idx}'">목록보기</button>
 		                        </c:if>
 		                        
 		                        <c:if test="${checkside != null}">
 									<button type="button" class="btn-list"
-			                        onclick="location.href='market_tradeablesidetest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}&check'">목록보기</button>
+			                        onclick="location.href='market_tradeablesidetest?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&currentPage=${currentPage}&market_place_idx=${dto.market_place_idx}&check'">목록보기</button>
 		                        </c:if>
 		                        
 							</c:if>
@@ -310,12 +311,12 @@ $(function () {
 							<c:if test="${colorradio==null}">
 								<c:if test="${checkall == null}">
 									<button type="button" class="btn-list"
-		                        	onclick="location.href='market_main?currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>       
+		                        	onclick="location.href='market_main?currentPage=${currentPage}&market_place_idx=${dto.market_place_idx}'">목록보기</button>       
 								</c:if>
 								
 								<c:if test="${checkall != null}">
 									<button type="button" class="btn-list"
-		                        	onclick="location.href='market_tradeabletest?currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>       
+		                        	onclick="location.href='market_tradeabletest?currentPage=${currentPage}&market_place_idx=${dto.market_place_idx}'">목록보기</button>       
 								</c:if>
 							</c:if>
 						</c:if>
@@ -323,12 +324,12 @@ $(function () {
 						<c:if test="${SearchText != null}">
 							<c:if test="${checksearch == null}">
 								<button type="button" class="btn-list"
-		                        onclick="location.href='search?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+		                        onclick="location.href='search?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${dto.market_place_idx}'">목록보기</button>
 	                        </c:if>
 	                        
 	                        <c:if test="${checksearch != null}">
 								<button type="button" class="btn-list"
-		                        onclick="location.href='market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${a.market_place_idx}'">목록보기</button>
+		                        onclick="location.href='market_tradeablesearchtest?SearchText=${SearchText}&currentPage=${currentPage}&market_place_idx=${dto.market_place_idx}'">목록보기</button>
 	                        </c:if>    
 						</c:if>     
 						

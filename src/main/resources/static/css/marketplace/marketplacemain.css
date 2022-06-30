@@ -275,7 +275,6 @@ marketmenutitle li{
 	left: -999em;  
 }
 .heart{
-	/*하트 이미지 배경 처리중 사진 안불러와 짐 다시 돌아가려면 메인에 하트 특수문자 넣고 백그라운드 지우고 위치 다시 조정*/
 	display: inline-block;
 	width: 40px;
 	height: 40px;
@@ -285,6 +284,7 @@ marketmenutitle li{
 	font-size: 20pt;
 	position: relative;
 	left: 200px;
+	z-index: 1; /* heart 최상위 배치 */
 }
 
 /*거래가능 제품 보기*/

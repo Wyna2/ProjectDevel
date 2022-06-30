@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.MarketLikeDto;
@@ -24,15 +25,16 @@ public class MarketplaceLikeController {
 	@PostMapping("/marketplace/marketlike.event")
 	public ModelAndView marketLike(
 			@RequestParam(value="market_place_idx", required=false) String market_place_idx,
-			@RequestParam(value="member_idx", required=false) String member_idx,
+			//@RequestParam(value="member_idx", required=false) String member_idx,
 			@RequestParam(value="like_count", required=false) String like_count,
+			@SessionAttribute String userKey,
 			HttpSession session)
 	{
 		ModelAndView mview = new ModelAndView();
 		
 		HashMap<String, String> map = new HashMap<>();
 		map.put("market_place_idx", market_place_idx);
-		map.put("member_idx", member_idx);
+		map.put("member_idx", userKey);
 		map.put("like_count", like_count);
 		
 		//data 존재하는지 확인(1일 경우 데이타 있음)
@@ -40,7 +42,7 @@ public class MarketplaceLikeController {
 				
 		MarketLikeDto dto = new MarketLikeDto();
 		dto.setMarket_place_idx(market_place_idx);
-		dto.setMember_idx(member_idx);
+		dto.setMember_idx(userKey);
 		dto.setLike_count(like_count);
 		
 		if(data==0) {
@@ -51,7 +53,7 @@ public class MarketplaceLikeController {
 			System.out.println("update");
 		}
 		
-		System.out.println("market_place_idx: "+market_place_idx+", member_idx: "+member_idx);
+		System.out.println("market_place_idx: "+market_place_idx+", member_idx: "+userKey);
 		System.out.println("dto: "+dto);
 		System.out.println("map: "+map);
 		
@@ -63,8 +65,9 @@ public class MarketplaceLikeController {
 	@PostMapping("/marketplace/MarketLikeDetail.event")
 	public ModelAndView MarketLikeDetail(
 			@RequestParam(value="market_place_idx", required=false) String market_place_idx,
-			@RequestParam(value="member_idx", required=false) String member_idx,
+			//@RequestParam(value="member_idx", required=false) String member_idx,
 			@RequestParam(value="like_count", required=false) String like_count,
+			@SessionAttribute String userKey,
 			HttpSession session)
 	{
 		System.out.println("확인");
@@ -73,7 +76,7 @@ public class MarketplaceLikeController {
 		
 		HashMap<String, String> map = new HashMap<>();
 		map.put("market_place_idx", market_place_idx);
-		map.put("member_idx", member_idx);
+		map.put("member_idx", userKey);
 		map.put("like_count", like_count);
 		
 		//data 존재하는지 확인(1일 경우 데이타 있음)
@@ -81,7 +84,7 @@ public class MarketplaceLikeController {
 				
 		MarketLikeDto dto = new MarketLikeDto();
 		dto.setMarket_place_idx(market_place_idx);
-		dto.setMember_idx(member_idx);
+		dto.setMember_idx(userKey);
 		dto.setLike_count(like_count);
 		
 		if(data==0) {
@@ -92,7 +95,7 @@ public class MarketplaceLikeController {
 			System.out.println("update");
 		}
 		
-		System.out.println("market_place_idx: "+market_place_idx+", member_idx: "+member_idx);
+		System.out.println("market_place_idx: "+market_place_idx+", member_idx: "+userKey);
 		System.out.println("map: "+map);
 			
 		return mview;

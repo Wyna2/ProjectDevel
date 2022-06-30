@@ -112,8 +112,8 @@ div.main_detail1 {
 /* crew 값 */
 div.detail_crew {
 	/* div */
-	width: 94px;
 	height: 34px;
+	display:inline-block; /* 글자 길이에 맞춰 너비 조정 */
 	padding: 4px 21px 3px 22px;
 	border-radius: 10px;
 	background-color: #ff4b4e;
@@ -167,7 +167,7 @@ div.detail_market,.detail_challenge {
 	float: left;
 	width: 150px;
 	height: 180px;
-	margin-right: 30px;
+	margin-left: 30px;
 	cursor: pointer;
 	
 	/* 폰트 */
@@ -314,10 +314,6 @@ div.write_sub {
 	margin: 0 5px 0 5px;
 }
 
-
-
-
-
 /* main css 끝 */
 /* 2. 나의활동>작성글목록 끝 */
 
@@ -387,6 +383,11 @@ div.write_sub {
 	font-size: 12px;
 	letter-spacing: -0.23px;
 	text-align: left;
+	
+	/* 글 한줄 넘어갈 경우 숨기기 */
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #mprice {
 	margin: 8px 3px 0 0;
@@ -404,8 +405,15 @@ div.write_sub {
 	text-decoration:line-through;
 	color: #767676;
 }
-.icon_activity_move {
-	margin: 50px 0 0 30px;
+
+/* 상품 리르슽 버튼 */
+.icon_activity_leftmove {
+	margin: 60px 30px 0 -40px;
+	width: 40px;
+}
+.icon_activity_rightmove {
+	margin: -222px 0 0 820px;
+	width: 40px;
 }
 /* main css 끝 */
 

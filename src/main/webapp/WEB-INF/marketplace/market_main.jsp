@@ -26,11 +26,68 @@ background-color: #fff !important;
 </style>
 
 <script type="text/javascript">
+const $jq = jQuery.noConflict();
+$jq(document).ready(function() {
+	
+	/* like 이벤트 */
+	if(${userKey!=null}) {
+	<%--목록 테이블 하트 이벤트--%>
+	$jq('.chheart').on("change", function(){
+		if($(this).is(':checked'))
+		{
+			let market_place_idx = $(this).attr('market_place_idx');
+			//let member_idx = ${userKey};
+			let like_count = 1;
+			
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					//"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					alert("성공");
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
+		}
+		else
+		{
+			let market_place_idx = $(this).attr('market_place_idx');
+			//let member_idx = ${userKey};
+			let like_count = 0;
+
+			$.ajax({
+				type: "post",
+				url: "marketlike.event",
+				data: {
+					"market_place_idx":market_place_idx,
+					//"member_idx":member_idx,
+					"like_count":like_count,
+					},
+				success: function(data) {
+					document.location.reload(true);
+					alert("성공");
+				}
+			});
+			
+			//하트 바뀜
+			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
+		}
+	});
+	}
+});
+
 $(function(){
 	$(".sangpumlistdiv").hide();
 	$(".pagenumlist").hide();
 	
-	<%--목록형 테이블--%>
+	<%--목록형 테이블--%> 
 	$("span.large").click(function(){
 		$(".sangpumlistdiv").hide();
 		$(".pagenumlist").hide();
@@ -43,8 +100,8 @@ $(function(){
 		$("span.large").css("border","1px solid black");
 		$("span.list").css("border","1px solid #dbdbdb");
 	});
-	
-	<%--리스트 테이블--%>
+
+	<%--리스트 테이블--%> 
 	$("span.list").click(function(){
 		$(".sangpumdiv").hide();
 		$(".sangpumlistdiv").show();
@@ -67,74 +124,12 @@ $(function(){
 		if($("#changebox").is(":checked"))
 		{
 			var checkon = 1;	
-			location.href = '/marketplace/market_tradeabletest?checkon='+checkon;
-			
-			
+			location.href = '/marketplace/market_tradeabletest?checkon='+checkon;	
 		}
 		else
 		{
-			
 		}
 	});
-	
-	
-	/* like 이벤트 */		
-	<%--목록 테이블 하트 이벤트--%>
-	$('.chheart').on("change", function(){
-		if($(this).is(':checked'))
-		{								
-			let market_place_idx = $(this).attr('market_place_idx');
-			let member_idx = ${userKey};
-			let like_count = 1;
-			
-			if(member_idx!=null)
-			{
-			$.ajax({
-				type: "post",
-				url: "marketlike.event",
-				data: {
-					"market_place_idx":market_place_idx,
-					"member_idx":member_idx,
-					"like_count":like_count,
-					},
-				success: function(data) {
-					document.location.reload(true);
-					alert("성공");
-				}
-			});
-			}
-			
-			//하트 바뀜
-			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
-		}
-		else
-		{
-			let market_place_idx = $(this).attr('market_place_idx');
-			let member_idx = ${userKey};
-			let like_count = 0;
-			
-			if(member_idx!=null)
-			{
-			$.ajax({
-				type: "post",
-				url: "marketlike.event",
-				data: {
-					"market_place_idx":market_place_idx,
-					"member_idx":member_idx,
-					"like_count":like_count,
-					},
-				success: function(data) {
-					document.location.reload(true);
-					alert("성공");
-				}
-			});
-			}
-			
-			//하트 바뀜
-			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
-		}
-	});
-	
 
 });
 </script>
@@ -218,7 +213,7 @@ $(function(){
 				<!-- 이미지 있을 경우 상품이미지 중 첫번째 이미지 보이기 -->
 				<c:if test="${a.photo!='no'}">
 					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
-						<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+						<a id="imghref" href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
 							<img src="${root }/photo/${p}" style="width: 220px; height: 220px;" class="photo">
 						</a>
 					</c:forTokens>
