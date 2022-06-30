@@ -27,9 +27,11 @@ cursor: pointer;
 $(function(){
 	
 	community_idx=$("#c_idx").val();
+	currentPage=1;
   	loginOK="${sessionScope.loginOK}";
   	userKey="${sessionScope.userKey}"; 
-	list();
+	//list();
+	list_test();
 	
 	 $(".subjecttextbox").click(function(){
 		//var i=$(this).val();
@@ -134,7 +136,7 @@ $(document).on("click","span.adel",function(){
 
 /* 댓글 리스트 출력 */
 function list() {
-	 $.ajax({
+	/* $.ajax({
 			type:"get",
 			dataType:"json",
 			url:"commentlist",
@@ -164,8 +166,70 @@ function list() {
 				
 				$("div.commentdiv").html(s);
 			}
+		});  */
+}
+
+function list_test() {
+	 $.ajax({
+			type:"get",
+			dataType:"json",
+			url:"contentdetailcomment",
+			data:{"community_idx":community_idx,"currentPage":currentPage},
+			success:function(data){
+				var s="";
+				var p="";
+				for(var i=0; i<5; i++) {
+					s+="<div>";
+					s+="<img alt='' src='${root }/element/icon_profile.png'>";
+					s+="<span class='commentuser'>"+data.commentlist[i].member_idx+"</span>";
+					s+="<input type='text' class='commentwritetext' value='"+data.commentlist[i].content+"' readonly='readonly'>";
+					s+="<br>";
+					s+="<span class='commentwriteday'>"+data.commentlist[i].write_day+"</span>";
+					s+="</div>";
+					
+					
+					if(loginOK=="yes" && userKey==data.commentlist[i].member_idx){
+						s+="<span class='glyphicon glyphicon-pencil amod' id='amod' idx='"+data.commentlist[i].community_comment_idx+"'></span>";
+						s+="&nbsp;";
+						s+="<span class='glyphicon glyphicon-trash adel' id='adel' idx='"+data.commentlist[i].community_comment_idx+"'></span>";
+					}
+						
+				}
+				$("div.commentdiv").html(s);
+				  
+				 p+="<div class='pagesort'>";
+				 if(eval(data.totalCount>0)) {
+		
+				    p+="<div class='page' align='center' style='margin-top: 50px;'>"; 
+
+				    	if(eval(data.startPage>1)) {
+				    		p+="<a id='pagelbtn' href='market_main?currentPage="+eval(data.startPage-1)+"'>";
+				    		p+="<img id='pagebtn' src='${root }/activity/icon_activity_move2.png'></a>";
+				    	}
+				   
+					    for(var pp=eval(data.startPage);pp<=eval(data.endPage); pp++) {
+					    	if(eval(data.currentPage)==pp) {
+			
+					    		p+="<a id='pagecnum' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+pp+"'><b>"+pp+"</b></a>";
+					    	}
+					    	if(eval(data.currentPage)!=pp) {
+					  
+					    		p+="<a id='pagenum' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+pp+"'>"+pp+"</a>";
+					    	}
+					    }
+				    	if(eval(data.endPage<data.totalPage)) {
+					   		p+="<a id='pagerbtn' href='market_main?currentPage="+eval(data.endPage+1)+"'>";
+					    	p+="<img id='pagebtn' src='${root }/activity/icon_activity_move1.png'></a>";
+				    	}
+					    	p+="</div></div>";  
+				   }
+				    alert(p);
+				$("div.pagesort1").html(p);
+			
+			}
 		});  
 }
+
 
 /* 게시글 삭제시 컨펌창 */
 function delcontent() {
@@ -191,6 +255,8 @@ function writecomment() {
 <input type="hidden" value="${currentPage }" id="currentPage">
 <input type="text" value="${c_dto.content_type }" id="content_type">
 <div class="detailsubject" style="border: 0px solid black;">
+
+	<div class="firstdiv" style="border: 0px solid black;">
 	<%--글번호 받아오기 --%>
 	<span class="contentnum">#<span id="delnum"> ${c_dto.community_idx } </span></span>
 	<!-- qna글 일 경우 -->
@@ -200,28 +266,26 @@ function writecomment() {
 		</div>
 	</c:if>
 	
-	<%--태그1 받아오기 --%>
-	<div class="tag" style="border: solid 0px #dbdbdb;">
+	<%--태그 받아오기 --%>
 	<span class="badge" style="font-size: 1.1em; float: left;">#${c_dto.tag1 }</span>
-	</div>
 	
-	<%--태그2 받아오기 --%>
-	<div class="tag" style="border: solid 0px #dbdbdb;">
+	
+	<%--태그 받아오기 --%>
 	<span class="badge" style="font-size: 1.1em; float: left;">#${c_dto.tag2 }</span>
-	</div>
 	
-	<%--태그3 받아오기 --%>
-	<div class="tag" style="border: solid 0px #dbdbdb;">
+	
+	<%--태그 받아오기 --%>
 	<span class="badge" style="font-size: 1.1em; float: left;">#${c_dto.tag3 }</span>
-	</div>
 	
-	</div>
+	
 	<%--글작성일 받아오기 --%>
 	<span class="writeday"> <fmt:formatDate value="${c_dto.write_day }" pattern="yyyy-MM-dd"/> 작성 </span>
+	</div>
+	</div>
 	
 
-	<div class="content" style="border: solid 1px #dbdbdb; border-top: solid 2px black; border-bottom: solid 2px black;">
-		
+	<div class="content" style="border: solid 0px #dbdbdb; border-top: solid 2px black; border-bottom: solid 2px black;">
+	<div class="contentfirstdiv" style="border: 0px solid black;">
 		<!--게시글 삭제,수정 버튼 -->
 		<c:if test="${sessionScope.loginOK!=null and sessionScope.userKey==c_dto.member_idx}">
 			<button type="button" class="btndel glyphicon glyphicon-remove" style="border: none; background-color: #fff" onclick="delcontent()"></button>
@@ -238,14 +302,15 @@ function writecomment() {
 		<span class="spanteamname">싹스리</span>
 	</div>
 	</div>
+	</div>	
 	
 	<%--글 제목 받아오기 --%>
-	<div class="contentsubject">
+	<div class="contentsubject" style="border: 0px solid black;">
 		${c_dto.subject }
 	</div>
-	
+	<div class="lineblack" style="border: solid 1px #505050;"></div>
 	<%--글 내용 받아오기 --%>
-	<div class="contentarea">
+	<div class="contentarea" style="border:  0px solid black;">
 		${c_dto.content }
 	</div>
 	
@@ -280,26 +345,28 @@ function writecomment() {
 	</div>
 	<c:if test="${c_dto.content_type==0 }">
 		<div class="commentdiv" style="border: solid 1px #dbdbdb;">
-	
+				
 		</div>
 	</c:if>
-	
+	<div class="pagesort1">
+				</div>
 	<c:if test="${c_dto.content_type==1 }">
 		<div class="commentdiv2" style="border: solid 1px #dbdbdb;">
-			<c:forEach var="i" begin="1" end="1">
+			<c:forEach var="i" items="${commentlist} " begin="1" end="1">
 				<div>
 					<img alt="" src="${root }/element/icon_profile.png">
 					<span class="commentuser">유저1</span>
 		
 					<br>
-					<span class="commentwriteday">2022-06-14 05:03</span>
+					<span class="commentwriteday">
+						<fmt:formatDate value="${write_day}" pattern="yyyy-MM-dd"/>
+					</span>
 					<textarea rows="" cols="" class="cocomment" readonly="readonly" style="resize: none;">??</textarea>
 					<img alt="" src="${root }/element/button_selection.png" class="selectionbtn">
 				</div>
 			</c:forEach>
-		</div>
+		</div>	
  	</c:if>
- 
  </div>
       
 </body>

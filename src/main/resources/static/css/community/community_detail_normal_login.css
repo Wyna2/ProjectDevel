@@ -34,23 +34,10 @@
   
 }
 
-/*태그*/
-div.tag{
-  width: 70px;
-  height: 24px;
-  padding: 3px 14px 2px 12px;
-  border-radius: 12px;
-  border: solid 1px #dbdbdb;
-  background-color: #fff;
-  float: left;
-  position: relative;
-  left: 0px;
-  top: 3px;
-}
+
+
 /*태그 스판*/
 span.tag{
-  width: 38px;
-  height: 19px;
   font-family: Noto Sans KR;
   font-size: 13px;
   font-weight: normal;
@@ -61,12 +48,19 @@ span.tag{
   text-align: left;
   color: #767676;
 }
+/*태그 스판*/
+.badge{
+  margin-top: 10px;
+  margin-left: 5px;
+}
 
 /*글작성일*/
 .writeday{
-	position: absolute;
-	left: 1000px;
-	top: 80px;
+	position : absolute;
+	left: 900px;
+	width: 180px;
+	height: 40px;
+	top: 20px;
 }
 
 /*content*/
@@ -135,36 +129,31 @@ span.spanteamname{
   text-align: left;
   color: #fff;	
   position: relative;
-  top: -5px;
+  top: -10px;
+  left: 3px;
 }
 
 /*글 제목*/
 div.contentsubject{
-	position: relative;
-	left: 100px;
-	top: 20px;
+	font-family: NotoSansKR;
+  	font-size: 25px;
+  	text-align: left;
+  	color: #505050;
+	height: 60px;
+	margin-left: 80px;
 }
-/*글 제목 텍스트박스*/
-.subjecttextbox{
-  width: 850px;
-  font-family: Noto Sans KR;
-  font-size: 25px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.36;
-  letter-spacing: -0.63px;
-  text-align: left;
-  color: #505050;
-  border: none;
-  border-bottom: 1px solid #505050;
-}
+
 
 /*글 내용 */
 div.contentarea{
-	position: relative;
-	left: 100px;
-	top : 50px;
+	
+  font-family: NotoSansKR;
+  font-size: 20px;
+  text-align: left;
+  color: #505050;
+  margin-left: 80px;
+  height: 140px;
+  margin-top: 20px;
 }
 
 /*글 내용 textArea*/
@@ -283,6 +272,7 @@ div.addcomment{
   text-align: left;
   color: #767676;
   
+  
 }
 
 /*채택하기 버튼*/
@@ -344,6 +334,7 @@ div.addcomment{
   letter-spacing: -0.43px;
   text-align: left;
   color: #767676;
+  margin-left: 30px;
 }
 
 
@@ -389,4 +380,20 @@ div.addcomment{
               -4px -4px 6px 0 rgba(116, 125, 136, .2), 
     inset -4px -4px 6px 0 rgba(255,255,255,.2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+/*첫번째 줄 div*/
+.firstdiv{
+	width: 1015px;
+	height: 40px;
+}
+/*컨텐트 첫번째줄 div*/
+.contentfirstdiv{
+	height: 90px;
+	 
+}
+/*글내용 글제목 사이에 헤드라인*/
+.lineblack{
+	width: 900px;
+	margin-left: 80px;
 }

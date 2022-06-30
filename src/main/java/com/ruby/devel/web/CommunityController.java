@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
+import com.ruby.devel.model.CommunityCommentDto;
 import com.ruby.devel.model.CommunityDto;
 import com.ruby.devel.service.impl.CommunityCommentMapper;
 import com.ruby.devel.service.impl.CommunityMapper;
@@ -164,11 +167,51 @@ public class CommunityController {
 	@GetMapping("/community/contentdetail")  // 일반글 상세 페이지
 	public ModelAndView community_contentdetail(
 			@RequestParam String community_idx, 
-			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage
+			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage,
+			HttpSession session
+			
 			)
 	{
+		session.setAttribute("community_idx", community_idx);
+		
 		ModelAndView mview =new ModelAndView();
-		List<CommunityDto> list= Cmapper.getAllDatas();
+		//List<CommunityDto> list= Cmapper.getAllDatas();
+		
+		int totalCount = CMmapper.getTotalCount(community_idx);
+		
+		
+		//페이징처리에 필요한 변수
+		int totalPage; //총 페이지수
+		int startPage; //각블럭의 시작페이지
+		int endPage; //각블럭의 끝페이지
+		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
+		int perPage=3; //한페이지에 보여질 글 갯수
+		int perBlock=2; //한블럭당 보여지는 페이지 개수
+		
+		//총페이지 개수구하기
+		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+													
+		//각블럭의 시작페이지
+		startPage=(currentPage-1)/perBlock*perBlock+1;
+		endPage=startPage+perBlock-1;
+													
+		if(endPage>totalPage)
+			endPage=totalPage;
+										
+		//각페이지에서 불러올 시작번호
+		start=(currentPage-1)*perPage;
+		
+		//데이터 가져오기
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("community_idx", community_idx);
+		map.put("start", start);
+		map.put("perPage", perPage);
+				
+		//각페이지에서 필요한 게시글 가져오기
+		List<CommunityCommentDto> commentlist=CMmapper.getAllCommentsList(map);	
+		
+		
+		int no=totalCount-(currentPage-1)*perPage;
 		
 		//조회수 증가
 		Cmapper.updateReadCount(community_idx);
@@ -179,9 +222,16 @@ public class CommunityController {
 		//의 name에 작성자 이름 넣기
 		String writer = Mmapper.getNickname(c_dto.getMember_idx());
 		mview.addObject("c_dto", c_dto);
-		mview.addObject("list", list);
 		mview.addObject("writer", writer);
 		mview.addObject("currentPage", currentPage);
+		mview.addObject("commentlist",commentlist);
+		mview.addObject("startPage",startPage);
+		mview.addObject("endPage",endPage);
+		mview.addObject("totalPage",totalPage);
+		mview.addObject("totalCount",totalCount);
+		mview.addObject("no",no);
+		mview.addObject("currentPage",currentPage);
+		mview.addObject("totalCount",totalCount);
 		
 		
 		//포워드 
@@ -197,6 +247,7 @@ public class CommunityController {
 				@RequestParam String currentPage,
 				HttpSession session)
 		{
+			
 			//업로드 할 폴더 지정
 			String path = session.getServletContext().getRealPath("/communityimage");
 			System.out.println(path);		
@@ -234,7 +285,64 @@ public class CommunityController {
 	
 	
 	
-	
+	@GetMapping("/community/contentdetailcomment") // 디테일페이지 댓글 페이징 처리
+	@ResponseBody
+	public ModelAndView contentDetailComment(
+			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage,
+			@RequestParam String community_idx)
+	{
+		
+		ModelAndView mview = new ModelAndView();
+		int totalCount = CMmapper.getTotalCount(community_idx);
+		
+		
+		//페이징처리에 필요한 변수
+		int totalPage; //총 페이지수
+		int startPage; //각블럭의 시작페이지
+		int endPage; //각블럭의 끝페이지
+		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
+		int perPage=5; //한페이지에 보여질 글 갯수
+		int perBlock=2; //한블럭당 보여지는 페이지 개수
+		
+		
+		//총페이지 개수구하기
+		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+											
+		//각블럭의 시작페이지
+		startPage=(currentPage-1)/perBlock*perBlock+1;
+		endPage=startPage+perBlock-1;
+											
+		if(endPage>totalPage)
+			endPage=totalPage;
+								
+		//각페이지에서 불러올 시작번호
+		start=(currentPage-1)*perPage;
+		
+		//데이터 가져오기
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("community_idx", community_idx);
+		map.put("start", start);
+		map.put("perPage", perPage);
+				
+		//각페이지에서 필요한 게시글 가져오기
+		List<CommunityCommentDto> commentlist=CMmapper.getAllCommentsList(map);
+		
+		
+		int no=totalCount-(currentPage-1)*perPage;
+		
+		//출력에 필요한 변수 저장
+		mview.addObject("commentlist",commentlist);
+		mview.addObject("startPage",startPage);
+		mview.addObject("endPage",endPage);
+		mview.addObject("totalPage",totalPage);
+		mview.addObject("totalCount",totalCount);
+		mview.addObject("no",no);
+		mview.addObject("currentPage",currentPage);
+		mview.addObject("totalCount",totalCount);
+		
+		mview.setViewName("jsonView");
+		return mview;
+	}
 	
 	
 	

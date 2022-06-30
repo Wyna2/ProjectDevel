@@ -24,4 +24,12 @@
   		UPDATE CommunityComment SET content=#{content} where community_comment_idx=#{community_comment_idx}
   	</update>
 
+	<select id="getTotalCount" parameterType="String" resultType="int">
+	select count(*) from CommunityComment where community_idx = #{community_idx} 
+	</select>
+	
+	<select id="getAllCommentsList" parameterType="HashMap" resultType="communitycomment">
+	select * from CommunityComment where community_idx = #{community_idx} limit #{start}, #{perPage}
+	</select>
+	
 </mapper>

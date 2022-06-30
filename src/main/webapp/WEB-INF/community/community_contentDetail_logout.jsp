@@ -63,6 +63,8 @@ $(function(){
 <div class="container">
 
 <div class="detailsubject" style="border: 0px solid black;">
+
+	
 	<%--글번호 받아오기 --%>
 	<span class="contentnum">#글번호</span>
 	
@@ -84,6 +86,9 @@ $(function(){
 	</div>
 	<%--글작성일 받아오기 --%>
 	<span class="writeday">2022-06-14-03:01 작성</span>
+	
+	
+	
 	
 
 	<div class="content" style="border: solid 1px #dbdbdb; border-top: solid 2px black; border-bottom: solid 2px black;">
