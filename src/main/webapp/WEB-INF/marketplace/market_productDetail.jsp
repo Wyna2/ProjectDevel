@@ -23,7 +23,8 @@
 
 <script type="text/javascript">
 $(function () {	
-	/* like 이벤트 */	
+	/* like 이벤트 */
+	if(${userKey!=null}) {
 	$('.chheart').on("change", function(){
 		if($(this).is(':checked'))
 		{								
@@ -72,7 +73,7 @@ $(function () {
 			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
 		}
 	});
-	
+	}
 	
 	/* 이미지 클릭시 변경 */
 	$('.subphoto1').on('click',function() {
