@@ -42,7 +42,6 @@ public class MarketplaceController {
 	{
 		ModelAndView mview = new ModelAndView();
 		
-		
 		/* 페이징 */
 		int totalCount = MPmapper.getTotalCount();
 		
@@ -89,12 +88,9 @@ public class MarketplaceController {
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("totalCount",totalCount);
 		
-		
 		/* like */
 		List<MarketLikeDto> likelist = MPmapper.getLikeDatas();
 		mview.addObject("likelist",likelist);
-		
-		//System.out.println(likelist);
 		
 		mview.setViewName("m/marketplace/market_main");
 				
@@ -449,7 +445,6 @@ public class MarketplaceController {
 			@RequestParam(value = "checkall",required = false) String checkall,
 			@RequestParam(value = "checksearch",required = false) String checksearch,
 			@RequestParam(value = "checkside",required = false) String checkside,
-			@SessionAttribute String userID,
 			HttpSession session)
 	{
 		session.setAttribute("SearchText", SearchText);
