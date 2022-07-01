@@ -83,7 +83,7 @@ span.tag{
 /*작성자 이름 프로필 div*/
 div.contentname{
 	position: relative;
-	left: -100px;
+	left: -80px;
 	top: 30px;
 }
 /*작성자 이름*/
@@ -295,7 +295,7 @@ div.addcomment{
   text-align: left;
   color: #505050;
   position: relative;
-  left: 780px;
+  left: 755px;
   top: -105px;
 }
 
@@ -318,7 +318,7 @@ div.addcomment{
 
 /*유저가 작성한 텍스트 박스*/
 .commentwritetext{
-  width: 780px;
+  width: 755px;
   height: 45px;
   border-radius: 10px;
   border: solid 1px #dbdbdb;
@@ -414,10 +414,16 @@ div.addcomment{
 .trashdiv{
 	position: relative;
 	
-	left: 880px;
+	left: 850px;
 	top: -50px;
 }
 
 .commentarea{
 	height: 80px;
+}
+
+.userimg{
+	position: relative;
+	left: 40px;
+	top: -20px;
 }

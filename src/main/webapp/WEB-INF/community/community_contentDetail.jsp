@@ -187,7 +187,7 @@ function list() {
 				$.each(data.commentlist,function(i,cm_dto){
 					
 					s+="<div class='commentarea'>";
-					s+="<img alt='' src='${root }/element/icon_profile.png'>";
+					s+="<img alt='' src='${root }/element/icon_profile.png' class='userimg'>";
 					s+="<span class='commentuser'>"+cm_dto.comment_writer+"</span>";
 					s+="<input type='text' class='commentwritetext' value='"+cm_dto.content+"' readonly='readonly' style='outline : none;'>";
 					s+="<br>";
