@@ -201,10 +201,10 @@ function list_test() {
 				 p+="<div class='pagesort'>";
 				 if(eval(data.totalCount>0)) {
 		
-				    p+="<div class='page' align='center' style='margin-top: 50px;'>"; 
+				    p+="<div class='page' align='center' style='margin-top: 50px; border: 0px solid black;'>"; 
 
 				    	if(eval(data.startPage>1)) {
-				    		p+="<a id='pagelbtn' href='market_main?currentPage="+eval(data.startPage-1)+"'>";
+				    		p+="<a id='pagelbtn' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+eval(data.startPage-1)+"'>";
 				    		p+="<img id='pagebtn' src='${root }/activity/icon_activity_move2.png'></a>";
 				    	}
 				   
@@ -219,12 +219,12 @@ function list_test() {
 					    	}
 					    }
 				    	if(eval(data.endPage<data.totalPage)) {
-					   		p+="<a id='pagerbtn' href='market_main?currentPage="+eval(data.endPage+1)+"'>";
+					   		p+="<a id='pagerbtn' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+eval(data.endPage+1)+"'>";
 					    	p+="<img id='pagebtn' src='${root }/activity/icon_activity_move1.png'></a>";
 				    	}
 					    	p+="</div></div>";  
 				   }
-				    alert(p);
+				    //alert(p);
 				$("div.pagesort1").html(p);
 			
 			}

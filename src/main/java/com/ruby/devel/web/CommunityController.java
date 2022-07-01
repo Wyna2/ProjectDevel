@@ -185,7 +185,7 @@ public class CommunityController {
 		int startPage; //각블럭의 시작페이지
 		int endPage; //각블럭의 끝페이지
 		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
-		int perPage=3; //한페이지에 보여질 글 갯수
+		int perPage=5; //한페이지에 보여질 글 갯수
 		int perBlock=2; //한블럭당 보여지는 페이지 개수
 		
 		//총페이지 개수구하기

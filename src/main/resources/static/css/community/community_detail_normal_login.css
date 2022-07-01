@@ -397,3 +397,11 @@ div.addcomment{
 	width: 900px;
 	margin-left: 80px;
 }
+
+/*페이징처리 div*/
+.page{
+	position: relative;
+	top: -450px;
+	left: 300px;
+	
+}
