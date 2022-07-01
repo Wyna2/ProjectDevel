@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="getAllCommentsList" parameterType="HashMap" resultType="communitycomment">
-	select * from CommunityComment where community_idx = #{community_idx} limit #{start}, #{perPage}
+	select * from CommunityComment where community_idx = #{community_idx} order by community_comment_idx desc limit #{start}, #{perPage}
 	</select>
 	
 </mapper>

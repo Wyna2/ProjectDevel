@@ -27,11 +27,11 @@ cursor: pointer;
 $(function(){
 	
 	community_idx=$("#c_idx").val();
-	currentPage=1;
+	c_currentPage="${sessionScope.c_currentPage}";
   	loginOK="${sessionScope.loginOK}";
   	userKey="${sessionScope.userKey}"; 
-	//list();
-	list_test();
+	list();
+	
 	
 	 $(".subjecttextbox").click(function(){
 		//var i=$(this).val();
@@ -71,8 +71,9 @@ $(function(){
 			url: "commentinsert",
 			data:{"community_idx":community_idx, "content": content},
 			success:function(data){
-				list();
 				$("#content").val("");
+				location.href="contentdetail?community_idx="+community_idx+"&c_currentPage=1";
+				
 			},
 			error : function(request, error) {
 				alert("fail!");
@@ -136,7 +137,7 @@ $(document).on("click","span.adel",function(){
 		
 
 /* 댓글 리스트 출력 */
-function list() {
+function list_all() {
 	/* $.ajax({
 			type:"get",
 			dataType:"json",
@@ -170,56 +171,75 @@ function list() {
 		});  */
 }
 
-function list_test() {
+function list() {
 	 $.ajax({
 			type:"get",
 			dataType:"json",
 			url:"contentdetailcomment",
-			data:{"community_idx":community_idx,"currentPage":currentPage},
+			data:{"community_idx":community_idx,"c_currentPage":c_currentPage},
 			success:function(data){
+				var count=data;
+				var data_length=JSON.stringify(data);
 				var s="";
-				var p="";
-				for(var i=0; i<5; i++) {
-					s+="<div>";
-					s+="<img alt='' src='${root }/element/icon_profile.png'>";
-					s+="<span class='commentuser'>"+data.commentlist[i].member_idx+"</span>";
-					s+="<input type='text' class='commentwritetext' value='"+data.commentlist[i].content+"' readonly='readonly'>";
-					s+="<br>";
-					s+="<span class='commentwriteday'>"+data.commentlist[i].write_day+"</span>";
-					s+="</div>";
+				
+				//alert(data_length);
+				
+				$.each(data.commentlist,function(i,cm_dto){
 					
+					s+="<div class='commentarea'>";
+					s+="<img alt='' src='${root }/element/icon_profile.png'>";
+					s+="<span class='commentuser'>"+cm_dto.comment_writer+"</span>";
+					s+="<input type='text' class='commentwritetext' value='"+cm_dto.content+"' readonly='readonly' style='outline : none;'>";
+					s+="<br>";
+					s+="<span class='commentwriteday'>"+cm_dto.write_day+"</span>";
+					s+="</div>";
+			
 					
 					if(loginOK=="yes" && userKey==data.commentlist[i].member_idx){
-						s+="<span class='glyphicon glyphicon-pencil amod' id='amod' idx='"+data.commentlist[i].community_comment_idx+"'></span>";
-						s+="&nbsp;";
+						//s+="<span class='glyphicon glyphicon-pencil amod' id='amod' idx='"+data.commentlist[i].community_comment_idx+"'></span>";
+						//s+="&nbsp;";
+						s+="<div class='trashdiv'>";
 						s+="<span class='glyphicon glyphicon-trash adel' id='adel' idx='"+data.commentlist[i].community_comment_idx+"'></span>";
+						s+="</div>";
 					}
 						
-				}
+				});
+				
+				
 				$("div.commentdiv").html(s);
-				  
+				//alert(eval(data.totalCount));
+				
+			     var p="";
 				 p+="<div class='pagesort'>";
+				 		 
 				 if(eval(data.totalCount>0)) {
 		
 				    p+="<div class='page' align='center' style='margin-top: 50px; border: 0px solid black;'>"; 
 
-				    	if(eval(data.startPage>1)) {
-				    		p+="<a id='pagelbtn' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+eval(data.startPage-1)+"'>";
+				    	 if(eval(data.startPage>1)) {
+				    		//console.log("test:::")
+				    		p+="<a id='pagelbtn' href='contentdetail?community_idx=92&c_currentPage="+eval(data.startPage-1)+"'>";
 				    		p+="<img id='pagebtn' src='${root }/activity/icon_activity_move2.png'></a>";
-				    	}
-				   
+				    	} 
+				    	
+				    	
 					    for(var pp=eval(data.startPage);pp<=eval(data.endPage); pp++) {
-					    	if(eval(data.currentPage)==pp) {
+					    	console.log(data)
+					    	console.log(pp)
+					    	if(eval(data.c_currentPage)==pp) {
 			
-					    		p+="<a id='pagecnum' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+pp+"'><b>"+pp+"</b></a>";
+					    		p+="<a id='pagecnum' href='contentdetail?community_idx="+data.commentlist[0].community_idx+"&c_currentPage="+pp+"'><b>"+pp+"</b></a>";
 					    	}
-					    	if(eval(data.currentPage)!=pp) {
+					    	if(eval(data.c_currentPage)!=pp) {
 					  
-					    		p+="<a id='pagenum' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+pp+"'>"+pp+"</a>";
+					    		p+="<a id='pagenum' href='contentdetail?community_idx="+data.commentlist[0].community_idx+"&c_currentPage="+pp+"'>"+pp+"</a>";
 					    	}
 					    }
 				    	if(eval(data.endPage<data.totalPage)) {
-					   		p+="<a id='pagerbtn' href='contentdetail?community_idx="+data.commentlist[pp].community_idx+"&currentPage="+eval(data.endPage+1)+"'>";
+				    		//console.log(data.endPage)
+				    		//console.log(data.totalPage)				    		
+				    		    		
+					   		p+="<a id='pagerbtn' href='contentdetail?community_idx="+data.commentlist[0].community_idx+"&c_currentPage="+eval(data.endPage+1)+"'>";
 					    	p+="<img id='pagebtn' src='${root }/activity/icon_activity_move1.png'></a>";
 				    	}
 					    	p+="</div></div>";  
@@ -254,7 +274,7 @@ function writecomment() {
 <div class="container">
 <input type="hidden" value="${c_dto.community_idx }" id="c_idx">	
 <input type="hidden" value="${currentPage }" id="currentPage">
-<input type="text" value="${c_dto.content_type }" id="content_type">
+<input type="hidden" value="${c_dto.content_type }" id="content_type">
 <div class="detailsubject" style="border: 0px solid black;">
 
 	<div class="firstdiv" style="border: 0px solid black;">
@@ -335,7 +355,7 @@ function writecomment() {
 	
 	<!-- 댓글쓰기 버튼 -->
 		<c:if test="${sessionScope.loginOK!=null }">
-			<input type="text" placeholder="댓글을 입력하세요" class="commenttext" id="content" >
+			<input type="text" placeholder="댓글을 입력하세요" class="commenttext" id="content" maxlength="50" >
 			<button type="button" class="btn-small" id="btncommentadd">댓글등록</button>
 		</c:if>
 	
@@ -350,24 +370,9 @@ function writecomment() {
 		</div>
 	</c:if>
 	<div class="pagesort1">
-				</div>
-	<c:if test="${c_dto.content_type==1 }">
-		<div class="commentdiv2" style="border: solid 1px #dbdbdb;">
-			<c:forEach var="i" items="${commentlist} " begin="1" end="1">
-				<div>
-					<img alt="" src="${root }/element/icon_profile.png">
-					<span class="commentuser">유저1</span>
-		
-					<br>
-					<span class="commentwriteday">
-						<fmt:formatDate value="${write_day}" pattern="yyyy-MM-dd"/>
-					</span>
-					<textarea rows="" cols="" class="cocomment" readonly="readonly" style="resize: none;">??</textarea>
-					<img alt="" src="${root }/element/button_selection.png" class="selectionbtn">
-				</div>
-			</c:forEach>
-		</div>	
- 	</c:if>
+	
+	</div>
+	
  </div>
       
 </body>

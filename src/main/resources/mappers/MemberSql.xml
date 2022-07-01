@@ -36,7 +36,7 @@
 		SELECT name FROM Member WHERE member_idx=#{member_idx}
 	</select>
 	<select id="getNickname" parameterType="String" resultType="String">
-		SELECT nickname FROM Member WHERE id=#{id}
+		SELECT nickname FROM Member WHERE member_idx=#{member_idx}
 	</select>
 	<select id="getUserKey" parameterType="String" resultType="String">
 		SELECT member_idx FROM Member WHERE id=#{id}

@@ -94,6 +94,8 @@ public class MarketplaceController {
 		
 		mview.setViewName("m/marketplace/market_main");
 				
+		//System.out.println("totalCount ="+totalCount);
+		
 		return mview;
 	}
 	
