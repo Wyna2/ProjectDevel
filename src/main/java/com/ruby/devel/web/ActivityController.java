@@ -166,17 +166,61 @@ public class ActivityController {
 	}	
 	
 	
-	@GetMapping("/activity/mychallenge")  // 내가 도전한 or 도전중인 챌린지 모아보기 페이지
+	//챌린지 페이지
+	@GetMapping("/activity/mychallenge")
 	public String activity_challenge()
 	{
 		return "a/activity/activity_myChallenge";  
 	}
 	
-	@GetMapping("/activity/myscrap")  // 중고장터의 찜하기 or 커뮤니티의 스크랩 모아보기 페이지
+	
+	//스크랩 페이지
+	@GetMapping("/activity/myscrap")
 	public ModelAndView activity_scrap(
+			@RequestParam (value = "currentPage",defaultValue = "1") int currentPage,
 			@SessionAttribute String userKey)
 	{
 		ModelAndView mview = new ModelAndView();
+		
+		//페이징처리에 필요한 변수
+		int totalPage; //총 페이지수
+		int startPage; //각블럭의 시작페이지
+		int endPage; //각블럭의 끝페이지
+		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
+		int perPage=3; //한페이지에 보여질 글 갯수
+		int perBlock=3; //한블럭당 보여지는 페이지 개수
+		int totalCount = Amapper.getWriteCount(userKey);
+		
+		//총페이지 개수구하기
+		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+											
+		//각블럭의 시작페이지
+		startPage=(currentPage-1)/perBlock*perBlock+1;
+		endPage=startPage+perBlock-1;
+										
+		if(endPage>totalPage)
+			endPage=totalPage;
+								
+		//각페이지에서 불러올 시작번호
+		start=(currentPage-1)*perPage;
+
+		//데이타 가져오기..map처리
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("userKey", userKey);
+		map.put("start", start);
+		map.put("perPage", perPage);
+		
+		
+		//나의작성목록 dto 얻기(우선 스크랩 대체)
+		List<CommunityDto> clist = Amapper.getWritePageDatas(map);
+		mview.addObject("clist", clist);
+		//출력에 필요한 변수들을 request 에 저장
+		mview.addObject("startPage",startPage);
+		mview.addObject("endPage",endPage);
+		mview.addObject("totalPage",totalPage);
+		mview.addObject("totalCount",totalCount);
+		mview.addObject("currentPage",currentPage);
+		mview.addObject("totalCount",totalCount);
 		
 		//스크랩 얻기
 		List<MarketDto> scraplist = Amapper.ScrapMarketDatas(userKey);
@@ -187,5 +231,5 @@ public class ActivityController {
 		
 		return mview; 
 	}
-	
+
 }
