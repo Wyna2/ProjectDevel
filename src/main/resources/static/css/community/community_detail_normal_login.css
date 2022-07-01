@@ -295,7 +295,7 @@ div.addcomment{
   text-align: left;
   color: #505050;
   position: relative;
-  left: 755px;
+  left: 748px;
   top: -105px;
 }
 
@@ -311,20 +311,20 @@ div.addcomment{
   text-align: left;
   color: #505050;
   position: relative;
-  left: 50px;
+  left: 10px;
   top: -25px;
   
 }
 
 /*유저가 작성한 텍스트 박스*/
 .commentwritetext{
-  width: 755px;
+  width: 785px;
   height: 45px;
   border-radius: 10px;
   border: solid 1px #dbdbdb;
   background-color: #fff;
   position: relative;
-  left: 60px;
+  left: 25px;
   font-family: Noto Sans KR;
   font-size: 15px;
   font-weight: normal;
@@ -336,7 +336,7 @@ div.addcomment{
   color: #767676;
   margin-left: 30px;
   position: relative;
-  top: -40px;
+  top: -33px;
 }
 
 
@@ -409,21 +409,29 @@ div.addcomment{
 	top: -450px;
 	left: 350px;
 	
+	
 }
 /*삭제 아이콘 위치*/
 .trashdiv{
 	position: relative;
 	
 	left: 850px;
-	top: -50px;
+	top: -41px;
 }
 
 .commentarea{
 	height: 80px;
+	
 }
 
 .userimg{
 	position: relative;
-	left: 40px;
+	left: 0px;
 	top: -20px;
+}
+#pagenum{
+	margin-left: 10px;
+}
+#pagebtn{
+	margin-left: 10px;
 }
