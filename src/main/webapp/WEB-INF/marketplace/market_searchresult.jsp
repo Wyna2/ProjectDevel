@@ -95,21 +95,20 @@ $(function(){
 	
 	/* like 이벤트 */		
 	<%--목록 테이블 하트 이벤트--%>
+	if(${userKey!=null}) {
 	$('.chheart').on("change", function(){
 		if($(this).is(':checked'))
 		{								
 			let market_place_idx = $(this).attr('market_place_idx');
-			let member_idx = ${userKey};
+			//let member_idx = ${userKey};
 			let like_count = 1;
 			
-			if(member_idx!=null)
-			{
 			$.ajax({
 				type: "post",
 				url: "marketlike.event",
 				data: {
 					"market_place_idx":market_place_idx,
-					"member_idx":member_idx,
+					//"member_idx":member_idx,
 					"like_count":like_count,
 					},
 				success: function(data) {
@@ -117,7 +116,6 @@ $(function(){
 					alert("성공");
 				}
 			});
-			}
 			
 			//하트 바뀜
 			$(this).siblings('.heart').attr('src','${root }/element/icon_bigheart_inback.png');
@@ -125,17 +123,15 @@ $(function(){
 		else
 		{
 			let market_place_idx = $(this).attr('market_place_idx');
-			let member_idx = ${userKey};
+			//let member_idx = ${userKey};
 			let like_count = 0;
 			
-			if(member_idx!=null)
-			{
 			$.ajax({
 				type: "post",
 				url: "marketlike.event",
 				data: {
 					"market_place_idx":market_place_idx,
-					"member_idx":member_idx,
+					//"member_idx":member_idx,
 					"like_count":like_count,
 					},
 				success: function(data) {
@@ -143,25 +139,12 @@ $(function(){
 					alert("성공");
 				}
 			});
-			}
 			
 			//하트 바뀜
 			$(this).siblings(".heart").attr("src","${root }/element/icon_bigheart_nobackred.png");
 		}
 	});
-		
-		
-	<%--리스트 테이블 하트 이벤트--%>
-	$(".chheart").change(function(){
-		if($(this).is(":checked"))
-		{
-			$(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_inback.png");
-		}
-		else
-		{
-			$(this).parent('.lablist').children(".heart").attr("src","${root }/element/icon_bigheart_noback.png");
-		}
-	});
+	}
 
 });
 </script>
@@ -321,9 +304,21 @@ $(function(){
 				<span class="region">${a.region}</span>
 			</div>
 			
+			<!-- like 이벤트 -->
 			<label class="lablist" id="lab">
-				<input type="checkbox" id="chk" value="${i}" class="chheart">
-				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart">
+				<c:forEach var="b" items="${likelist}">
+					<c:if test="${(a.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
+						<input type="checkbox" id="chk"
+						market_place_idx="${a.market_place_idx}" class="chheart" checked="checked">
+						<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
+						style="position: absolute; margin-left: 20px;">
+					</c:if>
+				</c:forEach>
+	
+				<input type="checkbox" id="chk"
+				market_place_idx="${a.market_place_idx}" class="chheart">
+				<img alt="" src="${root }/element/icon_bigheart_nobackred.png" class="heart"
+				style="margin-left: 20px;"">
 			</label>
 		</div>
 	</c:forEach>

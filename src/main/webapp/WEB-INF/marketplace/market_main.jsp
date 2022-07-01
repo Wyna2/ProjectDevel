@@ -306,10 +306,21 @@ $(function(){
 				<span class="region">${a.region}</span>
 			</div>
 			
+			<!-- like 이벤트 -->
 			<label class="lablist" id="lab">
-				<input type="checkbox" id="chk" value="${i}" class="chheart">
-				<img alt="" src="${root }/element/icon_bigheart_noback.png" class="heart"
-				style="left: 220px;">
+				<c:forEach var="b" items="${likelist}">
+					<c:if test="${(a.market_place_idx==b.market_place_idx)&&(userKey==b.member_idx)&&(b.like_count==1)}">
+						<input type="checkbox" id="chk"
+						market_place_idx="${a.market_place_idx}" class="chheart" checked="checked">
+						<img alt="" src="${root }/element/icon_bigheart_inback.png" class="heart"
+						style="position: absolute; margin-left: 20px;">
+					</c:if>
+				</c:forEach>
+	
+				<input type="checkbox" id="chk"
+				market_place_idx="${a.market_place_idx}" class="chheart">
+				<img alt="" src="${root }/element/icon_bigheart_nobackred.png" class="heart"
+				style="margin-left: 20px;"">
 			</label>
 		</div>
 	</c:forEach>
