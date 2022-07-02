@@ -23,6 +23,16 @@ $(function() {
 		$("#age").val($(".ageoption").val());
  	});
 	
+	/* 비밀번호 재설정 클릭시 비밀번호 확인창 */
+	$("#btn_pw").on("click", function() {
+		var pwcheck = prompt('현재 비밀번호를 입력해주세요');
+
+		if(pwcheck==$(this).val()){
+			location.href="${root}/userpwreset";
+		} else {
+			alert("비밀번호 재확인 후 다시 입력해주세요");
+		}
+	});
 });
 
 
@@ -110,8 +120,9 @@ background-color: #fff !important;
 		</div>
 		<div class="txt">
 			<div class="title">비밀번호</div>
-			<button type="button" class="btn_pw"
-			onclick="location.href='${root}/pwreset'">비밀번호 재설정</button>
+			<button type="button" value="${dto.password}" class="btn_pw" id="btn_pw">비밀번호 재설정</button>
+			<%-- <button type="button" class="btn_pw"
+			onclick="location.href='${root}/userpwreset'">비밀번호 재설정</button> --%>
 		</div>
 		<div class="txt">
 			<div class="title">닉네임</div>

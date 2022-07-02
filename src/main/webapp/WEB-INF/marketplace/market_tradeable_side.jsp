@@ -26,13 +26,43 @@ background-color: #fff !important;
 </style>
 
 <script type="text/javascript">
+/* 목록형/리스트형 체크박스 쿠키설정 */
+function setCookie(cookieName, value, exdays){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue;
+}
+function deleteCookie(cookieName){
+    var expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() - 1);
+    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+}
+function getCookie(cookieName) {
+    cookieName = cookieName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cookieName);
+    var cookieValue = '';
+    if(start != -1){
+        start += cookieName.length;
+        var end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cookieValue = cookieData.substring(start, end);
+    }
+    return unescape(cookieValue);
+}
 $(function(){
+	
+	var key = getCookie("key");
+    console.log(key);
+    
 	$(".sangpumlistdiv").hide();
 	$(".pagenumlist").hide();
-
 	
 	<%--목록형 테이블--%>
 	$("span.large").click(function(){
+		setCookie("key", "1", "1");
+		
 		$(".sangpumlistdiv").hide();
 		$(".pagenumlist").hide();
 		
@@ -47,6 +77,8 @@ $(function(){
 	
 	<%--리스트 테이블--%>
 	$("span.list").click(function(){
+		setCookie("key", "2", "1");
+		
 		$(".sangpumdiv").hide();
 		$(".sangpumlistdiv").show();
 		
@@ -56,6 +88,30 @@ $(function(){
 		$("span.list").css("border","1px solid black");
 		$("span.large").css("border","1px solid #dbdbdb");
 	});
+	
+	if(getCookie("key")=="1"){
+		$(".sangpumlistdiv").hide();
+		$(".pagenumlist").hide();
+		
+		$(".sangpumdiv").show();
+		
+		$(".pagenumlist").hide();
+		$(".pagenumall").show();
+		
+		$("span.large").css("border","1px solid black");
+		$("span.list").css("border","1px solid #dbdbdb");
+	}
+	
+	else if(getCookie("key")=="2"){
+		$(".sangpumdiv").hide();
+		$(".sangpumlistdiv").show();
+		
+		$(".pagenumlist").show();
+		$(".pagenumall").hide();
+		
+		$("span.list").css("border","1px solid black");
+		$("span.large").css("border","1px solid #dbdbdb");
+	}
 
 	<%--검색창 클릭시 가이드 문구 없어짐--%>
 	$(".searchtext").click(function(){
