@@ -202,6 +202,11 @@ function list() {
 						s+="<span class='glyphicon glyphicon-trash adel' id='adel' idx='"+data.commentlist[i].community_comment_idx+"'></span>";
 						s+="</div>";
 					}
+					else{
+						s+="<div class='trashdiv'>";
+						s+="<span class='adel' id='adel'><br></span>"
+						s+="</div>";
+					}
 						
 				});
 				
