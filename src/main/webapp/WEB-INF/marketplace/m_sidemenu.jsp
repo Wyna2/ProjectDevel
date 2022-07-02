@@ -133,11 +133,12 @@ $(function () {
 	 /*리셋 버튼*/
 	 $("#resetbtn").click(function(){
 		 
-		 location.reload();
+		 location.href="market_main";
 		
 	 });
 	 
 	 /*완료 버튼*/
+	 
 	 $("#successbtn").click(function(){
 		
 		var subtitle = $('input[name="subtitle"]:checked').val();
@@ -145,11 +146,15 @@ $(function () {
 		//후에 가격대 밸류값 정해서 넘기면 됨
 		var marketprice = $('input[name="marketprice"]:checked').val();
 		 
-		if(subtitle == null || colorradio == null || marketprice == null)
+		//alert(subtitle+colorradio+marketprice);
+		
+		
+		if(subtitle == null ||  marketprice == null)
 		{
-			alert("카테고리, 컬러, 가격대 모두 입력해 주세요!");
+			alert("최소 카테고리 와 가격대는 입력하셔야합니다.");
 			return false;
 		}
+		
 	 });
 	 
 	 
@@ -215,6 +220,7 @@ $(function () {
  				<li id="colorli"><a href="#">
  					<label  class="blacklabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="블랙" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 		 					<div class="sidemenucolorbox" style="background: black; border: 1px solid #dbdbdb;">
 		 						<span class="colorname">블랙</span>
 		 					</div>
@@ -224,6 +230,7 @@ $(function () {
 				<li id="colorli"><a href="#">
 					<label  class="graylabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="회색" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 							<div class="sidemenucolorbox" style="background: gray; border: 1px solid #dbdbdb;">
 							<span class="colorname">회색</span>
 							</div>
@@ -233,6 +240,7 @@ $(function () {
 				<li id="colorli"><a href="#">
 					<label  class="bluelabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="블루" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 							<div class="sidemenucolorbox" style="background: blue; border: 1px solid #dbdbdb;">
 							<span class="colorname">블루</span>
 							</div>
@@ -242,6 +250,7 @@ $(function () {
 				<li id="colorli"><a href="#">
 					<label class="yellowlabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="노랑" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 							<div class="sidemenucolorbox" style="background: yellow; border: 1px solid #dbdbdb;">
 							<span class="colorname">노랑</span>
 							</div>
@@ -251,6 +260,7 @@ $(function () {
 				<li id="colorli"><a href="#">
 					<label  class="purplelabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="보라" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 							<div class="sidemenucolorbox" style="background: purple; border: 1px solid #dbdbdb;">
 							<span class="colorname">보라</span>
 							</div>
@@ -260,6 +270,7 @@ $(function () {
 				<li id="colorli"><a href="#">
 					<label  class="whitelabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="흰색" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 							<div class="sidemenucolorbox" style="background: white; border: 1px solid #dbdbdb;">
 							<span class="colorname">흰색</span>
 							</div>
@@ -269,6 +280,7 @@ $(function () {
 				<li id="colorli"><a href="#">
 					<label  class="redlabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="빨강" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 							<div class="sidemenucolorbox" style="background: red; border: 1px solid #dbdbdb;">
 							<span class="colorname">빨강</span>
 							</div>
@@ -278,6 +290,7 @@ $(function () {
 				<li id="colorli"><a href="#">
 					<label  class="greenlabel" id="colorkind">
 						<input type="radio" id="colorchk" name="colorradio" value="초록" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">
 							<div class="sidemenucolorbox" style="background: green; border: 1px solid #dbdbdb;">
 							<span class="colorname">초록</span>
 							</div>
@@ -286,7 +299,8 @@ $(function () {
 				
 				<li id="colorli"><a href="#">
 					<label  class="brownlabel" id="colorkind">
-						<input type="radio" id="colorchk" name="colorradio" value="갈색" class="radiocolor">		
+						<input type="radio" id="colorchk" name="colorradio" value="갈색" class="radiocolor">
+						<input type="radio" id="colorchk" name="colorradio" class="radiocolor" value="all" checked="checked" style="display: none;">		
 							<div class="sidemenucolorbox" style="background: brown; border: 1px solid #dbdbdb;">
 							<span class="colorname">갈색</span>
 							</div>

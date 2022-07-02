@@ -246,9 +246,11 @@ public class MarketplaceController {
 		session.setAttribute("colorradio", colorradio);
 		session.setAttribute("marketprice", marketprice);
 		
+		//System.out.println(colorradio);
 		ModelAndView mview = new ModelAndView();
 		
-		int totalCount=MPmapper.getSideSearchCount(subtitle, colorradio,marketprice);
+		
+		int totalCount=MPmapper.getSideSearchCount(subtitle,colorradio,marketprice);
 		
 		
 		///페이징처리에 필요한 변수

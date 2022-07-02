@@ -438,3 +438,10 @@ div.addcomment{
 #pagecnum{
 	margin-left: 10px;
 }
+
+.iflogindiv{
+	position: absolute;
+}
+.writeicon{
+	margin-left: 175px;
+}

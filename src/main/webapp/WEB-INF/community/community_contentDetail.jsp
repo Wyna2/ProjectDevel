@@ -314,8 +314,10 @@ function writecomment() {
 	<div class="contentfirstdiv" style="border: 0px solid black;">
 		<!--게시글 삭제,수정 버튼 -->
 		<c:if test="${sessionScope.loginOK!=null and sessionScope.userKey==c_dto.member_idx}">
+			<div class="iflogindiv">
 			<button type="button" class="btndel glyphicon glyphicon-remove" style="border: none; background-color: #fff" onclick="delcontent()"></button>
 			<span class="writeicon"><img alt="" src="${root }/element/icon_writecontent_small.png"> </span>
+			</div>
 		</c:if>	
 	
 	<%--작성자 및 프로필 사진 받아오기 --%>
