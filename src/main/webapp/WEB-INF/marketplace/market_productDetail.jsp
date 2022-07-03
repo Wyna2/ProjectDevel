@@ -86,10 +86,62 @@ $(function () {
 		$('#photo').attr('src', subimg);
 	});
 	
+	/* 거래완료 클릭시 한번더 확인 알림 */
+	$('#btn-complete1').on("click", function() {
+		var complete = confirm("거래완료를 하시겠습니까?");
+		if(complete==true) {
+			location.href="${root}/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}";
+		} else {
+			return false;
+		}
+	});
 	
+	$('#btn-complete2').on("click", function() {
+		var complete = confirm("거래완료를 하시겠습니까?");
+		if(complete==true) {
+			location.href="${root}/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkside=1";
+		} else {
+			return false;
+		}
+	});
 	
-});
+	$('#btn-complete3').on("click", function() {
+		var complete = confirm("거래완료를 하시겠습니까?");
+		if(complete==true) {
+			location.href="${root}/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}";
+		} else {
+			return false;
+		}
+	});
+	
+	$('#btn-complete4').on("click", function() {
+		var complete = confirm("거래완료를 하시겠습니까?");
+		if(complete==true) {
+			location.href="${root}/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkall=1";
+		} else {
+			return false;
+		}
+	});
+	
+	$('#btn-complete5').on("click", function() {
+		var complete = confirm("거래완료를 하시겠습니까?");
+		if(complete==true) {
+			location.href="${root}/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}";
+		} else {
+			return false;
+		}
+	});
+	
+	$('#btn-complete6').on("click", function() {
+		var complete = confirm("거래완료를 하시겠습니까?");
+		if(complete==true) {
+			location.href="${root}/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}&checksearch=1";
+		} else {
+			return false;
+		}
+	});
 
+});
 </script>
 
 </head>
@@ -108,12 +160,6 @@ $(function () {
 							<a>
 								<img src="../photo/${p}" class="photo">
 							</a>
-							
-							<%--
-							<a href="../photo/${p}">
-								<img src="../photo/${p}" class="photo">
-							</a> 
-							--%>
 						</div>
 						</c:forTokens>
 					</c:if>
@@ -204,8 +250,8 @@ $(function () {
 				</div>
 				
 				
-				<!-- 상품삭제 버튼 -->
-				<c:if test="${userKey==dto.member_idx}">
+				<!-- 상품삭제 버튼(거래완료상품은 상품삭제 버튼 안보이기) -->
+				<c:if test="${(userKey==dto.member_idx)&&(dto.sold_day==null)}">
 					<button type="button" class="btn_mp_delete"
 					onclick="location.href='${root }/marketplace/delete?market_place_idx=${dto.market_place_idx}'">상품삭제</button>
 				</c:if>
@@ -250,45 +296,31 @@ $(function () {
 								<c:if test="${SearchText==null}">
 									<c:if test="${colorradio!=null}">
 										<c:if test="${checkside == null}">
-											<button type="button" class="btn-complete"
-											onclick="location.href='${root }/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>
+											<button type="button" class="btn-complete" id="btn-complete1">거래 완료 처리</button>
 		     							</c:if>
-		                        
 										<c:if test="${checkside != null}">
-											<button type="button" class="btn-complete"
-											onclick="location.href='${root }/marketplace/soldout?subtitle=${subtitle}&colorradio=${colorradio}&marketprice=${marketprice}&market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkside=1'">거래 완료 처리</button>
+											<button type="button" class="btn-complete" id="btn-complete2">거래 완료 처리</button>
 		    							</c:if>
-		    
 									</c:if>
-					
-					
 									<c:if test="${colorradio==null}">
-	
 										<c:if test="${checkall == null}">
-											<button type="button" class="btn-complete"
-											onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}'">거래 완료 처리</button>   
-									</c:if>
-								
-									<c:if test="${checkall != null}">
-										<button type="button" class="btn-complete"
-										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&checkall=1'">거래 완료 처리</button>        
-									</c:if>
-		
+											<button type="button" class="btn-complete" id="btn-complete3">거래 완료 처리</button>   
+										</c:if>
+										<c:if test="${checkall != null}">
+											<button type="button" class="btn-complete" id="btn-complete4">거래 완료 처리</button>        
+										</c:if>
 									</c:if>
 								</c:if>
 						
 								<c:if test="${SearchText != null}">
 									<c:if test="${checksearch == null}">
-										<button type="button" class="btn-complete"
-										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}'">거래 완료 처리</button>
+										<button type="button" class="btn-complete" id="btn-complete5">거래 완료 처리</button>
 	    							</c:if>
 	                        
 	    							<c:if test="${checksearch != null}">
-										<button type="button" class="btn-complete"
-										onclick="location.href='${root }/marketplace/soldout?market_place_idx=${dto.market_place_idx}&currentPage=${currentPage}&SearchText=${SearchText}&checksearch=1'">거래 완료 처리</button>
-	    							</c:if>    
-	    
-								</c:if>  
+										<button type="button" class="btn-complete" id="btn-complete6">거래 완료 처리</button>
+	    							</c:if>
+								</c:if>
 							</div>
 						</c:if>
 					</c:if>
