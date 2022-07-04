@@ -149,11 +149,12 @@ $(function () {
 		//alert(subtitle+colorradio+marketprice);
 		
 		
-		if(subtitle == null ||  marketprice == null)
+		if(subtitle == null)
 		{
-			alert("최소 카테고리 와 가격대는 입력하셔야합니다.");
+			alert("최소 카테고리는 입력하셔야합니다.");
 			return false;
 		}
+		
 		
 	 });
 	 
@@ -178,6 +179,7 @@ $(function () {
 	 					<label class="cglabel">
 	 					<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="notebook">
 	 					&nbsp;&nbsp;&nbsp;&nbsp;노트북
+	 					
 	 					</label>
  					</a></li>
  					
@@ -185,6 +187,7 @@ $(function () {
 	 					<label class="cglabel">
 		 				<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="monitor">
 	 					&nbsp;&nbsp;&nbsp;&nbsp;모니터
+	 					
 	 					</label>
  					</a></li>
  					
@@ -192,6 +195,7 @@ $(function () {
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="keyboard">
  					&nbsp;&nbsp;&nbsp;&nbsp;키보드
+ 					
  					</label>
  					</a></li>
  					
@@ -199,6 +203,7 @@ $(function () {
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="mouse">
  					&nbsp;&nbsp;&nbsp;&nbsp;마우스
+ 					
  					</label>
  					</a></li>
  					
@@ -206,6 +211,7 @@ $(function () {
  					<label class="cglabel">
 		 			<input type="radio" id="cartegorisubmenu" class="submenucartegori" name="subtitle" value="speaker">
  					&nbsp;&nbsp;&nbsp;&nbsp;스피커
+ 					
  					</label>
  					</a></li>
  				</ul>
@@ -313,11 +319,41 @@ $(function () {
  			
  			<div class="marketmenutitle" id="carte3" style="border-top: solid 1px #dbdbdb;"><b id="side_control">가격대</b><span class="glyphicon glyphicon-menu-down  menudown3" id="menudownicon"></span></div>
  			<ul class="sub3">
-			<li class="submenutitle"><label class="pricelabel"><input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="10000"><b class="radioimg"></b>10,000원 이하</label></li>
-			<li class="submenutitle"><label class="pricelabel"><input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="50000"><b class="radioimg"></b>10,000원 ~ 50,000원</label></li>
-			<li class="submenutitle"><label class="pricelabel"><input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="100000"><b class="radioimg"></b>50,000원 ~ 100,000원</label></li>
-			<li class="submenutitle"><label class="pricelabel"><input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="200000"><b class="radioimg"></b>100,000원 ~ 200,000원</label></li>
-			<li class="submenutitle"><label class="pricelabel"><input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="100000000000"><b class="radioimg"></b>200,000원 이상</label></li>
+			<li class="submenutitle">
+				<label class="pricelabel">
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="10000"><b class="radioimg"></b>10,000원 이하
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="all" checked="checked" style="display: none;">
+				</label>
+			</li>
+			
+			<li class="submenutitle">
+				<label class="pricelabel">
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="50000"><b class="radioimg"></b>10,000원 ~ 50,000원
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="all" checked="checked" style="display: none;">
+				</label>
+			</li>
+			
+			<li class="submenutitle">
+				<label class="pricelabel">
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="100000"><b class="radioimg"></b>50,000원 ~ 100,000원
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="all" checked="checked" style="display: none;">
+				</label>
+			</li>
+			
+			<li class="submenutitle">
+				<label class="pricelabel">
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="200000"><b class="radioimg"></b>100,000원 ~ 200,000원
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="all" checked="checked" style="display: none;">
+				</label>
+			</li>
+			
+			<li class="submenutitle">
+				<label class="pricelabel">
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="100000000000"><b class="radioimg"></b>200,000원 이상
+					<input type="radio" name="marketprice" class="marketpriceselect" id="radiobtn" value="all" checked="checked" style="display: none;">
+				</label>
+			</li>
+			
 			</ul>
 			
 		<!-- 	<label for="colorchk">
