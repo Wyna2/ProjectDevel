@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- 비밀번호 확인 모달창 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Yeon+Sung&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -16,26 +21,6 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-$(function() {
-		
-	/* input 클릭시 해당 값 age에 넣기 */
-	$(".ageselect").change(function() {
-		$("#age").val($(".ageoption").val());
- 	});
-	
-	/* 비밀번호 재설정 클릭시 비밀번호 확인창 */
-	$("#btn_pw").on("click", function() {
-		var pwcheck = prompt('현재 비밀번호를 입력해주세요');
-
-		if(pwcheck==$(this).val()){
-			location.href="${root}/userpwreset";
-		} else {
-			alert("비밀번호 재확인 후 다시 입력해주세요");
-		}
-	});
-});
-
-
 <!-- 이미지 파일 업로드 후 이벤트 -->
 function previewFile() {
   const preview = document.querySelector('#myimg');
@@ -57,6 +42,102 @@ function previewFile() {
 	  reader.readAsDataURL(file);
   }
 }
+
+$(function() {
+	
+	/* input 클릭시 해당 값 age에 넣기 */
+	$(".ageselect").change(function() {
+		$("#age").val($(".ageoption").val());
+ 	});
+	
+	/* 비밀번호 재설정 클릭시 비밀번호 확인창 */
+	$("#btn_pw").click(function() {
+		
+		/* 비밀번호 재설정 모달창 */
+		var modal = {
+			open : function(){
+				$('#modal-wrapper').show();
+			},
+			close : function(){
+				$('#modal-wrapper').hide();
+			}
+		};
+
+		$(document).on('click', '#modal-overlay', function(){
+			window.history.back();
+		}).on('click', '#btn_pw', function(){
+			window.history.pushState({}, 'modal', '/modal');
+			modal.open();
+		}).on('click', '#pwcheckbtn', function() {
+			if(${dto.password}==$('.inputpw').val()){
+				location.href="${root}/userpwreset";
+			} else {
+				alert("비밀번호 재확인 후 다시 입력해주세요");
+				$('.inputpw').val('');
+			}
+		});
+
+		window.onpopstate = history.onpushstate = function(e) {
+			if(window.location.href.split('/').pop().indexOf('modal')===-1){
+				modal.close(); // 현재의 모달을 닫는다.
+				$('.inputpw').val(''); // 입력값 초기화
+			}
+		}		
+	});
+	
+	/* 닉네임 정규식 체크, 중복 닉네임 검증: ajax */
+	$("#btn_nick").click(
+		function() {
+			var inputNickname = $("#nicktxt").val();
+			var btn_nick = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,8}$/g.test(inputNickname);
+			if(!btn_nick) {
+				alert("닉네임은 2~8자의 한글, 영문, 숫자만 사용 가능합니다.");
+				$("#nicktxt").focus();
+			} else {
+				$.ajax({
+					type : "get",
+					dataType : "json",
+					url : "nicknamecheck",
+					data : {"nickname" : inputNickname},
+					success : function(data) {
+						if(inputNickname=="") {	// 아무것도 입력하지 않았을 경우
+							alert("사용할 닉네임을 입력해주세요.");
+							$("#nickname").focus();
+						} else {
+							if (data.vaildNickname == 0) {
+								alert("사용 가능한 닉네임 입니다.");
+								$("#nickname_check").val(inputNickname);
+							} else {
+								alert("이미 사용 중인 닉네임 입니다.\n다른 닉네임을 입력해주세요.");
+								$("#nickname").val("");
+								$("#nickname").focus();
+							}
+						}
+					},
+					error : function(request, error) {
+						alert("fail!");
+						alert("code:" + request.status + "\n"+ "error message:" + request.responseText+ "\n" + "error:" + error);
+					}
+				});
+			}
+		}
+	);
+	
+});
+
+/* 비밀번호 보이기/숨기기 토글 */
+$(document).ready(function(){
+    $('.pwchecktxt i').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"glyphicon glyphicon-eye-open")
+            .prev('input').attr('type',"text");
+        }else{
+            $(this).attr('class',"glyphicon glyphicon-eye-close")
+            .prev('input').attr('type','password');
+        }
+    });
+});
 </script>
 
 <style type="text/css">
@@ -120,14 +201,15 @@ background-color: #fff !important;
 		</div>
 		<div class="txt">
 			<div class="title">비밀번호</div>
-			<button type="button" value="${dto.password}" class="btn_pw" id="btn_pw">비밀번호 재설정</button>
-			<%-- <button type="button" class="btn_pw"
-			onclick="location.href='${root}/userpwreset'">비밀번호 재설정</button> --%>
+			<button type="button" class="btn_pw" id="btn_pw">비밀번호 재설정</button>
 		</div>
+		
 		<div class="txt">
 			<div class="title">닉네임</div>
 			<div id="nickname">
-				<input class="input" type="text" name="nickname" value="${dto.nickname}">
+				<input class="nicktxt" id="nicktxt" type="text" name="nickname" value="${dto.nickname}"
+				style="widows: 100px;">
+				<button type="button" class="btn_nick" id="btn_nick">닉네임 중복확인</button>
 				<span class="underline"></span>
 			</div>
 		</div>
@@ -190,6 +272,21 @@ background-color: #fff !important;
 	</div>
 </div>
 </form>
+
+<!--  비밀번호 확인 모달창 -->
+<div id="modal-wrapper">
+  <div id="modal-overlay"></div>
+  <div id="modal-content">
+  	<div style="margin-bottom: 10px;">현재 비밀번호를 입력해 주세요.</div>
+  	<div class="pwchecktxt" style="margin-bottom: 10px;">
+  		<input class="inputpw" type="text" value="">
+  		<i class="glyphicon glyphicon-eye-close" id="pwtoggle" style="font-size: 16pt; color: #999999"></i>
+  	</div>
+  	<div>
+  		<button class="btn_pw" id="pwcheckbtn" type="button" style="float: right;">비밀번호 확인</button>
+  	</div>
+  </div>
+</div>
 </body>
 
 </html>

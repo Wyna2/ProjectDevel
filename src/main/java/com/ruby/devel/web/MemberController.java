@@ -85,6 +85,16 @@ public class MemberController {
 		
 		return map;
 	}
+	/* nickname 검증_마이페이지(중복확인) */
+	@ResponseBody
+	@GetMapping("activity/nicknamecheck")
+	public Map<String, Integer> nicknameCheckProcessMyinfo(@RequestParam String nickname) {
+		Map<String, Integer> map=new HashMap<>();
+		int check=Mmapper.checkVaildNickname(nickname);
+		map.put("vaildNickname", check);
+		
+		return map;
+	}
 	
 	/* 회원가입 추가정보 */
 	@PostMapping("/memberinfoadd") 

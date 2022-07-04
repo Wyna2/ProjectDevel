@@ -127,9 +127,52 @@ div.sub_title {
 	resize: none;
 }
 
+/* 비밀번호 재설정 모달창 */
+#modal-wrapper {
+	display:none;
+}
 
-/* 비밀번호 재설정 버튼 */
-.btn_pw {
+#modal-overlay {
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index: 1;
+    cursor: pointer;
+    background: rgba(0,0,0,0.3);
+}
+#modal-content {
+	border-radius: 3%;
+    position: fixed;
+    left:50%;
+    top:50%;
+    z-index: 2;
+    transform: translate3d(-50%, -50%, 0);
+    background:#fff;
+    padding: 30px;
+    box-shadow: 0 0 5px #000;
+    font-family: 'Noto Sans KR';
+	font-weight: 500;
+	font-size: 15px;
+}
+
+.inputpw {
+  border: none;
+  border-bottom: 1px solid #CCC;
+  color: #767676;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  height: 50px;
+  width: 200px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+
+/* 비밀번호 재설정, 닉네임 중복확인 버튼 */
+.btn_pw,.btn_nick {
 	outline: none;
 	width: 140px;   /* 넓이 수정 가능 */
 	height: 30px; /* 높이 수정 가능 */
@@ -146,11 +189,15 @@ div.sub_title {
 	font-size: 15px;
 }
 
-.btn_pw {
+.btn_pw,.btn_nick {
 	overflow: hidden;
 	transition: all 0.2s ease;
 }
 .btn_pw:hover {
+	background: #505050;
+	color: #fff;
+}
+.btn_nick:hover {
 	background: #505050;
 	color: #fff;
 }
@@ -165,12 +212,40 @@ div.sub_title {
     background-color: #fff;
     animation: shiny-btn1 3s ease-in-out infinite;
 }
-
+.btn_nick:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
 .btn_pw:active{
 	box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
 				-4px -4px 6px 0 rgba(116, 125, 136, .2),
 				inset -4px -4px 6px 0 rgba(255,255,255,.2),
 				inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+.btn_nick:active{
+	box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+				-4px -4px 6px 0 rgba(116, 125, 136, .2),
+				inset -4px -4px 6px 0 rgba(255,255,255,.2),
+				inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+.nicktxt {
+  border: none;
+  border-bottom: 1px solid #CCC;
+  color: #767676;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  height: 50px;
+  width: 200px;
+  height: 30px;
+  margin-right: 10px;
 }
 
 
