@@ -149,9 +149,9 @@ $(function () {
 		//alert(subtitle+colorradio+marketprice);
 		
 		
-		if(subtitle == null)
+		if((subtitle == null && colorradio !=null)||(subtitle == null && marketprice !=null))
 		{
-			alert("최소 카테고리는 입력하셔야합니다.");
+			alert("카테고리는 입력하셔야합니다.");
 			return false;
 		}
 		

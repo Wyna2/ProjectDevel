@@ -39,6 +39,11 @@
    select count(*) from Marketplace where category like concat('%',#{subtitle},'%')
    
    <if test="colorradio == 'all'">
+     <if test="marketprice == 'all'">
+   
+     </if>
+     
+     <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
 		  and price between 0 and 10000
 	   </if> 
@@ -58,10 +63,17 @@
 	   <if test="marketprice == '100000000000'">
 		  and price between 200000 and 100000000000
 	   </if>  
+	   </if>
    </if>
    
    
    <if test="colorradio != 'all'">
+   
+    <if test="marketprice == 'all'">
+   		and color=#{colorradio}
+    </if>
+    
+    <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
 	   	and color=#{colorradio} and price between 0 and 10000
 	   </if> 
@@ -81,7 +93,8 @@
 	   <if test="marketprice == '100000000000'">
 	   and color=#{colorradio}	and price between 200000 and 100000000000
 	   </if>
-   
+   	</if>
+   	
    </if>
    
   
@@ -92,29 +105,41 @@
   select * from Marketplace where category like concat('%',#{subtitle},'%')
   
    <if test="colorradio == 'all'">
+     <if test="marketprice == 'all'">
+   
+     </if>
+     
+     <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
-	   	 and price between 0 and 10000
+		  and price between 0 and 10000
 	   </if> 
 	   
 	   <if test="marketprice == '50000'">
-		   and price between 10000 and 50000
+		  and price between 10000 and 50000
 	   </if>
 	   
 	   <if test="marketprice == '100000'">
-		   and price between 50000 and 100000
+		  and price between 50000 and 100000
 	   </if>
 	   
 	   <if test="marketprice == '200000'">
-		   and price between 100000 and 200000
+		  and price between 100000 and 200000
 	   </if>
 	   
 	   <if test="marketprice == '100000000000'">
 		  and price between 200000 and 100000000000
 	   </if>  
-  </if>
-  
-  
-  <if test="colorradio != 'all'">
+	   </if>
+   </if>
+   
+   
+   <if test="colorradio != 'all'">
+   
+    <if test="marketprice == 'all'">
+   		and color=#{colorradio}
+    </if>
+    
+    <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
 	   	and color=#{colorradio} and price between 0 and 10000
 	   </if> 
@@ -133,9 +158,10 @@
 	   
 	   <if test="marketprice == '100000000000'">
 	   and color=#{colorradio}	and price between 200000 and 100000000000
-	   </if>	   
-   
-  </if>
+	   </if>
+   	</if>
+   	
+   </if>
    
   
   
@@ -166,29 +192,41 @@
    select count(*) from Marketplace where category like concat('%',#{subtitle},'%') 
    
    <if test="colorradio == 'all'">
+     <if test="marketprice == 'all'">
+   
+     </if>
+     
+     <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
-	   	 and price between 0 and 10000
+		  and price between 0 and 10000
 	   </if> 
 	   
 	   <if test="marketprice == '50000'">
-		   and price between 10000 and 50000
+		  and price between 10000 and 50000
 	   </if>
 	   
 	   <if test="marketprice == '100000'">
-		   and price between 50000 and 100000
+		  and price between 50000 and 100000
 	   </if>
 	   
 	   <if test="marketprice == '200000'">
-		   and price between 100000 and 200000
+		  and price between 100000 and 200000
 	   </if>
 	   
 	   <if test="marketprice == '100000000000'">
 		  and price between 200000 and 100000000000
 	   </if>  
-  </if>
-  
-  
-  <if test="colorradio != 'all'">
+	   </if>
+   </if>
+   
+   
+   <if test="colorradio != 'all'">
+   
+    <if test="marketprice == 'all'">
+   		and color=#{colorradio}
+    </if>
+    
+    <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
 	   	and color=#{colorradio} and price between 0 and 10000
 	   </if> 
@@ -207,9 +245,10 @@
 	   
 	   <if test="marketprice == '100000000000'">
 	   and color=#{colorradio}	and price between 200000 and 100000000000
-	   </if>	   
-   
-  </if>
+	   </if>
+   	</if>
+   	
+   </if>
   and sold_day is null
   </select>
   
@@ -217,30 +256,42 @@
   <select id="getTradeSideList" parameterType="HashMap" resultType="mp_dto">
   select * from Marketplace where category like concat('%',#{subtitle},'%')
   
-  	 <if test="colorradio == 'all'">
+  	<if test="colorradio == 'all'">
+     <if test="marketprice == 'all'">
+   
+     </if>
+     
+     <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
-	   	 and price between 0 and 10000
+		  and price between 0 and 10000
 	   </if> 
 	   
 	   <if test="marketprice == '50000'">
-		   and price between 10000 and 50000
+		  and price between 10000 and 50000
 	   </if>
 	   
 	   <if test="marketprice == '100000'">
-		   and price between 50000 and 100000
+		  and price between 50000 and 100000
 	   </if>
 	   
 	   <if test="marketprice == '200000'">
-		   and price between 100000 and 200000
+		  and price between 100000 and 200000
 	   </if>
 	   
 	   <if test="marketprice == '100000000000'">
 		  and price between 200000 and 100000000000
 	   </if>  
-  </if>
-  
-  
-  <if test="colorradio != 'all'">
+	   </if>
+   </if>
+   
+   
+   <if test="colorradio != 'all'">
+   
+    <if test="marketprice == 'all'">
+   		and color=#{colorradio}
+    </if>
+    
+    <if test="marketprice != 'all'">
 	   <if test="marketprice == '10000'">
 	   	and color=#{colorradio} and price between 0 and 10000
 	   </if> 
@@ -259,9 +310,10 @@
 	   
 	   <if test="marketprice == '100000000000'">
 	   and color=#{colorradio}	and price between 200000 and 100000000000
-	   </if>	   
-   
-  </if>
+	   </if>
+   	</if>
+   	
+   </if>
      
      and sold_day is null
   
