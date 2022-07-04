@@ -328,7 +328,7 @@ $(function(){
 				<fmt:formatNumber pattern="#,##0">${a.price}</fmt:formatNumber>원
 			</span>&nbsp;&nbsp;&nbsp;
 			<span class="original_price">
-				<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>
+				<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>원
 			</span>
 	  		<span class="region">${a.region}</span>
 	  		</div>
@@ -364,7 +364,7 @@ $(function(){
 					<fmt:formatNumber pattern="#,##0">${a.price}</fmt:formatNumber>원
 				</span>&nbsp;&nbsp;&nbsp;
 				<span class="original_price">
-					<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>
+					<fmt:formatNumber pattern="#,##0">${a.original_price}</fmt:formatNumber>원
 				</span>
 				<span class="region">${a.region}</span>
 			</div>
