@@ -13,7 +13,7 @@
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/activity.css">
 
-<title>Insert title here</title>
+<title>DEVEL :: 나의 활동</title>
 </head>
 
 <body>

@@ -16,7 +16,7 @@
 <!-- css  -->
 <c:set var="root" value="<%=request.getContextPath()%>" />
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/market_productdetail.css">
-<title>Insert title here</title>
+<title>DEVEL :: 상품 상세정보</title>
 <%
 	String checkon = request.getParameter("checkon");
 %>
@@ -380,7 +380,7 @@ $(function () {
 		
 			<!-- 연관 상품 리스트 -->
 		<div class="container3" style="margin: 39px 0 0 0;" >
-			<c:forEach var="a" begin="0" end="5" items="${list}">
+			<c:forEach var="a" begin="0" end="5" items="${randomlist}">
 				<div class="relproduct" style="width: 160px; height: 262px; float: left; margin-left: 54.9px;">
 					<div class="relphoto" style="width: 160px; height: 160px;">
 						<c:if test="${a.photo!='no'}">

@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/marketplacemain.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<title>Insert title here</title>
+<title>DEVEL :: 중고장터 검색결과</title>
 <style type="text/css">
 div.main {
 background-color: #fff !important;

@@ -8,20 +8,20 @@
   </select>
   
   <insert id="insertMarket" parameterType="mp_dto">
-	insert into Marketplace (member_idx,buyer,category,brandname,subject,photo,original_price,price,color,content,upload_day) values (#{member_idx},#{buyer},#{category},#{brandname},#{subject},#{photo},#{original_price},#{price},#{color},#{content},now())
+   insert into Marketplace (member_idx,buyer,category,brandname,subject,photo,original_price,price,color,content,upload_day) values (#{member_idx},#{buyer},#{category},#{brandname},#{subject},#{photo},#{original_price},#{price},#{color},#{content},now())
   </insert>
   
   <select id="getAllDatas" resultType="mp_dto">
-	select * from Marketplace order by upload_day asc
+   select * from Marketplace order by upload_day asc
   </select>
   
   
   <select id="getList" parameterType="HashMap" resultType="mp_dto">
-  	select * from Marketplace order by upload_day desc limit #{start}, #{perPage}
+     select * from Marketplace order by upload_day desc limit #{start}, #{perPage}
   </select>
   
   <select id="getData" parameterType="String" resultType="mp_dto">
-	select * from Marketplace where market_place_idx=#{market_place_idx}
+   select * from Marketplace where market_place_idx=#{market_place_idx}
   </select>
   
   
@@ -44,57 +44,57 @@
      </if>
      
      <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-		  and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-		  and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-		  and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-		  and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-		  and price between 200000 and 100000000000
-	   </if>  
-	   </if>
+      <if test="marketprice == '10000'">
+        and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+        and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+        and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+        and price between 200000 and 100000000000
+      </if>  
+      </if>
    </if>
    
    
    <if test="colorradio != 'all'">
    
     <if test="marketprice == 'all'">
-   		and color=#{colorradio}
+         and color=#{colorradio}
     </if>
     
     <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-	   	and color=#{colorradio} and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-	   	and color=#{colorradio} and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-	  	and color=#{colorradio} and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-	   and color=#{colorradio}	and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-	   and color=#{colorradio}	and price between 200000 and 100000000000
-	   </if>
-   	</if>
-   	
+      <if test="marketprice == '10000'">
+         and color=#{colorradio} and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+         and color=#{colorradio} and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and color=#{colorradio} and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+      and color=#{colorradio}   and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+      and color=#{colorradio}   and price between 200000 and 100000000000
+      </if>
+      </if>
+      
    </if>
    
   
@@ -110,57 +110,57 @@
      </if>
      
      <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-		  and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-		  and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-		  and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-		  and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-		  and price between 200000 and 100000000000
-	   </if>  
-	   </if>
+      <if test="marketprice == '10000'">
+        and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+        and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+        and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+        and price between 200000 and 100000000000
+      </if>  
+      </if>
    </if>
    
    
    <if test="colorradio != 'all'">
    
     <if test="marketprice == 'all'">
-   		and color=#{colorradio}
+         and color=#{colorradio}
     </if>
     
     <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-	   	and color=#{colorradio} and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-	   	and color=#{colorradio} and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-	  	and color=#{colorradio} and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-	   and color=#{colorradio}	and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-	   and color=#{colorradio}	and price between 200000 and 100000000000
-	   </if>
-   	</if>
-   	
+      <if test="marketprice == '10000'">
+         and color=#{colorradio} and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+         and color=#{colorradio} and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and color=#{colorradio} and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+      and color=#{colorradio}   and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+      and color=#{colorradio}   and price between 200000 and 100000000000
+      </if>
+      </if>
+      
    </if>
    
   
@@ -174,7 +174,7 @@
   </select>
   
   <select id="getTradeList" parameterType="HashMap" resultType="mp_dto">
-  	select * from Marketplace where sold_day is null order by upload_day desc limit #{start}, #{perPage}
+     select * from Marketplace where sold_day is null order by upload_day desc limit #{start}, #{perPage}
   </select>
   
   <!-- 검색 기능 거래가능  -->
@@ -197,57 +197,57 @@
      </if>
      
      <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-		  and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-		  and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-		  and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-		  and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-		  and price between 200000 and 100000000000
-	   </if>  
-	   </if>
+      <if test="marketprice == '10000'">
+        and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+        and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+        and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+        and price between 200000 and 100000000000
+      </if>  
+      </if>
    </if>
    
    
    <if test="colorradio != 'all'">
    
     <if test="marketprice == 'all'">
-   		and color=#{colorradio}
+         and color=#{colorradio}
     </if>
     
     <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-	   	and color=#{colorradio} and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-	   	and color=#{colorradio} and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-	  	and color=#{colorradio} and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-	   and color=#{colorradio}	and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-	   and color=#{colorradio}	and price between 200000 and 100000000000
-	   </if>
-   	</if>
-   	
+      <if test="marketprice == '10000'">
+         and color=#{colorradio} and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+         and color=#{colorradio} and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and color=#{colorradio} and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+      and color=#{colorradio}   and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+      and color=#{colorradio}   and price between 200000 and 100000000000
+      </if>
+      </if>
+      
    </if>
   and sold_day is null
   </select>
@@ -256,66 +256,71 @@
   <select id="getTradeSideList" parameterType="HashMap" resultType="mp_dto">
   select * from Marketplace where category like concat('%',#{subtitle},'%')
   
-  	<if test="colorradio == 'all'">
+     <if test="colorradio == 'all'">
      <if test="marketprice == 'all'">
    
      </if>
      
      <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-		  and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-		  and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-		  and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-		  and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-		  and price between 200000 and 100000000000
-	   </if>  
-	   </if>
+      <if test="marketprice == '10000'">
+        and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+        and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+        and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+        and price between 200000 and 100000000000
+      </if>  
+      </if>
    </if>
    
    
    <if test="colorradio != 'all'">
    
     <if test="marketprice == 'all'">
-   		and color=#{colorradio}
+         and color=#{colorradio}
     </if>
     
     <if test="marketprice != 'all'">
-	   <if test="marketprice == '10000'">
-	   	and color=#{colorradio} and price between 0 and 10000
-	   </if> 
-	   
-	   <if test="marketprice == '50000'">
-	   	and color=#{colorradio} and price between 10000 and 50000
-	   </if>
-	   
-	   <if test="marketprice == '100000'">
-	  	and color=#{colorradio} and price between 50000 and 100000
-	   </if>
-	   
-	   <if test="marketprice == '200000'">
-	   and color=#{colorradio}	and price between 100000 and 200000
-	   </if>
-	   
-	   <if test="marketprice == '100000000000'">
-	   and color=#{colorradio}	and price between 200000 and 100000000000
-	   </if>
-   	</if>
-   	
+      <if test="marketprice == '10000'">
+         and color=#{colorradio} and price between 0 and 10000
+      </if> 
+      
+      <if test="marketprice == '50000'">
+         and color=#{colorradio} and price between 10000 and 50000
+      </if>
+      
+      <if test="marketprice == '100000'">
+        and color=#{colorradio} and price between 50000 and 100000
+      </if>
+      
+      <if test="marketprice == '200000'">
+      and color=#{colorradio}   and price between 100000 and 200000
+      </if>
+      
+      <if test="marketprice == '100000000000'">
+      and color=#{colorradio}   and price between 200000 and 100000000000
+      </if>
+      </if>
+      
    </if>
      
      and sold_day is null
   
+  </select>
+  
+  <!-- 디테일 페이지 랜덤 값 가져오기 -->
+  <select id="getRandomlist" resultType="mp_dto">
+   select * from Marketplace group by market_place_idx order by rand() limit 6;
   </select>
 </mapper>

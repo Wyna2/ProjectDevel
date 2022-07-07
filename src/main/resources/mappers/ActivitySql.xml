@@ -31,5 +31,12 @@
 	<select id="ScrapMarketDatas" parameterType="String" resultType="mp_dto">
 		select * from Marketplace a where  a.market_place_idx in (select b.market_place_idx from Marketlike b where b.member_idx = #{userKey} and b.like_count = 1);
 	</select>
+	<select id="ScrapWriteDatas" parameterType="HashMap" resultType="community">
+		<!-- select * from Community a where a.community_idx in (select b.community_idx from CommunityScrap b where b.member_idx = #{userKey} and b.scrap_count = 1 order by community_scrap_idx desc) limit #{start}, #{perPage}; -->
+		select * from Community a where a.community_idx in (select b.community_idx from CommunityScrap b where b.member_idx = #{userKey} and b.scrap_count = 1) order by write_day desc limit #{start}, #{perPage};
+	</select>
+	<select id="getScrapWriteCount" parameterType="String" resultType="int">
+      select count(*) from CommunityScrap where member_idx=#{userKey}
+  	</select>
 	
 </mapper>

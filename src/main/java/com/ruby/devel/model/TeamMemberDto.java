@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Alias("teammember")
-public class CrewMemberDto {
+public class TeamMemberDto {
 
 	private String team_member_idx;
 	private String team_idx;
@@ -16,4 +16,5 @@ public class CrewMemberDto {
 	private Timestamp regist_day;
 	private String accept_status;
 	private String mypr;
+	
 }

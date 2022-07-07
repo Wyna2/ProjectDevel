@@ -13,7 +13,11 @@
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/activity.css">
 
-<title>나의활동>모아보기</title>
+<script type="text/javascript">
+$("img.icon_myactivity").attr("src","${root }/element/icon_myactivity_active.png");
+</script>
+
+<title>DEVEL :: 나의활동</title>
 <style type="text/css">
 span.side_main_span_main {
 	font-weight: 600;
@@ -36,13 +40,13 @@ span.side_main_span_main {
 		<hr style="border: solid 1px #191919;">
 	</div>
 	
-	<c:if test="${cdto.name!=null}">
+	<c:if test="${tdto.name!=null}">
 	<div class="main_detail1">
 		<!-- 속해있는 crew 값 가져오기 -->
-		<div class="detail_crew">${cdto.name}</div>
+		<div class="detail_crew" style="background-color: ${tdto.color}">${tdto.name}</div>
 	</div>
 	</c:if>
-	<c:if test="${cdto.name==null}">
+	<c:if test="${tdto.name==null}">
 	<div class="main_detail1">
 		<div class="detail_crew" style="color: black; background-color: white;">소속된 크루가 없습니다.</div>
 	</div>

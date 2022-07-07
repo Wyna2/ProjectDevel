@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-<title>나의활동>거래목록</title>
+<title>DEVEL :: 나의활동>거래목록</title>
 <style type="text/css">
 span.side_main_span_market {
 	font-weight: 600;

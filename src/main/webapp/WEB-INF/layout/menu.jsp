@@ -69,27 +69,23 @@ $(function () {
 		</span>
 	</div>
 	<c:if test="${sessionScope.loginOK==null }">
-	<div class="menuitem_member" style="margin-left: 450px;">
-		<span class="membermenu">
-		<a href="/login" style="text-decoration: none;">로그인</a>
+	<div class="menuitem_member" style="width:700px; text-align:right; padding: 18px 1px 10px 0;" >
+		<span class="membermenu_color"	style="border-radius: 20px 0 0 20px;" onclick="location.href='/login'">
+		로그인
 		</span>
-	</div>
-	<div class="menuitem_member">
-		<span class="membermenu">
-		<a href="/signup" style="text-decoration: none;">회원가입</a>
+		<span class="membermenu_color" style="margin-left:3px; border-radius: 0 20px 20px 0;" onclick="location.href='/signup'">
+		회원가입
 		</span>
 	</div>
 	</c:if>
 	<c:if test="${sessionScope.loginOK!=null }">
 	
-	<div class="menuitem_member" style="margin-left: 450px;">
-		<span class="membermenu">
-		<b>${sessionScope.userNickname }님</b>
+	<div class="menuitem_member" style="width:700px; text-align:right; padding: 18px 5px 10px 0px;">
+		<span class="membermenu_color" style="border-radius: 20px 0 0 20px;">
+		<b>${sessionScope.userNickname }</b>님
 		</span>
-	</div>
-	<div class="menuitem_member">
-		<span class="membermenu">
-		<a href="/logout" style="text-decoration: none;">로그아웃</a>
+		<span class="membermenu_color" style="margin-left:3px; border-radius: 0 20px 20px 0;" onclick="location.href='/logout'">
+		로그아웃
 		</span>
 	</div>
 	</c:if>
@@ -99,9 +95,9 @@ $(function () {
 		<ul class="dropmenu_ul">
 			<li><a class="dm_main" href="/ground">그라운드</a>
 				<ul>
-					<li><a href="/ground">모든 팀 보기</a>
-					<li><a href="/ground/mycrew">나의 팀 보기</a>
-					<li><a href="/ground/crewenroll">팀 만들기</a>
+					<li><a href="/ground">크루 보기</a>
+					<li><a href="/ground/mycrew">마이 크루</a>
+					<li><a href="/ground/crewenroll">크루 생성</a>
 				</ul>
 			</li>
 			<li><a class="dm_main" href="/community">커뮤니티</a>
@@ -113,8 +109,7 @@ $(function () {
 			<li><a class="dm_main" href="/marketplace/market_main">중고장터</a></li>
 			<li><a class="dm_main" href="/challenge">챌린지</a>
 				<ul>
-					<li><a href="/challenge">진행중인 챌린지</a>
-					<li><a href="#">내 도전목록</a>
+					<li><a href="/challenge">[오픈 예정]</a>
 				</ul>
 			</li>
 			<li><a class="dm_main" href="/activity">나의 활동</a></li>

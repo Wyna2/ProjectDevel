@@ -14,7 +14,7 @@
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/community/community_contentaddform.css">
 
-<title>Insert title here</title>
+<title>DEVEL :: 게시글 작성</title>
 <script type="text/javascript">
 $(function () {
 	//'글 유형-자유'가 기본값으로 '질문작성' 폼 숨기기
@@ -90,16 +90,16 @@ function setContentType(){
  				<td class="text1"> <div style="padding-bottom: 20px; width: 95px;">글 유형</div></td>
 	 			<td colspan="3" class="text2">
 	 				<div class="wrapper">
-	 			<ul>
+			 			<ul>
 							<li>
-							<input type="radio" id="contentType_normal" value="0" name="content_type" checked="checked" onchange="setContentType()">
-							<label for="contentType_normal">자유</label>
-							<div class="check"></div>
+								<input type="radio" id="contentType_normal" value="0" name="content_type" checked="checked" onchange="setContentType()">
+								<label for="contentType_normal">자유</label>
+								<div class="check"></div>
 							</li>
 							<li>
-							<input type="radio" id="contentType_qna" value="1" name="content_type" onchange="setContentType()">
-							<label for="contentType_qna">Q&A</label>
-							<div class="check"><div class="inside"></div></div>
+								<input type="radio" id="contentType_qna" value="1" name="content_type" onchange="setContentType()">
+								<label for="contentType_qna">Q&A</label>
+								<div class="check"><div class="inside"></div></div>
 							</li>
 						</ul>
             		</div>

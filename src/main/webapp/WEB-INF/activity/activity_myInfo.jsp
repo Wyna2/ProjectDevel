@@ -18,7 +18,7 @@
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/mypage.css">
 
-<title>Insert title here</title>
+<title>DEVEL :: 마이페이지</title>
 
 <script type="text/javascript">
 <!-- 이미지 파일 업로드 후 이벤트 -->
@@ -70,7 +70,20 @@ $(function() {
 			modal.open();
 		}).on('click', '#pwcheckbtn', function() {
 			if(${dto.password}==$('.inputpw').val()){
-				location.href="${root}/userpwreset";
+				let member_idx = ${userKey};
+				
+				$.ajax({
+					type: "post",
+					url: "myinfopw",
+					dataType: "text",
+					data: {
+						"member_idx":member_idx
+						},
+					success: function(data) {
+						document.location.replace("userpwreset");
+					}
+				});
+				
 			} else {
 				alert("비밀번호 재확인 후 다시 입력해주세요");
 				$('.inputpw').val('');
@@ -92,6 +105,7 @@ $(function() {
 			var btn_nick = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,8}$/g.test(inputNickname);
 			if(!btn_nick) {
 				alert("닉네임은 2~8자의 한글, 영문, 숫자만 사용 가능합니다.");
+				$("#nicktxt").val("");
 				$("#nicktxt").focus();
 			} else {
 				$.ajax({
@@ -102,15 +116,15 @@ $(function() {
 					success : function(data) {
 						if(inputNickname=="") {	// 아무것도 입력하지 않았을 경우
 							alert("사용할 닉네임을 입력해주세요.");
-							$("#nickname").focus();
+							$("#nicktxt").focus();
 						} else {
 							if (data.vaildNickname == 0) {
 								alert("사용 가능한 닉네임 입니다.");
-								$("#nickname_check").val(inputNickname);
+								$("#nicktxt").attr("readonly","readonly");
 							} else {
 								alert("이미 사용 중인 닉네임 입니다.\n다른 닉네임을 입력해주세요.");
-								$("#nickname").val("");
-								$("#nickname").focus();
+								$("#nicktxt").val("");
+								$("#nicktxt").focus();
 							}
 						}
 					},
@@ -138,6 +152,15 @@ $(document).ready(function(){
         }
     });
 });
+
+function checkPass(form) {
+	//닉네임 중복확인 체크
+	var inputNickname=$("#nicktxt").val();
+	if(inputNickname=="" ) {
+		alert("닉네임 중복확인이 필요합니다.");
+		return false;
+	}
+}
 </script>
 
 <style type="text/css">
@@ -156,7 +179,7 @@ background-color: #fff !important;
 </head>
 <body>
 <!-- main -->
-<form action="update" method="post" enctype="multipart/form-data">
+<form action="update" method="post" enctype="multipart/form-data" onsubmit="checkPass(this)">
 
 <input type="hidden" name="userKey" id="userKey" value="${userKey}">
 
@@ -232,7 +255,7 @@ background-color: #fff !important;
 			<input class="input" name="birth" value="${dto.birth}" type="date">
 		</div>
 		
-		<div class="sub_title">추가정보입력(선택사항)</div>
+		<div class="sub_title">추가정보 입력</div>
 		<div class="txt">
 			<div class="title">연령</div>
 			<div class="ageselect">

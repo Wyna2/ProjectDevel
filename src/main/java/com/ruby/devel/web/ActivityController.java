@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ruby.devel.model.CommunityDto;
-import com.ruby.devel.model.CrewEnrollDto;
 import com.ruby.devel.model.MarketDto;
+import com.ruby.devel.model.TeamDto;
 import com.ruby.devel.service.impl.ActivityMapper;
 import com.ruby.devel.service.impl.MemberMapper;
-import com.ruby.devel.service.impl.crewenrollMapper;
+import com.ruby.devel.service.impl.TeamMapper;
 
 @Controller
 public class ActivityController {
@@ -27,8 +27,8 @@ public class ActivityController {
 	@Autowired //Activity 자동주입
 	ActivityMapper Amapper;
 	
-	@Autowired //Crew 자동주
-	crewenrollMapper Cmapper;
+	@Autowired //Tean 자동주입
+	TeamMapper Tmapper;
 	
 	
 	//모아보기 페이지
@@ -39,9 +39,10 @@ public class ActivityController {
 		ModelAndView mview = new ModelAndView();
 		
 		//나의크보기 dto 얻기
-		String team_idx = Cmapper.selectTeamIdx(userKey);
-		CrewEnrollDto cdto = Cmapper.getData(team_idx);
-		mview.addObject("cdto", cdto);
+		String team_idx = Tmapper.selectTeamIdx(userKey); 
+		
+		TeamDto tdto = Tmapper.getData(team_idx);
+		mview.addObject("tdto", tdto);
 		
 		//나의작성글목록 dto 얻기
 		List<CommunityDto> clist = Amapper.getWriteDatas(userKey);
@@ -189,7 +190,7 @@ public class ActivityController {
 		int start; //각페이지의 시작번호..한페이지에서 보여질 시작 글 번호(인덱스에서 보여지는 번호)
 		int perPage=3; //한페이지에 보여질 글 갯수
 		int perBlock=3; //한블럭당 보여지는 페이지 개수
-		int totalCount = Amapper.getWriteCount(userKey);
+		int totalCount = Amapper.getScrapWriteCount(userKey);
 		
 		//총페이지 개수구하기
 		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
@@ -209,11 +210,7 @@ public class ActivityController {
 		map.put("userKey", userKey);
 		map.put("start", start);
 		map.put("perPage", perPage);
-		
-		
-		//나의작성목록 dto 얻기(우선 스크랩 대체)
-		List<CommunityDto> clist = Amapper.getWritePageDatas(map);
-		mview.addObject("clist", clist);
+
 		//출력에 필요한 변수들을 request 에 저장
 		mview.addObject("startPage",startPage);
 		mview.addObject("endPage",endPage);
@@ -225,6 +222,9 @@ public class ActivityController {
 		//스크랩 얻기
 		List<MarketDto> scraplist = Amapper.ScrapMarketDatas(userKey);
 		mview.addObject("scraplist",scraplist);
+		//나의작성목록 dto 얻기(우선 스크랩 대체)
+		List<CommunityDto> clist = Amapper.ScrapWriteDatas(map);
+		mview.addObject("clist", clist);
 		
 		//포워딩
 		mview.setViewName("a/activity/activity_myScrap");

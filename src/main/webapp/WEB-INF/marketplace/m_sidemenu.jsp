@@ -10,9 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/marketplacesidemenu.css">
-<title>Insert title here</title>
-
-
+<title>DEVEL :: 중고장터</title>
 
 <script type="text/javascript">
 $(function () {

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 public class TilesConfig {      
       @Bean
       public TilesConfigurer tilesConfigurer() {
-         System.out.println("tiles");
+         System.out.println("Tiles Layout SETTING :: SUCCESS");
          TilesConfigurer tilesConfigurer = new TilesConfigurer();
          tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/tiles.xml"});
          tilesConfigurer.setCheckRefresh(true);

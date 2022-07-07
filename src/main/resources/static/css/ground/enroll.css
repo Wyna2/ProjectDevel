@@ -39,7 +39,7 @@
 .crew_name { /*크루 이름*/
 	width: 165px;
 	height: 56px;
-	margin: 0 35px 20px 0;
+	margin: 0 0px 20px 0;
 	padding: 16px 107px 16px 0;
 	background-color: #fff;
 	/*폰트 적용*/
@@ -304,4 +304,48 @@ textarea:focus {
 #text_iii{
 	position: relative;
 	top: 35px;
+}
+
+.btn-small {
+	outline: none;
+	width: 75px;
+	height: 30px;
+	border: 2px solid #ff4b4e;
+	border-radius: 20px;
+	color: #ff4b4e;
+	font-family: 'Noto Sans KR';
+	font-weight: 400;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+}
+
+.btn-small {
+	overflow: hidden;
+	transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+	background: #ff4b4e;
+	color: #fff;
+}
+
+.btn-small:before {
+	position: absolute;
+	content: '';
+	display: inline-block;
+	top: -180px;
+	left: 0;
+	width: 30px;
+	height: 100%;
+	background-color: #fff;
+	animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-small:active {
+	box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3), -4px -4px 6px 0
+		rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+		inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
 }

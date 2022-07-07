@@ -63,6 +63,22 @@ span.tag{
 	top: 20px;
 }
 
+/*하트 이미지 배경 처리중  사진 안불러와 짐 다시 돌아가려면 메인에 하트 특수문자 넣고  백그라운드 지우고 위치 다시 조정*/
+.scrap{
+
+   width: 26px;
+   height: 26px;
+   content : '2661';
+   box-sizing: border-box;
+   cursor: pointer;   
+   font-size: 20pt;
+   left: -100px;
+}
+
+#chk{
+   display: none;
+} 
+
 /*content*/
 .content{
   width: 1015px;
@@ -83,8 +99,8 @@ span.tag{
 /*작성자 이름 프로필 div*/
 div.contentname{
 	position: relative;
-	left: -80px;
-	top: 30px;
+	left: -110px;
+	top: 10px;
 }
 /*작성자 이름*/
 .spanwriter{
@@ -100,20 +116,30 @@ div.contentname{
   text-align: left;
   color: #505050;
   margin-left: 10px;
+  position: relative;
+  top: -10px;
 }
 
 /*팀 이름*/
 div.teamname{
 	
-  width: 60px;
-  height: 20px;
-  padding: 4px 14px 3px 12px;
+  width: 110px;
+ 
+  margin-top:10px;
   border-radius: 10px;
-  background-color: #ff4b4e;
   position: relative;
-  left: 300px;
-  top: -35px;	
+  left: 248px;
+  top: -30px;	
+  text-align: center;
 }
+
+/* 수정 삭제 버튼 */
+div.iflogindiv button{
+	border: none;
+	background-color: #fff;
+	font-size: 14pt;
+}
+
 /*팀 이름 스판*/
 span.spanteamname{
 	
@@ -241,26 +267,24 @@ div.addcomment{
 .commentdiv2{
 	position : relative;
 	width: 1015px;
-	height: 200px;
-	
 	left: 410px;
 	top: -350px;
-	
     padding: 28px 180px 28px 70px;
     border: solid 1px #dbdbdb;
+    height: 800px;
 }
 
 .cocomment{
-  width: 650px;
-  height: 100px;
+  width: 700px;
+  height: 50px;
   margin: 0 20px 0 35px;
-  padding: 10px 645px 146px 19px;
+  padding: 10px 0 146px 19px;
   border-radius: 10px;
   border: solid 1px #dbdbdb;
   background-color: #fff;
   position: relative;
-  left: 130px;
-  top: -80px;
+  left: 20px;
+  top: -20px;
   overflow: hidden;
   font-family: NotoSansKR;
   font-size: 15px;
@@ -278,8 +302,8 @@ div.addcomment{
 /*채택하기 버튼*/
 .selectionbtn{
 	position: relative;
-	left: 840px;
-	top: -120px;
+	left: 665px;
+	top: -60px;
 }
 
 
@@ -439,9 +463,18 @@ div.addcomment{
 	margin-left: 10px;
 }
 
-.iflogindiv{
-	position: absolute;
+.q_commentuser{
+	position: relative;
+	left: 10px;
+	top: -10px;
 }
-.writeicon{
-	margin-left: 175px;
+.q_trashdiv{
+	position: relative;
+	top: -238px;
+	left: 730px;
+}
+.q_commentwriteday{
+	position: relative;
+	left: 600px;
+	top: -210px;
 }

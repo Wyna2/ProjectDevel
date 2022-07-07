@@ -24,5 +24,6 @@ public interface ActivityMapper {
 	
 	//스크랩
 	public List<MarketDto> ScrapMarketDatas(String userKey);
-
+	public List<CommunityDto> ScrapWriteDatas(HashMap<String, Object> map);
+	public int getScrapWriteCount(String userKey);
 }

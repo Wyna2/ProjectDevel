@@ -42,4 +42,6 @@ public interface MarketMapper {
 	public int getTradeSideCount(String subtitle,String colorradio,String marketprice);
 	public List<MarketDto> getTradeSideList(HashMap<String, Object> map);
 	
+	//디테일 상세페이지 랜덤 가져오기
+	public List<MarketDto> getRandomlist();
 }

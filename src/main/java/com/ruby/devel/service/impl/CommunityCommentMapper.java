@@ -36,4 +36,7 @@ public interface CommunityCommentMapper {
 	//댓글 수정
 	public void updateComment(CommunityCommentDto cm_dto);
 	
+	//답변 채택시 +1
+	public void answerChoose(String community_comment_idx);
+	
 }

@@ -331,8 +331,8 @@ td {
 
 #modal_close_btn2 {
 	position: relative;
-	top: -608px;
-	left: 202px;
+	top: -594px;
+	left: 204px;
 }
 
 .crew_pro {
@@ -509,7 +509,7 @@ input:focus::-webkit-input-placeholder {
 	height: 2px;
 	left: 0px;
 	position: absolute;
-	top: 427.2px;
+	top: 405px;
 	left: 125px;
 	-webkit-transform: scale(0, 1);
 	transform: scale(0, 1);

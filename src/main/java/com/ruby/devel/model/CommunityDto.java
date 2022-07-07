@@ -27,5 +27,7 @@ public class CommunityDto {
 
 	private int mcount; //댓글 수
 	private String writer; //작성자 받아오기
+	private String team_name;	// 크루 이름
+	private String team_color;	// 크루 색상
 
 }

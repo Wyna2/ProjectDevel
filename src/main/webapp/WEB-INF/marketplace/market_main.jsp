@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/marketplacemain.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<title>Insert title here</title>
+<title>DEVEL :: 중고장터</title>
 
 <style type="text/css">
 div.main {
@@ -340,6 +340,8 @@ $(function(){
 	<c:forEach var="a" items="${list}">
 		<div class="sangpumlistdiv" style="border: 1px solid #dbdbdb;" id="listdiv">
 		
+		<!-- 거래미완료 상품 -->
+		<c:if test="${a.sold_day==null}">
 			<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
 				<c:if test="${a.photo!='no'}">
 					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
@@ -356,6 +358,37 @@ $(function(){
 					</a>
 			  	</c:if>
 			</div>
+		</c:if>
+		
+		<!-- 거래완료 상품 -->
+		<c:if test="${a.sold_day!=null}">
+		  	<div class="sangpumlistphoto" style="border: 1px solid #dbdbdb;">
+				<!-- 이미지 있을 경우 상품이미지 중 첫번째 이미지 보이기 -->
+				<c:if test="${a.photo!='no'}">
+					<c:forTokens var="p" items="${a.photo}" delims="," begin="0" end="0">
+						<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+							<img src="${root }/photo/${p}" style="width: 146px; height: 146px; opacity: 30%" class="photo">
+						</a>
+						<div style="position: absolute; top: 60px; left: 25px;">
+							<img id="msuccess" src="${root }/element/img_activity_success.png"
+							style="width: 100px; height: 35px;">
+						</div>
+					</c:forTokens>
+				</c:if>
+				
+				<!-- 이미지 없을 경우 기본 이미지 -->
+				<c:if test="${a.photo=='no'}">
+					<a href="${root }/marketplace/productdetail?market_place_idx=${a.market_place_idx}&currentPage=${currentPage}">
+						<img src="${root }/element/icon_noimg.png" style="width: 146px; height: 146px;" class="photo">
+					</a>
+					<div style="position: absolute; top: 60px; left: 25px;">
+						<img id="msuccess" src="${root }/element/img_activity_success.png"
+						style="width: 100px; height: 35px;">
+					</div>
+		  		</c:if>
+		  	</div>
+	  	</c:if>
+
 			
 			<div class="sangpumlistdetail" style="border: 0px solid black">
 				<span class="brandname">${a.brandname}</span><br>

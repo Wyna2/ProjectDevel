@@ -11,28 +11,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <c:set var="root" value="<%=request.getContextPath()%>" />
  <link rel="stylesheet" type="text/css" href="${root }/css/community/community_main.css">
-<title>Insert title here</title>
-<style type="text/css">
-.pagesort{
-	position: absolute;
-	top: 850px;
-	left: 780px;
-}
-
-#pagecnum {
-   color: #ff4b4e;
-}
-#pagenum,#pagecnum {
-   margin: 0 10px 0 10px;
-}
-#pagebtn {
-   margin: 0 5px 0 5px;
-}
-</style>
-
+<title>DEVEL :: 커뮤니티</title>
 <script type="text/javascript">
 	$(function () {
-		
+		  $("#list_type").on("propertychange change keyup paste input", function() {
+			    var currentVal = $(this).val();
+			  
+			    alert(currentVal);
+			});
 		/* start Dropdown Menu*/      
 		   $('.dropdown').click(function () {
 		        $(this).attr('tabindex', 1).focus();
@@ -47,25 +33,70 @@
 		        $(this).parents('.dropdown').find('span').text($(this).text());
 		        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
 		        $("span.category_placeholder").css("color", "#505050");
+		        
+		     	if($("#list_type").val()=="all") {
+		        	location.href="/community";
+		        }
+		        if($("#list_type").val()=="normal") {
+		        	location.href="/community_n";
+		        }
+		        if($("#list_type").val()=="qna") {
+		        	location.href="/community_q";
+		        }
 		    });
 		    /*End Dropdown Menu*/
-		    
-		   /* scrap button change */
-		    $(".chscrap").change(function(){
-			      
-			      if($(this).is(":checked"))
-			      {
-			         $(this).parent('.lab').children(".scrap").attr("src","${root }/element/icon_scrap_red.png");
-			        
-			      }
-			      else
-			      {
-			         $(this).parent('.lab').children(".scrap").attr("src","${root }/element/icon_scrap.png");
-	   
-			      }
-			});
-		    /* end scrap button change */
-		    	 
+		    		    	 
+	/* scrap 이벤트 */      
+	   <%--커뮤니티 상세페이지 scrap 이벤트--%>
+	   if(${userKey!=null}) {
+	   $('.chscrap').on("change", function(){
+	      if($(this).is(':checked'))
+	      {                        
+	         let community_idx = $(this).attr('community_idx');
+	         let scrap_count = 1;
+	         
+	         $.ajax({
+	            type: "post",
+	            url: "communityscrap.event",
+	            data: {
+	               "community_idx":community_idx,
+	               "scrap_count":scrap_count,
+	               },
+	            success: function(data) {
+	            	document.location.reload(true);
+	            	
+	            }
+	         });
+	         
+	         //하트 바뀜
+	         $(this).siblings('.scrap').attr('src','${root }/element/icon_scrap_red.png');
+	         alert("해당 게시글이 채택되었습니다.");
+	      }
+	      else
+	      {
+	         let community_idx = $(this).attr('community_idx');
+	         let scrap_count = 0;
+	         
+	         $.ajax({
+	            type: "post",
+	            url: "communityscrap.event",
+	            data: {
+	               "community_idx":community_idx,
+	               "scrap_count":scrap_count,
+	               },
+	            success: function(data) {
+	               document.location.reload(true);
+	               alert("성공");
+	            }
+	         });
+	         
+	         //하트 바뀜
+	         $(this).siblings(".scrap").attr("src","${root }/element/icon_scrap.png");
+	         alert("채택이 해제되었습니다.");
+	      }
+	   });
+	   }
+	
 	});
 	
 	//비회원 커뮤니티 글쓰기 방지
@@ -87,12 +118,16 @@
 				<span class="title">BEST 게시글</span>
 				<div class="listbox1"> 
 						<table class="list1" style="margin-top: 7px;">
-							<c:forEach var="i" begin="1" end="5">
+							<c:forEach var="i" items="${b_list}">
 								<tr>
 									<!-- 게시글 제목 출력 -->
-									<td class="subject1"> <div style="cursor: pointer;"> 글제목이 나타납니다. </div> </td>   
+									<td class="subject1"> 
+										<div class="besttitle" style="width: 200px;">
+									 		<a href="${root }/community/contentdetail?community_idx=${i.community_idx }">${i.subject}</a>
+										</div> 
+									</td>   
 									<td></td>
-									<td class="likecount1"><img src="${root }/element/icon_thumb.png">1,234</td>
+									<td class="likecount1"><img src="${root }/element/icon_thumb.png">${i.like_count }</td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -104,16 +139,30 @@
 				<span class="title">최신 Q&A</span>
 				<div class="listbox2"> 
 						<table class="list2">
-							<c:forEach var="i" begin="1" end="5">
+							<c:forEach var="i" items="${r_list }">
 								<tr>
-									<td rowspan="2" class="img2" width="90"> <img src="${root }/element/icon_Q&A2.png" class="Qimg"> </td>
+									<td rowspan="2" class="img2" width="90"> 
+										<c:if test="${i.content_type==1}">
+											<span class="tag badge" style="background-color: #6BCB77;">OPEN</span>
+										</c:if>
+										<c:if test="${i.content_type==2}">
+											<span class="tag badge" style="background-color: #ff4b4e;">CLOSED</span>
+										</c:if>
+									</td>
 										 <!-- 게시글 제목 출력 -->
-									<td class="subject1" style="padding-top:11px; border-bottom: 0px;"> <div style="cursor: pointer;"> 글제목이 나타납니다. </div></td> 
+									<td class="subject1" style="padding-top:11px; border-bottom: 0px;"> 
+										<c:if test="${i.content_type==1 || i.content_type==2}">
+											<div class="qnatitle" style="width: 200px;"> 
+												<a href="${root }/community/contentdetail?community_idx=${i.community_idx }">${i.subject}</a>
+											</div>
+										</c:if>	
+									</td> 
 								</tr>
+								
 								<tr>
 									<td class="date2"> 
 									<!-- 게시글 등록 날짜 출력 -->
-										<div>2022-06-10 09:00</div> 
+										<div style="text-align: left: ;"><fmt:formatDate value="${i.write_day }" pattern="yyyy-MM-dd HH:mm"/></div> 
 									</td>	
 								</tr>
 							</c:forEach>
@@ -131,21 +180,23 @@
                  	 <div class="select" style="margin-top: -9px;">
                      	<span class="category_placeholder" > <div>전체글 보기</div> </span> <i class="fa fa-chevron-left"></i>
                 	 </div>
-                 		 <input type="hidden" name="" value="empty">
+                 		 <input type="hidden" name="list_type" id="list_type" value="">
                   			<ul class="dropdown-menu">
-                    	   		<li id="notebook">전체글 보기</li>
-                     			<li id="monitor">일반글 보기</li>
-				         	    <li id="keyboard">질문글 보기</li>
+                    	   		<li id="all">전체글 보기</li>
+                     			<li id="normal">일반글 보기</li>
+				         	    <li id="qna">질문글 보기</li>
               			    </ul>
              	 </div>	 
 					<!-- 검색어를 입력해주세요 -->
-				 <div class="search" style="float: left; margin-left: 123px;">
-					  	<input type="text" class="search2" placeholder="검색어를 입력해주세요." style="float: left;">
-				 		<div class="searchbox">
-				 			<img src="${root }/element/icon_search.png" class="searchimg">
-				 		</div>
-				 </div>						
-				 	  
+					<form action="community/search">
+					 <div class="search" style="float: left; margin-left: 123px;">
+						  	<input type="text" class="search2" placeholder="검색어를 입력해주세요." style="float: left;" name="SearchText">
+					 		<div class="searchbox">
+					 			<img src="${root }/element/icon_search.png" class="searchimg">
+					 		</div>
+					 <button type="submit" class="searchbtn" style="border: 0px; background-color: #ffff;"></button>		
+					 </div>						
+				  	</form>
 			<!-- 글쓰기 버튼  -->
 				<c:if test="${sessionScope.loginOK!=null }">
 				 <div class="writebutton" style="margin-left: 186px;" align="right">
@@ -169,31 +220,49 @@
 				<table class="communitylist">
 					<tr>
 						<td width="32"> 
-						<label  class="lab" id="lab">
-        					 <input type="checkbox" id="chk" value="${i }" class="chscrap">
-         					 <img alt="" src="${root }/element/icon_scrap.png" class="scrap">
-						</label>
+									<!-- scrap 이벤트 -->
+					         <label class="lab" id="lab">
+					            <c:forEach var="b" items="${scraplist}">
+					               <c:if test="${(c.community_idx==b.community_idx)&&(userKey==b.member_idx)&&(b.scrap_count==1)}">
+					                  <input type="checkbox" id="chk"
+					                  community_idx="${c.community_idx}" class="chscrap" checked="checked">
+					                  <img alt="" src="${root }/element/icon_scrap_red.png" class="scrap"
+					                  style="position: absolute; margin-left: 191.5px;">
+					               </c:if>
+					            </c:forEach>
+					   
+					            <input type="checkbox" id="chk"
+					            community_idx="${c.community_idx}" class="chscrap">
+					            <img alt="" src="${root }/element/icon_scrap.png" class="scrap">
+					         </label>
 						</td>
-						<td width="550" colspan="2"> 
+						<td width="580" colspan="2"> 
 							<div class="contentnumber1">#${no }</div>
 							<c:set var="no" value="${no-1 }"></c:set>  <!-- 글번호 -->
 							<div class="tagbox" style="margin-top: 4px;">
-									<c:if test="${c.content_type==1 }">
-										<span class="tag badge" style="background-color: black;">#Q&A</span>
+									<c:if test="${c.content_type==1}">
+										<span class="tag badge" style="background-color: #6BCB77;">OPEN</span>
+									</c:if>
+									<c:if test="${c.content_type==2}">
+										<span class="tag badge" style="background-color: #ff4b4e;">CLOSED</span>
 									</c:if>
 									<span class="tag badge">#${c.tag1 }</span>
-									<span class="tag badge">#${c.tag2 }</span>
-									<span class="tag badge">#${c.tag3 }</span>
+									<c:if test="${c.tag2!=''}">
+										<span class="tag badge">#${c.tag2 }</span>
+									</c:if>
+									<c:if test="${c.tag3!=''}">
+										<span class="tag badge">#${c.tag3 }</span>
+									</c:if>
 							</div>
 						</td>  
 	
-						<td class="count" width="320" style="padding-top: 7px;"> <!-- width="340" -->
+						<td class="count" width="210" style="padding-top: 7px; text-align: right;"> <!-- width="340" -->
 							<c:if test="${c.mcount==0 }">
-								<div> <img alt="" src="${root }/element/icon_comment.png" style="margin-left: 135px;"></div>
+								<div> <img alt="" src="${root }/element/icon_comment.png" style="margin-left: 30px;"></div>
 								<div class="word"> ${c.mcount} </div>
 							</c:if>
 							<c:if test="${c.mcount>0 }">
-								<div> <img alt="" src="${root }/element/icon_comment.png" style="margin-left: 135px;"> </div>
+								<div> <img alt="" src="${root }/element/icon_comment.png" style="margin-left: 30px;"> </div>
 								<div class="word"> ${c.mcount} </div>
 							</c:if>
 								<div> <img alt="" src="${root }/element/icon_thumb.png" style="margin-left: 13px;"> </div>
@@ -201,28 +270,47 @@
 								<div> <img alt="" src="${root }/element/icon_visibility.png" style="margin-left: 8px;"> </div>
 								<div class="word" > ${c.read_count } </div>
 						</td>
-						<td rowspan="2" width="230" style="padding-bottom: 7px;">
+						<td rowspan="2" width="200" style="padding-bottom: 7px;">
 							<div class="personphoto" style="width: 126px;"> <img src="${root }/element/icon_person1.png"> </div>
-							<div class="writer" style="margin: 7px 0 0 130px;">${c.writer }</div>
-							<div class="crew"> </div>   <!-- 크루 네임 및 색상 로고 -->
+							<div class="writer" style="margin: 7px 0 0 80px;">${c.writer }</div>
+							<c:if test="${c.team_name!=null }">
+								<c:if test="${c.team_color!='#191919' }">
+									<div class="crew" style="background-color: ${c.team_color}">  ${c.team_name } </div>   <!-- 크루 네임 및 색상 로고 -->
+								</c:if>	
+								
+								<c:if test="${c.team_color=='#191919' }">
+									<div class="crew" style="background-color: ${c.team_color}; color:#ffffff;">  ${c.team_name } </div>   <!-- 크루 네임 및 색상 로고 -->
+								</c:if>							
+							</c:if>
 						</td>
 					</tr>
+					
 					
 					<tr>
 						<td colspan="3"> 
 							<div class="contentnumber2">
 								<c:if test="${c.content_type==0}"> <!-- 값에 따라 일반, 질문글 나뉨 -->
-									<a href="${root }/community/contentdetail?community_idx=${c.community_idx }">${c.subject}</a>
+									<div>
+										<a href="${root }/community/contentdetail?community_idx=${c.community_idx }">${c.subject}</a>
+										<c:if test="${c.photo!='no' }">
+											 <span class="glyphicon glyphicon-picture" style="color: #505050;"></span>
+										</c:if>
+									</div>
 								</c:if>
 								
-								<c:if test="${c.content_type==1 }">
-									<a href="${root }/community/contentdetail?community_idx=${c.community_idx }">${c.subject}</a>
+								<c:if test="${c.content_type==1 || c.content_type==2}"><!-- qna중 채택, 채택x -->
+									<div>
+										<a href="${root }/community/contentdetail?community_idx=${c.community_idx }">${c.subject}</a>
+										<c:if test="${c.photo!='no' }">
+											 <span class="glyphicon glyphicon-picture" style="color: #505050;"></span>
+										</c:if>
+									</div>
 								</c:if>
 							</div> 
 						</td>
 						<td> 
 							<div class="day">
-								<fmt:formatDate value="${c.write_day }" pattern="yyyy-MM-dd"/>
+								<fmt:formatDate value="${c.write_day }" pattern="yyyy-MM-dd HH:mm"/>
 							</div>
 						</td>
 						<td></td>

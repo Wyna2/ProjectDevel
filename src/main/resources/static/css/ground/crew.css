@@ -27,7 +27,7 @@ div.main {
 }
 
 .crew_name {
-	width: 87px;
+	width: 100px;
 	height: 35px;
 	margin: 53px 279px 20px 320px;
 	/*폰트 적용*/
@@ -36,9 +36,14 @@ div.main {
 	font-weight: 500;
 	margin: auto;
 	letter-spacing: -0.6px;
-	text-align: left;
+	text-align: center;
 	color: #191919;
 	letter-spacing: -0.6px;
+	padding-left: 15px;
+}
+
+.modal_list{
+	text-align: center;
 }
 
 .crew_pr {
@@ -137,14 +142,15 @@ div.main {
 
 #modal_close_btn {
 	position: relative;
-	top: -200px;
-	left: 75px;
+	top: -1645px;
+	left: 1094px;
 }
 
 .notice_table {
 	position: relative;
 	top: 10px;
 	left: 68px;
+
 }
 
 .mypen {
@@ -237,10 +243,12 @@ td, tr {
 .crewone_profile {
 	width: 100px;
 	height: 17px;
-	margin: 18px 98px 0 0;
+	margin: 18px 90px 0 0;
 	/*폰트 적용*/
 	font-family: 'Noto Sans KR';
 	font-size: 12px;
+	position: relative;
+	top: -10px;
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
@@ -301,8 +309,8 @@ td, tr {
 
 #modal_close_btn1 {
 	position: relative;
-	top: -200px;
-	left: 552px;
+	top: -150px;
+	left: 554px;
 }
 
 .crewadd_table {
@@ -485,5 +493,193 @@ font-family: 'Noto Sans KR';
 	border: none;
 	margin-left: 15px;
 	
+}
+
+
+#modal0 {
+	position: relative;
+	width: 20px;
+	height: 30px;
+	z-index: 1;
+	display: none;
+}
+
+#modal0 h4 {
+	margin: 0;
+}
+
+#modal0 modal_close_btn0 {
+	display: inline-block;
+	width: 35px;
+	margin-left: calc(100% - 100px - 10px);
+}
+
+#modal0 .modal_content0 {
+	width: 296px;
+	margin: 100px auto;
+	padding: 20px 10px;
+	background: #fff;
+	position: relative;
+	top: -1113px;
+	left: 800px;
+	height: 562px;
+	border-radius: 20px;
+	box-shadow: 20px 20px 40px 0 rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+	position: relative;
+}
+
+#modal0 .modal_layer0 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 1920px;
+	height: 1250px;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+
+#modal_close_btn0 {
+	position: relative;
+	top: -1770px;
+	left: 1060px;
+}
+
+.btn-small {
+  outline: none;
+  width: 75px;   /* 넓이 수정 가능 */
+  height: 30px; /* 높이 수정 가능 */
+  border: 2px solid #ff4b4e; 
+  border-radius: 20px;
+  color: #ff4b4e;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;   /* 글씨 Bold 수정 가능 */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-small {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.btn-small:hover {
+   background: #ff4b4e;
+  color: #fff;
+}
+.btn-small:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-small:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.btn-small {
+	position: relative;
+	top: -50px;
+	left: 160px;
+}
+
+
+/* Textarea 디자인 */
+textarea {
+	width: 230px;
+	height: 460px;
+	padding: 10px 20px 0px 10px;
+	border-radius: 10px;
+	border: solid 1px #dbdbdb;
+	background-color: #fff;
+	position: relative;
+	top: 10px;
+	left: 30px;
+}
+
+textarea:active {
+	box-shadow: 0 0 4px rgb(204, 204, 204);
+	border-radius: 2px 2px 0 0;
+	background-color: #f8f8f8;
+	outline: none;
+}
+
+textarea:focus {
+	outline: none;
+	box-shadow: 0 0 5px #ff7a7c;
+	border-radius: 10px;
+	border: 1px solid #ff4b4e;
+}
+
+.crewdel{
+	float: right;
+	position: relative;
+	left: 450px;
+	margin: 5px;
+	
+	
+}
+
+.crewdel {
+  outline: none;
+  width: 75px;   /* 넓이 수정 가능 */
+  height: 30px; /* 높이 수정 가능 */
+  border: 2px solid #ff4b4e; 
+  border-radius: 20px;
+  color: #ff4b4e;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;   /* 글씨 Bold 수정 가능 */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.crewdel {
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.crewdel:hover {
+   background: #ff4b4e;
+  color: #fff;
+}
+.crewdel:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.crewdel:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.crewbtndel {
+	border: 0px;
+	background-color: white;
+	margin: 3.5px;
+	position: relative;
+	top: -20px;
+	left: 10px;
 }
 

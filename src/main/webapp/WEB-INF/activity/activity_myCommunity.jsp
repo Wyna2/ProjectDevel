@@ -13,7 +13,7 @@
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/activity.css">
 
-<title>나의활동>작성글목록</title>
+<title>DEVEL :: 나의활동>커뮤니티</title>
 <style type="text/css">
 span.side_main_span_write {
 	font-weight: 600;

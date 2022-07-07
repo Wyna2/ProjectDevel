@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${root }/css/ground/crewlist.css">
 
-<title>Insert title here</title>
+<title>DEVEL :: 그라운드</title>
 </head>
 <body>
 
@@ -73,39 +73,60 @@
 
 		<span class="crewlist">크루 리스트</span>
 		<div class="btns">
-			<form action="/ground/mycrew" method="post" onsubmit="return chklogin(this)">
-			
-			<!-- 마이크루 페이지로 넘겨줌 -->
-				<input type="hidden" name="team_idx" value="${team_idx}" id="teamidx">
+			<form action="/ground/mycrew" method="post"
+				onsubmit="return chklogin(this)">
+
+				<!-- 마이크루 페이지로 넘겨줌 -->
+				<input type="hidden" name="team_idx" value="${team_idx}"
+					id="teamidx">
+
+
 				<button type="submit" class="mycrew">마이 크루</button>
+
 			</form>
-			<button class="makecrew" onclick="location.href='/ground/crewenroll'">
+
+			<button class="makecrew">
 				<span class="makecrew1">크루 만들기</span>
 			</button>
+
 		</div>
 
 
 
 		<div class="secondbox">
-			<c:forEach var="a" items="${list }">
+			<c:forEach var="a" items="${list }" varStatus="status">
 				<table class="communitylist">
 					<tr align="center">
-						<td colspan="4" width="50">${a.team_idx }</td>
-						<td colspan="4" width="240">${a.name }</td>
+						<td colspan="4" width="50">${list.size() -status.index}</td>
+						
+						<c:if test="${a.color != '#191919'}">
+						<td colspan="4" width="240" >
+						<div style="background-color: ${a.color}; border-radius: 25px; width: 100px;  ">${a.name }</div>
+						</td>
+						</c:if>
+						
+						<c:if test="${a.color == '#191919'}">
+						<td colspan="4" width="240" >
+						<div style="background-color: ${a.color}; border-radius: 25px; width: 100px; color:#ffffff;  ">${a.name }</div>
+						</td>
+						</c:if>
+						
+						
 						<td colspan="4" width="110"><img alt=""
-							src="../image/face.png" style="width: 20px">3/50</td>
+							src="../image/face.png" style="width: 20px">
+							${a.member_count}/50</td>
 						<td colspan="4" width="200"><img alt=""
 							src="../image/star.png" style="width: 20px"> <fmt:formatNumber
 								value="${a.score }" pattern="#,###" /></td>
 						<td colspan="4" width="200"><fmt:formatDate
 								value="${a.create_day }" pattern="yyyy-MM-dd" /></td>
 						<td width="120">
-
-
-							<button type="button" class="modal_opne_btn2"
-								onclick="transferTId(${a.team_idx})" }>신청하기</button>
-
-						</td>
+						<c:if test="${team_idx ==null}">
+						<button type="button" class="modal_opne_btn2"
+									onclick="transferTId(${a.team_idx})">신청하기</button>
+									</c:if>
+								
+							</td>
 					<tr>
 				</table>
 			</c:forEach>
@@ -157,8 +178,7 @@
 				<form action="/ground/test123" method="post">
 
 					<div class="crewname_"></div>
-					<span class="inwon"><img alt="" src="../image/face.png"
-						style="width: 19px;">15/50</span>
+				
 					<div class="crewprone" style="border: 0px solid black;"></div>
 				</form>
 				<div class="mypricrew" style="height: 395px;">
@@ -170,14 +190,14 @@
 								<td class="subject1">이름</td>
 								<!-- 게시글 제목 출력 -->
 								<td></td>
-								<td class="likecount1">${sessionScope.userName }</td>
+								<td class="likecount1">${name }</td>
 							</tr>
 
 							<tr>
 								<td class="subject1">연령대</td>
 								<!-- 게시글 제목 출력 -->
 								<td></td>
-								<td class="ageage">${age } 대</td>
+								<td class="ageage">${age }대</td>
 							</tr>
 						</table>
 					</div>
@@ -185,20 +205,19 @@
 				</div>
 
 				<div class="wrapper">
-				<form action="/ground/mymm" method="post">
-				
-				<input type="text" name="team_idx" id="t_idx" >
-			
-					<input type="text" class="input" name="mypr"
-						placeholder="자기소개 한 줄" required="required" style="width: 360px;">
-					<span class="underline"></span>
-				
+					<form action="/ground/mymm" method="post">
+
+						<input type="hidden" name="team_idx" id="t_idx"> <input
+							type="text" class="input" name="mypr" placeholder="자기소개 한 줄"
+							required="required" style="width: 360px;"> <span
+							class="underline"></span>
 				</div>
 
 				<button type="submit" class="btn-large">
 					<span class="crew_enroll_btn">신청하기</span>
-					
-				</button> </form>
+
+				</button>
+				</form>
 
 
 				<button type="button" id="modal_close_btn2"
@@ -217,17 +236,21 @@
 
 
 	<div class="search">
-		<input type="text" class="text_search" placeholder="검색하실 크루명을 입력하세요"
+	<form action="/team/search">
+		<input type="text" class="text_search" name="SearchText" placeholder="검색하실 크루명을 입력하세요"
 			style="width: 300px; height: 36px; font-family: 'Noto Sans KR';">
+		
+		<button type="submit" class="searchbtn" style="border: 0px; background-color: #ffff;"></button>
 		<span class="icon glyphicon glyphicon-search"></span>
+	</form>
 	</div>
 
 
 
-	<div class="check" style="width: 210px;">
+	<!-- <div class="check" style="width: 210px;">
 		<input type="checkbox" name="check" id="check1" value="crewsearch"
 			style="font-family: 'Noto Sans KR';"> 신청 가능한 크루만 보기
-	</div>
+	</div> -->
 
 
 
@@ -239,7 +262,7 @@
 	<script type="text/javascript">
 
 	//마이 크루,,, 로그인 안 되어 있을 때 alert창
-	function chklogin(form) {
+		function chklogin(form) {
 		//alert(${team_idx});
 	     if(${sessionScope.loginOK==null})
 	    {
@@ -247,19 +270,27 @@
 	        location.href="/login"; //로그인 폼으로 이동
 	        return false;
 
-	      }	
+	      }	else {
+	    	if(${team_idx == null}){
+	    		alert("가입한 크루가 없습니다.");
+	    		return false;
+	    	}
+	    }
+
 	}
 	
 
-
-	
 	$('.makecrew').click(function () {
 	     if(${sessionScope.loginOK==null})
 	    {
 	          alert("로그인 후 사용이 가능합니다.");
 	        location.href="/login"; //로그인 폼으로 이동
 	    
-	      }
+	     } else if(${sessionScope.loginOK!=null and crewTeam_idx == null}) {
+	    	location.href="/ground/crewenroll";
+	    } else if(${sessionScope.loginOK!=null and crewTeam_idx != null}) {
+	    	alert("이미 가입된 크루가 존재합니다. \n크루를 만들 수 없습니다.");
+	    }
 	});
 	
 	
@@ -288,7 +319,7 @@
 		
 		
 		function transferTId(team_idx) { //transferId를 통해 전달받은 team_idx를 
-			$('#Tidx').val(team_idx); //모달 영역의 input 태그에 넣어준다!
+			//$('#Tidx').val(team_idx); //모달 영역의 input 태그에 넣어준다!
 			
 			
 			//모달창 안에 값 넣어줌

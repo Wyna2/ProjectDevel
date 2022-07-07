@@ -20,7 +20,7 @@ img.icon_myinfo {
 	cursor: pointer;
 }
 
-img.icon_inbox {
+img.icon_myactivity {
 	width: 31px;
 	height: 31px;
 	margin: 10px;
@@ -28,7 +28,7 @@ img.icon_inbox {
 	cursor: pointer;
 }
 
-.icon_favorite {
+.icon_myscrap {
 	width: 30.7px;
 	height: 30.7px;
 	margin: 10px;

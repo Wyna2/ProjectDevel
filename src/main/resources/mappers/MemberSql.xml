@@ -72,10 +72,28 @@
 	</delete>
 	
 	<select id="getMemberDatas" parameterType="String" resultType="member">
-		select member_idx, name, pr, link, age, job, hobby1, hobby2, hobby3 from Member where member_idx=#{member_idx}
+		select member_idx, name, pr, link, age, job, hobby1, hobby2, hobby3, photo, team_idx from Member where member_idx=#{member_idx}
 	</select>
    
 	<select id="getMemberAge" parameterType="String" resultType="String">
-		select age from Member where member_idx=#{member_idx}
+		select age, name from Member where member_idx=#{member_idx}
+	</select>
+	
+	<select id="getTeamidxMember" parameterType="String" resultType="String">
+	select team_idx from Member where member_idx=#{member_idx}
+	</select>
+	
+	<!-- team_idx null로 업데이트 -->
+	<update id="updateCrewdelMemberidx" parameterType="String">
+	update Member set team_idx = null where member_idx = #{member_idx};
+	</update>
+	
+	<!-- 회원의 팀 이름 가져오기 -->
+	<select id="getMemberTeamName" parameterType="String" resultType="String">
+		select name from Team where team_idx in (select team_idx from Member where member_idx=#{member_idx})
+	</select>
+	<!-- 회원의 팀 컬러 가져오기 -->
+	<select id="getMemberTeamColor" parameterType="String" resultType="String">
+		select color from Team where team_idx in (select team_idx from Member where member_idx=#{member_idx})
 	</select>
 </mapper>

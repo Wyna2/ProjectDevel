@@ -14,7 +14,7 @@
 <c:set var="root" value="<%=request.getContextPath() %>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/marketplace/market_productaddform.css">
 
-<title>Insert title here</title>
+<title>DEVEL :: 상품 등록</title>
 <script type="text/javascript">
 $(function() {
    /* start Dropdown Menu*/      

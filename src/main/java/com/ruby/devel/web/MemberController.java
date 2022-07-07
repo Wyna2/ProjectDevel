@@ -161,9 +161,9 @@ public class MemberController {
 				session.setAttribute("loginOK", "yes");
 				session.setAttribute("saveid", saveid); // 체크 할 경우 null, 체크하면 on
 				
-				String nickname=Mmapper.getNickname(id);
 				String userKey=Mmapper.getUserKey(id);
-
+				String nickname=Mmapper.getNickname(userKey);
+				
 				session.setAttribute("userNickname", nickname);
 		        session.setAttribute("userKey", userKey);
 		        
@@ -249,6 +249,23 @@ public class MemberController {
 
 		String member_idx=Mmapper.searchForResetPw(m_dto);
 		redirectAttributes.addFlashAttribute("resetMember_idx",member_idx);
+		
+		return "redirect:userpwreset";
+	}
+	
+	/* 마이페이지 비밀번호 재설정 */
+	@PostMapping("/myinfopw")  
+	public String myinfopw(
+			@RequestParam String member_idx,
+			@ModelAttribute MemberDto m_dto,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+
+		//String member_idx=Mmapper.searchForResetPw(m_dto);
+		redirectAttributes.addFlashAttribute("resetMember_idx",member_idx);
+		model.addAttribute("resetMember_idx", member_idx);
+		
+		System.out.println(member_idx);
 		
 		return "redirect:userpwreset";
 	}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruby.devel.service.impl.TeamMapper">
+	<select id="getTotalCount" resultType="int">
+		select count(*) from Team
+	</select>
+
+	<insert id="insertCrewEnroll" parameterType="teamenroll" useGeneratedKeys="true" keyProperty="team_idx">
+		insert into Team (name, info, create_day, color, member_idx) values ( #{name}, #{info}, now(), #{color}, #{member_idx})
+	</insert>
+
+	<update id="updateTeamIdx" parameterType="HashMap">
+		update Member set team_idx = #{team_idx} where member_idx = #{member_idx}
+	</update>
+
+	<!-- #{member_idx}객체는 현재 로그인하고 있는 사람의 userKey(member_idx) -->
+	<select id="selectTeamIdx" parameterType="String" resultType="String">
+		select team_idx from Member where member_idx =#{member_idx}
+	</select>
+
+	<!-- 크루 등록과 동시에 팀장도 팀원 테이블 insert(Team 테이블의 team_idx 뽑아서 TeamMember테이블에 
+		동시 주입 -->
+	<insert id="insertCrewleader" parameterType="teammember">
+		<selectKey resultType="String" keyProperty="team_idx" order="BEFORE">
+			SELECT MAX(team_idx) FROM Team
+		</selectKey>
+		insert into TeamMember(team_member_idx, team_idx, member_idx, regist_day) values (#{team_member_idx}, #{team_idx}, #{member_idx}, now())
+	</insert>
+
+	<!-- 팀장은 무조건 TeamMember에 수락여부 y, 팀 테이블의 member_idx와 팀멤버 테이블의 member_idx가 
+		같다면 수락 여부 y로 업데이트 -->
+	<update id="crewleaderupdate" parameterType="teamenroll">
+		UPDATE TeamMember tm INNER JOIN Team te ON tm.member_idx = te.member_idx SET tm.accept_status = 'Y'
+	</update>
+
+	<select id="getNewCrewDatas" resultType="teamenroll">
+		select * from Team order by team_idx desc
+	</select>
+
+	<select id="getCrewPointDatas" resultType="teamenroll">
+		select * from Team order by score desc
+	</select>
+
+	<select id="getList" parameterType="HashMap" resultType="teamenroll">
+		select * from Team order by team_idx desc limit #{start}, #{perPage}
+	</select>
+
+	<select id="getData" parameterType="String" resultType="teamenroll">
+		select * from Team where team_idx =#{team_idx}
+	</select>
+
+	<!-- 내 팀 정보 가져오기... #{team_idx} 객체는 member테이블의 team_idx -->
+	<select id="getTeamInfo" parameterType="String" resultType="teamenroll">
+		select * from Team where team_idx =#{team_idx}
+	</select>
+
+	<!-- 우리 팀 멤버 정보 가져오기... #{team_idx} 객체는 team테이블에 team_idx TeamMember의 team_idx랑 
+		team 테이블의 team_idx랑 같으면 우리 팀! 역순은 초기멤버=리더 -->
+	<select id="getTeamMember" parameterType="String" resultType="teammember">
+		select * from TeamMember where team_idx =#{team_idx} and accept_status = 'Y' order by team_member_idx
+	</select>
+
+	<!-- 신청 -->
+	<insert id="insertIntoMyCrew" parameterType="teammember">
+		insert into TeamMember (team_idx, member_idx, regist_day, mypr) values (#{team_idx}, #{member_idx}, now(), #{mypr} )
+	</insert>
+
+	<!-- -->
+	<select id="crewApplyList" parameterType="String" resultType="teammember">
+		select * from TeamMember where team_idx = #{team_idx} and accept_status ='N'
+	</select>
+
+	<update id="crewMemberAccept" parameterType="String">
+		update TeamMember set accept_status ='Y' where member_idx =#{member_idx}
+	</update>
+
+	<delete id="crewMemberReject" parameterType="String">
+		delete from TeamMember where member_idx =#{member_idx}
+	</delete>
+
+	<select id="selectCrewMem" parameterType="String" resultType="int">
+		select count(*) from TeamMember where team_idx =#{team_idx} and accept_status = 'Y'
+	</select>
+
+ 	<update id="updateTeamidxY" parameterType="String">
+      UPDATE Member set team_idx = (SELECT team_idx FROM TeamMember WHERE member_idx = #{member_idx}) Where member_idx = #{member_idx}
+   </update>
+   
+   <!-- 검색 기능 -->
+  	<select id="SearchGetList" parameterType="HashMap" resultType="teamenroll">
+  		select * from Team where name like concat('%',#{SearchText},'%') order by create_day asc limit #{start}, #{perPage}
+  	</select>
+  	
+	<select id="getSearchCount" resultType="int" parameterType="String">
+		select count(*) from Team where name like concat('%',#{SearchText},'%') order by create_day asc
+	</select>
+  	
+  <insert id="insertIntoCrewNotice" parameterType="teamnotice">
+		insert into TeamNotice (team_idx, notice, writeday) values (#{team_idx}, #{notice}, now() )
+	</insert>
+	
+	<select id="selectTeamNotice" resultType="teamnotice">
+		select * from TeamNotice order by writeday desc
+	</select>
+	
+	<!-- 크루명 검증 -->
+	<select id="checkVaildCrewname" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM Team WHERE name=#{name}
+	</select>
+	
+	<!-- 크루 삭제 -->
+	<delete id="deleteCrew" parameterType="String">
+		delete from Team where member_idx = #{member_idx};
+	</delete>
+	
+	<!-- 크루원 삭제 -->
+	<delete id="deleteCrewMember" parameterType="String">
+		delete from TeamMember where member_idx = #{member_idx};
+	</delete>
+	
+	<!-- 가입 중복 검증 -->
+	<select id="checkVaildInsert" parameterType="String" resultType="int">
+	select count(*) from TeamMember where member_idx=#{member_idx} and accept_status = 'N'
+	</select>
+</mapper>

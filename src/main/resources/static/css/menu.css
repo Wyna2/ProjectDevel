@@ -117,14 +117,58 @@ div.menuitem_member {
 	padding: 17px 10px 0 10px;
 	height: 56px;
 	float: left;
-	cursor: pointer;
 }
 
-.membermenu {
+span.membermenu {
+	padding: 5px 25px 5px 25px;
+	color: #fff;
+	background-color: #ff4b4e;
+	border-radius: 20px 0px 0px 20px;
+}
+
+span.membermenu_color {
+	padding: 5px 25px 5px 25px;
+	color: #fff;
+	background-color: #ff4b4e;
+	border-radius: 20px 0 0 20px;
+	cursor: pointer;
+	height: 55px;
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #ff4b4e, #f15e64, #e14e53, #e2373f);
+	box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+}
+
+.membermenu_color:hover  {
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+
+span.signupmenu {
 	padding: 5px 25px 5px 25px;
 	color:#fff;
 	background-color: #ff4b4e;
-	border-radius: 20px;
+	border-radius: 0 20px 20px 0;
+	cursor: pointer;
+	height: 55px;
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	background-image: linear-gradient(to right, #ff4b4e, #f15e64, #e14e53, #e2373f);
+	box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
 }
 
 .membermenu:hover {

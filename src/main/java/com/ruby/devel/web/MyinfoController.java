@@ -19,7 +19,7 @@ import com.ruby.devel.model.MemberDto;
 import com.ruby.devel.service.impl.MyinfoMapper;
 
 @Controller
-public class MyifoController {
+public class MyinfoController {
 	
 	@Autowired
 	MyinfoMapper MImapper;

@@ -74,7 +74,14 @@ function checkPass(form) {
 				<hr style="margin: 40px 0 30px 0;">
 			</div>
 			<div style="text-align: center; font-size: 1.5em;" >
-				<input type="hidden" name="member_idx" id="idx" value="${resetMember_idx }">
+				
+				<c:if test="${userKey!=null}">
+					<input type="hidden" name="member_idx" id="idx" value="${userKey}">
+				</c:if>
+				<c:if test="${userKey==null}||${userKey==''}">
+					<input type="hidden" name="member_idx" id="idx" value="${resetMember_idx }">
+				</c:if>
+				
 				<div class="wrapper">
 				<input type="password" class="input" name="password" id="pw" placeholder="비밀번호를 입력하세요" required="required" autocomplete="off" style="width: 360px;">
 				<span class="underline"></span>

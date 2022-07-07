@@ -13,7 +13,7 @@
 <c:set var="root" value="<%=request.getContextPath()%>"/>
 <link rel="stylesheet" type="text/css" href="${root }/css/member/member_findidresult.css">
 
-<title>Insert title here</title>
+<title>DEVEL :: 아이디 찾기</title>
 </head>
 <body>
 <div class="title">

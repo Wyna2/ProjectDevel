@@ -96,6 +96,19 @@ td.likecount1 img{
 	max-height: 21px;
 }
 
+div.besttitle{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+div.qnatitle{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
 td {
   border-bottom: 1px solid #767676;
  
@@ -251,8 +264,19 @@ tr td div.contentnumber2{
     letter-spacing: -0.38px;
     text-align: left;
     color: #505050;
-    cursor: pointer;
     margin:0 0 5px 56px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+}
+
+div.contentnumber2 div{
+	width: 240px; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+	
 }
 
 /* 커뮤니티리스트  코맨트, 따봉, 조회 수*/   
@@ -272,7 +296,7 @@ td.count div{
 
 /* 작성자 css */
 div.writer{
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
@@ -284,16 +308,18 @@ div.writer{
 
 /* 크루 네임, 색상 입력틀 div css */
 tr td div.crew{
-	border: 1px solid #505050; 
+	border: 0px solid #505050; 
 	border-radius: 7.5px; 
-	width: 72px; 
+	width: 100px; 
 	height: 25px; 
-	margin: 6px 0 0 130px;
+	margin: 6px 0 0 80px;
+	text-align: center;
+	padding-top: 2px;
 }
 
 /* 작성자 사진 css */
 div.personphoto img{
-	margin:11px 0 0 71px; 
+	margin:11px 0 0 30px; 
 	float: left;
 	cursor: pointer;
 }
@@ -306,9 +332,10 @@ img.scrap {
 
 /* list 작성일 css */
 tr td div.day{
-	margin: 0 0 5px 137px; 
+	margin: 0 0 5px 80px; 
 	color: #505050;
 	font-size: 16px;
+	text-align: right;
 }
 
 /* 커뮤니티 main css end */
@@ -463,4 +490,20 @@ tr td div.day{
               -4px -4px 6px 0 rgba(116, 125, 136, .2), 
     inset -4px -4px 6px 0 rgba(255,255,255,.2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+/* 페이징처리 */
+.pagesort{
+	position: absolute;
+	top: 850px;
+	left: 780px;
+}
+
+#pagecnum {
+   color: #ff4b4e;
+}
+#pagenum,#pagecnum {
+   margin: 0 10px 0 10px;
+}
+#pagebtn {
+   margin: 0 5px 0 5px;
 }
